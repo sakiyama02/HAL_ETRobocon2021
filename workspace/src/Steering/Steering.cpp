@@ -8,6 +8,12 @@ Steering::Steering()
 
 Steering::~Steering(){}
 
+int8 Steering::init(){
+    int8 retChk = SYS_NG;
+    
+
+}
+
 int8 Steering::rotateWheel(MotorPower motor_Power,Motorport motor_Port){
 
     /* 引数チェック */
@@ -29,4 +35,8 @@ int8 Steering::rotateWheel(MotorPower motor_Power,Motorport motor_Port){
     /* 左モータ　PWMset */
 
 
+}
+
+int8 Steering::getMotorangle(int32 *iAngle){
+    
 }
