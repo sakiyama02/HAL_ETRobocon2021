@@ -4,7 +4,7 @@
 #include <string.h>
 #include <memory>
 #include <string>
-#include "ev3api.h"
+//#include "ev3api.h"
 
 #define SYS_OK 0    //正常終了
 #define SYS_NG 1    //異常終了
