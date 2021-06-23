@@ -94,7 +94,7 @@ typedef struct RGB_TAG {
 	int8 r;
 	int8 g;
 	int8 b;
-}RGB;
+}RGBData;
 
 // 方向情報の構造体
 typedef struct Direction_TAG{	
@@ -114,7 +114,7 @@ typedef struct PositionTAG {
 	float yPosition;
 	Range xCondition;
 	Range yCondition;
-}Position;
+}PositionData;
 
 typedef struct MotorPower_TAG{	
 	int32 rightPower;
@@ -130,8 +130,8 @@ typedef struct MotorAngle_TAG{
 
 // 切り替え用情報
 typedef struct ChangeInfo_Tag {	
-	RGB rgb_data;		            // 切り替え用のRGB値
-	Position position_data;		    // 切り替え用の座標
+	RGBData rgb_data;		            // 切り替え用のRGB値
+	PositionData position_data;		    // 切り替え用の座標
 	DirectionData direction_data;	// 切り替え用の機体の向き
 	int8 distance;		            // 切り替え用の超音波距離
 	int8 judge;		                // 切り替え値の判定		例：ポジションの切り替えを行いたいなら、JUDGE_POSを入れる			
