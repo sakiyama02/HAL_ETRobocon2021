@@ -19,4 +19,10 @@ class Steering
     int8 rotateWheel(MotorPower motorPower);
     int8 getMotorAngle(MotorAngle *iAngle);
     int8 updateAngle();
+
+    static Steering &getInstance()
+    {
+        static Steering Steering_;
+        return Steering_;
+    }
 };
