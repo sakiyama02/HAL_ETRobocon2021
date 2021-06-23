@@ -10,9 +10,10 @@ class Steering
     ~Steering();
 
     MotorAngle motorAngle;
-
     Motor* leftMotor;
     Motor* rightMotor; 
+    Steering(const Steering &x) {};
+    Steering&operator=(const Steering &){ return *this; };
 
     public:
     int8 init();
