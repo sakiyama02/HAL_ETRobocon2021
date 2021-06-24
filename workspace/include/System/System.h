@@ -108,13 +108,17 @@ typedef struct CurveData_TAG{
 	CurveType dirction;
 }CurveData;
 
-// 座標の構造体
-typedef struct PositionTAG {
+typedef struct Position_TAG{
 	float xPosition;
 	float yPosition;
+}PositionData;
+
+// 座標の構造体
+typedef struct PositionTAG {
+	PositionData potision;
 	Range xCondition;
 	Range yCondition;
-}PositionData;
+}PosInfoData;
 
 typedef struct MotorPower_TAG{	
 	int32 rightPower;
@@ -126,12 +130,18 @@ typedef struct MotorAngle_TAG{
 	int32 leftAngle;
 }MotorAngle;
 
+// 左右の車輪の移動量を格納
+typedef struct WheelDist_s
+{
+  float leftMove;  //左輪移動量
+  float rightMove; //右輪移動量
+} WheelDist;
 
 
 // 切り替え用情報
 typedef struct ChangeInfo_Tag {	
 	RGBData rgb_data;		            // 切り替え用のRGB値
-	PositionData position_data;		    // 切り替え用の座標
+	PosInfoData pos_info_data;		    // 切り替え用の座標
 	DirectionData direction_data;	// 切り替え用の機体の向き
 	int8 distance;		            // 切り替え用の超音波距離
 	int8 judge;		                // 切り替え値の判定		例：ポジションの切り替えを行いたいなら、JUDGE_POSを入れる			

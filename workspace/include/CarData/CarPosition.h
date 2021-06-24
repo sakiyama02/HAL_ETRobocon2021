@@ -2,15 +2,20 @@
 #include "../System/System.h"
 #include "../Steering/Steering.h"
 
+#define PI 3.14159265359
+#define DIST (((PI) * (double)CAR_WHEEL_WIDTH) / 360.0f)
+
 class CarPosition
 {
 private:
-    Position carPos;
+    PositionData carPos;
     float carDirection;
     CarPosition();
     ~CarPosition();
-    CarPosition(const car_position &x);
-    CarPosition&operator=(const car_position &){ return *this; };
+    CarPosition(const CarPosition &x);
+    CarPosition&operator=(const CarPosition &){ return *this; };
+
+    int8 calcOdometry(WheelDist* wheel_dist);
 public:
 
     // CarPositionのインスタンス
@@ -24,7 +29,7 @@ public:
 
     int8 updateDir();
 
-    int8 getPos(Position car_pos);
+    int8 getPos(PositionData car_pos);
 
-    int8 getDir(DirectionData)
-}
+    int8 getDir(DirectionData);
+};
