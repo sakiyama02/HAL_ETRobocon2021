@@ -23,6 +23,6 @@ public:
     //
     // -setting     カラーセンサーの初期化
 
-    int8 ColorSensor();
+    int8 init();
 
 }
