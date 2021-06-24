@@ -12,13 +12,10 @@ class Steering
     int32 lPrevAngle;
     int32 rPrevAngle;
 
-    Motor* leftMotor;
-    Motor* rightMotor; 
-
     
 
     public:
     int8 init();
-    int8 rotateWheel(MotorPower motorPower);
-    int8 getMotorAngle(MotorAngle *iAngle);
+    int8 rotateWheel(MotorPower motorPower,Motorport motor_port);
+    int8 getMotorangle(int32 *iAngle);
 };
