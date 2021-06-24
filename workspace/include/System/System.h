@@ -53,15 +53,6 @@ JUDGE_DIS,
 JUDGE_DIR,
 };
 
-//モーターポート番号
-enum MotorPort
-{
-  MOTOR_ARM,   //アームモーター
-  MOTOR_RIGHT, //右輪モーター
-  MOTOR_LEFT,  //左輪モーター
-  MOTOR_TAIL,  //尻尾モーター
-};
-
 // 判定用条件
 enum Range
 {
@@ -94,7 +85,7 @@ typedef struct RGB_TAG {
 	int8 r;
 	int8 g;
 	int8 b;
-}RGBData;
+}RGB;
 
 // 方向情報の構造体
 typedef struct Direction_TAG{	
@@ -114,24 +105,12 @@ typedef struct PositionTAG {
 	float yPosition;
 	Range xCondition;
 	Range yCondition;
-}PositionData;
-
-typedef struct MotorPower_TAG{	
-	int32 rightPower;
-	int32 leftPower;
-}MotorPower;
-
-typedef struct MotorAngle_TAG{	
-	int32 rightAngle;
-	int32 leftAngle;
-}MotorAngle;
-
-
+}Position;
 
 // 切り替え用情報
 typedef struct ChangeInfo_Tag {	
-	RGBData rgb_data;		            // 切り替え用のRGB値
-	PositionData position_data;		    // 切り替え用の座標
+	RGB　rgb_data;		            // 切り替え用のRGB値
+	Position position_data;		    // 切り替え用の座標
 	DirectionData direction_data;	// 切り替え用の機体の向き
 	int8 distance;		            // 切り替え用の超音波距離
 	int8 judge;		                // 切り替え値の判定		例：ポジションの切り替えを行いたいなら、JUDGE_POSを入れる			

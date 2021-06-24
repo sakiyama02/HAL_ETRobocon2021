@@ -10,20 +10,15 @@ Steering::~Steering(){}
 
 int8 Steering::init(){
     int8 retChk = SYS_NG;
-
-    leftMotor = new Motor();
-    retChk = leftMotor->init(MOTOR_LEFT,LARGE_MOTOR);
-
-    rightMotor = new Motor();
-    retChk = rightMotor->init(MOTOR_RIGHT,LARGE_MOTOR);
+    
 
 }
 
-int8 Steering::rotateWheel(MotorPower motor_power){
+int8 Steering::rotateWheel(MotorPower motor_Power,Motorport motor_Port){
 
     /* 引数チェック */
-    if (motor_power.leftPower < -100 || motor_power.leftPower > 100 ||
-        motor_power.rightPower < -100 || motor_power.rightPower > 100)
+    if (motorPower.leftPower < -100 || motorPower.leftPower > 100 ||
+        motorPower.rightPower < -100 || motorPower.rightPower > 100)
     {}
 
     /* 変数宣言 */
@@ -42,7 +37,6 @@ int8 Steering::rotateWheel(MotorPower motor_power){
 
 }
 
-int8 Steering::getMotorAngle(MotorAngle *iAngle){
-
-
+int8 Steering::getMotorangle(int32 *iAngle){
+    
 }
