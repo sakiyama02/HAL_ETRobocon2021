@@ -25,4 +25,4 @@ public:
 
     int8 init();
 
-}
+};
