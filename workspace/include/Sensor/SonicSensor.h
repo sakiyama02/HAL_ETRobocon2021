@@ -25,6 +25,6 @@ public:
     // -return      SYS_OK 正常終了
     // -return      SYS_NG 異常終了
 
-    int8 SonicSensor();
+    int8 init();
 
 }
