@@ -18,7 +18,7 @@ public:
     // -setting     カラーセンサーからＲＧＢ値を取得する
     // -return      RGB値
 
-    RGBData getRGB();   
+    int8 getRGB();   
 
     //
     // -setting     カラーセンサーの初期化

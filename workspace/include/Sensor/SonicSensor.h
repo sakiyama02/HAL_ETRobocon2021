@@ -23,6 +23,6 @@ public:
     //
     // -setting     超音波センサー初期化
 
-    int8 SonicSensor();
+    int8 init();
 
 }
