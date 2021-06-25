@@ -64,4 +64,4 @@ public:
     // -return      SYS_NG 異常終了
     int8 sensor_init();
 
-}
+};
