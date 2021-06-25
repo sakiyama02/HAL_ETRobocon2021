@@ -49,7 +49,7 @@ int8_t ScenarioControl::updateScenario(){
     SceneControl sceneControl;
 
     //シーンの更新
-    retChk = sceneControl.SceneChenge(scene_num);
+    retChk = sceneControl.SceneChenge(&scene_num);
     if(retChk != 0){
         return retChk;
     }
