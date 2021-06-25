@@ -113,18 +113,20 @@ typedef struct Position_TAG{
 	float yPosition;
 }PositionData;
 
-// 座標の構造体
+// 座標情報の構造体
 typedef struct PositionTAG {
 	PositionData potision;
 	Range xCondition;
 	Range yCondition;
 }PosInfoData;
 
+// モータパワー
 typedef struct MotorPower_TAG{	
 	int32 rightPower;
 	int32 leftPower;
 }MotorPower;
 
+ // モータ角度
 typedef struct MotorAngle_TAG{	
 	int32 rightAngle;
 	int32 leftAngle;
