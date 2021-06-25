@@ -29,7 +29,11 @@ public:
 
     int8 updateDir();
 
-    int8 getPos(PositionData car_pos);
+    int8 getPos(PositionData* car_pos);
 
-    int8 getDir(DirectionData);
+    int8 setPos(PositionData set_pos);
+
+    int8 getDir(float* car_dir);
+
+    int8 setAngle(float angle);
 };

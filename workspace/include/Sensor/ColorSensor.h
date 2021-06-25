@@ -21,7 +21,7 @@ public:
     RGBData getRGB();   
 
     //
-    // -setting     カラーセンサーの初期化
+    // -setting     カラーセンサーのポート設定
 
     int8 init();
 
