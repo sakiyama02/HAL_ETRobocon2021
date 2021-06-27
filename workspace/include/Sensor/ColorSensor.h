@@ -18,11 +18,11 @@ public:
     // -setting     カラーセンサーからＲＧＢ値を取得する
     // -return      RGB値
 
-    RGB getRGB();   
+    RGBData getRGB();
 
     //
     // -setting     カラーセンサーのポート設定
 
-    int8 ColorSensor();
+    int8 init();
 
-}
+};
