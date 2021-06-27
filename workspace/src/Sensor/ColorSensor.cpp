@@ -12,11 +12,21 @@ int8 ColorSensor::init(){
     return SYS_OK;
 }
 
-RGBData ColorSensor::getRGB(){
-    RGBData rgbData;
+int8 ColorSensor::getRGB(RGBData* rgb_Data){
 
-    memset(&rgbData,0,sizeof(RGBData));
-    ev3_color_sensor_get_rgb_raw(static_cast<sensor_port_t>(SENSOR_COLOR), &rgbData);
+    //argument check
+    if (rgb_Data == NULL)
+    {
+        return SYS_PARAM;
+    }
+    RGBData rgbTmp;
+
+    memset(&rgbTmp,0,sizeof(RGBData));
+    ev3_color_sensor_get_rgb_raw(static_cast<sensor_port_t>(SENSOR_COLOR), &rgbTmp);
     
-    return rgbData;
+    rgb_Data->r = rgbTmp.r;
+    rgb_Data->g = rgbTmp.g;
+    rgb_Data->b = rgbTmp.b;
+
+    return SYS_OK;
 }
