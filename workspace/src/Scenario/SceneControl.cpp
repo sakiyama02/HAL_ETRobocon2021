@@ -1,3 +1,3 @@
-#include "../workspace/include/Scenario/SceneControl.h"
+#include "../../include/Scenario/SceneControl.h"
 SceneControl::SceneControl(){}
 SceneControl::~SceneControl(){}

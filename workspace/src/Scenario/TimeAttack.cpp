@@ -1,5 +1,5 @@
-#include "../System/System.h"
-init8_t TimeAttack::Run(scene_num)　{
+#include "../../include/Scenario/TimeAttack.h"
+int8 TimeAttack::Run(scene_num)　{
     //エラー格納変数
     int8 check_value=SYS_NG;
 
