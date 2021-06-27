@@ -10,7 +10,7 @@ class Pidcontrol
 {
 private:
     //前回の偏差
-    int32 prevDeviation
+    int32 prevDeviation;
 
 public:
     Pidcontrol();
@@ -22,4 +22,4 @@ public:
 
     int8 calcPid();
 
-}
+};

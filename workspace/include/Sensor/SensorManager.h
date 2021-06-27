@@ -40,7 +40,7 @@ public:
     // -return      SYS_OK 正常終了
     // -return      SYS_PARAM 引数エラー
     // -return      SYS_NG 異常終了
-    int8 rgb_Getter(RGBDATE*);
+    int8 rgb_Getter(RGBData*);
 
     //
     // -setting     v情報格納
@@ -64,4 +64,4 @@ public:
     // -return      SYS_NG 異常終了
     int8 sensor_init();
 
-}
+};

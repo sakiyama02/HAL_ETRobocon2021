@@ -36,14 +36,13 @@ int8 SensorManager::get_Distance()
 //  -datail
 //  引数で入ってきた構造体ポインタにRGB情報に格納する
 //
-int8 SensorManager::rgb_Getter(RGBDATE* rgb_data)
+int8 SensorManager::rgb_Getter(RGBData* rgb_data)
 {
     //argument check
     if (rgb＿data == NULL)
     {
         return SYS_PARAM;
     }
-
     //引数にカラーセンサーの値を格納
     rgb_data = &rgbStorage;
 
@@ -61,7 +60,6 @@ int8 SensorManager::hsv_Getter(uint16* v_data)
     {
         return SYS_PARAM;
     }
-
     //hsvのv値を格納
     if(rgbStorage.r > rgbStorage.g && rgbStorage.r > rgbStorage.b)
     {
