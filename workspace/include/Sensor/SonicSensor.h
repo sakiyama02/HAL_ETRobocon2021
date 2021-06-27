@@ -21,7 +21,7 @@ public:
     // -return      SYS_PARAM 引数エラー
     // -return      SYS_NG 異常終了
 
-    int8 getDistance(int16*);   
+    int8 getDistance(uint16*);   
 
     //
     // -setting     超音波センサーのポート設定

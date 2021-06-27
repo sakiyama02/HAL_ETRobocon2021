@@ -14,7 +14,7 @@ int8 SonicSensor::init()
     return SYS_OK;
 }
 
-int8 SonicSensor::getDistance(int16* distance_Data)
+int8 SonicSensor::getDistance(uint16* distance_Data)
 {
     //argument check
     if (distance_Data == NULL)
