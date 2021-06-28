@@ -15,13 +15,9 @@ PidControl::PidControl()
 //  -datail
 //  PIDの計算
 //
-int8 PidControl::calcPid(int32 *motor_pow,PIDData *pid_data)
+int8 PidControl::calcPid(PIDData *pid_data)
 {  
     //argument check
-    if (motor_pow == NULL)
-    {
-        return SYS_PARAM;
-    }
     if (pid_data == NULL)
     {
         return SYS_PARAM;
