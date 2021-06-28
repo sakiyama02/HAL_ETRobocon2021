@@ -242,7 +242,7 @@ int8 SlalomEifie::SceneChenge(int16* scene_num){
         //シングルトンの自己位置推定からインスタンスのポインタを取得
             CarPosition　&carPosition=CarPosition::getInstance();
             CarPosition.getDir(&curdirectionData.direction);
-            retChk=DirectionJudge(curdirectionData.direction,
+            retChk=directionJudge(curdirectionData.direction,
                                   changeInfo.direction_data.direction,
                                   changeInfo.direction_data.condition);
             if(retChk==SYS_OK){
@@ -392,7 +392,7 @@ int8 TimeAttack::DistanceJudge(uint16 cur_distanceData,uint16 change_distanceDat
 //マイナスの値を入れるとバグるので注意
 //戻り値：切り替え条件を満たしていればSYS_OK
 //        切り替え条件を満たしていなければSYS_NG
-int8 TimeAttack::DirectionJudge(float cur_directionData,float change_directionData,int8 condition){
+int8 TimeAttack::directionJudge(float cur_directionData,float change_directionData,int8 condition){
     float resultdirection=0f;
     resultdirection=change_directionData-cur_directionData;
     if(resultdirection>0){

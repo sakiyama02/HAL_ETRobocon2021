@@ -6,7 +6,7 @@
 //Run
 //実行
 //
-int8 ScenarioControl::Run(){
+int8 ScenarioControl::run(){
     int8 retChk = SYS_NG; //戻り値格納変数
 
     SceneControl *sceneControl;
@@ -42,7 +42,7 @@ int8 ScenarioControl::Run(){
         break;
     }
 
-    retChk = sceneControl -> Run(scene_num);
+    retChk = sceneControl -> run(scene_num);
     return retChk;
 }
 

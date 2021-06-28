@@ -1,5 +1,5 @@
 #include "../../include/Scenario/Garage.h"
-int8 Garage::Run(scene_num)　{
+int8 Garage::run(scene_num)　{
     //引数のエラーチェック
     if(scene_num==NULL){
         return SYS_PARAM;
@@ -140,7 +140,7 @@ int8 Garage::Run(scene_num)　{
 //
 //更新タスクでの処理
 //
-int8 Garage::SceneChenge(int16* scene_num){
+int8 Garage::sceneChenge(int16* scene_num){
     //引数のエラーチェック
     if(scene_num==NULL){
         return SYS_PARAM;
@@ -168,7 +168,7 @@ int8 Garage::SceneChenge(int16* scene_num){
         //rgbの現在時点最新状態を取得
             senserManage.rgb_Getter(&currgbData);
         //rgb値を目標値と現在値を比較
-            retChk=ColorJudge(currgbData.rgb_data,changeInfo.rgb_data);
+            retChk=colorJudge(currgbData.rgb_data,changeInfo.rgb_data);
             if(retChk==SYS_OK){
                 *scene_num++;
             }
@@ -183,13 +183,13 @@ int8 Garage::SceneChenge(int16* scene_num){
             carPosition.getPos(&curpositionData);
          //XYを判断する場合
             if(changeInfo.PosInfoData.xCondition<2&&changeInfo.PosInfoData.yCondition<2){
-                retChk=XPositionJudge(curpositionData.PosInfoData.position.xPosition,
+                retChk=xPositionJudge(curpositionData.PosInfoData.position.xPosition,
                                       changeInfo.PosInfoData.position.xPosition,
                                       changeInfo.PosInfoData.xCondition);
                 if(retChk!=SYS_OK){
                     break;
                 }
-                retChk=YPositionJudge(curpositionData.PosInfoData.position.yPosition,
+                retChk=yPositionJudge(curpositionData.PosInfoData.position.yPosition,
                                       changeInfo.PosInfoData.position.yPosition,
                                       changeInfo.PosInfoData.yCondition);
                 if(retChk==SYS_OK){
@@ -200,7 +200,7 @@ int8 Garage::SceneChenge(int16* scene_num){
         
         //Xだけを判断する場合
             if(changeInfo.PosInfoData.xCondition<2){
-                retChk=XPositionJudge(curpositionData.PosInfoData.position.xPosition,
+                retChk=xPositionJudge(curpositionData.PosInfoData.position.xPosition,
                                       changeInfo.PosInfoData.position.xPosition),
                                       changeInfo.PosInfoData.xCondition;
                 if(retChk==SYS_OK){
@@ -211,7 +211,7 @@ int8 Garage::SceneChenge(int16* scene_num){
 
         //Yだけを判断する場合
             if(changeInfo.PosInfoData.yCondition<2){
-                retChk=YPositionJudge(curpositionData.PosInfoData.position.yPosition,
+                retChk=yPositionJudge(curpositionData.PosInfoData.position.yPosition,
                                       changeInfo.PosInfoData.position.yPosition,
                                       changeInfo.PosInfoData.yCondition);
                 if(retChk==SYS_OK){
@@ -227,7 +227,7 @@ int8 Garage::SceneChenge(int16* scene_num){
             SensorManager &senserManage=SensorManager::getInstance();
         //超音波での距離の現在時点最新情報を取得
             senserManage.distanceGetter(&curdistanceData);
-            retChk=DistanceJudge(curdistanceData,changeInfo.distance);
+            retChk=distanceJudge(curdistanceData,changeInfo.distance);
             if(retChk==SYS_OK){
                 *scene_num++;
             }
@@ -240,7 +240,7 @@ int8 Garage::SceneChenge(int16* scene_num){
         //シングルトンの自己位置推定からインスタンスのポインタを取得
             CarPosition　&carPosition=CarPosition::getInstance();
             CarPosition.getDir(&curdirectionData.direction);
-            retChk=DirectionJudge(curdirectionData.direction,
+            retChk=directionJudge(curdirectionData.direction,
                                   changeInfo.direction_data.direction,
                                   changeInfo.direction_data.condition);
             if(retChk==SYS_OK){
@@ -280,7 +280,7 @@ int8 Garage::SceneChenge(int16* scene_num){
 //引数：現在のrgb値、目標のrgb値、(現在と目標の差分範囲の指定値)
 //戻り値：切り替え条件を満たしていればSYS_OK
 //        切り替え条件を満たしていなければSYS_NG
-int8 TimeAttack::ColorJudge(RGBData cur_rgbdata,RGBData change_rgbdata){
+int8 TimeAttack::colorJudge(RGBData cur_rgbdata,RGBData change_rgbdata){
     int8 resultr=0;
     int8 resultg=0;
     int8 resultb=0;
@@ -319,7 +319,7 @@ int8 TimeAttack::ColorJudge(RGBData cur_rgbdata,RGBData change_rgbdata){
 //引数：現在のX座標値、目標のX座標値、現在と目標の差分範囲の指定値
 //戻り値：切り替え条件を満たしていればSYS_OK
 //        切り替え条件を満たしていなければSYS_NG
-int8 TimeAttack::XPositionJudge(float cur_xpositionData,float change_xpositionData,int8 condition){
+int8 TimeAttack::xPositionJudge(float cur_xpositionData,float change_xpositionData,int8 condition){
     float resultx=0f;
     resultx=change_xpositionData-cur_xpositionData;
     if(resultx>0){
@@ -347,7 +347,7 @@ int8 TimeAttack::XPositionJudge(float cur_xpositionData,float change_xpositionDa
 //引数：現在のY座標値、目標のY座標値、現在と目標の差分範囲の指定値
 //戻り値：切り替え条件を満たしていればSYS_OK
 //        切り替え条件を満たしていなければSYS_NG
-int8 TimeAttack::YPositionJudge(float cur_ypositionData,float cur_ypositionData,int8 condition){
+int8 TimeAttack::yPositionJudge(float cur_ypositionData,float cur_ypositionData,int8 condition){
     float resulty=0f;
     resulty=change_ypositionData-cur_ypositionData;
     if(resulty>0){
@@ -376,7 +376,7 @@ int8 TimeAttack::YPositionJudge(float cur_ypositionData,float cur_ypositionData,
 //引数：現在の距離値、目標の距離値
 //戻り値：切り替え条件を満たしていればSYS_OK
 //        切り替え条件を満たしていなければSYS_NG
-int8 TimeAttack::DistanceJudge(uint16 cur_distanceData,uint16 change_distanceData){
+int8 TimeAttack::distanceJudge(uint16 cur_distanceData,uint16 change_distanceData){
     uint16 resultdistance=0f;
     resultdistance=change_distanceData-cur_distanceData;
     /*距離を範囲指定する場合に使用（間違って作った）
@@ -404,7 +404,7 @@ int8 TimeAttack::DistanceJudge(uint16 cur_distanceData,uint16 change_distanceDat
 //マイナスの値を入れるとバグるので注意
 //戻り値：切り替え条件を満たしていればSYS_OK
 //        切り替え条件を満たしていなければSYS_NG
-int8 TimeAttack::DirectionJudge(float cur_directionData,float change_directionData,int8 condition){
+int8 TimeAttack::directionJudge(float cur_directionData,float change_directionData,int8 condition){
     float resultdirection=0f;
     resultdirection=change_directionData-cur_directionData;
     if(resultdirection>0){

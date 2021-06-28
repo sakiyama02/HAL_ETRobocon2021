@@ -167,7 +167,7 @@ int8 SlalomBlacky::SceneChenge(int16* scene_num){
         //rgbの現在時点最新状態を取得
             senserManage.rgb_Getter(&currgbData);
         //rgb値を目標値と現在値を比較
-            retChk=ColorJudge(currgbData.rgb_data,changeInfo.rgb_data);
+            retChk=colorJudge(currgbData.rgb_data,changeInfo.rgb_data);
             if(retChk==SYS_OK){
                 *scene_num++;
             }
@@ -239,7 +239,7 @@ int8 SlalomBlacky::SceneChenge(int16* scene_num){
         //シングルトンの自己位置推定からインスタンスのポインタを取得
             CarPosition　&carPosition=CarPosition::getInstance();
             CarPosition.getDir(&curdirectionData.direction);
-            retChk=DirectionJudge(curdirectionData.direction,
+            retChk=directionJudge(curdirectionData.direction,
                                   changeInfo.direction_data.direction,
                                   changeInfo.direction_data.condition);
             if(retChk==SYS_OK){
@@ -279,7 +279,7 @@ int8 SlalomBlacky::SceneChenge(int16* scene_num){
 //引数：現在のrgb値、目標のrgb値、(現在と目標の差分範囲の指定値)
 //戻り値：切り替え条件を満たしていればSYS_OK
 //        切り替え条件を満たしていなければSYS_NG
-int8 TimeAttack::ColorJudge(RGBData cur_rgbdata,RGBData change_rgbdata){
+int8 TimeAttack::colorJudge(RGBData cur_rgbdata,RGBData change_rgbdata){
     int8 resultr=0;
     int8 resultg=0;
     int8 resultb=0;
@@ -403,7 +403,7 @@ int8 TimeAttack::DistanceJudge(uint16 cur_distanceData,uint16 change_distanceDat
 //マイナスの値を入れるとバグるので注意
 //戻り値：切り替え条件を満たしていればSYS_OK
 //        切り替え条件を満たしていなければSYS_NG
-int8 TimeAttack::DirectionJudge(float cur_directionData,float change_directionData,int8 condition){
+int8 TimeAttack::directionJudge(float cur_directionData,float change_directionData,int8 condition){
     float resultdirection=0f;
     resultdirection=change_directionData-cur_directionData;
     if(resultdirection>0){
