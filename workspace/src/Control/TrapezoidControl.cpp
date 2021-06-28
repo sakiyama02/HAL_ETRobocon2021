@@ -28,7 +28,7 @@ int8 TrapezoidControl::getMotorPower(int32* motor_power)
         return SYS_PARAM;
     }
 
-    motor_power = CarSpeed;
+    *motor_power = CarSpeed;
 
     return SYS_OK;
 }
