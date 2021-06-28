@@ -158,6 +158,7 @@ typedef struct ChangeInfo_Tag {
 	int32 speed;		            // このシーン時の目標速度					
 }ChangeInfo;
 
+<<<<<<< HEAD
 typedef struct PositionCorrection_TAG{	
 	PositionData CorrectionValue
 	PositionData CorrectionPosition
@@ -165,3 +166,12 @@ typedef struct PositionCorrection_TAG{
 	DirectionData CorrectionDirection
 	JudgeType CorrectionCondition
 }PositionCorrectionData;
+=======
+typedef struct PIDData_Tag
+{
+	float pGain; //比例ゲイン	
+	float iGain; //積分ゲイン	
+	float dGain; //微分ゲイン	
+	float targetVal; //目標値	
+}PIDData;
+>>>>>>> 59372d0eb2aa7857e63bd8d2917282863a62c5c9
