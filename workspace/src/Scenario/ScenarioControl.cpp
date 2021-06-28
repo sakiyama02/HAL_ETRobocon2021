@@ -57,8 +57,8 @@ int8_t ScenarioControl::updateScenario(){
 
     //シーンの更新
     retChk = sceneControl.SceneChenge(&scene_num);
-    if(retChk != 0){
-        return retChk;
+    if(retChk != SYS_OK){
+        return SYS_NG;
     }
 
     //シーン番号の確認
