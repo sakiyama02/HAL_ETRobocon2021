@@ -24,13 +24,12 @@ public:
 
     //
     // -setting     PID操作量を計算
-    // -argu        現在のモーターパワー
-    //              PIDのゲイン値,目標値
+    // -argu        PIDのゲイン値,目標値
     // -return      SYS_OK 正常終了
     // -return      SYS_PARAM 引数エラー
     // -return      SYS_NG 異常終了
 
-    int8 calcPid(int32*,PIDData*);
+    int8 calcPid(PIDData*);
 
     //
     // -setting     モーターの補正値格納
