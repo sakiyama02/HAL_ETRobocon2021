@@ -151,3 +151,11 @@ typedef struct ChangeInfo_Tag {
 	uint8 section_act;	        	// シーンの動作を入れる		例：ライントレースのシーンなら、LINE_TRACEを入れる			
 	int32 speed;		            // このシーン時の目標速度					
 }ChangeInfo;
+
+typedef struct PIDData_Tag
+{
+	float pGain; //比例ゲイン	
+	float iGain; //積分ゲイン	
+	float dGain; //微分ゲイン	
+	float targetVal; //目標値	
+}PIDData;
