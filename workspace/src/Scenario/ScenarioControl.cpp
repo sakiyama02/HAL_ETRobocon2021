@@ -6,8 +6,8 @@
 //Run
 //実行
 //
-int8_t ScenarioControl::Run(){
-    int8_t retChk = SYS_NG; //戻り値格納変数
+int8 ScenarioControl::Run(){
+    int8 retChk = SYS_NG; //戻り値格納変数
 
     SceneControl *sceneControl;
 
@@ -49,8 +49,8 @@ int8_t ScenarioControl::Run(){
 //updateScenario
 //シナリオの更新
 //
-int8_t ScenarioControl::updateScenario(){
-    int8_t retChk = SYS_NG; //戻り値格納変数
+int8 ScenarioControl::updateScenario(){
+    int8 retChk = SYS_NG; //戻り値格納変数
 
     //インスタンス化
     SceneControl sceneControl;

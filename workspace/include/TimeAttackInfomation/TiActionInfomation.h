@@ -16,6 +16,6 @@ class TiActionInfomation{
         //          ChengeInfo*     切り替え情報
         //          DirectionData*  方向情報
         //戻り値    int8_t          エラーチェック        
-        int8_t getter(int16_t,ChengeInfo*,DirectionData*);
+        int8_t getter(int16,ChengeInfo*,DirectionData*);
 
 }
