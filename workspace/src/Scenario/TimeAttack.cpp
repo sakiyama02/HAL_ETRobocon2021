@@ -2,7 +2,7 @@
 //
 //メインタスクでの処理
 //
-int8 TimeAttack::Run(int16 scene_num)　{
+int8 TimeAttack::Run(int16 scene_num) {
     //引数のエラーチェック
     if(scene_num==NULL){
         return SYS_PARAM;
@@ -92,13 +92,13 @@ int8 TimeAttack::Run(int16 scene_num)　{
 
     //動作の選択
     switch(changeInfo.section_act){
+
         //ライントレース
         case LINE_TRACE:
         //コンストラクタ引数：
         //構造体ChangeInfo内のspeedと構造体PIDData
             LineTrace lineTrace(changeInfo.speed,pidData);
             retChk=lineTrace.run();
-
         break;
 
         //直進
@@ -261,7 +261,7 @@ int8 TimeAttack::SceneChenge(int16* scene_num){
     //ライントレースのシーンの終了かの確認
     //仮でTIMEATTACKENDを定義
     //-1を定義に作る
-    if(scene_num>TIMEATTACK_END){
+    if(scene_num>TIMEATTACK_NUM){
         *scene_num=-1;
     }
     return SYS_OK;

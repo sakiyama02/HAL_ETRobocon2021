@@ -9,6 +9,11 @@
 #define SYS_OK 0    //正常終了
 #define SYS_NG 1    //異常終了
 #define SYS_PARAM 2 //引数エラー
+#define TIMEATTACK_NUM 0 
+#define SLALOMEEBUI_NUM 0
+#define SLALOMEIFIE_NUM 0
+#define SLALOMBLACKY_NUM 0
+#define GARAGE_NUM 0
 
 #define CAR_WIDTH 134.22f      //車体の幅(mm)
 #define CAR_WHEEL_WIDTH 90.33f //車輪の直径(mm)
@@ -94,6 +99,7 @@ typedef struct RGB_TAG {
 	uint8 r;
 	uint8 g;
 	uint8 b;
+	Range condition;
 }RGBData;
 
 // 方向情報の構造体
@@ -152,6 +158,15 @@ typedef struct ChangeInfo_Tag {
 	int32 speed;		            // このシーン時の目標速度					
 }ChangeInfo;
 
+<<<<<<< HEAD
+typedef struct PositionCorrection_TAG{	
+	PositionData CorrectionValue
+	PositionData CorrectionPosition
+	RGBData CorrectionRGB
+	DirectionData CorrectionDirection
+	JudgeType CorrectionCondition
+}PositionCorrectionData;
+=======
 typedef struct PIDData_Tag
 {
 	float pGain; //比例ゲイン	
@@ -159,3 +174,4 @@ typedef struct PIDData_Tag
 	float dGain; //微分ゲイン	
 	float targetVal; //目標値	
 }PIDData;
+>>>>>>> 59372d0eb2aa7857e63bd8d2917282863a62c5c9

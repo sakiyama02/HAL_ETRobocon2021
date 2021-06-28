@@ -1,5 +1,5 @@
 #include "../../include/Scenario/Garage.h"
-int8 Garage::Run(scene_num)　{
+int8 Garage::Run(scene_num) {
     //引数のエラーチェック
     if(scene_num==NULL){
         return SYS_PARAM;
@@ -251,24 +251,9 @@ int8 Garage::SceneChenge(int16* scene_num){
 
     //ガレージのシーンの終了かの確認
     //シーンの分岐のために超音波の距離を取得
-    //距離で分岐シナリオを分ける
-    //変化させる超音波の距離を定義に作る現在10
-    //定義に変える-2と-3
-    if(scene_num>TIMEATTACK_END){
-        uint8 changedistance;
-        SensorManager &sonicSenser=SensorManager::getInstance();
-        sonicSenser.get_Distance();
-        sonicSenser.distance_Getter(&changedistance);
-        if(changedistance<10){
-            *scene_num=-2
-        }
-        else{
-            *scene_num=-3
-        }
+    if(scene_num>GARAGE_NUM){
+        *scene_num=-1;
     }
-
-
-
     return SYS_OK;
 }
 

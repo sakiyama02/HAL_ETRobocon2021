@@ -1,5 +1,5 @@
 #include "../../include/Scenario/SlalomBlacky.h"
-int8 SlalomBlacky::Run(scene_num)　{
+int8 SlalomBlacky::Run(scene_num) {
 　　//引数のエラーチェック
     if(scene_num==NULL){
         return SYS_PARAM;
@@ -81,6 +81,7 @@ int8 SlalomBlacky::Run(scene_num)　{
         break;
     }
 #endif
+
     //動作の選択
     switch(changeInfo.section_act){
         //ライントレース
