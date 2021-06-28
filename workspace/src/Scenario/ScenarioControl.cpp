@@ -42,6 +42,9 @@ int8_t ScenarioControl::Run(){
     return retChk;
 }
 
+//updateScenario
+//シナリオの更新
+//
 int8_t ScenarioControl::updateScenario(){
     int8_t retChk = SYS_NG; //戻り値格納変数
 
@@ -57,18 +60,25 @@ int8_t ScenarioControl::updateScenario(){
     //シーン番号の確認
     if(scene_num == NEXT_BLACKY){   //次のシーンはブラッキー
         scenario_state = SLALOM_BLACKY;
+        return SYS_OK
     }
 
     if(scene_num == NEXT_EIFIE){    //次のシーンはエーフィ
         scenario_state = SLALOM_EIFIE;
+        return SYS_OK
     }
 
     if(scene_num == FINISH){        //シナリオ内の全シーン終了
         if(scenario_state > SLALOM_EEBUI){
             scenario_state = GARAGE;
+            return SYS_OK
+        }
+        if(scenario_state == GARAGE){
+            return SYS_OK;
         }
         else{
             scenario_state++;
+            return SYS_OK
         }
     }
     return SYS_OK;
