@@ -88,6 +88,9 @@ int8 SensorManager::hsvGetter(uint16* v_data)
         *v_data = rgbStorage.b;
     }
 
+    //目標値入力が％だった場合
+    //*v_data = (*v_data / 255) * 100;
+
     return SYS_OK;
 }
 

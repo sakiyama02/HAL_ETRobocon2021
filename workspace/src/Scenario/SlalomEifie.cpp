@@ -1,6 +1,6 @@
 #include "../../include/Scenario/SlalomEifie.h"
 //メインタスクでの処理
-int8 SlalomEifie::Run(scene_num)　{
+int8 SlalomEifie::Run(scene_num) {
     //引数のエラーチェック
     if(scene_num==NULL){
         return SYS_PARAM;
@@ -254,7 +254,7 @@ int8 SlalomEifie::SceneChenge(int16* scene_num){
     //スラロームエーフィのシーンの終了かの確認
     //仮でTIMEATTACKENDを定義
     //-1を定義に作る
-    if(scene_num>TIMEATTACK_END){
+    if(scene_num>SLALOMEIFIE_NUM){
         *scene_num=-1;
     }
     return SYS_OK;
