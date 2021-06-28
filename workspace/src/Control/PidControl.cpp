@@ -8,7 +8,7 @@ PidControl::PidControl()
 {
     eDeviation = 0.0f;
     stackIntegral = 0.0f;
-    motorPow = 0;
+    moterRevison = 0;
 }
 
 //
@@ -55,7 +55,7 @@ int8 PidControl::calcPid(int32 *motor_pow,PIDData *pid_data)
     //微分ゲイン(kD)
     kD = pid_data -> dGain * (eDeviation - prevDeviation) / DELTA_TIME;
     //モーター速度
-    motorPow = (int32)(kP + kI + kD) + *motor_pow;
+    moterRevison = kP + kI + kD;
 
 
     return SYS_OK;
@@ -63,17 +63,17 @@ int8 PidControl::calcPid(int32 *motor_pow,PIDData *pid_data)
 
 //
 //  -datail
-//  引数に計算したモーターパワーを格納する
+//  引数に計算したモーター補正値を格納する
 //
-int8 PidControl::getPow(int32 *motor_pow)
+int8 PidControl::getRevison(float *motor_Revison)
 {
     //argument check
-    if (motor_pow == NULL)
+    if (motor_Revison == NULL)
     {
         return SYS_PARAM;
     }    
-    //引数にモーターパワー格納
-    *motor_pow = motorPow;
+    //引数にモーター補正格納
+    *motor_Revison = moterRevison;
 
     return SYS_OK;
 }
