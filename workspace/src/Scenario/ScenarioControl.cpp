@@ -9,36 +9,40 @@
 int8_t ScenarioControl::Run(){
     int8_t retChk = SYS_NG; //戻り値格納変数
 
+    SceneControl *sceneControl;
+
     switch (scenario_state)
     {
     case TIME_ATACK:
-        TimeAtack timeAtack;
         //タイムアタック
+        sceneControl = new TimeAttack;
         break;
     
     case SLALOM_EEBUI:
-        SlalomEebui slalomEebui;
         //スラロームイーブイ
+        sceneControl = new SlalomEebui;
         break;
 
     case SLALOM_BLACKY:
-        SlalomBlacky slalomBlacky;
         //スラロームブラッキー
+        sceneControl = new SlalomBlacky;
         break;
 
     case SLALOM_EIFIE:
-        SlalomEifie slalomEifie;
         //スラロームエーフィ
+        sceneControl = new SlalomEifie;
         break;
 
     case GARAGE:
-        Garage garage;
         //ガレージ
+        sceneControl = new Garage;
         break;
     
     default:
         break;
     }
+
+    retChk = sceneControl -> Run(scene_num);
     return retChk;
 }
 
@@ -60,26 +64,25 @@ int8_t ScenarioControl::updateScenario(){
     //シーン番号の確認
     if(scene_num == NEXT_BLACKY){   //次のシーンはブラッキー
         scenario_state = SLALOM_BLACKY;
-        return SYS_OK
+        return SYS_OK;
     }
 
     if(scene_num == NEXT_EIFIE){    //次のシーンはエーフィ
         scenario_state = SLALOM_EIFIE;
-        return SYS_OK
+        return SYS_OK;
     }
 
     if(scene_num == FINISH){        //シナリオ内の全シーン終了
         if(scenario_state > SLALOM_EEBUI){
             scenario_state = GARAGE;
-            return SYS_OK
         }
         if(scenario_state == GARAGE){
             return SYS_OK;
         }
         else{
             scenario_state++;
-            return SYS_OK
+            return SYS_OK;
         }
     }
-    return SYS_OK;
+    return SYS_NG;
 }
