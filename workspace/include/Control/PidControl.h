@@ -21,11 +21,6 @@ private:
 public:
     PidControl();
     ~PidControl();
-    static PidControl &getInstance()        // インスタンスの生成 
-    {
-        static PidControl PidControl_;      
-        return PidControl_;
-    }
 
     //
     // -setting     PID操作量を計算
@@ -45,5 +40,12 @@ public:
     // -return      SYS_NG 異常終了
 
     int8 getPow(int32*);
+    
+    // インスタンスの生成 
+    static PidControl &getInstance()
+    {
+        static PidControl PidControl_;      
+        return PidControl_;
+    }
 
 };
