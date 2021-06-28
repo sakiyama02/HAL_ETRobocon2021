@@ -91,9 +91,9 @@ CURVE_RIGHT,
 /* 構造体定義 */
 // RGBの構造体
 typedef struct RGB_TAG {	
-	int8 r;
-	int8 g;
-	int8 b;
+	uint8 r;
+	uint8 g;
+	uint8 b;
 }RGBData;
 
 // 方向情報の構造体
@@ -108,6 +108,7 @@ typedef struct CurveData_TAG{
 	CurveType dirction;
 }CurveData;
 
+// 座標の構造体
 typedef struct Position_TAG{
 	float xPosition;
 	float yPosition;
@@ -145,8 +146,16 @@ typedef struct ChangeInfo_Tag {
 	RGBData rgb_data;		            // 切り替え用のRGB値
 	PosInfoData pos_info_data;		    // 切り替え用の座標
 	DirectionData direction_data;	// 切り替え用の機体の向き
-	int8 distance;		            // 切り替え用の超音波距離
-	int8 judge;		                // 切り替え値の判定		例：ポジションの切り替えを行いたいなら、JUDGE_POSを入れる			
-	int8 section_act;	        	// シーンの動作を入れる		例：ライントレースのシーンなら、LINE_TRACEを入れる			
+	uint8 distance;		            // 切り替え用の超音波距離
+	uint8 judge;		                // 切り替え値の判定		例：ポジションの切り替えを行いたいなら、JUDGE_POSを入れる			
+	uint8 section_act;	        	// シーンの動作を入れる		例：ライントレースのシーンなら、LINE_TRACEを入れる			
 	int32 speed;		            // このシーン時の目標速度					
 }ChangeInfo;
+
+typedef struct PIDData_Tag
+{
+	float pGain; //比例ゲイン	
+	float iGain; //積分ゲイン	
+	float dGain; //微分ゲイン	
+	float targetVal; //目標値	
+}PIDData;

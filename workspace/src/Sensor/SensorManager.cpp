@@ -10,10 +10,17 @@
 //  カラーセンサークラスからＲＧＢ値を取得する関数を呼び、
 //                                 変数のrgbを更新
 //
-int8 SensorManager::get_Rgb()
+int8 SensorManager::getRgb()
 {  
+    int8 retChk = SYS_NG;           //戻り値確認変数
+
     //rgb値取得
-    rgbStorage=ColorSenser.getRGB();
+    retChk = colorSensor.getRGB(&rgbStorage);
+    //戻り値check
+    if (retChk != SYS_OK)
+    {
+        return retChk;
+    }
 
     return SYS_OK;
 }
@@ -24,10 +31,17 @@ int8 SensorManager::get_Rgb()
 //  超音波センサーから距離を取得する関数を呼び、
 //                  変数のdistanceStorageを更新
 //
-int8 SensorManager::get_Distance()
+int8 SensorManager::getDistance()
 {
+    int8 retChk = SYS_NG;           //戻り値確認変数
+
     //距離取得
-    distanceStorage = SonicSensor.getDistance();
+    retChk = sonicSensor.getDistance(&distanceStorage);
+    //戻り値check
+    if (retChk != SYS_OK)
+    {
+        return retChk;
+    }
 
     return SYS_OK;
 }
@@ -36,14 +50,13 @@ int8 SensorManager::get_Distance()
 //  -datail
 //  引数で入ってきた構造体ポインタにRGB情報に格納する
 //
-int8 SensorManager::rgb_Getter(RGBDATE* rgb_data)
+int8 SensorManager::rgbGetter(RGBData* rgb_data)
 {
     //argument check
-    if (rgb＿data == NULL)
+    if (rgb_data == NULL)
     {
         return SYS_PARAM;
     }
-
     //引数にカラーセンサーの値を格納
     rgb_data = &rgbStorage;
 
@@ -54,26 +67,25 @@ int8 SensorManager::rgb_Getter(RGBDATE* rgb_data)
 //  -datail
 //  引数で入ってきたhsvのv値をv値情報に格納する
 //
-int8 SensorManager::hsv_Getter(uint16* v_data)
+int8 SensorManager::hsvGetter(uint16* v_data)
 {    
     //argument check
     if (v_data == NULL)
     {
         return SYS_PARAM;
     }
-
     //hsvのv値を格納
     if(rgbStorage.r > rgbStorage.g && rgbStorage.r > rgbStorage.b)
     {
-        v_data = rgbStorage.r;
+        *v_data = rgbStorage.r;
     }
     else if(rgbStorage.g > rgbStorage.r && rgbStorage.g > rgbStorage.b)
     {
-        v_data = rgbStorage.g;
+        *v_data = rgbStorage.g;
     }
     else if(rgbStorage.b > rgbStorage.r && rgbStorage.b > rgbStorage.g)
     {
-        v_data = rgbStorage.b;
+        *v_data = rgbStorage.b;
     }
 
     return SYS_OK;
@@ -85,16 +97,16 @@ int8 SensorManager::hsv_Getter(uint16* v_data)
 //                  超音波変数に格納する
 //
 
-int8 SensorManager::distance_Getter(uint16* distance_data)
+int8 SensorManager::distanceGetter(uint16* distance_data)
 {
     //argument check
-        if (distance_data == NULL)
+    if (distance_data == NULL)
     {
         return SYS_PARAM;
     }
 
     //超音波センサーの値を格納
-    distanceStorage = distance_data;
+    distance_data = &distanceStorage;
 
      return SYS_OK;
 }
@@ -104,19 +116,19 @@ int8 SensorManager::distance_Getter(uint16* distance_data)
 //  センサーのポート設定を行う
 //
 
-int8 SensorManager::sensor_init()
+int8 SensorManager::initSensor()
 {
     int8 retChk = SYS_NG;           //戻り値確認変数
 
     //カラーセンサーのポート設定
-    retChk = ColorSensor.ColorSensor();
+    retChk = colorSensor.init();
         if (retChk != SYS_OK)
     {
         return retChk;
     }
 
     //超音波センサーのポート設定
-    retChk = SonicSensor.SonicSensor();
+    retChk = sonicSensor.init();
         if (retChk != SYS_OK)
     {
         return retChk;
