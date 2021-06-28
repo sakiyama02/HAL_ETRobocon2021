@@ -16,8 +16,8 @@ private:
     float   eDeviation;
     //偏差の積み上げ
     float stackIntegral;
-    //モーターパワー格納変数
-    int32 motorPow;
+    //モーターパワー補正値
+    float moterRevison;
 public:
     PidControl();
     ~PidControl();
@@ -33,13 +33,13 @@ public:
     int8 calcPid(int32*,PIDData*);
 
     //
-    // -setting     モーターパワー格納
-    // -argu        モーターパワー
+    // -setting     モーターの補正値格納
+    // -argu        モーター補正値
     // -return      SYS_OK 正常終了
     // -return      SYS_PARAM 引数エラー
     // -return      SYS_NG 異常終了
 
-    int8 getPow(int32*);
+    int8 getRevison(float*);
     
     // インスタンスの生成 
     static PidControl &getInstance()
