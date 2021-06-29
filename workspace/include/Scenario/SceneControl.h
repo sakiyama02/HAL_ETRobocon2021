@@ -21,9 +21,4 @@ class SceneControl{
         //戻り値 init8_t エラーチェック
         virtual int8 run(int16)=0;
 
-        int8 colorJudge(RGBData,RGBData)=0;
-        int8 xPositionJudge(float,float,int8)=0;
-        int8 yPositionJudge(float,float,int8)=0;
-        int8 distanceJudge(uint16,uint16)=0;
-        int8 directionJudge(float,float,int8)=0;
 }

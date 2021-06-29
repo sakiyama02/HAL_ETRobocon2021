@@ -3,7 +3,7 @@
 //
 #include "../../include/Scenario/ScenarioControl.h"
 
-//Run
+//run
 //実行
 //
 int8 ScenarioControl::run(){

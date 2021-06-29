@@ -24,10 +24,13 @@ class ScenarioControl{
         //実行
         //引数   -
         //戻り値 init8_t エラーチェック 
-        init8 run();
+
+        int8 run();
 
         //シナリオの更新
         //引数   -
         //戻り値 init8_t エラーチェック
-        init8 updateScenario();
+
+        int8 updateScenario();
+
 }

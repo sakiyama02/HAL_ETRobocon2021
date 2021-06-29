@@ -1,5 +1,5 @@
 #include "../../include/Scenario/Garage.h"
-int8 Garage::run(scene_num)　{
+int8 Garage::run(scene_num) {
     //引数のエラーチェック
     if(scene_num==NULL){
         return SYS_PARAM;
@@ -168,7 +168,7 @@ int8 Garage::sceneChenge(int16* scene_num){
         //rgbの現在時点最新状態を取得
             senserManage.rgb_Getter(&currgbData);
         //rgb値を目標値と現在値を比較
-            retChk=colorJudge(currgbData.rgb_data,changeInfo.rgb_data);
+            retChk=colorJudge(currgbData.rgb_data,changeInfo.rgb_data,changeInfo.rgbdata.condition);
             if(retChk==SYS_OK){
                 *scene_num++;
             }
@@ -227,7 +227,7 @@ int8 Garage::sceneChenge(int16* scene_num){
             SensorManager &senserManage=SensorManager::getInstance();
         //超音波での距離の現在時点最新情報を取得
             senserManage.distanceGetter(&curdistanceData);
-            retChk=distanceJudge(curdistanceData,changeInfo.distance);
+            retChk=DdstanceJudge(curdistanceData,changeInfo.distance);
             if(retChk==SYS_OK){
                 *scene_num++;
             }
@@ -251,24 +251,9 @@ int8 Garage::sceneChenge(int16* scene_num){
 
     //ガレージのシーンの終了かの確認
     //シーンの分岐のために超音波の距離を取得
-    //距離で分岐シナリオを分ける
-    //変化させる超音波の距離を定義に作る現在10
-    //定義に変える-2と-3
-    if(scene_num>TIMEATTACK_END){
-        uint8 changedistance;
-        SensorManager &sonicSenser=SensorManager::getInstance();
-        sonicSenser.get_Distance();
-        sonicSenser.distance_Getter(&changedistance);
-        if(changedistance<10){
-            *scene_num=-2
-        }
-        else{
-            *scene_num=-3
-        }
+    if(scene_num>GARAGE_NUM){
+        *scene_num=-1;
     }
-
-
-
     return SYS_OK;
 }
 
@@ -280,7 +265,7 @@ int8 Garage::sceneChenge(int16* scene_num){
 //引数：現在のrgb値、目標のrgb値、(現在と目標の差分範囲の指定値)
 //戻り値：切り替え条件を満たしていればSYS_OK
 //        切り替え条件を満たしていなければSYS_NG
-int8 TimeAttack::colorJudge(RGBData cur_rgbdata,RGBData change_rgbdata){
+int8 TimeAttack::colorJudge(RGBData cur_rgbdata,RGBData change_rgbdata,int8 condition){
     int8 resultr=0;
     int8 resultg=0;
     int8 resultb=0;
@@ -288,7 +273,6 @@ int8 TimeAttack::colorJudge(RGBData cur_rgbdata,RGBData change_rgbdata){
     resultr=cur_rgbdata.r-change_rgbdata.r;
     resultg=cur_rgbdata.g-change_rgbdata.g;
     resultb=cur_rgbdata.b-change_rgbdata.b;
-    /*rgbを範囲指定する場合に使用（間違って作った）
     if(resultr>0&&resultg>0&&resultb>0){
         if(condition==HIGH){
             return SYS_OK;
@@ -306,7 +290,6 @@ int8 TimeAttack::colorJudge(RGBData cur_rgbdata,RGBData change_rgbdata){
             return SYS_NG;
         }
     }
-    */
 
     if(resultr==0&&resultg==0&&resultb==0){
         return SYS_OK;
@@ -377,6 +360,7 @@ int8 TimeAttack::yPositionJudge(float cur_ypositionData,float cur_ypositionData,
 //戻り値：切り替え条件を満たしていればSYS_OK
 //        切り替え条件を満たしていなければSYS_NG
 int8 TimeAttack::distanceJudge(uint16 cur_distanceData,uint16 change_distanceData){
+
     uint16 resultdistance=0f;
     resultdistance=change_distanceData-cur_distanceData;
     /*距離を範囲指定する場合に使用（間違って作った）
