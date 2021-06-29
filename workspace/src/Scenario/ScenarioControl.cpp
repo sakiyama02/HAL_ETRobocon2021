@@ -3,11 +3,11 @@
 //
 #include "../../include/Scenario/ScenarioControl.h"
 
-//Run
+//run
 //実行
 //
-int8_t ScenarioControl::Run(){
-    int8_t retChk = SYS_NG; //戻り値格納変数
+int8 ScenarioControl::run(){
+    int8 retChk = SYS_NG; //戻り値格納変数
 
     switch (scenario_state)
     {
