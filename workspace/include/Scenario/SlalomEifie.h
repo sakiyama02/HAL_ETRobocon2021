@@ -1,13 +1,13 @@
 #include "../System/System.h"
 
 //
-//TimeAttack.h
+//SlalomEifie.h
 //ライントレースのシーン制御クラス
 //基底クラスSceneControl継承先
 class SlalomEifie : public SceneControl{
     public:
-    TimeAttack();
-    ~TimeAttack();
+    SlalomEifie();
+    ~SlalomEifie();
     int8 sceneChenge(&int16);
     int8 run(int16);
     int8 colorJudge(RGBData,RGBData,int8);

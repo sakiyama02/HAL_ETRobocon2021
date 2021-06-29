@@ -1,13 +1,13 @@
 #include "../System/System.h"
 
 //
-//TimeAttack.h
+//SlalomBlacky.h
 //ライントレースのシーン制御クラス
 //基底クラスSceneControl継承先
 class SlalomBlacky : public SceneControl{
     public:
-    TimeAttack();
-    ~TimeAttack();
+    SlalomBlacky();
+    ~SlalomBlacky();
     int8 sceneChenge(&int16);
     int8 run(int16);
     int8 colorJudge(RGBData,RGBData,int8);
