@@ -6,6 +6,7 @@
 //基底クラスSceneControl継承先
 class Garage : public SceneControl{
     public:
+
     Garage();
     ~Garage();
     int8 sceneChenge(&int16);

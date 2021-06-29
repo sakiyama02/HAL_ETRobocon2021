@@ -6,6 +6,7 @@
 //基底クラスSceneControl継承先
 class SlalomBlacky : public SceneControl{
     public:
+
     SlalomBlacky();
     ~SlalomBlacky();
     int8 sceneChenge(&int16);

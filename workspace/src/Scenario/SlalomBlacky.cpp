@@ -168,6 +168,7 @@ int8 SlalomBlacky::sceneChenge(int16* scene_num){
         //rgbの現在時点最新状態を取得
             senserManage.rgb_Getter(&currgbData);
         //rgb値を目標値と現在値を比較
+
             retChk=colorJudge(currgbData.rgb_data,changeInfo.rgb_data,changeInfo.rgb_data.condition);
             if(retChk==SYS_OK){
                 *scene_num++;
@@ -269,6 +270,7 @@ int8 SlalomBlacky::sceneChenge(int16* scene_num){
 //戻り値：切り替え条件を満たしていればSYS_OK
 //        切り替え条件を満たしていなければSYS_NG
 int8 TimeAttack::colorJudge(RGBData cur_rgbdata,RGBData change_rgbdata,int8 condition){
+
     int8 resultr=0;
     int8 resultg=0;
     int8 resultb=0;

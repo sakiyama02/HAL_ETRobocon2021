@@ -359,7 +359,8 @@ int8 TimeAttack::yPositionJudge(float cur_ypositionData,float cur_ypositionData,
 //引数：現在の距離値、目標の距離値
 //戻り値：切り替え条件を満たしていればSYS_OK
 //        切り替え条件を満たしていなければSYS_NG
-int8 TimeAttack::DdstanceJudge(uint16 cur_distanceData,uint16 change_distanceData){
+int8 TimeAttack::distanceJudge(uint16 cur_distanceData,uint16 change_distanceData){
+
     uint16 resultdistance=0f;
     resultdistance=change_distanceData-cur_distanceData;
     /*距離を範囲指定する場合に使用（間違って作った）

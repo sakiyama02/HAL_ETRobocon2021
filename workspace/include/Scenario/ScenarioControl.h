@@ -14,8 +14,8 @@
 
 class ScenarioControl{
     private:
-        int16_t Scenario_state;
-        int16_t scene_num;
+        int16 scenario_state;
+        int16 scene_num;
     public:
         ScenarioControl();
 
@@ -24,10 +24,13 @@ class ScenarioControl{
         //実行
         //引数   -
         //戻り値 init8_t エラーチェック 
+
         int8 run();
 
         //シナリオの更新
         //引数   -
         //戻り値 init8_t エラーチェック
+
         int8 updateScenario();
+
 }
