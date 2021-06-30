@@ -20,6 +20,7 @@ class Steering
     int8 rotateWheel(MotorPower motorPower);
     int8 getMotorAngle(MotorAngle *iAngle);
     int8 updateAngle();
+    int8 deletePort();
 
     static Steering &getInstance()
     {

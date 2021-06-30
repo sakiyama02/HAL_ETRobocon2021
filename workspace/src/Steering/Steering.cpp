@@ -93,3 +93,11 @@ int8 Steering::updateAngle(){
     return SYS_OK; 
 }
 
+int8 Steering::deletePort(){
+    delete (leftMotor);
+    delete (rightMotor);
+    delete (armMotor);
+    delete (tailMotor);
+    return SYS_OK;
+}
+
