@@ -10,8 +10,10 @@
 
 #include "workspace/include/System/System.h"
 
-// ev3_sta_cyc(CYC_TASK);  周期タスクON
-// ev3_stp_cyc(CYC_TASK);  周期タスクOFF
+// ev3_sta_cyc(TASK名); or sta_cyc(TASK名);     周期タスクON
+// ev3_stp_cyc(TASK名); or stp_cyc(TASK名);     周期タスクOFF
+// act_tsk(TASK名)                              タスクの起動
+// ter_tsk(TASK名)                              タスク強制終了（資源開放機能なし）
 
 /**
  * EV3システム生成
@@ -57,21 +59,6 @@ void main_task(intptr_t unused)
         }
         tslp_tsk(10 * 1000U);
     }
-    // int16 val = 0;
-    // SensorManager &sensorManager  = SensorManager::getInstance();
-    
-    // while(1){
-    //     sensorManager.getDistance(&val);
-    //     msg.LOG(LOG_ID_ERR, "%d",val);
-    //     tslp_tsk(10 * 1000U);
-    // }
-    // uint16 bright = 0;
-    // BrightCalc brightCalc;
-    // brightCalc.run(&bright);
-    // while(1){
-    //     msg.LOG(LOG_ID_SECTION,"bright: %d", bright);
-    //     tslp_tsk(10 * 1000U);
-    // }
     msg.LOG(LOG_ID_TRACE, "メインタスクスタート");
     //act_tsk(BT_TASK);
     //sta_cyc(ROBO_CYC);
