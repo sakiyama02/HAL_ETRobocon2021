@@ -16,4 +16,4 @@ class SlalomBlacky : public SceneControl{
     int8 yPositionJudge(float,float,int8);
     int8 distanceJudge(uint16,uint16);
     int8 directionJudge(float,float,int8);
-}
+};

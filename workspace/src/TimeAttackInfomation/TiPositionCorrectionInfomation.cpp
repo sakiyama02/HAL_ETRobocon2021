@@ -26,4 +26,6 @@ int8 getter(int16 scene_num,PositinCorrectionData* positioncorrection_data){
     positionCorrectionData[index].correctionCondition=0f;
 
     positioncorrection_data=positionCorrectionData[scene_num];
+
+    return SYS_OK;
 }

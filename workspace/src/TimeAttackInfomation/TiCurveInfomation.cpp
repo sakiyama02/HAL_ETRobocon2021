@@ -13,4 +13,6 @@ int8 getter(int16 scene_num,CurveData* curve_data){
     curveData[index].dirction=0f;
 
     curve_data=curveData[scene_num];
+
+    return SYS_OK;
 }

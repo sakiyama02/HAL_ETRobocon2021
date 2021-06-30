@@ -15,4 +15,6 @@ int8 getter(int16 scene_num,PIDData* pid_data){
     pidData[index].targetVal=0f;
 
     pid_data = pidData[scene_num];
+
+    return SYS_OK;
 }

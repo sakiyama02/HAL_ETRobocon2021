@@ -23,8 +23,10 @@ int8 getter(int16 scene_num,ChangeInfo* change_info){
 
     changeInfoData[index].distance=0f;
     changeInfoData[index].judge=0f;
-    changeInfoData[index].section_act-0f;
+    changeInfoData[index].section_act=0f;
     changeInfoData[index].speed=0f;
 
     change_info=changeInfoData[scene_num];
+
+    return SYS_OK;
 }
