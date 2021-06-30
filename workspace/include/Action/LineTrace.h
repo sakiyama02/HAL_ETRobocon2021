@@ -1,6 +1,9 @@
 
 #include "../System/System.h"
-#include "../Action/Action.h"
+#include "Action.h"
+#include "../../include/Control/TrapezoidControl.h"
+#include "../../include/Control/PidControl.h"
+#include "../../include/Steering/Steering.h"
 
 class LineTrace : public Action {
 private:

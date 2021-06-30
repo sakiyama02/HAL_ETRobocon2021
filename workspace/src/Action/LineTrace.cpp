@@ -1,8 +1,5 @@
 
 #include "../../include/Action/LineTrace.h"
-#include "../../include/Control/TrapezoidControl.h"
-#include "../../include/Control/PidControl.h"
-#include "../../include/Steering/Steering.h"
 
 LineTrace::LineTrace(){}
 LineTrace::~LineTrace(){}

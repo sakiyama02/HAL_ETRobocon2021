@@ -4,6 +4,9 @@
 
 #include "../System/System.h"
 #include "Action.h"
+#include "../Steering/Steering.h"
+#include "../../include/Control/PidControl.h"
+#include "../Control/TrapezoidControl.h"
 
 class Curve:public Action{
 private:
