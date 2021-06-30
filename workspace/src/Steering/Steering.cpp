@@ -26,6 +26,21 @@ int8 Steering::init(){
         return retChk;
     }
 
+    armMotor = new Motor();
+    retChk = armMotor->init(MOTOR_ARM, LARGE_MOTOR);
+    if(retChk != SYS_OK){
+        /* アームモータのインスタンスエラー */
+        return retChk;
+    }
+
+    tailMotor = new Motor();
+    retChk = tailMotor->init(MOTOR_TAIL, MEDIUM_MOTOR);
+    if (retChk != SYS_OK)
+    {
+        /* テールモータのインスタンスエラー */
+        return retChk;
+    }
+
     return SYS_OK;
 }
 
@@ -91,5 +106,13 @@ int8 Steering::updateAngle(){
     }
 
     return SYS_OK; 
+}
+
+int8 Steering::deletePort(){
+    delete (leftMotor);
+    delete (rightMotor);
+    delete (armMotor);
+    delete (tailMotor);
+    return SYS_OK;
 }
 
