@@ -21,4 +21,4 @@ class SceneControl{
         //戻り値 init8_t エラーチェック
         virtual int8 run(int16)=0;
 
-}
+};

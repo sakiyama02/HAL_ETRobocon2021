@@ -33,4 +33,4 @@ class ScenarioControl{
 
         int8 updateScenario();
 
-}
+};
