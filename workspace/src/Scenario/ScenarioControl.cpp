@@ -56,7 +56,7 @@ int8 ScenarioControl::updateScenario(){
     SceneControl sceneControl;
 
     //シーンの更新
-    retChk = sceneControl.SceneChenge(&scene_num);
+    retChk = sceneControl.sceneChenge(&scene_num);
     if(retChk != SYS_OK){
         return SYS_NG;
     }
