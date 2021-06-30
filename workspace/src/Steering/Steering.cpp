@@ -29,7 +29,7 @@ int8 Steering::init(){
     armMotor = new Motor();
     retChk = armMotor->init(MOTOR_ARM, LARGE_MOTOR);
     if(retChk != SYS_OK){
-        /* 右モータのインスタンスエラー */
+        /* アームモータのインスタンスエラー */
         return retChk;
     }
 
@@ -37,6 +37,7 @@ int8 Steering::init(){
     retChk = tailMotor->init(MOTOR_TAIL, MEDIUM_MOTOR);
     if (retChk != SYS_OK)
     {
+        /* テールモータのインスタンスエラー */
         return retChk;
     }
 
