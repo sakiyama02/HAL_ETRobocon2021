@@ -159,12 +159,13 @@ typedef struct ChangeInfo_Tag {
 }ChangeInfo;
 
 typedef struct PositionCorrection_TAG{	
-	PositionData CorrectionValue
-	PositionData CorrectionPosition
-	RGBData CorrectionRGB
-	DirectionData CorrectionDirection
-	JudgeType CorrectionCondition
+	PositionData correctionValue;
+	PositionData correctionPosition;
+	RGBData correctionRGB;
+	DirectionData correctionDirection;
+	JudgeType correctionCondition;
 }PositionCorrectionData;
+
 typedef struct PIDData_Tag
 {
 	float pGain; //比例ゲイン	
