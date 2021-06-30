@@ -11,7 +11,9 @@ class Steering
 
     MotorAngle motorAngle;
     Motor* leftMotor;
-    Motor* rightMotor; 
+    Motor* rightMotor;
+    Motor* armMotor;
+    Motor* tailMotor;
     Steering(const Steering &x) {};
     Steering&operator=(const Steering &){ return *this; };
 
