@@ -25,9 +25,7 @@ public:
         return carPosition;
     }
 
-    int8 updatePos();
-
-    int8 updateDir();
+    int8 update();
 
     int8 getPos(PositionData* car_pos);
 

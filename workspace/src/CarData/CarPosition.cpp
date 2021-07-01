@@ -11,7 +11,7 @@ CarPosition::CarPosition()
 
 CarPosition::~CarPosition(){}
 
-int8 CarPosition::updatePos()
+int8 CarPosition::update()
 {
     int8 retChk=SYS_NG;
     Steering &steering = Steering::getInstance();
