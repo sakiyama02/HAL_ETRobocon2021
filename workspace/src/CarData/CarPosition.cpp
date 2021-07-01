@@ -128,7 +128,7 @@ int8 CarPosition::getDir(float* car_dir)
     return SYS_OK;
 }
 
-int8 CarPosition::setAngle(float angle)
+int8 CarPosition::setDir(float angle)
 {
     /* 引数チェック */
     /* 範囲で引数チェックが必要 

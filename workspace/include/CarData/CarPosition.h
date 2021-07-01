@@ -33,5 +33,5 @@ public:
 
     int8 getDir(float* car_dir);
 
-    int8 setAngle(float angle);
+    int8 setDir(float angle);
 };
