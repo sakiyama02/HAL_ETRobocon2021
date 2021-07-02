@@ -53,7 +53,7 @@ static void user_system_destroy()
     MotorPower power = {0,0};
     steering.rotateWheel(power);
     Motor motor = Motor();
-    steering.();//モーターポートストップ
+    steering.deletePort();
 }
 
 /* メインタスク */
@@ -62,12 +62,14 @@ void main_task(intptr_t unused)
     //frLog &msg = frLog::GetInstance();
     char command[] = {"logon -section  \n"};
 
+    /* 
     int index = 0;
     for (index = 0; index < (sizeof(command) / sizeof(command[0])); index++)
     {
-        //msg.SetLog(command[index]);
-    }
+        msg.SetLog(command[index]);
+    }*/
     ev3_sensor_config(EV3_PORT_1, TOUCH_SENSOR);
+    /* 動的に生成するインスタンスの初期化 */
     user_system_create();
     while (1)
     {
@@ -80,15 +82,18 @@ void main_task(intptr_t unused)
     }
     //msg.LOG(LOG_ID_TRACE, "メインタスクスタート");
     //act_tsk(BT_TASK);
+    /* 周期ハンドラ開始 */ 
     //sta_cyc(ROBO_CYC);
     act_tsk(ROBO_TASK);
     //msg.LOG(LOG_ID_TRACE, "Mainタスクスリープ");
+    /* バックボタンが押されるまで待つ */
     slp_tsk();
     //msg.LOG(LOG_ID_TRACE, "Mainタスクスリープ解除");
     //ter_tsk(ROBO_TASK);
     //stp_cyc(ROBO_CYC);
     ter_tsk(ROBO_TASK);
     ter_tsk(BT_TASK);
+    /* 生成したオブジェクトの破壊 */
     user_system_destroy();
     //msg.LOG(LOG_ID_TRACE, "Mainタスクend");
     // msg.LOG(LOG_ID_ERR,"カウント開始");
