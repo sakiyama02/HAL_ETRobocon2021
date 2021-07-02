@@ -5,26 +5,7 @@
 #include "../../include/SlalomEifieInfomation/SlEfPositionCorrectionInfomation.h"
 
 int8 getter(int16 scene_num,PositinCorrectionData* positioncorrection_data){
-    positionCorrectionData = new PositinCorrectionData[TIMEATTACK_NUM];
-    memset(positinCorrectionData,0,sizeof(PositionCorrectionData)*TIMEATTACK_NUM);
-    int8 index = 0;
-
-    positionCorrectionData[index].correctionValue.xPosition
-    positionCorrectionData[index].correctionValue.yPosition
-
-    positionCorrectionData[index].correctionPosition.xPosition
-    positionCorrectionData[index].correctionPosition.yPosition
-
-    positionCorrectionData[index].correctionRGB.r=0f;
-    positionCorrectionData[index].correctionRGB.g=0f;
-    positionCorrectionData[index].correctionRGB.b=0f;
-    positionCorrectionData[index].correctionRGB.condition=0f;
-
-    positionCorrectionData[index].correctionDirection.direction=0f;
-    positionCorrectionData[index].correctionDirection.condition=0f;
-
-    positionCorrectionData[index].correctionCondition=0f;
-
+    
     positioncorrection_data=positionCorrectionData[scene_num];
 
     return SYS_OK;
