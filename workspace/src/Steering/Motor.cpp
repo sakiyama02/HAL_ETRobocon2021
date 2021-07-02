@@ -4,7 +4,7 @@
 Motor::Motor(){}
 Motor::~Motor(){}
 
-int8 Motor::init(motorPort port, motor_type_t type)
+int8 Motor::init(MotorPort port, motor_type_t type)
 {
     //frLog &msg = frLog::GetInstance();
     //msg.LOG(LOG_ID_TRACE, "Motor::init -st-");
