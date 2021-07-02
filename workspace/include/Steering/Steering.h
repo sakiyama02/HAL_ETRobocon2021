@@ -11,7 +11,9 @@ class Steering
 
     MotorAngle motorAngle;
     Motor* leftMotor;
-    Motor* rightMotor; 
+    Motor* rightMotor;
+    Motor* armMotor;
+    Motor* tailMotor;
     Steering(const Steering &x) {};
     Steering&operator=(const Steering &){ return *this; };
 
@@ -20,6 +22,7 @@ class Steering
     int8 rotateWheel(MotorPower motorPower);
     int8 getMotorAngle(MotorAngle *iAngle);
     int8 updateAngle();
+    int8 deletePort();
 
     static Steering &getInstance()
     {

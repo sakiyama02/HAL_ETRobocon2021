@@ -8,22 +8,40 @@
  ******************************************************************************
  **/
 
+#include "ev3api.h"
+#include "app.h"
+#include "etroboc_ext.h"
+//#include "workspace/include/CouseMastering/CourseMastering.h"
 #include "workspace/include/System/System.h"
+//#include "workspace/include/Logger/Logger.h"
+#include "workspace/include/Steering/Steering.h"
+#include "workspace/include/Sensor/SensorManager.h"
+//#include "workspace/include/Calculation/BrightCalc.h"
 
 // ev3_sta_cyc(TASK名); or sta_cyc(TASK名);     周期タスクON
 // ev3_stp_cyc(TASK名); or stp_cyc(TASK名);     周期タスクOFF
 // act_tsk(TASK名)                              タスクの起動
 // ter_tsk(TASK名)                              タスク強制終了（資源開放機能なし）
+// ext_tsk(TASK名)                              自タスクの終了
+
+
+#if defined(BUILD_MODULE)
+#include "module_cfg.h"
+#else
+//#include "kernel_cfg.h"
+#endif
+bool flag = false;
 
 /**
  * EV3システム生成
+ * モーター設定
  */
 static void user_system_create()
 {
     Steering &steering = Steering::getInstance();
     steering.init();
     SensorManager &sensorManager = SensorManager::getInstance();
-    sensorManager.init();
+    sensorManager.initSensor();
 }
 
 /**
@@ -32,21 +50,22 @@ static void user_system_create()
 static void user_system_destroy()
 {
     Steering &steering = Steering::getInstance();
-    MotorPower power = {0, 0};
+    MotorPower power = {0,0};
     steering.rotateWheel(power);
-    steering.deletePort();
+    Motor motor = Motor();
+    steering.();//モーターポートストップ
 }
 
 /* メインタスク */
 void main_task(intptr_t unused)
 {
-    frLog &msg = frLog::GetInstance();
+    //frLog &msg = frLog::GetInstance();
     char command[] = {"logon -section  \n"};
 
     int index = 0;
     for (index = 0; index < (sizeof(command) / sizeof(command[0])); index++)
     {
-        msg.SetLog(command[index]);
+        //msg.SetLog(command[index]);
     }
     ev3_sensor_config(EV3_PORT_1, TOUCH_SENSOR);
     user_system_create();
@@ -54,24 +73,24 @@ void main_task(intptr_t unused)
     {
         if (ev3_touch_sensor_is_pressed(EV3_PORT_1) == 1)
         {
-            msg.LOG(LOG_ID_TRACE, "押されたやで");
+            //msg.LOG(LOG_ID_TRACE, "押されたやで");
             break;
         }
         tslp_tsk(10 * 1000U);
     }
-    msg.LOG(LOG_ID_TRACE, "メインタスクスタート");
+    //msg.LOG(LOG_ID_TRACE, "メインタスクスタート");
     //act_tsk(BT_TASK);
     //sta_cyc(ROBO_CYC);
     act_tsk(ROBO_TASK);
-    msg.LOG(LOG_ID_TRACE, "Mainタスクスリープ");
+    //msg.LOG(LOG_ID_TRACE, "Mainタスクスリープ");
     slp_tsk();
-    msg.LOG(LOG_ID_TRACE, "Mainタスクスリープ解除");
+    //msg.LOG(LOG_ID_TRACE, "Mainタスクスリープ解除");
     //ter_tsk(ROBO_TASK);
     //stp_cyc(ROBO_CYC);
     ter_tsk(ROBO_TASK);
     ter_tsk(BT_TASK);
     user_system_destroy();
-    msg.LOG(LOG_ID_TRACE, "Mainタスクend");
+    //msg.LOG(LOG_ID_TRACE, "Mainタスクend");
     // msg.LOG(LOG_ID_ERR,"カウント開始");
     tslp_tsk(3300 * 1000);
     // msg.LOG(LOG_ID_ERR,"カウント終了");
@@ -79,19 +98,21 @@ void main_task(intptr_t unused)
     ext_tsk();
 }
 
-
 void robo_task(intptr_t unused)
 {
-    frLog &msg = frLog::GetInstance();
-    msg.LOG(LOG_ID_TRACE, "ロボタスクスタート");
+    //frLog &msg = frLog::GetInstance();
+    //msg.LOG(LOG_ID_TRACE, "ロボタスクスタート");
 
     while (1)
     {
         int8 retChk = SYS_NG;
         bool flag = false;
-        CourseMastering &courseMastering = CourseMastering::getInstance();
+
         bool courseResult = false;
-        retChk = courseMastering.run(&courseResult);
+        //retChk = courseMastering.run(&courseResult);
+        
+        
+        
         if (courseResult == true || retChk != SYS_OK)
         {
             break;
@@ -101,7 +122,7 @@ void robo_task(intptr_t unused)
 
     wup_tsk(MAIN_TASK);
     ext_tsk();
-    msg.LOG(LOG_ID_TRACE, "ロボタスクend");
+    //msg.LOG(LOG_ID_TRACE, "ロボタスクend");
     //ext_tsk();
 }
 
@@ -114,12 +135,12 @@ void robo_task(intptr_t unused)
 //*****************************************************************************
 void bt_task(intptr_t unused)
 {
-    frLog &msg = frLog::GetInstance();
-    msg.LOG(LOG_ID_TRACE, "Bluetoothスタート");
+    //frLog &msg = frLog::GetInstance();
+    //msg.LOG(LOG_ID_TRACE, "Bluetoothスタート");
     while (true)
     {
         tslp_tsk(100);
     }
-    msg.LOG(LOG_ID_TRACE, "Bluetoothエンド");
+    //msg.LOG(LOG_ID_TRACE, "Bluetoothエンド");
     ext_tsk();
 }
