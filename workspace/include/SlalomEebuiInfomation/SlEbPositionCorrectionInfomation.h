@@ -1,5 +1,5 @@
 //SlEbPositionCorrectionInfomation
-//スラロームポジションコレクションインフォメーション
+//スラロームイーブイポジションコレクションインフォメーション
 //
 #include "../System/System.h"
 

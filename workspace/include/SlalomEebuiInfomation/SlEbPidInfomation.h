@@ -1,5 +1,5 @@
 //SlEbpidInfomation
-//スラロームPIDカーブインフォメーション
+//スラロームイーブイPIDカーブインフォメーション
 //
 #include "../System/System.h"
 
