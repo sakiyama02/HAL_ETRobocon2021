@@ -32,7 +32,7 @@ int8 TimeAttack::run(int16 scene_num) {
     memset(&positioncorrectionData,0,sizeof(PositionCorrectionData));
 
     //情報クラスから行動情報取得
-    retChk=ActionInfomation.getter(scene_num,&changeInfo,&directionData);
+    retChk=ActionInfomation.getter(scene_num,&changeInfo);
     retChk=CurveInfomation.getter(scene_num,&curveData);
     retChk=PidInfomation.getter(scene_num,&pidData);
     retChk=PositionCorrectionInfomation.getter(scene_num,&positioncorrectionData);
