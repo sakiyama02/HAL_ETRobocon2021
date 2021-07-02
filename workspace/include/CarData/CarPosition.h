@@ -25,9 +25,7 @@ public:
         return carPosition;
     }
 
-    int8 updatePos();
-
-    int8 updateDir();
+    int8 update();
 
     int8 getPos(PositionData* car_pos);
 
@@ -35,5 +33,5 @@ public:
 
     int8 getDir(float* car_dir);
 
-    int8 setAngle(float angle);
+    int8 setDir(float angle);
 };

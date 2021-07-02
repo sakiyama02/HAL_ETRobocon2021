@@ -3,13 +3,15 @@
 #include "Action.h"
 #include "../Steering/Steering.h"
 #include "../Control/TrapezoidControl.h"
+#include "../CarData/CarPosition.h"
 
-class ArmAction : public Action{
-    private:
-    public:
+class Turn : public Action {
+private:
 
-    ArmAction();
-    ~ArmAction();
+public:
+    Turn();
+    ~Turn();
 
     int8 run(int32 speed,PIDData pid_data,float angle,CurveData curve_data);
+
 };

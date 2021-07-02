@@ -1,12 +1,12 @@
 #include "../../include/Scenario/SlalomBlacky.h"
-int8 SlalomBlacky::run(scene_num) {
-　　//引数のエラーチェック
+int8 SlalomBlacky::run(int16 scene_num) {
+    //引数のエラーチェック
     if(scene_num==NULL){
         return SYS_PARAM;
     }
 
     //エラー格納変数
-    int8 check_value=SYS_NG;
+    int8 retChk=SYS_NG;
 
     // 情報クラスのインスタンス化
     SlBkActionInfomation ActionInfomation;
@@ -29,10 +29,10 @@ int8 SlalomBlacky::run(scene_num) {
     memset(&positioncorrectionData,0,sizeof(PositionCorrectionData));
 
     //情報クラスから行動情報取得
-    check_value=ActionInfomation.getter(scene_num,&changeInfo,&directionData);
-    check_value=CurveInfomation.getter(scene_num,&curveData);
-    check_value=PidInfomation.getter(scene_num,&pidData);
-    check_value=PositionCorrectionInfomation.getter(scene_num,&positioncorrectionData);
+    retChk=ActionInfomation.getter(scene_num,&changeInfo,&directionData);
+    retChk=CurveInfomation.getter(scene_num,&curveData);
+    retChk=PidInfomation.getter(scene_num,&pidData);
+    retChk=PositionCorrectionInfomation.getter(scene_num,&positioncorrectionData);
 
 //補正のオンの場合CORRECTIONDATA_ONを定義
 #ifdef CORRECTIONDATA_ON
@@ -81,61 +81,55 @@ int8 SlalomBlacky::run(scene_num) {
         break;
     }
 #endif
-
+ Action *action;
     //動作の選択
     switch(changeInfo.section_act){
         //ライントレース
         case LINE_TRACE:
         //コンストラクタ引数：
         //構造体ChangeInfo内のspeedと構造体PIDData
-            LineTrace lineTrace(changeInfo.speed,pidData);
-            check_value=lineTrace.run();
-
+            action=new LineTrace;
         break;
 
         //直進
         //コンストラクタ引数：構造体ChangeInfo内のspeed
         case STRAIGHT:
-            Straight straight(changeInfo.speed);
-            check_value=straight.run();
+            action=new Straight;
         break;
 
         //カーブ
         //コンストラクタ引数：
         //構造体ChangeInfo内のspeedとCurveData構造体
         case CURVE:
-            Curve curve(changeInfo.speed,curveData);
-            check_value=curve.run();
+            action=new Curve;
         break;
 
         //ラインカーブ
         //コンストラクタ引数：
         //構造体ChangeInfo内のspeedとCurveData構造体とカーブ構造体
         case LINE_CURVE:
-            Curve curve(changeInfo.speed,curveData,pidData);
-            check_value=curverun();
+            action=new Curve;
         break;
 
         //旋回
         //コンストラクタ引数：
         //構造体ChangeInfo内のspeedとDirectionData構造体
         case TURN:
-            Turn turn(changeInfo.speed,directionData);
-            check_value=turn.run();
+            action=new Turn;
         break;
 
         //アーム動作
         //構造体ChangeInfo内のspeed
         case ARM_ACTION:
-            ArmAction armAction(changeInfo.speed);
-            check_value=armAction.run();
+            action=new ArmAction;
         break;
 
         //一応
         default:
         break;
     }
-    return SYS_OK;
+    retChk=action->run(changeInfo.speed,pidData,directionData,curveData);
+    return retChk;
 }
 //
 //更新タスクでの処理
@@ -169,7 +163,7 @@ int8 SlalomBlacky::sceneChenge(int16* scene_num){
             senserManage.rgb_Getter(&currgbData);
         //rgb値を目標値と現在値を比較
 
-            retChk=colorJudge(currgbData.rgb_data,changeInfo.rgb_data,changeInfo.rgb_data.condition);
+            retChk=colorJudge(currgbData,changeInfo.rgb_data,changeInfo.rgb_data.condition);
             if(retChk==SYS_OK){
                 *scene_num++;
             }
@@ -177,22 +171,22 @@ int8 SlalomBlacky::sceneChenge(int16* scene_num){
         //シーン切り替え判定が座標場合
         case JUDGE_POS:
             PositionData curpositionData;
-            memset(&curposition,0,sizeof(PositionData));
+            memset(&curpositionData,0,sizeof(PositionData));
         //シングルトンの自己位置推定からインスタンスのポインタを取得
-            CarPosition　&carPosition=CarPosition::getInstance();
+            CarPosition &carPosition=CarPosition::getInstance();
         //座標の現在時点最新状態を取得
             carPosition.getPos(&curpositionData);
          //XYを判断する場合
-            if(changeInfo.PosInfoData.xCondition<2&&changeInfo.PosInfoData.yCondition<2){
-                retChk=xPositionJudge(curpositionData.PosInfoData.position.xPosition,
-                                      changeInfo.PosInfoData.position.xPosition,
-                                      changeInfo.PosInfoData.xCondition);
+            if(changeInfo.pos_info_data.xCondition<2&&changeInfo.pos_info_data.yCondition<2){
+                retChk=xPositionJudge(curpositionData.xPosition,
+                                      changeInfo.pos_info_data.potision.xPosition,
+                                      changeInfo.pos_info_data.xCondition);
                 if(retChk!=SYS_OK){
                     break;
                 }
-                retChk=yPositionJudge(curpositionData.PosInfoData.position.yPosition,
-                                      changeInfo.PosInfoData.position.yPosition,
-                                      changeInfo.PosInfoData.yCondition);
+                retChk=yPositionJudge(curpositionData.yPosition,
+                                      changeInfo.pos_info_data.potision.yPosition,
+                                      changeInfo.pos_info_data.yCondition);
                 if(retChk==SYS_OK){
                     *scene_num++;
                 }
@@ -200,10 +194,10 @@ int8 SlalomBlacky::sceneChenge(int16* scene_num){
             }
         
         //Xだけを判断する場合
-            if(changeInfo.PosInfoData.xCondition<2){
-                retChk=xPositionJudge(curpositionData.PosInfoData.position.xPosition,
-                                      changeInfo.PosInfoData.position.xPosition),
-                                      changeInfo.PosInfoData.xCondition;
+            if(changeInfo.pos_info_data.xCondition<2){
+                retChk=xPositionJudge(curpositionData.xPosition,
+                                      changeInfo.pos_info_data.potision.xPosition,
+                                      changeInfo.pos_info_data.xCondition);
                 if(retChk==SYS_OK){
                     *scene_num++;
                 }
@@ -211,10 +205,10 @@ int8 SlalomBlacky::sceneChenge(int16* scene_num){
             }
 
         //Yだけを判断する場合
-            if(changeInfo.PosInfoData.yCondition<2){
-                retChk=yPositionJudge(curpositionData.PosInfoData.position.yPosition,
-                                      changeInfo.PosInfoData.position.yPosition,
-                                      changeInfo.PosInfoData.yCondition);
+            if(changeInfo.pos_info_data.yCondition<2){
+                retChk=yPositionJudge(curpositionData.yPosition,
+                                      changeInfo.pos_info_data.potision.yPosition,
+                                      changeInfo.pos_info_data.yCondition);
                 if(retChk==SYS_OK){
                     *scene_num++;
                 }
@@ -239,7 +233,7 @@ int8 SlalomBlacky::sceneChenge(int16* scene_num){
             DirectionData curdirectionData;
             memset(&curdirectionData,0,sizeof(DirectionData));
         //シングルトンの自己位置推定からインスタンスのポインタを取得
-            CarPosition　&carPosition=CarPosition::getInstance();
+            CarPosition &carPosition=CarPosition::getInstance();
             CarPosition.getDir(&curdirectionData.direction);
             retChk=directionJudge(curdirectionData.direction,
                                   changeInfo.direction_data.direction,
@@ -258,7 +252,7 @@ int8 SlalomBlacky::sceneChenge(int16* scene_num){
 
 
 
-    return SYS_OK;
+    return retChk;
 }
 
 //
@@ -269,7 +263,7 @@ int8 SlalomBlacky::sceneChenge(int16* scene_num){
 //引数：現在のrgb値、目標のrgb値、(現在と目標の差分範囲の指定値)
 //戻り値：切り替え条件を満たしていればSYS_OK
 //        切り替え条件を満たしていなければSYS_NG
-int8 TimeAttack::colorJudge(RGBData cur_rgbdata,RGBData change_rgbdata,int8 condition){
+int8 SlalomBlacky::colorJudge(RGBData cur_rgbdata,RGBData change_rgbdata,int8 condition){
 
     int8 resultr=0;
     int8 resultg=0;
@@ -308,8 +302,8 @@ int8 TimeAttack::colorJudge(RGBData cur_rgbdata,RGBData change_rgbdata,int8 cond
 //引数：現在のX座標値、目標のX座標値、現在と目標の差分範囲の指定値
 //戻り値：切り替え条件を満たしていればSYS_OK
 //        切り替え条件を満たしていなければSYS_NG
-int8 TimeAttack::xPositionJudge(float cur_xpositionData,float change_xpositionData,int8 condition){
-    float resultx=0f;
+int8 SlalomBlacky::xPositionJudge(float cur_xpositionData,float change_xpositionData,int8 condition){
+    float resultx=0;
     resultx=change_xpositionData-cur_xpositionData;
     if(resultx>0){
         if(condition==HIGH){
@@ -336,8 +330,8 @@ int8 TimeAttack::xPositionJudge(float cur_xpositionData,float change_xpositionDa
 //引数：現在のY座標値、目標のY座標値、現在と目標の差分範囲の指定値
 //戻り値：切り替え条件を満たしていればSYS_OK
 //        切り替え条件を満たしていなければSYS_NG
-int8 TimeAttack::yPositionJudge(float cur_ypositionData,float cur_ypositionData,int8 condition){
-    float resulty=0f;
+int8 SlalomBlacky::yPositionJudge(float cur_ypositionData,float change_ypositionData,int8 condition){
+    float resulty=0;
     resulty=change_ypositionData-cur_ypositionData;
     if(resulty>0){
         if(condition==HIGH){
@@ -365,8 +359,8 @@ int8 TimeAttack::yPositionJudge(float cur_ypositionData,float cur_ypositionData,
 //引数：現在の距離値、目標の距離値
 //戻り値：切り替え条件を満たしていればSYS_OK
 //        切り替え条件を満たしていなければSYS_NG
-int8 TimeAttack::distanceJudge(uint16 cur_distanceData,uint16 change_distanceData){
-    uint16 resultdistance=0f;
+int8 SlalomBlacky::distanceJudge(uint16 cur_distanceData,uint16 change_distanceData){
+    uint16 resultdistance=0;
     resultdistance=change_distanceData-cur_distanceData;
     /*距離を範囲指定する場合に使用（間違って作った）
     if(resultdistance>0){
@@ -393,8 +387,8 @@ int8 TimeAttack::distanceJudge(uint16 cur_distanceData,uint16 change_distanceDat
 //マイナスの値を入れるとバグるので注意
 //戻り値：切り替え条件を満たしていればSYS_OK
 //        切り替え条件を満たしていなければSYS_NG
-int8 TimeAttack::directionJudge(float cur_directionData,float change_directionData,int8 condition){
-    float resultdirection=0f;
+int8 SlalomBlacky::directionJudge(float cur_directionData,float change_directionData,int8 condition){
+    float resultdirection=0;
     resultdirection=change_directionData-cur_directionData;
     if(resultdirection>0){
         if(condition==HIGH){
