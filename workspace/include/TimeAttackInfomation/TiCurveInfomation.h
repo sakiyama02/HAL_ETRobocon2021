@@ -5,6 +5,7 @@
 
 class TiCurveInfomation{
     private:
+        curveDATA = new CurveData[TIMEATTACK_NUM];
     public:
         TiCurveInfomation();
 
