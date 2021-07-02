@@ -19,6 +19,7 @@ class Steering
 
     public:
     int8 init();
+    int8 ritateArm(int32 motorAngle,int32 motorPower,int32 keepPower);
     int8 rotateWheel(MotorPower motorPower);
     int8 getMotorAngle(MotorAngle *iAngle);
     int8 updateAngle();

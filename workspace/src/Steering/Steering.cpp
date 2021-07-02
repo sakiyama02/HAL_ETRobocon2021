@@ -44,6 +44,29 @@ int8 Steering::init(){
     return SYS_OK;
 }
 
+int8 Steering::ritateArm(int32 motorAngle,int32 motorPower,int32 keepPower){
+    if(motorPower < -100 || motorPower > 100){
+        /* 引き数エラー */
+        return SYS_PARAM;
+    }
+
+    int8 retChk = SYS_NG;
+
+    /* 指定角度にアームを動かす */
+    retChk = armMotor->setCounts(motorAngle,motorPower);
+    if(retChk != SYS_OK){
+        return retChk;
+    }
+
+    /* 指定角度でアームを固定する */
+    retChk = armMotor->setPWM(keepPower);
+     if(retChk != SYS_OK){
+        return retChk;
+    }
+
+    return SYS_OK;
+}
+
 int8 Steering::rotateWheel(MotorPower motor_power){
 
     /* 引数チェック */
