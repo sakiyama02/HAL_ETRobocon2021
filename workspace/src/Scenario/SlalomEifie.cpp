@@ -6,13 +6,18 @@ int8 SlalomEifie::run(int16 scene_num) {
         return SYS_PARAM;
     }
 
+    //スラロームエーフィにシーンが一つもない場合正常終了
+    if(SLALOMEIFIE_NUM==0){
+        return SYS_OK;
+    }
+
     //エラー格納変数
     int8 retChk=SYS_NG;
 
     // 情報クラスのインスタンス化
     SlEfActionInfomation ActionInfomation;
     SlEfCurveInfomation CurveInfomation;
-    SlEfPidInfomation PidInfomation;
+    SlEfpidInfomation PidInfomation;
     SlEfPositionCorrectionInfomation PositionCorrectionInfomation;
 
     // 情報構造体のインスタンス化

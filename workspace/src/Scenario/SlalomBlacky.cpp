@@ -5,6 +5,11 @@ int8 SlalomBlacky::run(int16 scene_num) {
         return SYS_PARAM;
     }
 
+    //スラロームブラッキにシーンが一つもない場合終了
+    if(SLALOMBLACKY_NUM==0){
+        return SYS_OK;
+    }
+
     //エラー格納変数
     int8 retChk=SYS_NG;
 
@@ -30,6 +35,9 @@ int8 SlalomBlacky::run(int16 scene_num) {
 
     //情報クラスから行動情報取得
     retChk=ActionInfomation.getter(scene_num,&changeInfo);
+    if(retChk!=SYS_OK){
+    
+    }
     retChk=CurveInfomation.getter(scene_num,&curveData);
     retChk=PidInfomation.getter(scene_num,&pidData);
     retChk=PositionCorrectionInfomation.getter(scene_num,&positioncorrectionData);

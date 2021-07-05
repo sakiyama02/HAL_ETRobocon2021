@@ -8,6 +8,11 @@ int8 TimeAttack::run(int16 scene_num) {
         return SYS_PARAM;
     }
 
+    //ライントレースにシーンが一つもない場合正常終了
+    if(TIMEATTACK_NUM==0){
+        return SYS_OK;
+    }
+
     //エラー格納変数
     int8 retChk=SYS_NG;
 
