@@ -12,6 +12,10 @@ class PositionCorrection{
     int8 colorFix();
     int8 lineFix();
     int8 directionFix();
+    int8 colorJudge(RGBData,RGBData,int8);
+    int8 xPositionJudge(float,float,int8);
+    int8 yPositionJudge(float,float,int8);
+    int8 directionJudge(float,float,int8);
     static PositionCorrection &getInstance()
     {
         static PositionCorrection positionCorrection_;
