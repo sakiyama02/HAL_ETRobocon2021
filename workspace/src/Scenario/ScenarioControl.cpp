@@ -53,10 +53,39 @@ int8 ScenarioControl::updateScenario(){
     int8 retChk = SYS_NG; //戻り値格納変数
 
     //インスタンス化
-    SceneControl sceneControl;
+    SceneControl *sceneControl;
+    switch (scenarioState){
+        case TIME_ATACK:
+            //タイムアタック
+            sceneControl = new TimeAttack;
+            break;
+        
+        case SLALOM_EEBUI:
+            //スラロームイーブイ
+            sceneControl = new SlalomEebui;
+            break;
+
+        case SLALOM_BLACKY:
+            //スラロームブラッキー
+            sceneControl = new SlalomBlacky;
+            break;
+
+        case SLALOM_EIFIE:
+            //スラロームエーフィ
+            sceneControl = new SlalomEifie;
+            break;
+
+        case GARAGE:
+            //ガレージ
+            sceneControl = new Garage;
+            break;
+        
+        default:
+            break;
+    }
 
     //シーンの更新
-    retChk = sceneControl.sceneChenge(&sceneNum);
+    retChk = sceneControl->sceneChenge(&sceneNum);
     if(retChk != SYS_OK){
         return SYS_NG;
     }

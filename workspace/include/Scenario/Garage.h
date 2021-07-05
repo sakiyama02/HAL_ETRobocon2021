@@ -1,5 +1,18 @@
+#pragma once
 #include "../System/System.h"
-
+#include "../Scenario/SceneControl.h"
+#include "../../include/GarageInformation/GaActionInfomation.h"
+#include "../../include/GarageInformation/GaCurveInfomation.h"
+#include "../../include/GarageInformation/GaPidInfomation.h"
+#include "../../include/GarageInformation/GaPositionCorrectionInfomation.h"
+#include "../../include/Action/Action.h"
+#include "../../include/Action/ArmAction.h"
+#include "../../include/Action/Curve.h"
+#include "../../include/Action/LineTrace.h"
+#include "../../include/Action/Straight.h"
+#include "../../include/Action/Turn.h"
+#include "../../include/CarData/CarPosition.h"
+#include "../../include/Sensor/SensorManager.h"
 //
 //Garage.h
 //ライントレースのシーン制御クラス

@@ -11,7 +11,7 @@ int8 SlalomEebui::run(int16 scene_num) {
     // 情報クラスのインスタンス化
     SlEbActionInfomation ActionInfomation;
     SlEbCurveInfomation CurveInfomation;
-    SlEbPidInfomation PidInfomation;
+    SlEbpidInfomation PidInfomation;
     SlEbPositionCorrectionInfomation PositionCorrectionInfomation;
 
     // 情報構造体のインスタンス化
@@ -147,7 +147,7 @@ int8 SlalomEebui::sceneChenge(int16* scene_num){
     //スラロームイーブイの切り替え情報クラスをインスタンス化
     SlEbActionInfomation ActionInfomation;
     //切り替え情報から情報取得
-    retChk=ActionInfomation.getter(scene_num,&changeInfo);
+    retChk=ActionInfomation.getter(*scene_num,&changeInfo);
 
     //切り替え判定情報から処理選択
     switch(changeInfo.judge){
@@ -158,7 +158,7 @@ int8 SlalomEebui::sceneChenge(int16* scene_num){
         //シングルトンのセンサ管理からインスタンスのポインタを取得
             SensorManager &senserManage=SensorManager::getInstance();
         //rgbの現在時点最新状態を取得
-            senserManage.rgb_Getter(&currgbData);
+            senserManage.rgbGetter(&currgbData);
         //rgb値を目標値と現在値を比較
             retChk=colorJudge(currgbData,changeInfo.rgb_data,changeInfo.rgb_data.condition);
             if(retChk==SYS_OK){
@@ -231,7 +231,7 @@ int8 SlalomEebui::sceneChenge(int16* scene_num){
             memset(&curdirectionData,0,sizeof(DirectionData));
         //シングルトンの自己位置推定からインスタンスのポインタを取得
             CarPosition &carPosition=CarPosition::getInstance();
-            CarPosition.getDir(&curdirectionData.direction);
+            carPosition.getDir(&curdirectionData.direction);
             retChk=directionJudge(curdirectionData.direction,
                                   changeInfo.direction_data.direction,
                                   changeInfo.direction_data.condition);
@@ -247,10 +247,9 @@ int8 SlalomEebui::sceneChenge(int16* scene_num){
     //変化させる超音波の距離を定義に作る現在10
     //定義に変える-2と-3
     if(scene_num>SLALOMEEBUI_NUM){
-        uint8 changedistance;
+        uint16 changedistance;
         SensorManager &sonicSenser=SensorManager::getInstance();
-        sonicSenser.get_Distance();
-        sonicSenser.distance_Getter(&changedistance);
+        sonicSenser.distanceGetter(&changedistance);
         if(changedistance<10){
             *scene_num=-2;
         }
