@@ -5,7 +5,7 @@
 
 class SlEbPositionCorrectionInfomation{
     private:
-        positionCorrectionData = new PositinCorrectionData[TIMEATTACK_NUM];
+        PositionCorrectionData *positionCorrectionData = new PositionCorrectionData[TIMEATTACK_NUM];
     public:
         SlEbPositionCorrectionInfomation();
 
@@ -17,6 +17,6 @@ class SlEbPositionCorrectionInfomation{
         //          ChengeInfo*     切り替え情報
         //          DirectionData*  方向情報
         //戻り値    int8_t          エラーチェック        
-        int8 getter(int16,ChangeInfo*);
+        int8 getter(int16,PositionCorrectionData*);
 
 };

@@ -4,8 +4,8 @@
 
 #include "../../include/TimeAttackInfomation/TiPositionCorrectionInfomation.h"
 
-TiPositionCorrectionInfomation(){
-    memset(positinCorrectionData,0,sizeof(PositionCorrectionData)*TIMEATTACK_NUM);
+TiPositionCorrectionInfomation::TiPositionCorrectionInfomation(){
+    memset(positionCorrectionData,0,sizeof(PositionCorrectionData)*TIMEATTACK_NUM);
     int8 index = 0;
 
 //template
@@ -30,9 +30,13 @@ TiPositionCorrectionInfomation(){
 */    
 }
 
-int8 getter(int16 scene_num,PositinCorrectionData* positioncorrection_data){
+TiPositionCorrectionInfomation::~TiPositionCorrectionInfomation(){
+    free(positionCorrectionData);
+}
+
+int8 TiPositionCorrectionInfomation::getter(int16 scene_num,PositionCorrectionData* positioncorrection_data){
     
-    positioncorrection_data=positionCorrectionData[scene_num];
+    positioncorrection_data=&positionCorrectionData[scene_num];
 
     return SYS_OK;
 }

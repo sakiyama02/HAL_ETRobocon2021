@@ -4,7 +4,7 @@
 
 #include "../../include/SlalomBlackyInfomation/SlBkCurveInfomation.h"
 
-SlBkCurveInfomation(){
+SlBkCurveInfomation::SlBkCurveInfomation(){
     memset(curveData,0,sizeof(CurveData)*TIMEATTACK_NUM);
     int16 index = 0;
 
@@ -18,9 +18,13 @@ SlBkCurveInfomation(){
 
 }
 
-int8 getter(int16 scene_num,CurveData* curve_data){
+SlBkCurveInfomation::~SlBkCurveInfomation(){
+    free(curveData);
+}
+
+int8 SlBkCurveInfomation::getter(int16 scene_num,CurveData* curve_data){
     
-    curve_data=curveData[scene_num];
+    curve_data=&curveData[scene_num];
 
     return SYS_OK;
 }

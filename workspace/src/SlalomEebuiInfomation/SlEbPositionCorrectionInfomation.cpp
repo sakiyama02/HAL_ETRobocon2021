@@ -4,8 +4,8 @@
 
 #include "../../include/SlalomEebuiInfomation/SlEbPositionCorrectionInfomation.h"
 
-SlEbPositionCorrectionInfomation(){
-    memset(positinCorrectionData,0,sizeof(PositionCorrectionData)*TIMEATTACK_NUM);
+SlEbPositionCorrectionInfomation::SlEbPositionCorrectionInfomation(){
+    memset(positionCorrectionData,0,sizeof(PositionCorrectionData)*TIMEATTACK_NUM);
     int8 index = 0;
 
 //template
@@ -31,9 +31,13 @@ SlEbPositionCorrectionInfomation(){
 
 }
 
-int8 getter(int16 scene_num,PositinCorrectionData* positioncorrection_data){
+SlEbPositionCorrectionInfomation::~SlEbPositionCorrectionInfomation(){
+    free(positionCorrectionData);
+}
+
+int8 SlEbPositionCorrectionInfomation::getter(int16 scene_num,PositionCorrectionData* positioncorrection_data){
     
-    positioncorrection_data=positionCorrectionData[scene_num];
+    positioncorrection_data=&positionCorrectionData[scene_num];
 
     return SYS_OK;
 }

@@ -4,7 +4,7 @@
 
 #include "../../include/TimeAttackInfomation/TiPidInfomation.h"
 
-TiPidInfomation(){
+TiPidInfomation::TiPidInfomation(){
     memset(pidData,0,sizeof(PIDData)*TIMEATTACK_NUM);
     int16 index = 0;
 
@@ -19,9 +19,13 @@ TiPidInfomation(){
 */    
 }
 
-int8 getter(int16 scene_num,PIDData* pid_data){
+TiPidInfomation::~TiPidInfomation(){
+    free(pidData);
+}
+
+int8 TiPidInfomation::getter(int16 scene_num,PIDData* pid_data){
     
-    pid_data = pidData[scene_num];
+    pid_data = &pidData[scene_num];
 
     return SYS_OK;
 }
