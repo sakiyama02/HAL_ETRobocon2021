@@ -1,6 +1,7 @@
 //SlBkpidInfomation
 //スラロームブラッキーPIDカーブインフォメーション
 //
+#pragma once
 #include "../System/System.h"
 
 class SlBkpidInfomation{

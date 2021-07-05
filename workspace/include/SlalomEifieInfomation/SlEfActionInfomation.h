@@ -1,6 +1,7 @@
 //SlEfActionInfomation
 //スラロームエーフィアクションインフォメーション
 //
+#pragma once
 #include "../System/System.h"
 
 class SlEfActionInfomation{

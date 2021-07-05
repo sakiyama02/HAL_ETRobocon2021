@@ -1,6 +1,7 @@
 //SlEfPositionCorrectionInfomation
 //スラロームエーフィポジションコレクションインフォメーション
 //
+#pragma once
 #include "../System/System.h"
 
 class SlEfPositionCorrectionInfomation{

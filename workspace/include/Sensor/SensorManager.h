@@ -2,7 +2,7 @@
 //  SensorManager.h
 //  センサ管理クラス
 //
-
+#pragma once
 #include "../System/System.h"
 #include "ColorSensor.h"
 #include "SonicSensor.h"

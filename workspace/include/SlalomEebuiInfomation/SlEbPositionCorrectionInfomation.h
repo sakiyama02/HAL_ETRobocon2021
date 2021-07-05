@@ -1,6 +1,7 @@
 //SlEbPositionCorrectionInfomation
 //スラロームイーブイポジションコレクションインフォメーション
 //
+#pragma once
 #include "../System/System.h"
 
 class SlEbPositionCorrectionInfomation{

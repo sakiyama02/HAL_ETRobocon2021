@@ -1,6 +1,7 @@
 //SlEbCurveInfomation
 //スラロームイーブイカーブインフォメーション
 //
+#pragma once
 #include "../System/System.h"
 
 class SlEbCurveInfomation{

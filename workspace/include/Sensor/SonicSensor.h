@@ -2,7 +2,7 @@
 //  ColorSenser.h
 //  超音波センサークラス
 //
-
+#pragma once
 #include "../System/System.h"
 
 class SonicSensor

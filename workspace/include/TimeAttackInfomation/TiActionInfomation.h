@@ -1,6 +1,7 @@
 //TiActionInfomation
 //タイムアタックアクションインフォメーション
 //
+#pragma once
 #include "../System/System.h"
 
 class TiActionInfomation{

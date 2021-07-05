@@ -1,6 +1,7 @@
 //GaPositionCorrectionInfomation
 //ガレージポジションコレクションインフォメーション
 //
+#pragma once
 #include "../System/System.h"
 
 class GaPositionCorrectionInfomation{

@@ -1,5 +1,5 @@
+#pragma once
 #include "../System/System.h"
-
 
 // 加速度
 #define ACCELERATION 5
