@@ -1,6 +1,7 @@
 //GaCurveInfomation
 //ガレージカーブインフォメーション
 //
+#pragma once
 #include "../System/System.h"
 
 class GaCurveInfomation{

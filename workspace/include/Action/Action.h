@@ -2,6 +2,7 @@
 /// Action.h
 /// 動作クラス　（基底クラス）
 ///
+#pragma once
 #include "../System/System.h"
 
 class Action {

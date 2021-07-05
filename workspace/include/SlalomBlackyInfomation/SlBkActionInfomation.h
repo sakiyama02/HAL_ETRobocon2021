@@ -1,6 +1,7 @@
 //SlbkActionInfomation
 //スラロームブラッキーアクションインフォメーション
 //
+#pragma once
 #include "../System/System.h"
 
 class SlBkActionInfomation{

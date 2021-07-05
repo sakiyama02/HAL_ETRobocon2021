@@ -1,6 +1,7 @@
 //GaActionInfomation
 //ガレージアクションインフォメーション
 //
+#pragma once
 #include "../System/System.h"
 
 class GaActionInfomation{

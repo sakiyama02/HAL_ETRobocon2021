@@ -1,6 +1,7 @@
 //SlEfCurveInfomation
 //スラロームエーフィカーブインフォメーション
 //
+#pragma once
 #include "../System/System.h"
 
 class SlEfCurveInfomation{

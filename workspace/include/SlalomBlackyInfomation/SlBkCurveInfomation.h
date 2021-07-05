@@ -1,6 +1,7 @@
 //SlBkCurveInfomation
 //スラロームブラッキーカーブインフォメーション
 //
+#pragma once
 #include "../System/System.h"
 
 class SlBkCurveInfomation{
