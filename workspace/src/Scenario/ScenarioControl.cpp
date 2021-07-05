@@ -11,7 +11,7 @@ int8 ScenarioControl::run(){
 
     SceneControl *sceneControl;
 
-    switch (scenario_state)
+    switch (scenarioState)
     {
     case TIME_ATACK:
         //タイムアタック
@@ -42,7 +42,7 @@ int8 ScenarioControl::run(){
         break;
     }
 
-    retChk = sceneControl -> run(scene_num);
+    retChk = sceneControl -> run(sceneNum);
     return retChk;
 }
 
@@ -56,33 +56,43 @@ int8 ScenarioControl::updateScenario(){
     SceneControl sceneControl;
 
     //シーンの更新
-    retChk = sceneControl.sceneChenge(&scene_num);
+    retChk = sceneControl.sceneChenge(&sceneNum);
     if(retChk != SYS_OK){
         return SYS_NG;
     }
 
     //シーン番号の確認
-    if(scene_num == NEXT_BLACKY){   //次のシーンはブラッキー
-        scenario_state = SLALOM_BLACKY;
+    if(sceneNum == NEXT_BLACKY){   //次のシーンはブラッキー
+        scenarioState = SLALOM_BLACKY;
         return SYS_OK;
     }
 
-    if(scene_num == NEXT_EIFIE){    //次のシーンはエーフィ
-        scenario_state = SLALOM_EIFIE;
+    if(sceneNum == NEXT_EIFIE){    //次のシーンはエーフィ
+        scenarioState = SLALOM_EIFIE;
         return SYS_OK;
     }
 
-    if(scene_num == FINISH){        //シナリオ内の全シーン終了
-        if(scenario_state > SLALOM_EEBUI){
-            scenario_state = GARAGE;
+    if(sceneNum == FINISH){        //シナリオ内の全シーン終了
+        if(scenarioState > SLALOM_EEBUI){
+            scenarioState = GARAGE;
         }
-        if(scenario_state == GARAGE){
+        if(scenarioState == GARAGE){
             return SYS_OK;
         }
         else{
-            scenario_state++;
+            scenarioState++;
             return SYS_OK;
         }
     }
     return SYS_NG;
+}
+
+//シナリオ番号のゲッタ
+int8 ScenarioControl::scenarioGetter(int16* scenario_state){
+    /* 引数チェック */
+    if( scenario_state == NULL ){
+        return SYS_PARAM;
+    }
+    *scenario_state = scenarioState;
+    return SYS_OK;
 }

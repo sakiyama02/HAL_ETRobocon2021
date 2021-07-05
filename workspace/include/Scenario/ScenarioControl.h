@@ -14,8 +14,8 @@
 
 class ScenarioControl{
     private:
-        int16 scenario_state;
-        int16 scene_num;
+        int16 scenarioState;
+        int16 sceneNum;
     public:
         ScenarioControl();
 
@@ -30,7 +30,12 @@ class ScenarioControl{
         //シナリオの更新
         //引数   -
         //戻り値 init8_t エラーチェック
-
         int8 updateScenario();
 
+        int8 scenarioGetter(int16* scenario_state);
+    static ScenarioControl &getInstance()
+    {
+        static ScenarioControl scenarioControl;
+        return scenarioControl;
+    }
 };
