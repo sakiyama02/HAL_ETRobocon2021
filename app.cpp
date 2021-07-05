@@ -48,7 +48,6 @@ static void user_system_destroy()
     Steering &steering = Steering::getInstance();
     MotorPower power = {0,0};
     steering.rotateWheel(power);
-    Motor motor = Motor();
     steering.deletePort();
 }
 
@@ -64,6 +63,7 @@ void start_task(intptr_t unused)
     //
     act_tsk(MAIN_TASK);
     act_tsk(UPDATA_TASK);
+    sta_cyc(TRAPEZOIDAL_PERIOD);
     ext_tsk();
 }
 
@@ -72,8 +72,9 @@ void main_task(intptr_t unused)
 {
     //frLog &msg = frLog::GetInstance();
     //msg.LOG(LOG_ID_TRACE, "メインタスクスタート");
+    ScenarioControl &scenariocontrol = ScenarioControl::getInstance();
 
-    
+
     int8 retChk = SYS_NG;
     //実行
     retChk = scenariocontrol.run();
@@ -97,8 +98,6 @@ void updata_task(intptr_t unused)
     CarPosition &carposition = CarPosition::getInstance();
     ScenarioControl &scenariocontrol = ScenarioControl::getInstance();
     
-    scenariocontrol
-    
     carposition.update();
     if( retChk != SYS_OK ){
         //ログ
@@ -109,6 +108,8 @@ void updata_task(intptr_t unused)
         //ログ
     }
 
+    tslp_tsk(9999);
+    act_tsk(MAIN_TASK);
 
 }
 
@@ -116,6 +117,7 @@ void updata_task(intptr_t unused)
 void end_task(intptr_t unused)
 {
     user_system_destroy();
+    stp_cyc(TRAPEZOIDAL_PERIOD);
     // msg.LOG(LOG_ID_ERR,"カウント開始");
     tslp_tsk(3300 * 1000);
     // msg.LOG(LOG_ID_ERR,"カウント終了");
