@@ -127,7 +127,7 @@ Action *action;
         default:
         break;
     }
-    retChk=action->run(changeInfo.speed,pidData,directionData,curveData);
+    retChk=action->run(changeInfo.speed,pidData,directionData.direction,curveData);
     return retChk;
 }
 
@@ -149,7 +149,7 @@ int8 SlalomEifie::sceneChenge(int16* scene_num){
     //スラロームエーフィの切り替え情報クラスをインスタンス化
     SlEfActionInfomation ActionInfomation;
     //切り替え情報から情報取得
-    retChk=ActionInfomation.getter(&scene_num,&changeInfo);
+    retChk=ActionInfomation.getter(scene_num,&changeInfo);
 
     //切り替え判定情報から処理選択
     switch(changeInfo.judge){
