@@ -4,7 +4,7 @@
 
 #include "../../include/SlalomBlackyInfomation/SlBkActionInfomation.h"
 
-SlBkActionInfomation(){
+SlBkActionInfomation::SlBkActionInfomation(){
     memset(changeInfoData,0,sizeof(ChangeInfo) * TIMEATTACK_NUM);
     int16 index = 0;
 
@@ -31,9 +31,13 @@ SlBkActionInfomation(){
 */
 }
 
-int8 getter(int16 scene_num,ChangeInfo* change_info){
+SlBkActionInfomation::~SlBkActionInfomation(){
+    free(changeInfoData);
+}
+
+int8 SlBkActionInfomation::getter(int16 scene_num,ChangeInfo* change_info){
     
-    change_info=changeInfoData[scene_num];
+    change_info=&changeInfoData[scene_num];
 
     return SYS_OK;
 }
