@@ -4,7 +4,7 @@
 
 #include "../../include/TimeAttackInfomation/TiActionInfomation.h"
 
-TiActionInfomation(){
+TiActionInfomation::TiActionInfomation(){
     memset(changeInfoData,0,sizeof(ChangeInfo) * TIMEATTACK_NUM);
     int16 index = 0;
 
@@ -32,9 +32,13 @@ TiActionInfomation(){
 
 }
 
-int8 getter(int16 scene_num,ChangeInfo* change_info){
+TiActionInfomation::~TiActionInfomation(){
+    free(changeInfoData);
+}
 
-    change_info=changeInfoData[scene_num];
+int8 TiActionInfomation::getter(int16 scene_num,ChangeInfo* change_info){
+
+    change_info=&changeInfoData[scene_num];
 
     return SYS_OK;
 }

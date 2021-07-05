@@ -5,7 +5,7 @@
 
 class SlEbCurveInfomation{
     private:
-        curveDATA = new CurveData[TIMEATTACK_NUM];
+        CurveData *curveData = new CurveData[TIMEATTACK_NUM];
     public:
         SlEbCurveInfomation();
 
@@ -17,6 +17,6 @@ class SlEbCurveInfomation{
         //          ChengeInfo*     切り替え情報
         //          DirectionData*  方向情報
         //戻り値    int8_t          エラーチェック        
-        int8 getter(int16,ChangeInfo*);
+        int8 getter(int16,CurveData*);
 
 };

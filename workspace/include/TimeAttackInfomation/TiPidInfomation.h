@@ -5,7 +5,7 @@
 
 class TiPidInfomation{
     private:
-        pidData = new PIDData[TIMEATTACK_NUM];
+        PIDData *pidData = new PIDData[TIMEATTACK_NUM];
     public:
         TiPidInfomation();
 

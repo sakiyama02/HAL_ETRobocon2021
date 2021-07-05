@@ -4,7 +4,7 @@
 
 #include "../../include/SlalomEifieInfomation/SlEfPidInfomation.h"
 
-SlEfpidInfomation(){
+SlEfpidInfomation::SlEfpidInfomation(){
     memset(pidData,0,sizeof(PIDData)*TIMEATTACK_NUM);
     int16 index = 0;
 
@@ -20,9 +20,13 @@ SlEfpidInfomation(){
 
 }
 
-int8 getter(int16 scene_num,PIDData* pid_data){
+SlEfpidInfomation::~SlEfpidInfomation(){
+    free(pidData);
+}
+
+int8 SlEfpidInfomation::getter(int16 scene_num,PIDData* pid_data){
     
-    pid_data = pidData[scene_num];
+    pid_data = &pidData[scene_num];
 
     return SYS_OK;
 }

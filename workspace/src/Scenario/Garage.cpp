@@ -128,7 +128,7 @@ int8 Garage::run(int16 scene_num) {
         default:
         break;
     }
-    retChk=action->run(changeInfo.speed,pidData,directionData,curveData);
+    retChk=action->run(changeInfo.speed,pidData,directionData.direction,curveData);
     return retChk;
 }
 
@@ -150,7 +150,7 @@ int8 Garage::sceneChenge(int16* scene_num){
     //ガレージの切り替え情報クラスをインスタンス化
     GaActionInfomation ActionInfomation;
     //切り替え情報から情報取得
-    retChk=ActionInfomation.getter(&scene_num,&changeInfo);
+    retChk=ActionInfomation.getter(scene_num,&changeInfo);
 
     //切り替え判定情報から処理選択
     switch(changeInfo.judge){

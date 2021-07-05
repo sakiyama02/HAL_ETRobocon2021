@@ -5,7 +5,7 @@
 
 class GaActionInfomation{
     private:
-        changeInfoData = new ChangeInfo[TIMEATTACK_NUM];
+        ChangeInfo *changeInfoData = new ChangeInfo[TIMEATTACK_NUM];
     public:
         GaActionInfomation();
 
