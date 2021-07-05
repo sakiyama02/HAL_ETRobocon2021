@@ -1,10 +1,13 @@
 #include "../../include/PositionCorrection/PositionCorrection.h"
+//補正の振り分け及び値の受け渡し
 int8 PositionCorrection::FixSetter(PositionCorrectionData positionCorrection_Data){
     #ifdef CORRECTIONDATA_ON
     //現在のタスクの状態を確認
     //状態：実行中      STATE＿ACT
     //    ：実行済み　　STATE＿ACTAFTER
-    sceneState=memcmp(&prePositionCorrectionData,&positionCorrection_Data,sizeof(PositionCorrectionData));
+    sceneState=memcmp(&prePositionCorrectionData 
+                    ,&positionCorrection_Data
+                    ,sizeof(PositionCorrectionData));
     //シーンに変化がない場合戻り値で終了した事を知らせる
     if(sceneState==0){
         return ;
@@ -14,10 +17,11 @@ int8 PositionCorrection::FixSetter(PositionCorrectionData positionCorrection_Dat
         //現在実行中のタスクOFF
     } 
     //メンバ構造体に引数で取得した最新状態の構造体をセット
-    memcpy(&prePositionCorrectionData,&positionCorrection_Data,sizeof(PositionCorrectionData));
+    memcpy(&prePositionCorrectionData,&positionCorrection_Data
+            ,sizeof(PositionCorrectionData));
     //補正を起動する
     switch(prePositionCorrectionData.correctionCondition){
-        //
+        //自己位置推定のフラグが消えるまで送信メソッドで送信する処理が必要
         case JUDGE_RGB:
             //ここでタスクON
         break;
@@ -26,14 +30,14 @@ int8 PositionCorrection::FixSetter(PositionCorrectionData positionCorrection_Dat
         break;
         case JUDGE_DIR:
             //ここでタスクON
-            //自己位置推定のフラグが消えるまで送信メソッドで送信する
-        breエラー
+        break;
         default:
         break;
     }
     #endif
 }
 
+//色補正
 int8 PositionCorrection::colorFix(){
     #ifdef CORRECTIONDATA_ON
     int8 retChk = SYS_NG;
@@ -52,7 +56,8 @@ int8 PositionCorrection::colorFix(){
         return retChk;
     }
     //rgbの目標値と現在値を比較
-    retChk=colorJudge(curRGBData,prePositionCorrectionData.correctionRGB
+    retChk=colorJudge(curRGBData
+                ,prePositionCorrectionData.correctionRGB
                 ,prePositionCorrectionData.correctionRGB.condition);
     if(retChk==SYS_NG){
         //条件を満たしていない場合処理を行わずに終了
@@ -61,7 +66,9 @@ int8 PositionCorrection::colorFix(){
     }
     //自己位置推定に値をセットするタイミングを確認する必要がある
     //補正構造体に入った座標補正数値を自己位置推定にセットする
-   　retChk=carPosition.setPos(prePositionCorrectionData.correctionValue.potision)
+   　retChk=carPosition.setPos(
+       prePositionCorrectionData.correctionValue.potision);
+    
     if(retChk!=SYS_NG){
         //エラーチェック
         return;
@@ -78,23 +85,56 @@ int8 PositionCorrection::lineFix(){
     taskState=STATE＿ACT;
     //自己位置推定をインスタンスポインタを取得
     CarPosition &carPosition=CarPosition::getinstance();
-    CarPosition curCarPositionData;
-    memset(&curRGBData,0,sizeof(RGBData));
+    PositionData curPositionData;
+    memset(&curPositionData,0,sizeof(PositionData));
+    //現在の座標を自己位置推定から取得
+    retChk=carPosition.getPos(&curPositionData)
     //引数のエラーチェック
     if(retChk==SYS_NG){
         return retChk;
     }
-    //rgbの目標値と現在値を比較
-    retChk=colorJudge(curRGBData,prePositionCorrectionData.correctionRGB
-                ,prePositionCorrectionData.correctionRGB.condition);
-    if(retChk==SYS_NG){
+
+    switch(1){
+        default:
+        //XYを判断する場合
+        if(prePositionCorrectionData.correctionPosition.xCondition<2&&
+            prePositionCorrectionData.correctionPosition.yCondition<2){
+            retChk=xPositionJudge(curPositionData.xPosition,
+                                prePositionCorrectionData.correctionPosition.potision.xPosition,
+                                prePositionCorrectionData.correctionPosition.xCondition);
+            if(retChk!=SYS_OK){
+                break;
+            }
+            retChk=yPositionJudge(curPositionData.yPosition,
+                                prePositionCorrectionData.correctionPosition.potision.yPosition,
+                                prePositionCorrectionData.correctionPosition.yCondition);
+            break;
+        }
+        //Xだけを判断する場合
+        if(prePositionCorrectionData.correctionPosition.xCondition<2){
+            retChk=xPositionJudge(curPositionData.xPosition,
+                                prePositionCorrectionData.correctionPosition.potision.xPosition,
+                                prePositionCorrectionData.correctionPosition.xCondition);
+            break;
+        }
+        //Yだけを判断する場合
+        if(prePositionCorrectionData.correctionPosition.yCondition<2){
+            retChk=yPositionJudge(curPositionData.yPosition,
+                                prePositionCorrectionData.correctionPosition.potision.yPosition,
+                                prePositionCorrectionData.correctionPosition.yCondition);
+        }
+        break;
+    }
+
+    if(retChk!=SYS_OK){
         //条件を満たしていない場合処理を行わずに終了
         //更新なしで送信
         return 
     }
     //自己位置推定に値をセットするタイミングを確認する必要がある
     //補正構造体に入った座標補正数値を自己位置推定にセットする
-   　retChk=carPosition.setPos(prePositionCorrectionData.correctionValue.potision)
+   　retChk=carPosition.setPos(
+                prePositionCorrectionData.correctionValue.potision);
     if(retChk!=SYS_NG){
         //エラーチェック
         return;
@@ -108,8 +148,42 @@ int8 PositionCorrection::lineFix(){
 
 int8 PositionCorrection::directionFix(){
     #ifdef CORRECTIONDATA_ON
+    int8 retChk = SYS_NG;
+    taskState=STATE＿ACT;
+    //自己位置推定をインスタンスポインタを取得
+    CarPosition &carPosition=CarPosition::getinstance();
+    DirectionData curDirectionData;
+    memset(&DirectionData,0,sizeof(DirectionData));
+    //現在の向きを自己位置推定から取得
+    retChk=carPosition.getDir(&curDirectionData.direction);
+    //引数のエラーチェック
+    if(retChk==SYS_NG){
+        return retChk;
+    }
+    //向きの目標値と現在値を比較
+    retChk=directionJudge(curDirectionData.direction
+                ,prePositionCorrectionData.correctionDirection.direction
+                ,prePositionCorrectionData.correctionDirection.condition);
+    if(retChk==SYS_NG){
+        //条件を満たしていない場合処理を行わずに終了
+        //更新なしで送信
+        return 
+    }
+    //自己位置推定に値をセットするタイミングを確認する必要がある
+    //補正構造体に入った座標補正数値を自己位置推定にセットする
+   　retChk=carPosition.setPos(
+       prePositionCorrectionData.correctionValue.potision);
+    
+    if(retChk!=SYS_NG){
+        //エラーチェック
+        return;
+    }
+    //タスク実行終了
+    taskState=STATE＿ACTAFTER;
+    //自身でタスクをスリーブする
     #endif
 }
+
 
 
 //
