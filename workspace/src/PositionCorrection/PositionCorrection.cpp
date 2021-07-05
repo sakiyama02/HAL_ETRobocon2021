@@ -78,11 +78,8 @@ int8 PositionCorrection::lineFix(){
     taskState=STATE＿ACT;
     //自己位置推定をインスタンスポインタを取得
     CarPosition &carPosition=CarPosition::getinstance();
-    //センサ管理から取得したrgb値を保持する構造体
     CarPosition curCarPositionData;
     memset(&curRGBData,0,sizeof(RGBData));
-    //センサ管理からrgb値を取得
-    retChk=sensorManager.rgbGetter(&curRGBData);
     //引数のエラーチェック
     if(retChk==SYS_NG){
         return retChk;
