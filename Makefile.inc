@@ -10,6 +10,7 @@ APPL_CXXOBJS += \
 				Curve.o\
 				LineTrace.o\
 				Straight.o\
+				Turn.o\
 				CarPosition.o\
 				PidControl.o\
 				Steering.o\
@@ -64,40 +65,38 @@ endif
 # COPTS += -DMAKE_BT_DISABLE
 
 APPL_DIRS +=\
-	$(mkfile_path)workspace/src/Calculation\
+	$(mkfile_path)workspace/src/Action\
 	$(mkfile_path)workspace/src/CarData\
-	$(mkfile_path)workspace/src/CarryBlockInformation\
-	$(mkfile_path)workspace/src/CouseMastering\
-	$(mkfile_path)workspace/src/Decision\
+	$(mkfile_path)workspace/src/Control\
 	$(mkfile_path)workspace/src/GarageInformation\
-	$(mkfile_path)workspace/src/Information\
 	$(mkfile_path)workspace/src/Logger\
-	$(mkfile_path)workspace/src/PidControl\
+	$(mkfile_path)workspace/src/PositionCorrection\
+	$(mkfile_path)workspace/src/Scenario\
 	$(mkfile_path)workspace/src/Sensor\
-	$(mkfile_path)workspace/src/SlalomInformation\
+	$(mkfile_path)workspace/src/SlalomBlackyInformation\
+	$(mkfile_path)workspace/src/SlalomEebuiInformation\
+	$(mkfile_path)workspace/src/SlalomEifieInformation\
 	$(mkfile_path)workspace/src/Steering\
 	$(mkfile_path)workspace/src/System\
 	$(mkfile_path)workspace/src/TimeAttackInformation\
-	$(mkfile_path)workspace/src/File\
-	$(mkfile_path)workspace/src/CourseData
 
 
 
 INCLUDES +=\
-	-I$(mkfile_path)workspace/include/Calculation\
+	-I$(mkfile_path)workspace/include/Action\
 	-I$(mkfile_path)workspace/include/CarData\
-	-I$(mkfile_path)workspace/include/CarryBlockInformation\
-	-I$(mkfile_path)workspace/include/CouseMastering\
-	-I$(mkfile_path)workspace/include/Decision\
+	-I$(mkfile_path)workspace/include/Control\
 	-I$(mkfile_path)workspace/include/GarageInformation\
-	-I$(mkfile_path)workspace/include/Information\
 	-I$(mkfile_path)workspace/include/Logger\
-	-I$(mkfile_path)workspace/include/PidControl\
+	-I$(mkfile_path)workspace/include/PositionCorrection\
+	-I$(mkfile_path)workspace/include/Scenario\
 	-I$(mkfile_path)workspace/include/Sensor\
-	-I$(mkfile_path)workspace/include/SlalomInformation\
+	-I$(mkfile_path)workspace/include/SlalomBlackyInformation\
+	-I$(mkfile_path)workspace/include/SlalomEebuiInformation\
+	-I$(mkfile_path)workspace/include/SlalomEifieInformation\
 	-I$(mkfile_path)workspace/include/Steering\
 	-I$(mkfile_path)workspace/include/System\
-	-I$(mkfile_path)workspace/include/TimeAttackInformation
+	-I$(mkfile_path)workspace/include/TimeAttackInformation\
 
 
 COPTS += -I$(ETROBO_HRP3_WORKSPACE)/etroboc_common
