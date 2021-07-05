@@ -37,10 +37,9 @@ int8 PositionCorrection::FixSetter(PositionCorrectionData positionCorrection_Dat
 int8 PositionCorrection::colorFix(){
     #ifdef CORRECTIONDATA_ON
     int8 retChk = SYS_NG;
-    //タスクを空くと
-    taskState=STATE＿ACT;
     //センサ管理をインスタンスポインタを取得
     SensorManager &sensorManager=SensorManager::getinstance();
+    CarPosition &carPosition=CarPosition::getinstance();
     //センサ管理から取得したrgb値を保持する構造体
     RGBData curRGBData;
     memset(&curRGBData,0,sizeof(RGBData));
@@ -52,13 +51,16 @@ int8 PositionCorrection::colorFix(){
     }
     //rgbの目標値と現在値を比較
     retChk=colorJudge(curRGBData,prePositionCorrectionData.correctionRGB
-    ,prePositionCorrectionData.correctionRGB.condition);
+                ,prePositionCorrectionData.correctionRGB.condition);
     if(retChk==SYS_NG){
         //条件を満たしていない場合処理を行わずに終了
         //更新なしで送信
         return 
     }
-
+    //自己位置推定に値をセットするタイミングを確認する必要がある
+    //補正構造体に入った座標補正数値を自己位置推定にセットする
+    carPosition.setPos(prePositionCorrectionData.correctionValue.potision)
+    taskState=STATE＿ACTAFTER;
     #endif
 }
 
