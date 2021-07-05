@@ -5,6 +5,7 @@
 
 class TiPositionCorrectionInfomation{
     private:
+        positionCorrectionData = new PositinCorrectionData[TIMEATTACK_NUM];
     public:
         TiPositionCorrectionInfomation();
 

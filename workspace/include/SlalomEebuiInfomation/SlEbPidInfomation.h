@@ -1,10 +1,11 @@
 //SlEbpidInfomation
-//スラロームPIDカーブインフォメーション
+//スラロームイーブイPIDカーブインフォメーション
 //
 #include "../System/System.h"
 
 class SlEbpidInfomation{
     private:
+        pidData = new PIDData[TIMEATTACK_NUM];
     public:
         SlEbpidInfomation();
 

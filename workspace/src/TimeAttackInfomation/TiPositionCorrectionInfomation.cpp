@@ -4,11 +4,12 @@
 
 #include "../../include/TimeAttackInfomation/TiPositionCorrectionInfomation.h"
 
-int8 getter(int16 scene_num,PositinCorrectionData* positioncorrection_data){
-    positionCorrectionData = new PositinCorrectionData[TIMEATTACK_NUM];
+TiPositionCorrectionInfomation(){
     memset(positinCorrectionData,0,sizeof(PositionCorrectionData)*TIMEATTACK_NUM);
     int8 index = 0;
 
+//template
+/*
     positionCorrectionData[index].correctionValue.xPosition
     positionCorrectionData[index].correctionValue.yPosition
 
@@ -25,6 +26,12 @@ int8 getter(int16 scene_num,PositinCorrectionData* positioncorrection_data){
 
     positionCorrectionData[index].correctionCondition=0f;
 
+    index++;
+*/    
+}
+
+int8 getter(int16 scene_num,PositinCorrectionData* positioncorrection_data){
+    
     positioncorrection_data=positionCorrectionData[scene_num];
 
     return SYS_OK;

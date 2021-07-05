@@ -5,6 +5,7 @@
 
 class TiActionInfomation{
     private:
+        changeInfoData = new ChangeInfo[TIMEATTACK_NUM];
     public:
         TiActionInfomation();
 

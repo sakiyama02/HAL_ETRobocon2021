@@ -4,11 +4,12 @@
 
 #include "../../include/TimeAttackInfomation/TiActionInfomation.h"
 
-int8 getter(int16 scene_num,ChangeInfo* change_info){
-    changeInfoData = new ChangeInfo[TIMEATTACK_NUM];
+TiActionInfomation(){
     memset(changeInfoData,0,sizeof(ChangeInfo) * TIMEATTACK_NUM);
-    int8 index = 0;
+    int16 index = 0;
 
+//template
+/*
     changeInfoData[index].rgb_data.r=0f;
     changeInfoData[index].rgb_data.g=0f;
     changeInfoData[index].rgb_data.b=0f;
@@ -25,6 +26,13 @@ int8 getter(int16 scene_num,ChangeInfo* change_info){
     changeInfoData[index].judge=0f;
     changeInfoData[index].section_act=0f;
     changeInfoData[index].speed=0f;
+
+    index++;
+*/
+
+}
+
+int8 getter(int16 scene_num,ChangeInfo* change_info){
 
     change_info=changeInfoData[scene_num];
 

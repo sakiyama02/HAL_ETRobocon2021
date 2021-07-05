@@ -1,10 +1,11 @@
 //SlEbPositionCorrectionInfomation
-//スラロームポジションコレクションインフォメーション
+//スラロームイーブイポジションコレクションインフォメーション
 //
 #include "../System/System.h"
 
 class SlEbPositionCorrectionInfomation{
     private:
+        positionCorrectionData = new PositinCorrectionData[TIMEATTACK_NUM];
     public:
         SlEbPositionCorrectionInfomation();
 
