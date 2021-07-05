@@ -5,6 +5,7 @@
 
 class SlBkPositionCorrectionInfomation{
     private:
+        positionCorrectionData = new PositinCorrectionData[TIMEATTACK_NUM];
     public:
         SlBkPositionCorrectionInfomation();
 

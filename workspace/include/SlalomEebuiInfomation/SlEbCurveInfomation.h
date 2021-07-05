@@ -5,6 +5,7 @@
 
 class SlEbCurveInfomation{
     private:
+        curveDATA = new CurveData[TIMEATTACK_NUM];
     public:
         SlEbCurveInfomation();
 

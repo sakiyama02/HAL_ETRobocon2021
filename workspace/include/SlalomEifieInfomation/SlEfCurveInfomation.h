@@ -5,6 +5,7 @@
 
 class SlEfCurveInfomation{
     private:
+        curveDATA = new CurveData[TIMEATTACK_NUM];
     public:
         SlEfveInfomation();
 

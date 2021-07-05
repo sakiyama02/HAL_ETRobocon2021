@@ -5,6 +5,7 @@
 
 class GapidInfomation{
     private:
+        pidData = new PIDData[TIMEATTACK_NUM];
     public:
         GapidInfomation();
 

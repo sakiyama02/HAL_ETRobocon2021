@@ -5,6 +5,7 @@
 
 class SlBkActionInfomation{
     private:
+        changeInfoData = new ChangeInfo[TIMEATTACK_NUM];
     public:
         SlBkActionInfomation();
 

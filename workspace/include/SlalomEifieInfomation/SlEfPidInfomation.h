@@ -5,6 +5,7 @@
 
 class SlEfpidInfomation{
     private:
+        pidData = new PIDData[TIMEATTACK_NUM];
     public:
         SlEfpidInfomation();
 
