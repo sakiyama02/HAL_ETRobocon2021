@@ -4,8 +4,8 @@
 
 #include "../../include/SlalomBlackyInfomation/SlBkPositionCorrectionInfomation.h"
 
-SlBkPositionCorrectionInfomation(){
-    memset(positinCorrectionData,0,sizeof(PositionCorrectionData)*TIMEATTACK_NUM);
+SlBkPositionCorrectionInfomation::SlBkPositionCorrectionInfomation(){
+    memset(positionCorrectionData,0,sizeof(PositionCorrectionData)*TIMEATTACK_NUM);
     int8 index = 0;
 
 //template
@@ -31,9 +31,13 @@ SlBkPositionCorrectionInfomation(){
 
 }
 
-int8 getter(int16 scene_num,PositinCorrectionData* positioncorrection_data){
+SlBkPositionCorrectionInfomation::~SlBkPositionCorrectionInfomation(){
+    free(positionCorrectionData);
+}
+
+int8 SlBkPositionCorrectionInfomation::getter(int16 scene_num,PositionCorrectionData* positioncorrection_data){
     
-    positioncorrection_data=positionCorrectionData[scene_num];
+    positioncorrection_data=&positionCorrectionData[scene_num];
 
     return SYS_OK;
 }

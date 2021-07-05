@@ -5,7 +5,7 @@
 
 class TiPositionCorrectionInfomation{
     private:
-        positionCorrectionData = new PositinCorrectionData[TIMEATTACK_NUM];
+        PositionCorrectionData *positionCorrectionData = new PositionCorrectionData[TIMEATTACK_NUM];
     public:
         TiPositionCorrectionInfomation();
 
@@ -16,5 +16,5 @@ class TiPositionCorrectionInfomation{
         //引数      int16_t                     シーン番号
         //          PositionCorrectionData*     
         //戻り値    int8_t                      エラーチェック
-        int8 getter(int16,PositinCorrectionData*);
+        int8 getter(int16,PositionCorrectionData*);
 };

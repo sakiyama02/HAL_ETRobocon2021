@@ -4,7 +4,7 @@
 
 #include "../../include/SlalomEifieInfomation/SlEfCurveInfomation.h"
 
-SlEfCurveInfomation(){
+SlEfCurveInfomation::SlEfCurveInfomation(){
     memset(curveData,0,sizeof(CurveData)*TIMEATTACK_NUM);
     int16 index = 0;
 
@@ -18,9 +18,13 @@ SlEfCurveInfomation(){
 
 }
 
-int8 getter(int16 scene_num,CurveData* curve_data){
+SlEfCurveInfomation::~SlEfCurveInfomation(){
+    free(curveData);
+}
+
+int8 SlEfCurveInfomation::getter(int16 scene_num,CurveData* curve_data){
     
-    curve_data=curveData[scene_num];
+    curve_data=&curveData[scene_num];
 
     return SYS_OK;
 }

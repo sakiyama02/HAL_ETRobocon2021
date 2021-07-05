@@ -5,7 +5,7 @@
 
 class SlEbpidInfomation{
     private:
-        pidData = new PIDData[TIMEATTACK_NUM];
+        PIDData *pidData = new PIDData[TIMEATTACK_NUM];
     public:
         SlEbpidInfomation();
 
@@ -17,6 +17,6 @@ class SlEbpidInfomation{
         //          ChengeInfo*     切り替え情報
         //          DirectionData*  方向情報
         //戻り値    int8_t          エラーチェック        
-        int8 getter(int16,ChangeInfo*);
+        int8 getter(int16,PIDData*);
 
 };
