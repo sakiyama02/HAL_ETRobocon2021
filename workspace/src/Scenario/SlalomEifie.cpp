@@ -133,6 +133,8 @@ Action *action;
         break;
     }
     retChk=action->run(changeInfo.speed,pidData,directionData.direction,curveData);
+    //動的メモリの開放
+    delete action;
     return retChk;
 }
 
