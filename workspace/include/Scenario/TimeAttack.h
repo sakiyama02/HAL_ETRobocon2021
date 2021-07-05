@@ -1,4 +1,19 @@
+#pragma once
 #include "../System/System.h"
+#include "../Scenario/SceneControl.h"
+#include "../../include/TimeAttackInfomation/TiActionInfomation.h"
+#include "../../include/TimeAttackInfomation/TiCurveInfomation.h"
+#include "../../include/TimeAttackInfomation/TiPidInfomation.h"
+#include "../../include/TimeAttackInfomation/TiPositionCorrectionInfomation.h"
+#include "../../include/Action/Action.h"
+#include "../../include/Action/ArmAction.h"
+#include "../../include/Action/Curve.h"
+#include "../../include/Action/LineTrace.h"
+#include "../../include/Action/Straight.h"
+#include "../../include/Action/Turn.h"
+#include "../../include/CarData/CarPosition.h"
+#include "../../include/Sensor/SensorManager.h"
+
 //
 //TimeAttack.h
 //ライントレースのシーン制御クラス

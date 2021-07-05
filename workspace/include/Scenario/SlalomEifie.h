@@ -1,4 +1,18 @@
+#pragma once
 #include "../System/System.h"
+#include "../Scenario/SceneControl.h"
+#include "../../include/SlalomEifieInfomation/SlEfActionInfomation.h"
+#include "../../include/SlalomEifieInfomation/SlEfCurveInfomation.h"
+#include "../../include/SlalomEifieInfomation/SlEfPidInfomation.h"
+#include "../../include/SlalomEifieInfomation/SlEfPositionCorrectionInfomation.h"
+#include "../../include/Action/Action.h"
+#include "../../include/Action/ArmAction.h"
+#include "../../include/Action/Curve.h"
+#include "../../include/Action/LineTrace.h"
+#include "../../include/Action/Straight.h"
+#include "../../include/Action/Turn.h"
+#include "../../include/CarData/CarPosition.h"
+#include "../../include/Sensor/SensorManager.h"
 
 //
 //SlalomEifie.h

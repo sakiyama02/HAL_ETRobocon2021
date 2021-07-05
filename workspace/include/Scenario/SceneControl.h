@@ -7,9 +7,9 @@
 class SceneControl{
     private:
     public:
-        virtual SceneControl();
+        SceneControl();
 
-        virtual ~SceneControl();
+        ~SceneControl();
 
         //シーンの切り替え
         //引数   init16_t シーン番号[IN]

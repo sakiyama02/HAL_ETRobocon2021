@@ -152,7 +152,7 @@ int8 TimeAttack::sceneChenge(int16* scene_num){
     //ライントレースの切り替え情報クラスをインスタンス化
     TiActionInfomation ActionInfomation;
     //切り替え情報から情報取得
-    retChk=ActionInfomation.getter(scene_num,&changeInfo);
+    retChk=ActionInfomation.getter(*scene_num,&changeInfo);
 
     //切り替え判定情報から処理選択
     switch(changeInfo.judge){
@@ -163,7 +163,7 @@ int8 TimeAttack::sceneChenge(int16* scene_num){
         //シングルトンのセンサ管理からインスタンスのポインタを取得
             SensorManager &senserManage=SensorManager::getInstance();
         //rgbの現在時点最新状態を取得
-            senserManage.rgb_Getter(&currgbData);
+            senserManage.rgbGetter(&currgbData);
         //rgb値を目標値と現在値を比較
             retChk=colorJudge(currgbData,changeInfo.rgb_data,changeInfo.rgb_data.condition);
             if(retChk==SYS_OK){
@@ -236,7 +236,7 @@ int8 TimeAttack::sceneChenge(int16* scene_num){
             memset(&curdirectionData,0,sizeof(DirectionData));
         //シングルトンの自己位置推定からインスタンスのポインタを取得
             CarPosition &carPosition=CarPosition::getInstance();
-            CarPosition.getDir(&curdirectionData.direction);
+            carPosition.getDir(&curdirectionData.direction);
             retChk=directionJudge(curdirectionData.direction,
                                   changeInfo.direction_data.direction,
                                   changeInfo.direction_data.condition);

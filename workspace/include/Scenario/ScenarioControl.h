@@ -1,7 +1,15 @@
 //
 //ScenarioControl.h
 //シナリオコントロールクラス
+#pragma once
 #include "../System/System.h"
+#include "../../include/Scenario/SceneControl.h"
+#include "../../include/Scenario/Garage.h"
+#include "../../include/Scenario/ScenarioControl.h"
+#include "../../include/Scenario/SlalomBlacky.h"
+#include "../../include/Scenario/SlalomEebui.h"
+#include "../../include/Scenario/SlalomEifie.h"
+#include "../../include/Scenario/TimeAttack.h"
 
 #define TIME_ATACK      1
 #define SLALOM_EEBUI    2
