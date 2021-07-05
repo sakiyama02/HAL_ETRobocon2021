@@ -134,6 +134,7 @@ int8 Garage::run(int16 scene_num) {
         break;
     }
     retChk=action->run(changeInfo.speed,pidData,directionData.direction,curveData);
+    delete action;
     return retChk;
 }
 
