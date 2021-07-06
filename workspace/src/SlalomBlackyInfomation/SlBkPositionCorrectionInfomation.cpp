@@ -32,7 +32,7 @@ SlBkPositionCorrectionInfomation::SlBkPositionCorrectionInfomation(){
 }
 
 SlBkPositionCorrectionInfomation::~SlBkPositionCorrectionInfomation(){
-    free(positionCorrectionData);
+    delete(positionCorrectionData);
 }
 
 int8 SlBkPositionCorrectionInfomation::getter(int16 scene_num,PositionCorrectionData* positioncorrection_data){

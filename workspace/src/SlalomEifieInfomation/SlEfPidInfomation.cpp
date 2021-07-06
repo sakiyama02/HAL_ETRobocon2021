@@ -21,7 +21,7 @@ SlEfpidInfomation::SlEfpidInfomation(){
 }
 
 SlEfpidInfomation::~SlEfpidInfomation(){
-    free(pidData);
+    delete(pidData);
 }
 
 int8 SlEfpidInfomation::getter(int16 scene_num,PIDData* pid_data){

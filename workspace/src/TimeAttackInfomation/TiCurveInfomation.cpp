@@ -18,7 +18,7 @@ TiCurveInfomation::TiCurveInfomation(){
 }
 
 TiCurveInfomation::~TiCurveInfomation(){
-    free(curveData);
+    delete(curveData);
 }
 
 int8 TiCurveInfomation::getter(int16 scene_num,CurveData* curve_data){

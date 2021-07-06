@@ -19,7 +19,7 @@ SlEfCurveInfomation::SlEfCurveInfomation(){
 }
 
 SlEfCurveInfomation::~SlEfCurveInfomation(){
-    free(curveData);
+    delete(curveData);
 }
 
 int8 SlEfCurveInfomation::getter(int16 scene_num,CurveData* curve_data){

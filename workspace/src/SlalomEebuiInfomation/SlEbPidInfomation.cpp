@@ -21,7 +21,7 @@ SlEbpidInfomation::SlEbpidInfomation(){
 }
 
 SlEbpidInfomation::~SlEbpidInfomation(){
-    free(pidData);
+    delete(pidData);
 }
 
 int8 SlEbpidInfomation::getter(int16 scene_num,PIDData* pid_data){

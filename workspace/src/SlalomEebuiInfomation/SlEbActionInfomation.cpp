@@ -32,7 +32,7 @@ SlEbActionInfomation::SlEbActionInfomation(){
 }
 
 SlEbActionInfomation::~SlEbActionInfomation(){
-    free(changeInfoData);
+    delete(changeInfoData);
 }
 
 int8 SlEbActionInfomation::getter(int16 scene_num,ChangeInfo* change_info){
