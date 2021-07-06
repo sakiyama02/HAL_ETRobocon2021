@@ -13,7 +13,6 @@ APPL_CXXOBJS += \
 				Turn.o\
 				CarPosition.o\
 				PidControl.o\
-				Steering.o\
 				TrapezoidControl.o\
 				GaActionInfomation.o\
 				GaCurveInfomation.o\
