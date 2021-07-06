@@ -1,4 +1,6 @@
 #include "../../include/Scenario/SlalomEifie.h"
+SlalomEifie::SlalomEifie(){}
+SlalomEifie::~SlalomEifie(){}
 //メインタスクでの処理
 int8 SlalomEifie::run(int16 scene_num) {
     //引数のエラーチェック

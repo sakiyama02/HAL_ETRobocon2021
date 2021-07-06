@@ -4,7 +4,7 @@
 Straight::Straight(){}
 Straight::~Straight(){}
 
-int8 run(int32 speed,PIDData pid_data = {0.0f,0.0f,0.0f,0.0f},
+int8 Straight::run(int32 speed,PIDData pid_data = {0.0f,0.0f,0.0f,0.0f},
     float angle = 0.0f,CurveData curve_data = {0.0f,(CurveType)0}){
     
     int8 retChk = SYS_NG;

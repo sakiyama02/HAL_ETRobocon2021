@@ -1,4 +1,6 @@
 #include "../../include/Scenario/Garage.h"
+Garage::Garage(){}
+Garage::~Garage(){}
 int8 Garage::run(int16 scene_num) {
     //引数のエラーチェック
     if(scene_num==NULL){
