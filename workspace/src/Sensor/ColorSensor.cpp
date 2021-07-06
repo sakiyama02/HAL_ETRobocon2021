@@ -19,7 +19,7 @@ int8 ColorSensor::getRGB(RGBData* rgb_Data){
     {
         return SYS_PARAM;
     }
-    RGBData rgbTmp;
+    rgb_raw_t rgbTmp;
 
     memset(&rgbTmp,0,sizeof(RGBData));
     ev3_color_sensor_get_rgb_raw(static_cast<sensor_port_t>(SENSOR_COLOR), &rgbTmp);

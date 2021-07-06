@@ -74,16 +74,12 @@ void main_task(intptr_t unused)
     //msg.LOG(LOG_ID_TRACE, "メインタスクスタート");
     ScenarioControl &scenariocontrol = ScenarioControl::getInstance();
 
-
     int8 retChk = SYS_NG;
     //実行
     retChk = scenariocontrol.run();
     if( retChk != SYS_OK ){
         //ログ
     }
-
-    //unity間通信
-    //tslp_tsk(9999);
 
     ext_tsk();
     //tslp_tsk();
@@ -95,19 +91,36 @@ void main_task(intptr_t unused)
 void updata_task(intptr_t unused)
 {
     int8 retChk = SYS_NG;
+    int16 senarioState = 0;
     CarPosition &carposition = CarPosition::getInstance();
     ScenarioControl &scenariocontrol = ScenarioControl::getInstance();
+
+    //シナリオ状態取得
+    retChk = scenariocontrol.scenarioGetter(&senarioState);
+    if( retChk != SYS_OK ){
+        //ログ
+    }  
+    //シナリオ終了
     
-    carposition.update();
+    if(senarioState == GARAGE + 1)
+    {
+        act_tsk(END_TASK);
+        ext_tsk();
+    }
+
+    
+    retChk = carposition.update();
     if( retChk != SYS_OK ){
         //ログ
     }
+
     //シナリオ制御更新
     retChk = scenariocontrol.updateScenario();
     if( retChk != SYS_OK ){
         //ログ
     }
 
+    //unity間通信
     tslp_tsk(9999);
     act_tsk(MAIN_TASK);
 
