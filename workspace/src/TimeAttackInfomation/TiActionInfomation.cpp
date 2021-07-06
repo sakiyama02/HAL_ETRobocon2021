@@ -33,7 +33,7 @@ TiActionInfomation::TiActionInfomation(){
 }
 
 TiActionInfomation::~TiActionInfomation(){
-    free(changeInfoData);
+    delete(changeInfoData);
 }
 
 int8 TiActionInfomation::getter(int16 scene_num,ChangeInfo* change_info){

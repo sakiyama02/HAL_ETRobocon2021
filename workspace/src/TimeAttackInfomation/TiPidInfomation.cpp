@@ -20,7 +20,7 @@ TiPidInfomation::TiPidInfomation(){
 }
 
 TiPidInfomation::~TiPidInfomation(){
-    free(pidData);
+    delete(pidData);
 }
 
 int8 TiPidInfomation::getter(int16 scene_num,PIDData* pid_data){

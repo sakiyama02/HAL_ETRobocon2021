@@ -32,7 +32,7 @@ SlEfPositionCorrectionInfomation::SlEfPositionCorrectionInfomation(){
 }
 
 SlEfPositionCorrectionInfomation::~SlEfPositionCorrectionInfomation(){
-    free(positionCorrectionData);
+    delete(positionCorrectionData);
 }
 
 int8 SlEfPositionCorrectionInfomation::getter(int16 scene_num,PositionCorrectionData* positioncorrection_data){

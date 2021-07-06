@@ -19,7 +19,7 @@ SlBkCurveInfomation::SlBkCurveInfomation(){
 }
 
 SlBkCurveInfomation::~SlBkCurveInfomation(){
-    free(curveData);
+    delete(curveData);
 }
 
 int8 SlBkCurveInfomation::getter(int16 scene_num,CurveData* curve_data){

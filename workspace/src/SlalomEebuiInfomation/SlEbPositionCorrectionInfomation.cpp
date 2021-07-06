@@ -32,7 +32,7 @@ SlEbPositionCorrectionInfomation::SlEbPositionCorrectionInfomation(){
 }
 
 SlEbPositionCorrectionInfomation::~SlEbPositionCorrectionInfomation(){
-    free(positionCorrectionData);
+    delete(positionCorrectionData);
 }
 
 int8 SlEbPositionCorrectionInfomation::getter(int16 scene_num,PositionCorrectionData* positioncorrection_data){

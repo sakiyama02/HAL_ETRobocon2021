@@ -31,7 +31,7 @@ TiPositionCorrectionInfomation::TiPositionCorrectionInfomation(){
 }
 
 TiPositionCorrectionInfomation::~TiPositionCorrectionInfomation(){
-    free(positionCorrectionData);
+    delete(positionCorrectionData);
 }
 
 int8 TiPositionCorrectionInfomation::getter(int16 scene_num,PositionCorrectionData* positioncorrection_data){

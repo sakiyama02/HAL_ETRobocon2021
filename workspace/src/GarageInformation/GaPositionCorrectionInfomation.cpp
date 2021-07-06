@@ -32,7 +32,7 @@ GaPositionCorrectionInfomation::GaPositionCorrectionInfomation(){
 }
 
 GaPositionCorrectionInfomation::~GaPositionCorrectionInfomation(){
-    free(positionCorrectionData);
+    delete(positionCorrectionData);
 }
 
 int8 GaPositionCorrectionInfomation::getter(int16 scene_num,PositionCorrectionData* positioncorrection_data){
