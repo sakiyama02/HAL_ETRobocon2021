@@ -1,6 +1,6 @@
 #include "../../include/Scenario/TimeAttack.h"
 TimeAttack::TimeAttack(){}
-TimeAttack]]~TimeAttack(){}
+TimeAttack::~TimeAttack(){}
 //
 //メインタスクでの処理
 //
