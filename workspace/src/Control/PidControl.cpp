@@ -10,8 +10,8 @@ PidControl::PidControl()
     stackIntegral = 0.0f;
     moterRevison = 0;
 }
+PidControl::~PidControl(){}
 
-//
 //  -datail
 //  PIDの計算
 //
