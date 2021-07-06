@@ -1,6 +1,7 @@
 //SlEbpidInfomation
 //スラロームイーブイPIDカーブインフォメーション
 //
+#pragma once
 #include "../System/System.h"
 
 class SlEbpidInfomation{

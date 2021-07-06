@@ -2,7 +2,7 @@
 //  ColorSensor.h
 //  カラーセンサークラス
 //
-
+#pragma once
 #include "../System/System.h"
 
 class ColorSensor

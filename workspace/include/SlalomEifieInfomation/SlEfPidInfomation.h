@@ -1,6 +1,7 @@
 //SlEfpidInfomation
 //スラロームエーフィPIDカーブインフォメーション
 //
+#pragma once
 #include "../System/System.h"
 
 class SlEfpidInfomation{

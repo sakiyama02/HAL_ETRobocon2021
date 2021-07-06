@@ -1,7 +1,15 @@
 //
 //ScenarioControl.h
 //シナリオコントロールクラス
+#pragma once
 #include "../System/System.h"
+#include "../../include/Scenario/SceneControl.h"
+#include "../../include/Scenario/Garage.h"
+#include "../../include/Scenario/ScenarioControl.h"
+#include "../../include/Scenario/SlalomBlacky.h"
+#include "../../include/Scenario/SlalomEebui.h"
+#include "../../include/Scenario/SlalomEifie.h"
+#include "../../include/Scenario/TimeAttack.h"
 
 #define TIME_ATACK      1
 #define SLALOM_EEBUI    2
@@ -14,8 +22,8 @@
 
 class ScenarioControl{
     private:
-        int16 scenario_state;
-        int16 scene_num;
+        int16 scenarioState;
+        int16 sceneNum;
     public:
         ScenarioControl();
 
@@ -30,7 +38,12 @@ class ScenarioControl{
         //シナリオの更新
         //引数   -
         //戻り値 init8_t エラーチェック
-
         int8 updateScenario();
 
+        int8 scenarioGetter(int16* scenario_state);
+    static ScenarioControl &getInstance()
+    {
+        static ScenarioControl scenarioControl;
+        return scenarioControl;
+    }
 };

@@ -1,6 +1,7 @@
 //TiPositionCorrectionInfomation
 //タイムアタックポジションコレクションインフォメーション
 //
+#pragma once
 #include "../System/System.h"
 
 class TiPositionCorrectionInfomation{

@@ -1,6 +1,7 @@
 //SlEbActionInfomation
 //スラロームイーブイアクションインフォメーション
 //
+#pragma once
 #include "../System/System.h"
 
 class SlEbActionInfomation{

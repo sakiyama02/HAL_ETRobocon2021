@@ -1,9 +1,9 @@
-
+#pragma once
 #include "../System/System.h"
 
 class Motor {
 private:
-	motorPort portNum;
+	MotorPort portNum;
 
 public:
 	///
@@ -27,7 +27,7 @@ public:
 	/// @retval SYS_PARAM 引数エラー
 	/// @retval SYS_NG 異常終了
 	///
-	int8 init(motorPort port, motor_type_t type);
+	int8 init(MotorPort port, motor_type_t type);
 
 	///
 	/// @fn int8 getCounts (int32* motorAngle);

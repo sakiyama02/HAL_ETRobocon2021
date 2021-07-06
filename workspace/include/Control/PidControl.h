@@ -2,7 +2,7 @@
 //  PidControl.h
 //  PID制御クラス
 //
-
+#pragma once
 #include "../System/System.h"
 #include "../Sensor/SensorManager.h"
 

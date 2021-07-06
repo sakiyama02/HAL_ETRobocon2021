@@ -1,4 +1,4 @@
-
+#pragma once
 #include "../System/System.h"
 #include "Action.h"
 #include "../Steering/Steering.h"

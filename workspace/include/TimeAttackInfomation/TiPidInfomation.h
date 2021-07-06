@@ -1,6 +1,7 @@
 //TiPidInfomation
 //タイムアタックPIDインフォメーション
 //
+#pragma once
 #include "../System/System.h"
 
 class TiPidInfomation{

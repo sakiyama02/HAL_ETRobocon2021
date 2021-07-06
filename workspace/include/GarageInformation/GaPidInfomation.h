@@ -1,6 +1,7 @@
 //GapidInfomation
 //ガレージPIDカーブインフォメーション
 //
+#pragma once
 #include "../System/System.h"
 
 class GaPidInfomation{

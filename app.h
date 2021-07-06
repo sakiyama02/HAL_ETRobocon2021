@@ -59,7 +59,7 @@ extern "C" {
 
 #define MAIN_PRIORITY   5           /* メインタスクの優先度 */
                                     /* HIGH_PRIORITYより高くすること */
-
+#define BT_PRIORITY
 #define HIGH_PRIORITY   9           /* 並行実行されるタスクの優先度 */
 #define MID_PRIORITY    10
 #define LOW_PRIORITY    11
@@ -83,7 +83,11 @@ extern "C" {
 
 extern void main_task(intptr_t exinf);
 extern void bt_task(intptr_t exinf);
-extern void robo_task(intptr_t exinf);
+extern void start_task(intptr_t exinf);
+extern void updata_task(intptr_t exinf);
+extren void end_task(intptr_t exinf);
+extern void trapezoidal_task(intptr_t unused);
+extern void correction_task(intptr_t unused);
 static void user_system_create();
 static void user_system_destroy();
 

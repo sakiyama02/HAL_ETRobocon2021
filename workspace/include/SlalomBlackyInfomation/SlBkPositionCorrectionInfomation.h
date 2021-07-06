@@ -1,6 +1,7 @@
 //SlBkPositionCorrectionInfomation
 //スラロームブラッキーポジションコレクションインフォメーション
 //
+#pragma once
 #include "../System/System.h"
 
 class SlBkPositionCorrectionInfomation{

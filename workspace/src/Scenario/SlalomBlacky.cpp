@@ -5,13 +5,18 @@ int8 SlalomBlacky::run(int16 scene_num) {
         return SYS_PARAM;
     }
 
+    //スラロームブラッキにシーンが一つもない場合終了
+    if(SLALOMBLACKY_NUM==0){
+        return SYS_OK;
+    }
+
     //エラー格納変数
     int8 retChk=SYS_NG;
 
     // 情報クラスのインスタンス化
     SlBkActionInfomation ActionInfomation;
     SlBkCurveInfomation CurveInfomation;
-    SlBkPidInfomation PidInfomation;
+    SlBkpidInfomation PidInfomation;
     SlBkPositionCorrectionInfomation PositionCorrectionInfomation;
 
     // 情報構造体のインスタンス化
@@ -30,6 +35,9 @@ int8 SlalomBlacky::run(int16 scene_num) {
 
     //情報クラスから行動情報取得
     retChk=ActionInfomation.getter(scene_num,&changeInfo);
+    if(retChk!=SYS_OK){
+    
+    }
     retChk=CurveInfomation.getter(scene_num,&curveData);
     retChk=PidInfomation.getter(scene_num,&pidData);
     retChk=PositionCorrectionInfomation.getter(scene_num,&positioncorrectionData);
@@ -129,6 +137,7 @@ int8 SlalomBlacky::run(int16 scene_num) {
         break;
     }
     retChk=action->run(changeInfo.speed,pidData,directionData.direction,curveData);
+    delete action;
     return retChk;
 }
 //
@@ -140,27 +149,30 @@ int8 SlalomBlacky::sceneChenge(int16* scene_num){
         return SYS_PARAM;
     }
     int8 retChk=SYS_NG;
-
+    RGBData currgbData;
+    PositionData curpositionData;
+    uint16 curdistanceData=0;
+    DirectionData curdirectionData;
     // 情報クラスのインスタンス化
     ChangeInfo changeInfo;
+    //シングルトンのセンサ管理からインスタンスのポインタを取得
+    SensorManager &senserManage=SensorManager::getInstance();
+    //シングルトンの自己位置推定からインスタンスのポインタを取得
+    CarPosition &carPosition=CarPosition::getInstance();
     //構造体の初期化
     memset(&changeInfo,0,sizeof(ChangeInfo));
-
     //スラロームブラッキの切り替え情報クラスをインスタンス化
     SlBkActionInfomation ActionInfomation;
     //切り替え情報から情報取得
-    retChk=ActionInfomation.getter(scene_num,&changeInfo);
+    retChk=ActionInfomation.getter(*scene_num,&changeInfo);
 
     //切り替え判定情報から処理選択
     switch(changeInfo.judge){
         //シーン切り替え判定がrgb値の場合
         case JUDGE_RGB:
-            RGBData currgbData;
             memset(&currgbData,0,sizeof(RGBData));
-        //シングルトンのセンサ管理からインスタンスのポインタを取得
-            SensorManager &senserManage=SensorManager::getInstance();
         //rgbの現在時点最新状態を取得
-            senserManage.rgb_Getter(&currgbData);
+            senserManage.rgbGetter(&currgbData);
         //rgb値を目標値と現在値を比較
 
             retChk=colorJudge(currgbData,changeInfo.rgb_data,changeInfo.rgb_data.condition);
@@ -170,10 +182,7 @@ int8 SlalomBlacky::sceneChenge(int16* scene_num){
         break;
         //シーン切り替え判定が座標場合
         case JUDGE_POS:
-            PositionData curpositionData;
             memset(&curpositionData,0,sizeof(PositionData));
-        //シングルトンの自己位置推定からインスタンスのポインタを取得
-            CarPosition &carPosition=CarPosition::getInstance();
         //座標の現在時点最新状態を取得
             carPosition.getPos(&curpositionData);
          //XYを判断する場合
@@ -217,9 +226,6 @@ int8 SlalomBlacky::sceneChenge(int16* scene_num){
 
         //シーン切り替え判定が距離の場合
         case JUDGE_DIS:
-            uint16 curdistanceData=0;
-        //シングルトンのセンサ管理からインスタンスのポインタを取得
-            SensorManager &senserManage=SensorManager::getInstance();
         //超音波での距離の現在時点最新情報を取得
             senserManage.distanceGetter(&curdistanceData);
             retChk=distanceJudge(curdistanceData,changeInfo.distance);
@@ -230,11 +236,8 @@ int8 SlalomBlacky::sceneChenge(int16* scene_num){
 
         //シーン切り替え判定が向きの場合
         case JUDGE_DIR:
-            DirectionData curdirectionData;
             memset(&curdirectionData,0,sizeof(DirectionData));
-        //シングルトンの自己位置推定からインスタンスのポインタを取得
-            CarPosition &carPosition=CarPosition::getInstance();
-            CarPosition.getDir(&curdirectionData.direction);
+            carPosition.getDir(&curdirectionData.direction);
             retChk=directionJudge(curdirectionData.direction,
                                   changeInfo.direction_data.direction,
                                   changeInfo.direction_data.condition);

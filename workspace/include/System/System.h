@@ -1,5 +1,4 @@
-
-
+#pragma once
 #include <cstdint>
 #include <string.h>
 #include <memory>
@@ -65,6 +64,14 @@ enum MotorPort
   MOTOR_RIGHT, //右輪モーター
   MOTOR_LEFT,  //左輪モーター
   MOTOR_TAIL,  //尻尾モーター
+};
+
+enum SensorPort
+{
+  SENSOR_TOUCH, //タッチセンサー
+  SENSOR_COLOR, //カラーセンサー
+  SENSOR_SONAR, //超音波センサー
+  SENSOR_GYRO,  //ジャイロセンサー
 };
 
 // 判定用条件
