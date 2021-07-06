@@ -1,9 +1,9 @@
 #pragma once
 #include "../System/System.h"
 #include "Action.h"
-#include "../../include/Control/TrapezoidControl.h"
-#include "../../include/Control/PidControl.h"
-#include "../../include/Steering/Steering.h"
+#include "../Control/TrapezoidControl.h"
+#include "../Control/PidControl.h"
+#include "../Steering/Steering.h"
 
 class LineTrace : public Action {
 private:
