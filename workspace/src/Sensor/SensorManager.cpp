@@ -5,6 +5,9 @@
 
 #include "../../include/Sensor/SensorManager.h"
 
+SensorManager::SensorManager(){}
+SensorManager::~SensorManager(){}
+
 //
 //  -datail
 //  カラーセンサークラスからＲＧＢ値を取得する関数を呼び、
