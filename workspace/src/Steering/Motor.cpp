@@ -57,10 +57,10 @@ int8 Motor::resetCounts()
     ER errChk = ev3_motor_reset_counts(static_cast<motor_port_t>(portNum));
     if (errChk != E_OK)
     {
-        msg.LOG(LOG_ID_ERR, "%s %d -error-",__PRETTY_FUNCTION__,__LINE__);
+        //msg.LOG(LOG_ID_ERR, "%s %d -error-",__PRETTY_FUNCTION__,__LINE__);
         return SYS_NG;
     }
-    msg.LOG(LOG_ID_TRACE, "Motor::resetCounts -en-");
+    //msg.LOG(LOG_ID_TRACE, "Motor::resetCounts -en-");
     return SYS_OK;
 }
 
