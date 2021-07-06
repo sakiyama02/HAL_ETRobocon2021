@@ -185,7 +185,6 @@ int8 PositionCorrection::directionFix(){
 }
 
 
-
 //
 //ここから下は切り替え処理と同一
 //

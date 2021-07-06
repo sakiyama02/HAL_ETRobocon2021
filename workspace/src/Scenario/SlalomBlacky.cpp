@@ -149,12 +149,18 @@ int8 SlalomBlacky::sceneChenge(int16* scene_num){
         return SYS_PARAM;
     }
     int8 retChk=SYS_NG;
-
+    RGBData currgbData;
+    PositionData curpositionData;
+    uint16 curdistanceData=0;
+    DirectionData curdirectionData;
     // 情報クラスのインスタンス化
     ChangeInfo changeInfo;
+    //シングルトンのセンサ管理からインスタンスのポインタを取得
+    SensorManager &senserManage=SensorManager::getInstance();
+    //シングルトンの自己位置推定からインスタンスのポインタを取得
+    CarPosition &carPosition=CarPosition::getInstance();
     //構造体の初期化
     memset(&changeInfo,0,sizeof(ChangeInfo));
-
     //スラロームブラッキの切り替え情報クラスをインスタンス化
     SlBkActionInfomation ActionInfomation;
     //切り替え情報から情報取得
@@ -164,10 +170,7 @@ int8 SlalomBlacky::sceneChenge(int16* scene_num){
     switch(changeInfo.judge){
         //シーン切り替え判定がrgb値の場合
         case JUDGE_RGB:
-            RGBData currgbData;
             memset(&currgbData,0,sizeof(RGBData));
-        //シングルトンのセンサ管理からインスタンスのポインタを取得
-            SensorManager &senserManage=SensorManager::getInstance();
         //rgbの現在時点最新状態を取得
             senserManage.rgbGetter(&currgbData);
         //rgb値を目標値と現在値を比較
@@ -179,10 +182,7 @@ int8 SlalomBlacky::sceneChenge(int16* scene_num){
         break;
         //シーン切り替え判定が座標場合
         case JUDGE_POS:
-            PositionData curpositionData;
             memset(&curpositionData,0,sizeof(PositionData));
-        //シングルトンの自己位置推定からインスタンスのポインタを取得
-            CarPosition &carPosition=CarPosition::getInstance();
         //座標の現在時点最新状態を取得
             carPosition.getPos(&curpositionData);
          //XYを判断する場合
@@ -226,9 +226,6 @@ int8 SlalomBlacky::sceneChenge(int16* scene_num){
 
         //シーン切り替え判定が距離の場合
         case JUDGE_DIS:
-            uint16 curdistanceData=0;
-        //シングルトンのセンサ管理からインスタンスのポインタを取得
-            SensorManager &senserManage=SensorManager::getInstance();
         //超音波での距離の現在時点最新情報を取得
             senserManage.distanceGetter(&curdistanceData);
             retChk=distanceJudge(curdistanceData,changeInfo.distance);
@@ -239,10 +236,7 @@ int8 SlalomBlacky::sceneChenge(int16* scene_num){
 
         //シーン切り替え判定が向きの場合
         case JUDGE_DIR:
-            DirectionData curdirectionData;
             memset(&curdirectionData,0,sizeof(DirectionData));
-        //シングルトンの自己位置推定からインスタンスのポインタを取得
-            CarPosition &carPosition=CarPosition::getInstance();
             carPosition.getDir(&curdirectionData.direction);
             retChk=directionJudge(curdirectionData.direction,
                                   changeInfo.direction_data.direction,
