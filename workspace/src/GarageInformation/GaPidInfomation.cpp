@@ -21,7 +21,7 @@ GaPidInfomation::GaPidInfomation(){
 }
 
 GaPidInfomation::~GaPidInfomation(){
-    free(pidData);
+    delete(pidData);
 }
 
 int8 GaPidInfomation::getter(int16 scene_num,PIDData* pid_data){
