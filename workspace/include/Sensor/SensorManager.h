@@ -11,10 +11,10 @@ class SensorManager
 {
 private:
     //rgb値の格納変数
-    static RGBData rgbStorage;
+    RGBData rgbStorage;
     
     //距離値の格納変数
-    static uint16 distanceStorage;
+    uint16 distanceStorage;
 
     //カラーセンサーの実体生成
     ColorSensor colorSensor;
