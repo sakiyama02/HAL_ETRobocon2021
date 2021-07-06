@@ -1,4 +1,6 @@
 #include "../../include/Scenario/SlalomEebui.h"
+SlalomEebui::SlalomEebui(){}
+SlalomEebui::~SlalomEebui(){}
 int8 SlalomEebui::run(int16 scene_num) {
     //引数のエラーチェック
     if(scene_num==NULL){
