@@ -3,6 +3,9 @@
 //
 #include "../../include/Scenario/ScenarioControl.h"
 
+ScenarioControl::ScenarioControl(){}
+ScenarioControl::~ScenarioControl(){}
+
 //run
 //実行
 //

@@ -85,7 +85,7 @@ extern void main_task(intptr_t exinf);
 extern void bt_task(intptr_t exinf);
 extern void start_task(intptr_t exinf);
 extern void updata_task(intptr_t exinf);
-extren void end_task(intptr_t exinf);
+extern void end_task(intptr_t exinf);
 extern void trapezoidal_task(intptr_t unused);
 extern void correction_task(intptr_t unused);
 static void user_system_create();

@@ -60,10 +60,24 @@ void start_task(intptr_t unused)
     ev3_sensor_config(EV3_PORT_1, TOUCH_SENSOR);
     /* 動的に生成するインスタンスの初期化 */
     user_system_create();
-    //
+    //フライング
+    while (1)
+    {
+        if (ev3_touch_sensor_is_pressed(EV3_PORT_1) == 1)
+        {
+            printf("msg.LOG(LOG_ID_TRACE, 押されたやで");
+            break;
+        }
+        tslp_tsk(10 * 1000U);
+    }
+
     act_tsk(MAIN_TASK);
     act_tsk(UPDATA_TASK);
     sta_cyc(TRAPEZOIDAL_PERIOD);
+    slp_tsk();
+    ter_tsk(MAIN_TASK);
+    ter_tsk(END_TASK);
+    ter_tsk(UPDATA_TASK);
     ext_tsk();
 }
 
@@ -74,7 +88,6 @@ void main_task(intptr_t unused)
     //msg.LOG(LOG_ID_TRACE, "メインタスクスタート");
     ScenarioControl &scenariocontrol = ScenarioControl::getInstance();
 
-
     int8 retChk = SYS_NG;
     //実行
     retChk = scenariocontrol.run();
@@ -82,10 +95,8 @@ void main_task(intptr_t unused)
         //ログ
     }
 
-    //unity間通信
-    //tslp_tsk(9999);
-
-    ext_tsk();
+    slp_tsk();
+    //ext_tsk();
     //tslp_tsk();
 
     //msg.LOG(LOG_ID_TRACE, "メインタスクend");
@@ -95,21 +106,38 @@ void main_task(intptr_t unused)
 void updata_task(intptr_t unused)
 {
     int8 retChk = SYS_NG;
+    int16 senarioState = 0;
     CarPosition &carposition = CarPosition::getInstance();
     ScenarioControl &scenariocontrol = ScenarioControl::getInstance();
+
+    //シナリオ状態取得
+    retChk = scenariocontrol.scenarioGetter(&senarioState);
+    if( retChk != SYS_OK ){
+        //ログ
+    }  
+    //シナリオ終了
     
-    carposition.update();
+    if(senarioState == GARAGE + 1)
+    {
+        act_tsk(END_TASK);
+        slp_tsk();
+    }
+
+    
+    retChk = carposition.update();
     if( retChk != SYS_OK ){
         //ログ
     }
+
     //シナリオ制御更新
     retChk = scenariocontrol.updateScenario();
     if( retChk != SYS_OK ){
         //ログ
     }
 
+    //unity間通信
     tslp_tsk(9999);
-    act_tsk(MAIN_TASK);
+    wup_tsk(MAIN_TASK);
 
 }
 
@@ -122,7 +150,8 @@ void end_task(intptr_t unused)
     tslp_tsk(3300 * 1000);
     // msg.LOG(LOG_ID_ERR,"カウント終了");
     ETRoboc_notifyCompletedToSimulator();
-    ext_tsk();
+    wup_tsk(START_TASK);
+    //ext_tsk();
 
 }
 

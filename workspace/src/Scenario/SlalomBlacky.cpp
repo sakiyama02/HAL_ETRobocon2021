@@ -1,4 +1,6 @@
 #include "../../include/Scenario/SlalomBlacky.h"
+SlalomBlacky::SlalomBlacky(){}
+SlalomBlacky::~SlalomBlacky(){}
 int8 SlalomBlacky::run(int16 scene_num) {
     //引数のエラーチェック
     if(scene_num==NULL){

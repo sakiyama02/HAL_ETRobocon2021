@@ -32,7 +32,7 @@ GaActionInfomation::GaActionInfomation(){
 }
 
 GaActionInfomation::~GaActionInfomation(){
-    free(changeInfoData);
+    delete(changeInfoData);
 }
 
 int8 GaActionInfomation::getter(int16 scene_num,ChangeInfo* change_info){

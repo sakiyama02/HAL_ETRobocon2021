@@ -19,7 +19,7 @@ GaCurveInfomation::GaCurveInfomation(){
 }
 
 GaCurveInfomation::~GaCurveInfomation(){
-    free(curveData);
+    delete(curveData);
 }
 
 int8 GaCurveInfomation::getter(int16 scene_num,CurveData* curve_data){

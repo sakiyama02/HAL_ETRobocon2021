@@ -32,7 +32,7 @@ SlEfActionInfomation::SlEfActionInfomation(){
 }
 
 SlEfActionInfomation::~SlEfActionInfomation(){
-    free(changeInfoData);
+    delete(changeInfoData);
 }
 
 int8 SlEfActionInfomation::getter(int16 scene_num,ChangeInfo* change_info){

@@ -13,7 +13,6 @@ APPL_CXXOBJS += \
 				Turn.o\
 				CarPosition.o\
 				PidControl.o\
-				Steering.o\
 				TrapezoidControl.o\
 				GaActionInfomation.o\
 				GaCurveInfomation.o\
@@ -73,12 +72,12 @@ APPL_DIRS +=\
 	$(mkfile_path)workspace/src/PositionCorrection\
 	$(mkfile_path)workspace/src/Scenario\
 	$(mkfile_path)workspace/src/Sensor\
-	$(mkfile_path)workspace/src/SlalomBlackyInformation\
-	$(mkfile_path)workspace/src/SlalomEebuiInformation\
-	$(mkfile_path)workspace/src/SlalomEifieInformation\
+	$(mkfile_path)workspace/src/SlalomBlackyInfomation\
+	$(mkfile_path)workspace/src/SlalomEebuiInfomation\
+	$(mkfile_path)workspace/src/SlalomEifieInfomation\
 	$(mkfile_path)workspace/src/Steering\
 	$(mkfile_path)workspace/src/System\
-	$(mkfile_path)workspace/src/TimeAttackInformation\
+	$(mkfile_path)workspace/src/TimeAttackInfomation\
 
 
 
@@ -91,12 +90,12 @@ INCLUDES +=\
 	-I$(mkfile_path)workspace/include/PositionCorrection\
 	-I$(mkfile_path)workspace/include/Scenario\
 	-I$(mkfile_path)workspace/include/Sensor\
-	-I$(mkfile_path)workspace/include/SlalomBlackyInformation\
-	-I$(mkfile_path)workspace/include/SlalomEebuiInformation\
-	-I$(mkfile_path)workspace/include/SlalomEifieInformation\
+	-I$(mkfile_path)workspace/include/SlalomBlackyInfomation\
+	-I$(mkfile_path)workspace/include/SlalomEebuiInfomation\
+	-I$(mkfile_path)workspace/include/SlalomEifieInfomation\
 	-I$(mkfile_path)workspace/include/Steering\
 	-I$(mkfile_path)workspace/include/System\
-	-I$(mkfile_path)workspace/include/TimeAttackInformation\
+	-I$(mkfile_path)workspace/include/TimeAttackInfomation\
 
 
 COPTS += -I$(ETROBO_HRP3_WORKSPACE)/etroboc_common

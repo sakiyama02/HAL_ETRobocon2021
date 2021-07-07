@@ -19,7 +19,7 @@ SlEbCurveInfomation::SlEbCurveInfomation(){
 }
 
 SlEbCurveInfomation::~SlEbCurveInfomation(){
-    free(curveData);
+    delete(curveData);
 }
 
 int8 SlEbCurveInfomation::getter(int16 scene_num,CurveData* curve_data){
