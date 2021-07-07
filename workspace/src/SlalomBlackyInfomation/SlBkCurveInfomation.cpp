@@ -10,8 +10,8 @@ SlBkCurveInfomation::SlBkCurveInfomation(){
 
 //template
 /*
-    curveData[index].radius=0f;
-    curveData[index].dirction=0f;
+    curveData[index].radius=0;
+    curveData[index].dirction=0;
 
     index++;
 */
