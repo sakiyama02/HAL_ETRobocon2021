@@ -54,14 +54,9 @@ static void user_system_destroy()
 /*  スタート処理タスク */
 void start_task(intptr_t unused)
 {
-    frLog &msg = frLog::GetInstance();
-    char command[] = {"logon -section  \n"};
-    int index = 0;
 
-    for(index = 0;index < (sizeof(command)/sizeof(command[0]));index++){
-        msg.SetLog(command[index]);
-    }
-    
+    char command[] = {"logon -section  \n"};
+    //
     ev3_sensor_config(EV3_PORT_1, TOUCH_SENSOR);
     /* 動的に生成するインスタンスの初期化 */
     user_system_create();
@@ -75,15 +70,19 @@ void start_task(intptr_t unused)
         }
         tslp_tsk(10 * 1000U);
     }
-
+    printf("1\n");
     act_tsk(MAIN_TASK);
-    act_tsk(UPDATA_TASK);
+    printf("2\n");
+    //act_tsk(UPDATA_TASK);
+    printf("3\n");
     sta_cyc(TRAPEZOIDAL_PERIOD);
+    ext_tsk();
+    /*
     slp_tsk();
     ter_tsk(MAIN_TASK);
     ter_tsk(END_TASK);
     ter_tsk(UPDATA_TASK);
-    ext_tsk();
+    ext_tsk();*/
 }
 
 /* メインタスク */
@@ -92,7 +91,7 @@ void main_task(intptr_t unused)
     //frLog &msg = frLog::GetInstance();
     //msg.LOG(LOG_ID_TRACE, "メインタスクスタート");
     ScenarioControl &scenariocontrol = ScenarioControl::getInstance();
-
+    //printf("mainやデー\n");
     int8 retChk = SYS_NG;
     //実行
     retChk = scenariocontrol.run();
@@ -100,10 +99,12 @@ void main_task(intptr_t unused)
         //ログ
     }
 
-    slp_tsk();
-    //ext_tsk();
+    act_tsk(UPDATA_TASK);
+    //slp_tsk();
+    //printf("mext\n");
+    ext_tsk();
     //tslp_tsk();
-
+    //printf("end\n");
     //msg.LOG(LOG_ID_TRACE, "メインタスクend");
 }
 
@@ -114,18 +115,19 @@ void updata_task(intptr_t unused)
     int16 senarioState = 0;
     CarPosition &carposition = CarPosition::getInstance();
     ScenarioControl &scenariocontrol = ScenarioControl::getInstance();
-
+    //printf("updataやデー\n");
     //シナリオ状態取得
     retChk = scenariocontrol.scenarioGetter(&senarioState);
     if( retChk != SYS_OK ){
         //ログ
     }  
+
     //シナリオ終了
     
     if(senarioState == GARAGE + 1)
     {
         act_tsk(END_TASK);
-        slp_tsk();
+        ext_tsk();
     }
 
     
@@ -139,16 +141,19 @@ void updata_task(intptr_t unused)
     if( retChk != SYS_OK ){
         //ログ
     }
-
+    //printf("updataない\n");
     //unity間通信
     tslp_tsk(9999);
-    wup_tsk(MAIN_TASK);
-
+    //wup_tsk(MAIN_TASK);
+    act_tsk(MAIN_TASK);
+    //printf("uext\n");
+    ext_tsk();
 }
 
 /* 終了タスク */
 void end_task(intptr_t unused)
 {
+    printf("終了やデー\n");
     user_system_destroy();
     stp_cyc(TRAPEZOIDAL_PERIOD);
     // msg.LOG(LOG_ID_ERR,"カウント開始");
@@ -156,7 +161,7 @@ void end_task(intptr_t unused)
     // msg.LOG(LOG_ID_ERR,"カウント終了");
     ETRoboc_notifyCompletedToSimulator();
     wup_tsk(START_TASK);
-    //ext_tsk();
+    ext_tsk();
 
 }
 
