@@ -18,6 +18,7 @@ APPL_CXXOBJS += \
 				GaCurveInfomation.o\
 				GaPidInfomation.o\
 				GaPositionCorrectionInfomation.o\
+				frLog.o\
 				PositionCorrection.o\
 				Garage.o\
 				ScenarioControl.o\
