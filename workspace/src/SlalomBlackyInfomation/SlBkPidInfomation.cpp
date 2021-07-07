@@ -10,10 +10,10 @@ SlBkpidInfomation::SlBkpidInfomation(){
 
 //template
 /*
-    pidData[index].pGain=0f;
-    pidData[index].iGain=0f;
-    pidData[index].dGain=0f;
-    pidData[index].targetVal=0f;
+    pidData[index].pGain=0;
+    pidData[index].iGain=0;
+    pidData[index].dGain=0;
+    pidData[index].targetVal=0;
 
     index++;
 */    
