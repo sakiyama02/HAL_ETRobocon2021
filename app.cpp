@@ -54,9 +54,14 @@ static void user_system_destroy()
 /*  スタート処理タスク */
 void start_task(intptr_t unused)
 {
-
+    frLog &msg = frLog::GetInstance();
     char command[] = {"logon -section  \n"};
-    //
+    int index = 0;
+
+    for(index = 0;index < (sizeof(command)/sizeof(command[0]));index++){
+        msg.SetLog(command[index]);
+    }
+    
     ev3_sensor_config(EV3_PORT_1, TOUCH_SENSOR);
     /* 動的に生成するインスタンスの初期化 */
     user_system_create();
