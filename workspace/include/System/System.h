@@ -161,8 +161,8 @@ typedef struct ChangeInfo_Tag {
 	PosInfoData pos_info_data;		    // 切り替え用の座標
 	DirectionData direction_data;	// 切り替え用の機体の向き
 	uint8 distance;		            // 切り替え用の超音波距離
-	uint8 judge;		                // 切り替え値の判定		例：ポジションの切り替えを行いたいなら、JUDGE_POSを入れる			
-	uint8 section_act;	        	// シーンの動作を入れる		例：ライントレースのシーンなら、LINE_TRACEを入れる			
+	JudgeType judge;		                // 切り替え値の判定		例：ポジションの切り替えを行いたいなら、JUDGE_POSを入れる			
+	ActionType section_act;	        	// シーンの動作を入れる		例：ライントレースのシーンなら、LINE_TRACEを入れる			
 	int32 speed;		            // このシーン時の目標速度					
 }ChangeInfo;
 
