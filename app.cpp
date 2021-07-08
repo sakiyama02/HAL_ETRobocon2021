@@ -7,7 +7,6 @@
  ** 注記 : sample_c4 (sample_c3にBluetooth通信リモートスタート機能を追加)
  ******************************************************************************
  **/
-
 #include "ev3api.h"
 #include "app.h"
 #include "etroboc_ext.h"
@@ -19,15 +18,12 @@
 #include "workspace/include/Steering/Steering.h"
 #include "workspace/include/Sensor/SensorManager.h"
 //#include "workspace/include/Calculation/BrightCalc.h"
-
-
 #if defined(BUILD_MODULE)
 #include "module_cfg.h"
 #else
 #include "kernel_cfg.h"
 #endif
 bool flag = false;
-
 /**
  * EV3システム生成
  * モーター設定
@@ -39,7 +35,6 @@ static void user_system_create()
     SensorManager &sensorManager = SensorManager::getInstance();
     sensorManager.initSensor();
 }
-
 /**
  * EV3システム破棄
  */
@@ -50,13 +45,17 @@ static void user_system_destroy()
     steering.rotateWheel(power);
     steering.deletePort();
 }
-
 /*  スタート処理タスク */
 void start_task(intptr_t unused)
 {
-
-    char command[] = {"logon -section  \n"};
+    frLog &msg = frLog::GetInstance();
+    char command[] = {"logon -section -trace \n"};
     //
+        int index = 0;
+    for (index = 0; index < (sizeof(command) / sizeof(command[0])); index++)
+    {
+        msg.SetLog(command[index]);
+    }
     ev3_sensor_config(EV3_PORT_1, TOUCH_SENSOR);
     /* 動的に生成するインスタンスの初期化 */
     user_system_create();
@@ -84,11 +83,10 @@ void start_task(intptr_t unused)
     ter_tsk(UPDATA_TASK);
     ext_tsk();*/
 }
-
 /* メインタスク */
 void main_task(intptr_t unused)
 {
-    //frLog &msg = frLog::GetInstance();
+    frLog &msg = frLog::GetInstance();
     //msg.LOG(LOG_ID_TRACE, "メインタスクスタート");
     ScenarioControl &scenariocontrol = ScenarioControl::getInstance();
     //printf("mainやデー\n");
@@ -98,7 +96,6 @@ void main_task(intptr_t unused)
     if( retChk != SYS_OK ){
         //ログ
     }
-
     act_tsk(UPDATA_TASK);
     //slp_tsk();
     //printf("mext\n");
@@ -107,7 +104,6 @@ void main_task(intptr_t unused)
     //printf("end\n");
     //msg.LOG(LOG_ID_TRACE, "メインタスクend");
 }
-
 /* 更新タスク */
 void updata_task(intptr_t unused)
 {
@@ -121,21 +117,16 @@ void updata_task(intptr_t unused)
     if( retChk != SYS_OK ){
         //ログ
     }  
-
     //シナリオ終了
-    
     if(senarioState == GARAGE + 1)
     {
         act_tsk(END_TASK);
         ext_tsk();
     }
-
-    
     retChk = carposition.update();
     if( retChk != SYS_OK ){
         //ログ
     }
-
     //シナリオ制御更新
     retChk = scenariocontrol.updateScenario();
     if( retChk != SYS_OK ){
@@ -149,7 +140,6 @@ void updata_task(intptr_t unused)
     //printf("uext\n");
     ext_tsk();
 }
-
 /* 終了タスク */
 void end_task(intptr_t unused)
 {
@@ -162,9 +152,7 @@ void end_task(intptr_t unused)
     ETRoboc_notifyCompletedToSimulator();
     wup_tsk(START_TASK);
     ext_tsk();
-
 }
-
 /* Bluetoothタスク */ 
 void bt_task(intptr_t unused)
 {
@@ -177,12 +165,12 @@ void bt_task(intptr_t unused)
     //msg.LOG(LOG_ID_TRACE, "Bluetoothエンド");
     ext_tsk();
 }
-
 /* 周期タスク処理 */
-
 /* 台形制御タスク */
 void trapezoidal_task(intptr_t unused)
 {
+    frLog &msg = frLog::GetInstance();
+   // msg.LOG(LOG_ID_TRACE, "台形だよ");
     int8 retChk = SYS_NG;
     TrapezoidControl &trapezoidcontrol = TrapezoidControl::getInstance();
     //台形制御計算
@@ -192,10 +180,8 @@ void trapezoidal_task(intptr_t unused)
     }
 }
 //周期タスクスタート:sta_cyc(TRAPEZOIDAL_PERIOD)
-
 /* 補正タスク */
 void correction_task(intptr_t unused)
 {
     int8 retChk = SYS_NG;
 }
-
