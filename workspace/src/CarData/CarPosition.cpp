@@ -87,7 +87,7 @@ int8 CarPosition::calcOdometry(WheelDist* wheel_dist)
     carPos.yPosition += addPos.yPosition;
 
     /* 角度更新 */
-    carDirection += addRad;
+    carDirection += angle;
 
      /*
     addPos.xPosition /= UNIT;

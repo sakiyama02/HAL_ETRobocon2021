@@ -44,7 +44,7 @@ int8 Steering::init(){
     return SYS_OK;
 }
 
-int8 Steering::ritateArm(int32 keepPower){
+int8 Steering::rotateArm(int32 keepPower){
     if(keepPower < -100 || keepPower > 100){
         /* 引き数エラー */
         return SYS_PARAM;

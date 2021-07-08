@@ -14,6 +14,11 @@ int8 ArmAction::run(int32 speed,PIDData pid_data = {0.0f,0.0f,0.0f,0.0f},
 
     memset(&motorPower,0,sizeof(MotorPower));
 
+     retChk = steering.rotateArm(30);
+     if(retChk != SYS_OK){
+        return SYS_NG;
+    }
+
     // 台形制御のターゲット値を設定
     retChk = trapezoid.setTargetSpeed(speed);
     if(retChk != SYS_OK){
