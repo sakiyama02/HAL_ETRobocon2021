@@ -11,6 +11,7 @@
 #include "../../include/Scenario/SlalomEifie.h"
 #include "../../include/Scenario/TimeAttack.h"
 
+#define START           0
 #define TIME_ATACK      1
 #define SLALOM_EEBUI    2
 #define SLALOM_BLACKY   3
@@ -22,8 +23,8 @@
 
 class ScenarioControl{
     private:
-        int16 scenarioState;
-        int16 sceneNum;
+        int16 scenarioState=TIME_ATACK;
+        int16 sceneNum=START;
     public:
         ScenarioControl();
 

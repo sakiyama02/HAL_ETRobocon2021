@@ -3,6 +3,7 @@
 #include <string.h>
 #include <memory>
 #include <string>
+#include "../Logger/frLog.h"
 #include "ev3api.h"
 
 #define SYS_OK 0    //正常終了

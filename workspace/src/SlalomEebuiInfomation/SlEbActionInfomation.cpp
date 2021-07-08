@@ -10,22 +10,23 @@ SlEbActionInfomation::SlEbActionInfomation(){
 
 //template
 /*
-    changeInfoData[index].rgb_data.r=0f;
-    changeInfoData[index].rgb_data.g=0f;
-    changeInfoData[index].rgb_data.b=0f;
-    changeInfoData[index].rgb_data.condition=0f;
+    changeInfoData[index].rgb_data.r=0;
+    changeInfoData[index].rgb_data.g=0;
+    changeInfoData[index].rgb_data.b=0;
+    changeInfoData[index].rgb_data.condition=0;
 
-    changeInfoData[index].pos_info_data.potision=0f;
-    changeInfoData[index].pos_info_data.xCondition=0f;
-    changeInfoData[index].pos_info_data.yCondition=0f;
+    changeInfoData[index].pos_info_data.potision.xPosition=0;
+    changeInfoData[index].pos_info_data.potision.yPosition-0;
+    changeInfoData[index].pos_info_data.xCondition=0;
+    changeInfoData[index].pos_info_data.yCondition=0;
 
-    changeInfoData[index].direction_data.direction=0f;
-    changeInfoData[index].direction_data.condition=0f;
+    changeInfoData[index].direction_data.direction=0;
+    changeInfoData[index].direction_data.condition=0;
 
-    changeInfoData[index].distance=0f;
-    changeInfoData[index].judge=0f;
-    changeInfoData[index].section_act=0f;
-    changeInfoData[index].speed=0f;
+    changeInfoData[index].distance=0;
+    changeInfoData[index].judge=0;
+    changeInfoData[index].section_act=0;
+    changeInfoData[index].speed=0;
 
     index++;
 */
