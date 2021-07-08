@@ -22,8 +22,7 @@ TiCurveInfomation::~TiCurveInfomation(){
 }
 
 int8 TiCurveInfomation::getter(int16 scene_num,CurveData* curve_data){
-    
-    curve_data=&curveData[scene_num];
+    memcpy(curve_data,&curveData[scene_num],sizeof(CurveData));
 
     return SYS_OK;
 }

@@ -32,13 +32,13 @@ int8 Curve::run(int32 speed,PIDData pid_data,float angle,CurveData curve_data)
 
     // 左カーブの比率
     if( curve_data.dirction == CURVE_LEFT ) {
-        ratioLeft  = curve_data.radius + CAR_WIDTH / 2;
-        ratioRight = curve_data.radius - CAR_WIDTH / 2;
+        ratioLeft  = (curve_data.radius - CAR_WIDTH / 2)/(curve_data.radius + CAR_WIDTH / 2);
+        ratioRight = 1;
     } 
     // 左カーブの比率
     else if( curve_data.dirction == CURVE_RIGHT ) {
-        ratioLeft  = curve_data.radius - CAR_WIDTH / 2;
-        ratioRight = curve_data.radius + CAR_WIDTH / 2;
+        ratioLeft  = 1;
+        ratioRight = (curve_data.radius - CAR_WIDTH / 2)/(curve_data.radius + CAR_WIDTH / 2);
     }
     // カーブの比率計算
     motorPower.leftPower  = speed * ratioLeft;
