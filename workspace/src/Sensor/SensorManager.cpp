@@ -72,11 +72,20 @@ int8 SensorManager::rgbGetter(RGBData* rgb_data)
 //
 int8 SensorManager::hsvGetter(uint16* v_data)
 {    
+    int8 retChk = SYS_NG;           //戻り値確認変数
+
     //argument check
     if (v_data == NULL)
     {
         return SYS_PARAM;
     }
+    retChk = getRgb();
+    //戻り値check
+    if (retChk != SYS_OK)
+    {
+        return retChk;
+    }
+
     //hsvのv値を格納
     if(rgbStorage.r > rgbStorage.g && rgbStorage.r > rgbStorage.b)
     {
@@ -110,7 +119,7 @@ int8 SensorManager::distanceGetter(uint16* distance_data)
     {
         return SYS_PARAM;
     }
-
+    
     //超音波センサーの値を格納
     distance_data = &distanceStorage;
 
