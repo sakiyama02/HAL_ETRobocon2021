@@ -3,10 +3,7 @@ SlalomEifie::SlalomEifie(){}
 SlalomEifie::~SlalomEifie(){}
 //メインタスクでの処理
 int8 SlalomEifie::run(int16 scene_num) {
-    //引数のエラーチェック
-    if(scene_num==NULL){
-        return SYS_PARAM;
-    }
+
 
     //スラロームエーフィにシーンが一つもない場合正常終了
     if(SLALOMEIFIE_NUM==0){
@@ -134,7 +131,7 @@ Action *action;
         default:
         break;
     }
-    retChk=action->run(changeInfo.speed,pidData,directionData.direction,curveData);
+    retChk=action->run(changeInfo.speed,pidData,changeInfo.direction_data.direction,curveData);
     //動的メモリの開放
     delete action;
     return retChk;

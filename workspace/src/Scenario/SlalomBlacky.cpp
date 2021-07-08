@@ -2,11 +2,7 @@
 SlalomBlacky::SlalomBlacky(){}
 SlalomBlacky::~SlalomBlacky(){}
 int8 SlalomBlacky::run(int16 scene_num) {
-    //引数のエラーチェック
-    if(scene_num==NULL){
-        return SYS_PARAM;
-    }
-
+    
     //スラロームブラッキにシーンが一つもない場合終了
     if(SLALOMBLACKY_NUM==0){
         return SYS_OK;
@@ -138,7 +134,7 @@ int8 SlalomBlacky::run(int16 scene_num) {
         default:
         break;
     }
-    retChk=action->run(changeInfo.speed,pidData,directionData.direction,curveData);
+    retChk=action->run(changeInfo.speed,pidData,changeInfo.direction_data.direction,curveData);
     delete action;
     return retChk;
 }

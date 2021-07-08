@@ -2,10 +2,6 @@
 SlalomEebui::SlalomEebui(){}
 SlalomEebui::~SlalomEebui(){}
 int8 SlalomEebui::run(int16 scene_num) {
-    //引数のエラーチェック
-    if(scene_num==NULL){
-        return SYS_PARAM;
-    }
 
     //スラロームイーブイにシーンが一つもない場合正常終了
     if(SLALOMEEBUI_NUM==0){
@@ -132,7 +128,7 @@ int8 SlalomEebui::run(int16 scene_num) {
         default:
         break;
     }
-    retChk=action->run(changeInfo.speed,pidData,directionData.direction,curveData);
+    retChk=action->run(changeInfo.speed,pidData,changeInfo.direction_data.direction,curveData);
     delete action;
     return retChk;
 }
