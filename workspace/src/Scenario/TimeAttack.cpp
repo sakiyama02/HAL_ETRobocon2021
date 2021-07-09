@@ -240,7 +240,7 @@ int8 TimeAttack::sceneChenge(int16* scene_num){
                                   changeInfo.direction_data.direction,
                                   changeInfo.direction_data.condition);
             if(retChk==SYS_OK){
-                *scene_num++;
+                *scene_num+=1;
             }
         break;
     }
