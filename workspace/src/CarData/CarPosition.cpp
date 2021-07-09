@@ -13,6 +13,7 @@ CarPosition::~CarPosition(){}
 
 int8 CarPosition::update()
 {
+    frLog &msg = frLog::GetInstance();
     int8 retChk=SYS_NG;
     Steering &steering = Steering::getInstance();
     MotorAngle preAngle;
@@ -28,16 +29,19 @@ int8 CarPosition::update()
     // 前回モータ角度取得
     retChk = steering.getMotorAngle(&preAngle);
     if( retChk != SYS_OK ){
+        msg.LOG(LOG_ID_ERR,"CarPos.update getMotorAngle 1 err\n");
         return retChk;
     }
     // モータ角度更新
     retChk = steering.updateAngle();
     if( retChk != SYS_OK){
+        msg.LOG(LOG_ID_ERR,"CarPos.update updateAngle err\n");
         return retChk;
     }
     // 最新モータ角度取得
      retChk = steering.getMotorAngle(&nowAngle);
     if( retChk != SYS_OK ){
+        msg.LOG(LOG_ID_ERR,"CarPos.update getMotorAngle 2 err\n");
         return retChk;
     }
 
@@ -51,6 +55,7 @@ int8 CarPosition::update()
     /* 計算し更新 */
     retChk = calcOdometry(&wheelDist);
     if( retChk != SYS_OK ){
+        msg.LOG(LOG_ID_ERR,"CarPos.update calcOdometry err\n");
         return retChk;
     }
 
@@ -59,7 +64,9 @@ int8 CarPosition::update()
 
 int8 CarPosition::calcOdometry(WheelDist* wheel_dist)
 {
+    frLog &msg = frLog::GetInstance();
     if( wheel_dist == NULL ){
+        msg.LOG(LOG_ID_ERR,"CarPosition 引数エラー\n");
         return SYS_PARAM;
     }
     float  angle    = 0.0f;
