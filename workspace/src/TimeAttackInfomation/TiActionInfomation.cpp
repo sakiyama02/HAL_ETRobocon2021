@@ -38,7 +38,6 @@ TiActionInfomation::~TiActionInfomation(){
 
 int8 TiActionInfomation::getter(int16 scene_num,ChangeInfo* change_info){
 
-    change_info=&changeInfoData[scene_num];
-
+    memcpy(change_info,&changeInfoData[scene_num],sizeof(ChangeInfo));
     return SYS_OK;
 }
