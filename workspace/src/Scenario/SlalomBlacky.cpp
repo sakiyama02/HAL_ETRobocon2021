@@ -247,7 +247,7 @@ int8 SlalomBlacky::sceneChenge(int16* scene_num){
 
     //スラロームブラッキのシーンの終了かの確認
     //シーンの分岐のために超音波の距離を取得
-    if(scene_num>SLALOMBLACKY_NUM){
+    if(*scene_num>SLALOMBLACKY_NUM){
         *scene_num=-1;
     }
 

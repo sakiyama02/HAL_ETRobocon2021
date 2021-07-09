@@ -246,7 +246,7 @@ int8 Garage::sceneChenge(int16* scene_num){
 
     //ガレージのシーンの終了かの確認
     //シーンの分岐のために超音波の距離を取得
-    if(scene_num>GARAGE_NUM){
+    if(*scene_num>GARAGE_NUM){
         *scene_num=-1;
     }
     return retChk;
