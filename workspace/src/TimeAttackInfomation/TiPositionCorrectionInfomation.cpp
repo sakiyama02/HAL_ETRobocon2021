@@ -36,7 +36,6 @@ TiPositionCorrectionInfomation::~TiPositionCorrectionInfomation(){
 
 int8 TiPositionCorrectionInfomation::getter(int16 scene_num,PositionCorrectionData* positioncorrection_data){
     
-    positioncorrection_data=&positionCorrectionData[scene_num];
-
+    memcpy(positioncorrection_data,&positionCorrectionData[scene_num],sizeof(PositionCorrectionData));
     return SYS_OK;
 }

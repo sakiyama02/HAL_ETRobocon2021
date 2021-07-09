@@ -26,7 +26,7 @@ SlEfpidInfomation::~SlEfpidInfomation(){
 
 int8 SlEfpidInfomation::getter(int16 scene_num,PIDData* pid_data){
     
-    pid_data = &pidData[scene_num];
+    memcpy(pid_data,&pidData[scene_num],sizeof(PIDData));
 
     return SYS_OK;
 }

@@ -37,7 +37,7 @@ SlEbPositionCorrectionInfomation::~SlEbPositionCorrectionInfomation(){
 
 int8 SlEbPositionCorrectionInfomation::getter(int16 scene_num,PositionCorrectionData* positioncorrection_data){
     
-    positioncorrection_data=&positionCorrectionData[scene_num];
+    memcpy(positioncorrection_data,&positionCorrectionData[scene_num],sizeof(PositionCorrectionData));
 
     return SYS_OK;
 }
