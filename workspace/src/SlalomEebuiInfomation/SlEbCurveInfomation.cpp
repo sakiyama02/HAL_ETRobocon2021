@@ -5,7 +5,7 @@
 #include "../../include/SlalomEebuiInfomation/SlEbCurveInfomation.h"
 
 SlEbCurveInfomation::SlEbCurveInfomation(){
-    memset(curveData,0,sizeof(CurveData)*TIMEATTACK_NUM);
+    memset(curveData,0,sizeof(CurveData)*SLALOMEEBUI_NUM);
     int16 index = 0;
 
 //template

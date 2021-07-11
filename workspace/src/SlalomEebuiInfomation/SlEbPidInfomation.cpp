@@ -5,7 +5,7 @@
 #include "../../include/SlalomEebuiInfomation/SlEbPidInfomation.h"
 
 SlEbpidInfomation::SlEbpidInfomation(){
-    memset(pidData,0,sizeof(PIDData)*TIMEATTACK_NUM);
+    memset(pidData,0,sizeof(PIDData)*SLALOMEEBUI_NUM);
     int16 index = 0;
 
 //template

@@ -5,7 +5,7 @@
 #include "../../include/SlalomEifieInfomation/SlEfActionInfomation.h"
 
 SlEfActionInfomation::SlEfActionInfomation(){
-    memset(changeInfoData,0,sizeof(ChangeInfo) * TIMEATTACK_NUM);
+    memset(changeInfoData,0,sizeof(ChangeInfo) * SLALOMEIFIE_NUM);
     int16 index = 0;
 
 //template

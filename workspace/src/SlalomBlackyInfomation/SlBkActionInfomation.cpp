@@ -5,7 +5,7 @@
 #include "../../include/SlalomBlackyInfomation/SlBkActionInfomation.h"
 
 SlBkActionInfomation::SlBkActionInfomation(){
-    memset(changeInfoData,0,sizeof(ChangeInfo) * TIMEATTACK_NUM);
+    memset(changeInfoData,0,sizeof(ChangeInfo) * SLALOMBLACKY_NUM);
     int16 index = 0;
 
 //template
