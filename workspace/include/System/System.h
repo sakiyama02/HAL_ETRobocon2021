@@ -56,7 +56,7 @@ JUDGE_RGB,
 JUDGE_POS,
 JUDGE_DIS,
 JUDGE_DIR,
-NONE
+JUDGE_NONE,
 };
 
 //モーターポート番号
