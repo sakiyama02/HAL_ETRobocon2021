@@ -24,9 +24,9 @@ class TimeAttack : public SceneControl{
     ~TimeAttack();
     int8 sceneChenge(int16*);
     int8 run(int16);
-    int8 colorJudge(RGBData,RGBData,int8);
-    int8 xPositionJudge(float,float,int8);
-    int8 yPositionJudge(float,float,int8);
+    int8 colorJudge(RGBData,RGBData,Range);
+    int8 xPositionJudge(float,float,Range);
+    int8 yPositionJudge(float,float,Range);
     int8 distanceJudge(uint16,uint16);
-    int8 directionJudge(float,float,int8);
+    int8 directionJudge(float,float,Range);
 };
