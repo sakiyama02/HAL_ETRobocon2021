@@ -8,7 +8,7 @@ int8 LineTrace::run(int32 speed,PIDData pid_data,float angle = 0.0f,CurveData cu
 {
     frLog &msg = frLog::GetInstance();
     if( speed < -100 && speed > 100 ) {
-        msg.LOG(LOG_ID_ERR,"LineTraceAction 引数エラー\n");
+        msg.LOG(LOG_ID_ERR,"LineTrace::run 引数エラー\n");
         return SYS_PARAM;
     }
 
@@ -24,27 +24,27 @@ int8 LineTrace::run(int32 speed,PIDData pid_data,float angle = 0.0f,CurveData cu
     // 台形制御のターゲット値を設定
     retChk = trapezoid.setTargetSpeed(speed);
     if(retChk != SYS_OK){
-        msg.LOG(LOG_ID_ERR,"LineTraceAction setTargetSpeed err\n");
+        msg.LOG(LOG_ID_ERR,"LineTrace::run setTargetSpeed err\n");
         return SYS_NG;
     }
     // 台形制御からモータ速度を取得
     retChk = trapezoid.getMotorPower(&speed);
         if(retChk != SYS_OK){
-        msg.LOG(LOG_ID_ERR,"LineTraceAction getMotorPower err\n");
+        msg.LOG(LOG_ID_ERR,"LineTrace::run getMotorPower err\n");
         return SYS_NG;
     }
 
     // pid値を渡して補正値を計算する
     retChk = pidControl.calcPid(&pid_data);
     if(retChk != SYS_OK){
-        msg.LOG(LOG_ID_ERR,"LineTraceAction calcPid err\n");
+        msg.LOG(LOG_ID_ERR,"LineTrace::run calcPid err\n");
         return SYS_NG;
     }
 
     // pidの補正値を取得
     retChk = pidControl.getRevison(&revision);
     if(retChk != SYS_OK){
-        msg.LOG(LOG_ID_ERR,"LineTraceAction getRevision err\n");
+        msg.LOG(LOG_ID_ERR,"LineTrace::run getRevision err\n");
         return SYS_NG;
     }
 
@@ -55,7 +55,7 @@ int8 LineTrace::run(int32 speed,PIDData pid_data,float angle = 0.0f,CurveData cu
     // 計算した値で出力
     retChk = steering.rotateWheel(motorPower);
      if(retChk != SYS_OK){
-        msg.LOG(LOG_ID_ERR,"LineTraceAction rotateWheel err\n");
+        msg.LOG(LOG_ID_ERR,"LineTrace::run rotateWheel err\n");
         return SYS_NG;
     }
 

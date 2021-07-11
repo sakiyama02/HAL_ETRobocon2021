@@ -11,7 +11,9 @@ TrapezoidControl::~TrapezoidControl(){}
 
 int8 TrapezoidControl::setTargetSpeed(int32 taeget_speed)
 {
+    frLog &msg = frLog::GetInstance();
     if( taeget_speed < -100 || taeget_speed > 100 ){
+        msg.LOG(LOG_ID_ERR,"TrapezoidControl::setTargetSpeed 引数エラー\n");
         return SYS_PARAM;
     }
 
@@ -24,7 +26,9 @@ int8 TrapezoidControl::setTargetSpeed(int32 taeget_speed)
 
 int8 TrapezoidControl::getMotorPower(int32* motor_power)
 {
+    frLog &msg = frLog::GetInstance();
     if( motor_power == NULL ){
+        msg.LOG(LOG_ID_ERR,"TrapezoidControl::getMotorPower 引数エラー\n");
         return SYS_PARAM;
     }
 
@@ -35,10 +39,10 @@ int8 TrapezoidControl::getMotorPower(int32* motor_power)
 
 int8 TrapezoidControl::accelerate()
 {
+    frLog &msg = frLog::GetInstance();
     if ( CarSpeed == TargetSpeed ){
         return SYS_OK;
     }
-
 
     if( CarSpeed < TargetSpeed ) {
         CarSpeed += ACCELERATION;
