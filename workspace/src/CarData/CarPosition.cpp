@@ -29,19 +29,19 @@ int8 CarPosition::update()
     // 前回モータ角度取得
     retChk = steering.getMotorAngle(&preAngle);
     if( retChk != SYS_OK ){
-        msg.LOG(LOG_ID_ERR,"CarPos.update getMotorAngle 1 err\n");
+        msg.LOG(LOG_ID_ERR,"CarPos::update getMotorAngle pre err\n");
         return retChk;
     }
     // モータ角度更新
     retChk = steering.updateAngle();
     if( retChk != SYS_OK){
-        msg.LOG(LOG_ID_ERR,"CarPos.update updateAngle err\n");
+        msg.LOG(LOG_ID_ERR,"CarPos::update updateAngle err\n");
         return retChk;
     }
     // 最新モータ角度取得
      retChk = steering.getMotorAngle(&nowAngle);
     if( retChk != SYS_OK ){
-        msg.LOG(LOG_ID_ERR,"CarPos.update getMotorAngle 2 err\n");
+        msg.LOG(LOG_ID_ERR,"CarPos:update getMotorAngle now err\n");
         return retChk;
     }
 
@@ -55,7 +55,7 @@ int8 CarPosition::update()
     /* 計算し更新 */
     retChk = calcOdometry(&wheelDist);
     if( retChk != SYS_OK ){
-        msg.LOG(LOG_ID_ERR,"CarPos.update calcOdometry err\n");
+        msg.LOG(LOG_ID_ERR,"CarPos::update calcOdometry err\n");
         return retChk;
     }
 
@@ -66,7 +66,7 @@ int8 CarPosition::calcOdometry(WheelDist* wheel_dist)
 {
     frLog &msg = frLog::GetInstance();
     if( wheel_dist == NULL ){
-        msg.LOG(LOG_ID_ERR,"CarPosition 引数エラー\n");
+        msg.LOG(LOG_ID_ERR,"CarPosition::calcOdometry 引数エラー\n");
         return SYS_PARAM;
     }
     float  angle    = 0.0f;
@@ -106,8 +106,10 @@ int8 CarPosition::calcOdometry(WheelDist* wheel_dist)
 
 int8 CarPosition::getPos(PositionData* car_pos)
 {
+    frLog &msg = frLog::GetInstance();
     /* 引数チェック */
     if( car_pos == NULL ){
+        msg.LOG(LOG_ID_ERR,"CarPosition::getPos 引数エラー\n");
         return SYS_PARAM;
     }
 
@@ -118,6 +120,7 @@ int8 CarPosition::getPos(PositionData* car_pos)
 
 int8 CarPosition::setPos(PositionData set_pos)
 {
+    frLog &msg = frLog::GetInstance();
     carPos = set_pos;
 
     return SYS_OK;
@@ -125,8 +128,10 @@ int8 CarPosition::setPos(PositionData set_pos)
 
 int8 CarPosition::getDir(float* car_dir)
 {
+    frLog &msg = frLog::GetInstance();
     /* 引数チェック */
     if( car_dir == NULL ){
+        msg.LOG(LOG_ID_ERR,"CarPosition::getDir 引数エラー\n");
         return SYS_PARAM;
     }
 
@@ -137,6 +142,7 @@ int8 CarPosition::getDir(float* car_dir)
 
 int8 CarPosition::setDir(float angle)
 {
+    frLog &msg = frLog::GetInstance();
     /* 引数チェック */
     /* 範囲で引数チェックが必要 
         return SYS_NG;
