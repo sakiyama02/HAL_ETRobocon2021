@@ -5,7 +5,7 @@
 #include "../../include/SlalomEifieInfomation/SlEfPositionCorrectionInfomation.h"
 
 SlEfPositionCorrectionInfomation::SlEfPositionCorrectionInfomation(){
-    memset(positionCorrectionData,0,sizeof(PositionCorrectionData)*TIMEATTACK_NUM);
+    memset(positionCorrectionData,0,sizeof(PositionCorrectionData)*SLALOMEIFIE_NUM);
     int8 index = 0;
 
 //template

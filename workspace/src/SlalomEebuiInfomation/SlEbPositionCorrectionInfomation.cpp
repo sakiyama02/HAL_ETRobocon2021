@@ -5,7 +5,7 @@
 #include "../../include/SlalomEebuiInfomation/SlEbPositionCorrectionInfomation.h"
 
 SlEbPositionCorrectionInfomation::SlEbPositionCorrectionInfomation(){
-    memset(positionCorrectionData,0,sizeof(PositionCorrectionData)*TIMEATTACK_NUM);
+    memset(positionCorrectionData,0,sizeof(PositionCorrectionData)*SLALOMEEBUI_NUM);
     int8 index = 0;
 
 //template

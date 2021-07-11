@@ -5,7 +5,7 @@
 #include "../../include/GarageInformation/GaPidInfomation.h"
 
 GaPidInfomation::GaPidInfomation(){
-    memset(pidData,0,sizeof(PIDData)*TIMEATTACK_NUM);
+    memset(pidData,0,sizeof(PIDData)*GARAGE_NUM);
     int16 index = 0;
 
 //template

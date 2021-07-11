@@ -5,7 +5,7 @@
 #include "../../include/SlalomBlackyInfomation/SlBkPositionCorrectionInfomation.h"
 
 SlBkPositionCorrectionInfomation::SlBkPositionCorrectionInfomation(){
-    memset(positionCorrectionData,0,sizeof(PositionCorrectionData)*TIMEATTACK_NUM);
+    memset(positionCorrectionData,0,sizeof(PositionCorrectionData)*SLALOMBLACKY_NUM);
     int8 index = 0;
 
 //template

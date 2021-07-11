@@ -5,7 +5,7 @@
 #include "../../include/GarageInformation/GaActionInfomation.h"
 
 GaActionInfomation::GaActionInfomation(){
-    memset(changeInfoData,0,sizeof(ChangeInfo) * TIMEATTACK_NUM);
+    memset(changeInfoData,0,sizeof(ChangeInfo) * GARAGE_NUM);
     int16 index = 0;
 
 //template
