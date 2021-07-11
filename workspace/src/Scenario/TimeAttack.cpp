@@ -175,7 +175,7 @@ int8 TimeAttack::sceneChenge(int16* scene_num){
         //rgb値を目標値と現在値を比較
             retChk=colorJudge(currgbData,changeInfo.rgb_data,changeInfo.rgb_data.condition);
             if(retChk==SYS_OK){
-                *scene_num++;
+                *scene_num+=1;
             }
         break;
         //シーン切り替え判定が座標場合
@@ -195,7 +195,7 @@ int8 TimeAttack::sceneChenge(int16* scene_num){
                                       changeInfo.pos_info_data.potision.yPosition,
                                       changeInfo.pos_info_data.yCondition);
                 if(retChk==SYS_OK){
-                    *scene_num++;
+                    *scene_num+=1;
                 }
                 break;
             }
@@ -206,7 +206,7 @@ int8 TimeAttack::sceneChenge(int16* scene_num){
                                       changeInfo.pos_info_data.potision.xPosition,
                                       changeInfo.pos_info_data.xCondition);
                 if(retChk==SYS_OK){
-                    *scene_num++;
+                    *scene_num+=1;
                 }
                 break;
             }
@@ -217,7 +217,7 @@ int8 TimeAttack::sceneChenge(int16* scene_num){
                                       changeInfo.pos_info_data.potision.yPosition,
                                       changeInfo.pos_info_data.yCondition);
                 if(retChk==SYS_OK){
-                    *scene_num++;
+                    *scene_num+=1;
                 }
             }
         break;
@@ -228,7 +228,7 @@ int8 TimeAttack::sceneChenge(int16* scene_num){
             senserManage.distanceGetter(&curdistanceData);
             retChk=distanceJudge(curdistanceData,changeInfo.distance);
             if(retChk==SYS_OK){
-                *scene_num++;
+                *scene_num+=1;
             }
         break;
 
