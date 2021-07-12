@@ -14,7 +14,7 @@
 #include "workspace/include/CarData/CarPosition.h"
 #include "workspace/include/Control/TrapezoidControl.h"
 #include "workspace/include/System/System.h"
-//#include "workspace/include/Logger/Logger.h"
+#include "workspace/include/Logger/Logger.h"
 #include "workspace/include/Steering/Steering.h"
 #include "workspace/include/Sensor/SensorManager.h"
 //#include "workspace/include/Calculation/BrightCalc.h"
@@ -50,8 +50,8 @@ void start_task(intptr_t unused)
 {
     frLog &msg = frLog::GetInstance();
     char command[] = {"logon -section -trace \n"};
-    //
-        int index = 0;
+    
+    int index = 0;
     for (index = 0; index < (sizeof(command) / sizeof(command[0])); index++)
     {
         msg.SetLog(command[index]);
@@ -64,93 +64,76 @@ void start_task(intptr_t unused)
     {
         if (ev3_touch_sensor_is_pressed(EV3_PORT_1) == 1)
         {
-            printf("msg.LOG(LOG_ID_TRACE, 押されたやで");
+            msg.LOG(LOG_ID_ERR, "押されたやで");
             break;
         }
         tslp_tsk(10 * 1000U);
     }
-    printf("1\n");
     act_tsk(MAIN_TASK);
-    printf("2\n");
-    //act_tsk(UPDATA_TASK);
-    printf("3\n");
     sta_cyc(TRAPEZOIDAL_PERIOD);
     ext_tsk();
-    /*
-    slp_tsk();
-    ter_tsk(MAIN_TASK);
-    ter_tsk(END_TASK);
-    ter_tsk(UPDATA_TASK);
-    ext_tsk();*/
 }
 /* メインタスク */
 void main_task(intptr_t unused)
 {
     frLog &msg = frLog::GetInstance();
-    //msg.LOG(LOG_ID_TRACE, "メインタスクスタート");
     ScenarioControl &scenariocontrol = ScenarioControl::getInstance();
-    //printf("mainやデー\n");
     int8 retChk = SYS_NG;
     //実行
     retChk = scenariocontrol.run();
     if( retChk != SYS_OK ){
-        //ログ
+        msg.LOG(LOG_ID_ERR, "main_task scenariocontrol.run エラー");
     }
     act_tsk(UPDATA_TASK);
-    //slp_tsk();
-    //printf("mext\n");
     ext_tsk();
-    //tslp_tsk();
-    //printf("end\n");
-    //msg.LOG(LOG_ID_TRACE, "メインタスクend");
 }
 /* 更新タスク */
 void updata_task(intptr_t unused)
 {
+    frLog &msg = frLog::GetInstance();
     int8 retChk = SYS_NG;
     int16 senarioState = 0;
     CarPosition &carposition = CarPosition::getInstance();
     ScenarioControl &scenariocontrol = ScenarioControl::getInstance();
-    //printf("updataやデー\n");
-    //シナリオ状態取得
-    retChk = scenariocontrol.scenarioGetter(&senarioState);
-    if( retChk != SYS_OK ){
-        //ログ
-    }  
-    //シナリオ終了
-    if(senarioState == GARAGE + 1)
-    {
-        act_tsk(END_TASK);
-        ext_tsk();
-    }
+
     retChk = carposition.update();
     if( retChk != SYS_OK ){
-        //ログ
+        msg.LOG(LOG_ID_ERR, "updata_task carposition.update エラー");
     }
     //シナリオ制御更新
     retChk = scenariocontrol.updateScenario();
     if( retChk != SYS_OK ){
-        //ログ
+        msg.LOG(LOG_ID_ERR, "updata_task scenariocontrol.updateScenario エラー");
     }
-    //printf("updataない\n");
+    //シナリオ状態取得
+    retChk = scenariocontrol.scenarioGetter(&senarioState);
+    if( retChk != SYS_OK ){
+        msg.LOG(LOG_ID_ERR, "updata_task scenariocontrol.scenarioGetter エラー");
+    } 
+    //シナリオ終了
+    if(senarioState == GARAGE + 1)
+    {
+        msg.LOG(LOG_ID_ERR, "シナリオすべて終わり");
+        act_tsk(END_TASK);
+        ext_tsk();
+    }
+
     //unity間通信
     tslp_tsk(9999);
-    //wup_tsk(MAIN_TASK);
     act_tsk(MAIN_TASK);
-    //printf("uext\n");
     ext_tsk();
 }
 /* 終了タスク */
 void end_task(intptr_t unused)
 {
-    printf("終了やデー\n");
+    frLog &msg = frLog::GetInstance();
+    msg.LOG(LOG_ID_ERR,"終了やで");
     user_system_destroy();
     stp_cyc(TRAPEZOIDAL_PERIOD);
-    // msg.LOG(LOG_ID_ERR,"カウント開始");
+    msg.LOG(LOG_ID_ERR,"カウント開始");
     tslp_tsk(3300 * 1000);
-    // msg.LOG(LOG_ID_ERR,"カウント終了");
+    msg.LOG(LOG_ID_ERR,"カウント終了");
     ETRoboc_notifyCompletedToSimulator();
-    wup_tsk(START_TASK);
     ext_tsk();
 }
 /* Bluetoothタスク */ 
@@ -170,13 +153,13 @@ void bt_task(intptr_t unused)
 void trapezoidal_task(intptr_t unused)
 {
     frLog &msg = frLog::GetInstance();
-   // msg.LOG(LOG_ID_TRACE, "台形だよ");
+    //msg.LOG(LOG_ID_TRACE, "台形だよ");
     int8 retChk = SYS_NG;
     TrapezoidControl &trapezoidcontrol = TrapezoidControl::getInstance();
     //台形制御計算
     trapezoidcontrol.accelerate();
     if( retChk != SYS_OK ){
-        //ログ
+        msg.LOG(LOG_ID_ERR, "app trapezoidcontrol.accelerate エラー");
     }
 }
 //周期タスクスタート:sta_cyc(TRAPEZOIDAL_PERIOD)
