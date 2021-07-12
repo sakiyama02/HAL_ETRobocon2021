@@ -5,7 +5,7 @@
 #include "../../include/SlalomEebuiInfomation/SlEbActionInfomation.h"
 
 SlEbActionInfomation::SlEbActionInfomation(){
-    memset(changeInfoData,0,sizeof(ChangeInfo) * TIMEATTACK_NUM);
+    memset(changeInfoData,0,sizeof(ChangeInfo) * SLALOMEEBUI_NUM);
     int16 index = 0;
 
 //template

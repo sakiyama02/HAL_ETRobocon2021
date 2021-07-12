@@ -145,6 +145,10 @@ int8 SlalomEifie::sceneChenge(int16* scene_num){
     if(scene_num==NULL){
         return SYS_PARAM;
     }
+    if(SLALOMEIFIE_NUM==0){
+        *scene_num=-1;
+        return SYS_OK;
+    }
     int8 retChk=SYS_NG;
     RGBData currgbData; 
     uint16 curdistanceData=0;
@@ -174,7 +178,7 @@ int8 SlalomEifie::sceneChenge(int16* scene_num){
         //rgb値を目標値と現在値を比較
             retChk=colorJudge(currgbData,changeInfo.rgb_data,changeInfo.rgb_data.condition);
             if(retChk==SYS_OK){
-                *scene_num++;
+                *scene_num+=1;
             }
         break;
         //シーン切り替え判定が座標場合
@@ -194,7 +198,7 @@ int8 SlalomEifie::sceneChenge(int16* scene_num){
                                       changeInfo.pos_info_data.potision.yPosition,
                                       changeInfo.pos_info_data.yCondition);
                 if(retChk==SYS_OK){
-                    *scene_num++;
+                    *scene_num+=1;
                 }
                 break;
             }
@@ -205,7 +209,7 @@ int8 SlalomEifie::sceneChenge(int16* scene_num){
                                       changeInfo.pos_info_data.potision.xPosition,
                                       changeInfo.pos_info_data.xCondition);
                 if(retChk==SYS_OK){
-                    *scene_num++;
+                    *scene_num+=1;
                 }
                 break;
             }
@@ -216,7 +220,7 @@ int8 SlalomEifie::sceneChenge(int16* scene_num){
                                       changeInfo.pos_info_data.potision.yPosition,
                                       changeInfo.pos_info_data.yCondition);
                 if(retChk==SYS_OK){
-                    *scene_num++;
+                    *scene_num+=1;
                 }
             }
         break;
@@ -228,7 +232,7 @@ int8 SlalomEifie::sceneChenge(int16* scene_num){
             senserManage.distanceGetter(&curdistanceData);
             retChk=distanceJudge(curdistanceData,changeInfo.distance);
             if(retChk==SYS_OK){
-                *scene_num++;
+                *scene_num+=1;
             }
         break;
 
@@ -240,7 +244,7 @@ int8 SlalomEifie::sceneChenge(int16* scene_num){
                                   changeInfo.direction_data.direction,
                                   changeInfo.direction_data.condition);
             if(retChk==SYS_OK){
-                *scene_num++;
+                *scene_num+=1;
             }
         break;
     }
@@ -262,7 +266,7 @@ int8 SlalomEifie::sceneChenge(int16* scene_num){
 //引数：現在のrgb値、目標のrgb値、(現在と目標の差分範囲の指定値)
 //戻り値：切り替え条件を満たしていればSYS_OK
 //        切り替え条件を満たしていなければSYS_NG
-int8 SlalomEifie::colorJudge(RGBData cur_rgbdata,RGBData change_rgbdata,int8 condition){
+int8 SlalomEifie::colorJudge(RGBData cur_rgbdata,RGBData change_rgbdata,Range condition){
     int8 resultr=0;
     int8 resultg=0;
     int8 resultb=0;
@@ -299,9 +303,9 @@ int8 SlalomEifie::colorJudge(RGBData cur_rgbdata,RGBData change_rgbdata,int8 con
 //引数：現在のX座標値、目標のX座標値、現在と目標の差分範囲の指定値
 //戻り値：切り替え条件を満たしていればSYS_OK
 //        切り替え条件を満たしていなければSYS_NG
-int8 SlalomEifie::xPositionJudge(float cur_xpositionData,float change_xpositionData,int8 condition){
+int8 SlalomEifie::xPositionJudge(float cur_xpositionData,float change_xpositionData,Range condition){
     float resultx=0;
-    resultx=change_xpositionData-cur_xpositionData;
+    resultx=cur_xpositionData-change_xpositionData;
     if(resultx>0){
         if(condition==HIGH){
             return SYS_OK;
@@ -327,9 +331,9 @@ int8 SlalomEifie::xPositionJudge(float cur_xpositionData,float change_xpositionD
 //引数：現在のY座標値、目標のY座標値、現在と目標の差分範囲の指定値
 //戻り値：切り替え条件を満たしていればSYS_OK
 //        切り替え条件を満たしていなければSYS_NG
-int8 SlalomEifie::yPositionJudge(float cur_ypositionData,float change_ypositionData,int8 condition){
+int8 SlalomEifie::yPositionJudge(float cur_ypositionData,float change_ypositionData,Range condition){
     float resulty=0;
-    resulty=change_ypositionData-cur_ypositionData;
+    resulty=cur_ypositionData-change_ypositionData;
     if(resulty>0){
         if(condition==HIGH){
             return SYS_OK;
@@ -357,8 +361,11 @@ int8 SlalomEifie::yPositionJudge(float cur_ypositionData,float change_ypositionD
 //戻り値：切り替え条件を満たしていればSYS_OK
 //        切り替え条件を満たしていなければSYS_NG
 int8 SlalomEifie::distanceJudge(uint16 cur_distanceData,uint16 change_distanceData){
-    uint16 resultdistance=0;
-    resultdistance=change_distanceData-cur_distanceData;
+    int16 resultdistance=0;
+    resultdistance=cur_distanceData-change_distanceData;
+    if(resultdistance<0){
+        return SYS_OK;        
+    }
     /*距離を範囲指定する場合に使用（間違って作った）
     if(resultdistance>0){
         if(condition==HIGH){
@@ -366,12 +373,7 @@ int8 SlalomEifie::distanceJudge(uint16 cur_distanceData,uint16 change_distanceDa
         }
         return SYS_NG;
     }
-    if(resultdistance<0){
-        if(condition==LOW){
-            return SYS_OK;
-        }
-        return SYS_NG;        
-    }
+    
     */
     if(resultdistance==0){
         return SYS_OK;
@@ -384,9 +386,9 @@ int8 SlalomEifie::distanceJudge(uint16 cur_distanceData,uint16 change_distanceDa
 //マイナスの値を入れるとバグるので注意
 //戻り値：切り替え条件を満たしていればSYS_OK
 //        切り替え条件を満たしていなければSYS_NG
-int8 SlalomEifie::directionJudge(float cur_directionData,float change_directionData,int8 condition){
+int8 SlalomEifie::directionJudge(float cur_directionData,float change_directionData,Range condition){
     float resultdirection=0;
-    resultdirection=change_directionData-cur_directionData;
+    resultdirection=cur_directionData-change_directionData;
     if(resultdirection>0){
         if(condition==HIGH){
             return SYS_OK;

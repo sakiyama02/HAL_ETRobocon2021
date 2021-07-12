@@ -15,6 +15,7 @@ SensorManager::~SensorManager(){}
 //
 int8 SensorManager::getRgb()
 {  
+    frLog &msg = frLog::GetInstance();
     int8 retChk = SYS_NG;           //戻り値確認変数
 
     //rgb値取得
@@ -22,6 +23,7 @@ int8 SensorManager::getRgb()
     //戻り値check
     if (retChk != SYS_OK)
     {
+        msg.LOG(LOG_ID_ERR, "SensorManager colorSensor.getRGB エラー");
         return retChk;
     }
 
@@ -36,6 +38,7 @@ int8 SensorManager::getRgb()
 //
 int8 SensorManager::getDistance()
 {
+    frLog &msg = frLog::GetInstance();
     int8 retChk = SYS_NG;           //戻り値確認変数
 
     //距離取得
@@ -43,6 +46,7 @@ int8 SensorManager::getDistance()
     //戻り値check
     if (retChk != SYS_OK)
     {
+        msg.LOG(LOG_ID_ERR, "getDistance sonicSensor.getDistance エラー");
         return retChk;
     }
 
@@ -55,9 +59,11 @@ int8 SensorManager::getDistance()
 //
 int8 SensorManager::rgbGetter(RGBData* rgb_data)
 {
+    frLog &msg = frLog::GetInstance();
     //argument check
     if (rgb_data == NULL)
     {
+        msg.LOG(LOG_ID_ERR, "rgbGetter argument エラー");
         return SYS_PARAM;
     }
     //引数にカラーセンサーの値を格納
@@ -72,17 +78,20 @@ int8 SensorManager::rgbGetter(RGBData* rgb_data)
 //
 int8 SensorManager::hsvGetter(uint16* v_data)
 {    
+    frLog &msg = frLog::GetInstance();
     int8 retChk = SYS_NG;           //戻り値確認変数
 
     //argument check
     if (v_data == NULL)
     {
+        msg.LOG(LOG_ID_ERR, "rgbGetter argument エラー");
         return SYS_PARAM;
     }
     retChk = getRgb();
     //戻り値check
     if (retChk != SYS_OK)
     {
+        msg.LOG(LOG_ID_ERR, "rgbGetter getRgb エラー");
         return retChk;
     }
 
@@ -114,14 +123,27 @@ int8 SensorManager::hsvGetter(uint16* v_data)
 
 int8 SensorManager::distanceGetter(uint16* distance_data)
 {
+    frLog &msg = frLog::GetInstance();
+    int8 retChk = SYS_NG;           //戻り値確認変数
+
     //argument check
     if (distance_data == NULL)
     {
+        msg.LOG(LOG_ID_ERR, "rgbGetter argument エラー");
         return SYS_PARAM;
     }
+
+    retChk = getDistance();
+    //戻り値check
+    if (retChk != SYS_OK)
+    {
+        msg.LOG(LOG_ID_ERR, "rgbGetter getDistance エラー");
+        return retChk;
+    }
+
     
     //超音波センサーの値を格納
-    distance_data = &distanceStorage;
+    *distance_data = distanceStorage;
 
      return SYS_OK;
 }
@@ -133,12 +155,14 @@ int8 SensorManager::distanceGetter(uint16* distance_data)
 
 int8 SensorManager::initSensor()
 {
+    frLog &msg = frLog::GetInstance();
     int8 retChk = SYS_NG;           //戻り値確認変数
 
     //カラーセンサーのポート設定
     retChk = colorSensor.init();
         if (retChk != SYS_OK)
     {
+        msg.LOG(LOG_ID_ERR, "initSensor colorSensor.init エラー");
         return retChk;
     }
 
@@ -146,6 +170,7 @@ int8 SensorManager::initSensor()
     retChk = sonicSensor.init();
         if (retChk != SYS_OK)
     {
+        msg.LOG(LOG_ID_ERR, "initSensor sonicSensor.init エラー");
         return retChk;
     }
 

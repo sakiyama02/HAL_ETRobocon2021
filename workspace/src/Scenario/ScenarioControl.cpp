@@ -109,11 +109,8 @@ int8 ScenarioControl::updateScenario(){
     }
 
     if(sceneNum == FINISH){        //シナリオ内の全シーン終了
-        if(scenarioState > SLALOM_EEBUI){
+        if(scenarioState == SLALOM_EIFIE||scenarioState == SLALOM_BLACKY){
             scenarioState = GARAGE;
-        }
-        if(scenarioState == GARAGE){
-            return SYS_OK;
         }
         else{
             scenarioState++;

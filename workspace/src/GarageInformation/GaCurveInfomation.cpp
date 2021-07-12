@@ -5,7 +5,7 @@
 #include "../../include/GarageInformation/GaCurveInfomation.h"
 
 GaCurveInfomation::GaCurveInfomation(){
-    memset(curveData,0,sizeof(CurveData)*TIMEATTACK_NUM);
+    memset(curveData,0,sizeof(CurveData)*GARAGE_NUM);
     int16 index = 0;
 
 //template

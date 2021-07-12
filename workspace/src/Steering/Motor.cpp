@@ -6,71 +6,71 @@ Motor::~Motor(){}
 
 int8 Motor::init(MotorPort port, motor_type_t type)
 {
-    //frLog &msg = frLog::GetInstance();
-    //msg.LOG(LOG_ID_TRACE, "Motor::init -st-");
+    frLog &msg = frLog::GetInstance();
+
     ER errChk;
     errChk = ev3_motor_config(static_cast<motor_port_t>(port), type);
 
     if (errChk != E_OK)
     {
-        //msg.LOG(LOG_ID_ERR, "%s %d -error-",__PRETTY_FUNCTION__,__LINE__);
+        msg.LOG(LOG_ID_ERR, "Motor.init ev3_motor_config err/n");
         return SYS_NG;
     }
     portNum = port;
-    //msg.LOG(LOG_ID_TRACE, "Motor::init -en-");
+ 
     return SYS_OK;
 }
 
 int8 Motor::getCounts(int32 *motorAngle)
 {
-    //frLog &msg = frLog::GetInstance();
-    //msg.LOG(LOG_ID_TRACE, "Motor::getCounts -st-");
+    frLog &msg = frLog::GetInstance();
 
     if (motorAngle == NULL)
     {
-        //msg.LOG(LOG_ID_ERR, "%s %d -error-",__PRETTY_FUNCTION__,__LINE__);
+        msg.LOG(LOG_ID_ERR, "Motor.getCounts 引数エラー\n");
         return SYS_PARAM;
     }
     *motorAngle = ev3_motor_get_counts(static_cast<motor_port_t>(portNum));
-    //msg.LOG(LOG_ID_TRACE, "Motor::getCounts -en-");
+    
     return SYS_OK;
 }
 
 int8 Motor::getPWM(int32 *motorPower)
 {
-    //frLog &msg = frLog::GetInstance();
-    //msg.LOG(LOG_ID_TRACE, "Motor::getPWM -st-");
+    frLog &msg = frLog::GetInstance();
+    
     if (motorPower == NULL)
     {
-        //msg.LOG(LOG_ID_ERR, "%s %d -error-",__PRETTY_FUNCTION__,__LINE__);
+        msg.LOG(LOG_ID_ERR, "Motor.getPWM 引数エラー\n");
         return SYS_PARAM;
     }
     *motorPower = ev3_motor_get_power(static_cast<motor_port_t>(portNum));
-    //msg.LOG(LOG_ID_TRACE, "Motor::getPWM -en-");
+   
     return SYS_OK;
 }
 
 int8 Motor::resetCounts()
 {
-    //frLog &msg = frLog::GetInstance();
-    //msg.LOG(LOG_ID_TRACE, "Motor::resetCounts -st-");
+    frLog &msg = frLog::GetInstance();
+ 
     ER errChk = ev3_motor_reset_counts(static_cast<motor_port_t>(portNum));
     if (errChk != E_OK)
     {
-        //msg.LOG(LOG_ID_ERR, "%s %d -error-",__PRETTY_FUNCTION__,__LINE__);
+        msg.LOG(LOG_ID_ERR, "Motor.resetCounts ev3_motor_reset_count err\n");
         return SYS_NG;
     }
-    //msg.LOG(LOG_ID_TRACE, "Motor::resetCounts -en-");
+
     return SYS_OK;
 }
-
+// 2021年のETRobocon
+// Motor::setCountsは使わない
 int8 Motor::setCounts(int32 motorAngle, int32 motorPower)
 {
-    //frLog &msg = frLog::GetInstance();
-    //msg.LOG(LOG_ID_TRACE, "Motor::setCounts -st-");
+    frLog &msg = frLog::GetInstance();
+ 
     if (motorPower < -100 || motorPower > 100)
     {
-        //msg.LOG(LOG_ID_ERR, "%s %d -error-",__PRETTY_FUNCTION__,__LINE__);
+    
         return SYS_PARAM;
     }
     int8 retChk = SYS_NG;
@@ -80,14 +80,14 @@ int8 Motor::setCounts(int32 motorAngle, int32 motorPower)
     retChk = getCounts(&angle);
     if (retChk != SYS_OK)
     {
-        //msg.LOG(LOG_ID_ERR, "%s %d -error-",__PRETTY_FUNCTION__,__LINE__);
+    
         return retChk;
     }
 
     retChk = setPWM(motorPower);
     if (retChk != SYS_OK)
     {
-        //msg.LOG(LOG_ID_ERR, "%s %d -error-",__PRETTY_FUNCTION__,__LINE__);
+     
         return retChk;
     }
 
@@ -101,7 +101,7 @@ int8 Motor::setCounts(int32 motorAngle, int32 motorPower)
             {
                 return retChk;
             }
-            //msg.LOG(LOG_ID_ERR, "%d",curAngle - angle);
+            
             tslp_tsk(10000);
         } while (curAngle - angle < motorAngle);
     }
@@ -120,42 +120,42 @@ int8 Motor::setCounts(int32 motorAngle, int32 motorPower)
     retChk = stop(true);
     if (retChk != SYS_OK)
     {
-        //msg.LOG(LOG_ID_ERR, "%s %d -error-",__PRETTY_FUNCTION__,__LINE__);
+        
         return retChk;
     }
-    //msg.LOG(LOG_ID_TRACE, "Motor::setCounts -en-");
+  
     return SYS_OK;
 }
 
 int8 Motor::setPWM(int32 motorPower)
 {
-    //frLog &msg = frLog::GetInstance();
-    //msg.LOG(LOG_ID_TRACE, "Motor::setPWM -st-");
+    frLog &msg = frLog::GetInstance();
+    
     if (motorPower < -100 || motorPower > 100)
     {
-       // msg.LOG(LOG_ID_ERR, "%s %d -error-",__PRETTY_FUNCTION__,__LINE__);
+        msg.LOG(LOG_ID_ERR, "Motor.setPWM 引数エラー\n");
         return SYS_PARAM;
     }
     ER errChk = ev3_motor_set_power(static_cast<motor_port_t>(portNum), motorPower);
     if (errChk != E_OK)
     {
-        //msg.LOG(LOG_ID_ERR, "%s %d -error-",__PRETTY_FUNCTION__,__LINE__);
+        msg.LOG(LOG_ID_ERR, "Motor.setPWM ev3_motor_set_power err\n");
         return SYS_NG;
     }
-    //msg.LOG(LOG_ID_TRACE, "Motor::setPWM -en-");
+
     return SYS_OK;
 }
 
 int8 Motor::stop(bool brake)
 {
-    //frLog &msg = frLog::GetInstance();
-    //msg.LOG(LOG_ID_TRACE, "Motor::stop -st-");    
+    frLog &msg = frLog::GetInstance();
+    
     ER errChk = ev3_motor_stop(static_cast<motor_port_t>(portNum), brake);
     if (errChk != E_OK)
     {
-        //msg.LOG(LOG_ID_ERR, "%s %d -error-",__PRETTY_FUNCTION__,__LINE__);
+        msg.LOG(LOG_ID_ERR, "Motor.stop ev3_motor_stop err\n");
         return SYS_NG;
     }
-    //msg.LOG(LOG_ID_TRACE, "Motor::stop -st-");    
+
     return SYS_OK;
 }

@@ -17,9 +17,11 @@ PidControl::~PidControl(){}
 //
 int8 PidControl::calcPid(PIDData *pid_data)
 {  
+    frLog &msg = frLog::GetInstance();
     //argument check
     if (pid_data == NULL)
     {
+        msg.LOG(LOG_ID_ERR, "calcPid argument エラー");
         return SYS_PARAM;
     }
 
@@ -36,6 +38,7 @@ int8 PidControl::calcPid(PIDData *pid_data)
     //戻り値check
     if (retChk != SYS_OK)
     {
+        msg.LOG(LOG_ID_ERR, "calcPid sensorManager.hsvGetter エラー");
         return retChk;
     }
     
@@ -63,9 +66,11 @@ int8 PidControl::calcPid(PIDData *pid_data)
 //
 int8 PidControl::getRevison(float *motor_Revison)
 {
+    frLog &msg = frLog::GetInstance();
     //argument check
     if (motor_Revison == NULL)
     {
+        msg.LOG(LOG_ID_ERR, "getRevison argument エラー");
         return SYS_PARAM;
     }    
     //引数にモーター補正格納

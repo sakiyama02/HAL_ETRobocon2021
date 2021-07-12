@@ -11,7 +11,7 @@ int8 Curve::run(int32 speed,PIDData pid_data,float angle,CurveData curve_data)
 {
     frLog &msg = frLog::GetInstance();
     if( speed < -100 && speed > 100 ) {
-        msg.LOG(LOG_ID_ERR,"CurveAction 引数エラー\n");
+        msg.LOG(LOG_ID_ERR,"Curve::run 引数エラー\n");
         return SYS_PARAM;
     }
 
@@ -28,13 +28,13 @@ int8 Curve::run(int32 speed,PIDData pid_data,float angle,CurveData curve_data)
     // 台形制御のターゲット値を設定
     retChk = trapezoid.setTargetSpeed(speed);
     if(retChk != SYS_OK){
-        msg.LOG(LOG_ID_ERR,"CurveAction setTargetSpeed err\n");
+        msg.LOG(LOG_ID_ERR,"Curve::run setTargetSpeed err\n");
         return SYS_NG;
     }
     // 台形制御からモータ速度を取得
     retChk = trapezoid.getMotorPower(&speed);
         if(retChk != SYS_OK){
-        msg.LOG(LOG_ID_ERR,"CurveAction getMotorPower err\n");
+        msg.LOG(LOG_ID_ERR,"Curve::run getMotorPower err\n");
         return SYS_NG;
     }
 
@@ -55,14 +55,14 @@ int8 Curve::run(int32 speed,PIDData pid_data,float angle,CurveData curve_data)
     // pid値を渡して補正値を計算する
     retChk = pidControl.calcPid(&pid_data);
     if(retChk != SYS_OK){
-        msg.LOG(LOG_ID_ERR,"CurveAction getMotorPower err\n");
+        msg.LOG(LOG_ID_ERR,"Curve::run getMotorPower err\n");
         return SYS_NG;
     }
 
     // pidの補正値を取得
     retChk = pidControl.getRevison(&revision);
     if(retChk != SYS_OK){
-        msg.LOG(LOG_ID_ERR,"CurveAction getRevision err\n");
+        msg.LOG(LOG_ID_ERR,"Curve::run getRevision err\n");
         return SYS_NG;
     }
 
@@ -73,7 +73,7 @@ int8 Curve::run(int32 speed,PIDData pid_data,float angle,CurveData curve_data)
    // 計算した値で出力
     retChk = steering.rotateWheel(motorPower);
      if(retChk != SYS_OK){
-        msg.LOG(LOG_ID_ERR,"CurveAction rotateWheel err\n");
+        msg.LOG(LOG_ID_ERR,"Curve::run rotateWheel err\n");
         return SYS_NG;
     }
 

@@ -5,7 +5,7 @@
 #include "../../include/SlalomEifieInfomation/SlEfPidInfomation.h"
 
 SlEfpidInfomation::SlEfpidInfomation(){
-    memset(pidData,0,sizeof(PIDData)*TIMEATTACK_NUM);
+    memset(pidData,0,sizeof(PIDData)*SLALOMEIFIE_NUM);
     int16 index = 0;
 
 //template
