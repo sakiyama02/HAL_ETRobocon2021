@@ -79,11 +79,11 @@ int8 CarPosition::calcOdometry(WheelDist* wheel_dist)
 
     /* 座標計算 */
     dist  = (double)(wheel_dist->rightMove + wheel_dist->leftMove ) / 2.0f;
-    angle = (float)(360.0f / ( 2.0f * PI * CAR_WIDTH)) * (wheel_dist->rightMove - wheel_dist->leftMove);
+    angle = (float)(360.0f / ( 2.0f * PI * CAR_WIDTH)) * (wheel_dist->leftMove - wheel_dist->rightMove);
 
     /* 角度をラジアン変換 */
     addRad  = (( double )( angle )) * ( PI / 180.0f );
-    rad     = (( double )( angle )) * ( PI / 180.0f );
+    rad     = (( double )( carDirection )) * ( PI / 180.0f );
 
     /* /2.0fいるかわかんない */
     addPos.xPosition = (float) (dist * std::cos(rad + addRad / 2.0f ));
