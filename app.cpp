@@ -157,7 +157,7 @@ void trapezoidal_task(intptr_t unused)
     int8 retChk = SYS_NG;
     TrapezoidControl &trapezoidcontrol = TrapezoidControl::getInstance();
     //台形制御計算
-    trapezoidcontrol.accelerate();
+    retChk = trapezoidcontrol.accelerate();
     if( retChk != SYS_OK ){
         msg.LOG(LOG_ID_ERR, "app trapezoidcontrol.accelerate エラー");
     }
