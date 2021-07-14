@@ -23,7 +23,7 @@ int8 SensorManager::getRgb()
     //戻り値check
     if (retChk != SYS_OK)
     {
-        msg.LOG(LOG_ID_ERR, "SensorManager colorSensor.getRGB エラー");
+        msg.LOG(LOG_ID_ERR, "getRgb colorSensor.getRGB エラー");
         return retChk;
     }
 
@@ -60,12 +60,22 @@ int8 SensorManager::getDistance()
 int8 SensorManager::rgbGetter(RGBData* rgb_data)
 {
     frLog &msg = frLog::GetInstance();
+    int8 retChk = SYS_NG;           //戻り値確認変数
     //argument check
     if (rgb_data == NULL)
     {
         msg.LOG(LOG_ID_ERR, "rgbGetter argument エラー");
         return SYS_PARAM;
     }
+
+    retChk = getRgb();
+    //戻り値check
+    if (retChk != SYS_OK)
+    {
+        msg.LOG(LOG_ID_ERR, "rgbGetter getRgb エラー");
+        return retChk;
+    }
+
     //引数にカラーセンサーの値を格納
     rgb_data = &rgbStorage;
 
@@ -84,14 +94,15 @@ int8 SensorManager::hsvGetter(uint16* v_data)
     //argument check
     if (v_data == NULL)
     {
-        msg.LOG(LOG_ID_ERR, "rgbGetter argument エラー");
+        msg.LOG(LOG_ID_ERR, "hsvGetter argument エラー");
         return SYS_PARAM;
     }
+    
     retChk = getRgb();
     //戻り値check
     if (retChk != SYS_OK)
     {
-        msg.LOG(LOG_ID_ERR, "rgbGetter getRgb エラー");
+        msg.LOG(LOG_ID_ERR, "hsvGetter getRgb エラー");
         return retChk;
     }
 
@@ -129,7 +140,7 @@ int8 SensorManager::distanceGetter(uint16* distance_data)
     //argument check
     if (distance_data == NULL)
     {
-        msg.LOG(LOG_ID_ERR, "rgbGetter argument エラー");
+        msg.LOG(LOG_ID_ERR, "distanceGetter argument エラー");
         return SYS_PARAM;
     }
 
@@ -137,7 +148,7 @@ int8 SensorManager::distanceGetter(uint16* distance_data)
     //戻り値check
     if (retChk != SYS_OK)
     {
-        msg.LOG(LOG_ID_ERR, "rgbGetter getDistance エラー");
+        msg.LOG(LOG_ID_ERR, "distanceGetter getDistance エラー");
         return retChk;
     }
 
