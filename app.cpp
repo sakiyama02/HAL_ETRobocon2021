@@ -14,7 +14,7 @@
 #include "workspace/include/CarData/CarPosition.h"
 #include "workspace/include/Control/TrapezoidControl.h"
 #include "workspace/include/System/System.h"
-#include "workspace/include/Logger/Logger.h"
+#include "workspace/include/Logger/frLog.h"
 #include "workspace/include/Steering/Steering.h"
 #include "workspace/include/Sensor/SensorManager.h"
 //#include "workspace/include/Calculation/BrightCalc.h"
