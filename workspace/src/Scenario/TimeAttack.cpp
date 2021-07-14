@@ -252,7 +252,7 @@ int8 TimeAttack::sceneChenge(int16* scene_num){
     //ライントレースのシーンの終了かの確認
     //仮でTIMEATTACKENDを定義
     //-1を定義に作る
-    if(*scene_num>TIMEATTACK_NUM){
+    if(*scene_num>TIMEATTACK_NUM-1){
         *scene_num=-1;
     }
     return retChk;
