@@ -5,7 +5,7 @@
 #include <string>
 #include "../Logger/frLog.h"
 #include "ev3api.h"
-
+#define CORRECTIONDATA_ON
 #define SYS_OK 0    //正常終了
 #define SYS_NG 1    //異常終了
 #define SYS_PARAM 2 //引数エラー
@@ -105,9 +105,9 @@ CURVE_RIGHT,
 /* 構造体定義 */
 // RGBの構造体
 typedef struct RGB_TAG {	
-	uint8 r;
-	uint8 g;
-	uint8 b;
+	uint16 r;
+	uint16 g;
+	uint16 b;
 	Range condition;
 }RGBData;
 
@@ -168,8 +168,8 @@ typedef struct ChangeInfo_Tag {
 }ChangeInfo;
 
 typedef struct PositionCorrection_TAG{	
-	PositionData correctionValue;
-	PositionData correctionPosition;
+	PosInfoData correctionValue;
+	PosInfoData correctionPosition;
 	RGBData correctionRGB;
 	DirectionData correctionDirection;
 	JudgeType correctionCondition;
