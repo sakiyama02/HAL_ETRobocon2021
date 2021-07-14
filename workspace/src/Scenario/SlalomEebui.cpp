@@ -249,7 +249,7 @@ int8 SlalomEebui::sceneChenge(int16* scene_num){
     //距離で分岐シナリオを分ける
     //変化させる超音波の距離を定義に作る現在10
     //定義に変える-2と-3
-    if(*scene_num>SLALOMEEBUI_NUM){
+    if(*scene_num>SLALOMEEBUI_NUM-1){
         uint16 changedistance;
         SensorManager &sonicSenser=SensorManager::getInstance();
         sonicSenser.distanceGetter(&changedistance);
