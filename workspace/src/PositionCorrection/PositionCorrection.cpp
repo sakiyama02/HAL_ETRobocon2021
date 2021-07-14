@@ -43,9 +43,9 @@ int8 PositionCorrection::colorFix(){
     int8 retChk = SYS_NG;
     taskState=STATE＿ACT;
     //センサ管理をインスタンスポインタを取得
-    SensorManager &sensorManager=SensorManager::getinstance();
+    SensorManager &sensorManager=SensorManager::getInstance();
     //自己位置推定をインスタンスポインタを取得
-    CarPosition &carPosition=CarPosition::getinstance();
+    CarPosition &carPosition=CarPosition::getInstance();
     //センサ管理から取得したrgb値を保持する構造体
     RGBData curRGBData;
     memset(&curRGBData,0,sizeof(RGBData));
@@ -62,11 +62,11 @@ int8 PositionCorrection::colorFix(){
     if(retChk==SYS_NG){
         //条件を満たしていない場合処理を行わずに終了
         //更新なしで送信
-        return 
+        return;
     }
     //自己位置推定に値をセットするタイミングを確認する必要がある
     //補正構造体に入った座標補正数値を自己位置推定にセットする
-   　retChk=carPosition.setPos(
+    retChk=carPosition.setPos(
        prePositionCorrectionData.correctionValue.potision);
     
     if(retChk!=SYS_NG){
@@ -84,11 +84,11 @@ int8 PositionCorrection::lineFix(){
     int8 retChk = SYS_NG;
     taskState=STATE＿ACT;
     //自己位置推定をインスタンスポインタを取得
-    CarPosition &carPosition=CarPosition::getinstance();
+    CarPosition &carPosition=CarPosition::getInstance();
     PositionData curPositionData;
     memset(&curPositionData,0,sizeof(PositionData));
     //現在の座標を自己位置推定から取得
-    retChk=carPosition.getPos(&curPositionData)
+    retChk=carPosition.getPos(&curPositionData);
     //引数のエラーチェック
     if(retChk==SYS_NG){
         return retChk;
@@ -129,11 +129,11 @@ int8 PositionCorrection::lineFix(){
     if(retChk!=SYS_OK){
         //条件を満たしていない場合処理を行わずに終了
         //更新なしで送信
-        return 
+        return;
     }
     //自己位置推定に値をセットするタイミングを確認する必要がある
     //補正構造体に入った座標補正数値を自己位置推定にセットする
-   　retChk=carPosition.setPos(
+    retChk=carPosition.setPos(
                 prePositionCorrectionData.correctionValue.potision);
     if(retChk!=SYS_NG){
         //エラーチェック
@@ -151,9 +151,9 @@ int8 PositionCorrection::directionFix(){
     int8 retChk = SYS_NG;
     taskState=STATE＿ACT;
     //自己位置推定をインスタンスポインタを取得
-    CarPosition &carPosition=CarPosition::getinstance();
+    CarPosition &carPosition=CarPosition::getInstance();
     DirectionData curDirectionData;
-    memset(&DirectionData,0,sizeof(DirectionData));
+    memset(&curDirectionData,0,sizeof(DirectionData));
     //現在の向きを自己位置推定から取得
     retChk=carPosition.getDir(&curDirectionData.direction);
     //引数のエラーチェック
@@ -167,11 +167,11 @@ int8 PositionCorrection::directionFix(){
     if(retChk==SYS_NG){
         //条件を満たしていない場合処理を行わずに終了
         //更新なしで送信
-        return 
+        return;
     }
     //自己位置推定に値をセットするタイミングを確認する必要がある
     //補正構造体に入った座標補正数値を自己位置推定にセットする
-   　retChk=carPosition.setPos(
+    retChk=carPosition.setPos(
        prePositionCorrectionData.correctionValue.potision);
     
     if(retChk!=SYS_NG){
@@ -193,7 +193,7 @@ int8 PositionCorrection::directionFix(){
 //引数：現在のrgb値、目標のrgb値、(現在と目標の差分範囲の指定値)
 //戻り値：切り替え条件を満たしていればSYS_OK
 //        切り替え条件を満たしていなければSYS_NG
-int8 PositionCorrection::colorJudge(RGBData cur_rgbdata,RGBData change_rgbdata,int8 condition){
+int8 PositionCorrection::colorJudge(RGBData cur_rgbdata,RGBData change_rgbdata,Range condition){
 
     int8 resultr=0;
     int8 resultg=0;
@@ -232,9 +232,9 @@ int8 PositionCorrection::colorJudge(RGBData cur_rgbdata,RGBData change_rgbdata,i
 //引数：現在のX座標値、目標のX座標値、現在と目標の差分範囲の指定値
 //戻り値：切り替え条件を満たしていればSYS_OK
 //        切り替え条件を満たしていなければSYS_NG
-int8 PositionCorrection::xPositionJudge(float cur_xpositionData,float change_xpositionData,int8 condition){
+int8 PositionCorrection::xPositionJudge(float cur_xpositionData,float change_xpositionData,Range condition){
     float resultx=0;
-    resultx=change_xpositionData-cur_xpositionData;
+    resultx=cur_xpositionData-change_xpositionData;
     if(resultx>0){
         if(condition==HIGH){
             return SYS_OK;
@@ -260,9 +260,9 @@ int8 PositionCorrection::xPositionJudge(float cur_xpositionData,float change_xpo
 //引数：現在のY座標値、目標のY座標値、現在と目標の差分範囲の指定値
 //戻り値：切り替え条件を満たしていればSYS_OK
 //        切り替え条件を満たしていなければSYS_NG
-int8 PositionCorrection::yPositionJudge(float cur_ypositionData,float change_ypositionData,int8 condition){
+int8 PositionCorrection::yPositionJudge(float cur_ypositionData,float change_ypositionData,Range condition){
     float resulty=0;
-    resulty=change_ypositionData-cur_ypositionData;
+    resulty=cur_ypositionData-change_ypositionData;
     if(resulty>0){
         if(condition==HIGH){
             return SYS_OK;
@@ -289,9 +289,9 @@ int8 PositionCorrection::yPositionJudge(float cur_ypositionData,float change_ypo
 //マイナスの値を入れるとバグるので注意
 //戻り値：切り替え条件を満たしていればSYS_OK
 //        切り替え条件を満たしていなければSYS_NG
-int8 PositionCorrection::directionJudge(float cur_directionData,float change_directionData,int8 condition){
+int8 PositionCorrection::directionJudge(float cur_directionData,float change_directionData,Range condition){
     float resultdirection=0;
-    resultdirection=change_directionData-cur_directionData;
+    resultdirection=cur_directionData-change_directionData;
     if(resultdirection>0){
         if(condition==HIGH){
             return SYS_OK;
