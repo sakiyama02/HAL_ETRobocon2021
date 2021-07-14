@@ -168,3 +168,21 @@ void correction_task(intptr_t unused)
 {
     int8 retChk = SYS_NG;
 }
+
+/* 色補正タスク */
+void colorfix_task(intptr_t unused)
+{
+    int8 retChk = SYS_NG;
+}
+
+/* 座標補正タスク */
+void linefix_task(intptr_t unused)
+{
+    int8 retChk = SYS_NG;
+}
+
+/* 角度補正タスク */
+void directionfix_task(intptr_t unused)
+{
+    int8 retChk = SYS_NG;
+}
