@@ -9,6 +9,11 @@ class PositionCorrection{
     PositionCorrection();
     ~PositionCorrection();
     int8 FixSetter(PositionCorrectionData positionCorrection_Data);
+    static PositionCorrection &getInstance()
+    {
+        static PositionCorrection positionCorrection_;
+        return positionCorrection_;
+    }
     private:
     int8 taskState=0;
     int8 sceneState=0;
@@ -20,9 +25,4 @@ class PositionCorrection{
     int8 xPositionJudge(float,float,Range);
     int8 yPositionJudge(float,float,Range);
     int8 directionJudge(float,float,Range);
-    static PositionCorrection &getInstance()
-    {
-        static PositionCorrection positionCorrection_;
-        return positionCorrection_;
-    }
 };
