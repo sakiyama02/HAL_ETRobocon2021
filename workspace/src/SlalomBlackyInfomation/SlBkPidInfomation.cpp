@@ -5,7 +5,7 @@
 #include "../../include/SlalomBlackyInfomation/SlBkPidInfomation.h"
 
 SlBkpidInfomation::SlBkpidInfomation(){
-    memset(pidData,0,sizeof(PIDData)*TIMEATTACK_NUM);
+    memset(pidData,0,sizeof(PIDData)*SLALOMBLACKY_NUM);
     int16 index = 0;
 
 //template

@@ -44,27 +44,26 @@ int8 TimeAttack::run(int16 scene_num) {
 //補正のオンの場合CORRECTIONDATA_ONを定義
 //
 #ifdef CORRECTIONDATA_ON
+    //補正クラスのインスタンス取得
+        PositionCorrection &positionCorrection=
+        PositionCorrection::getInstance();
     //補正構造体のJudgeTypeを確認して補正を使用又はどの補正を使用するか取得
     //distanceは補正で使用しないので補正なしとしている
     //座標補正値が同一の場合タスク起動せず終了
-    swich (positioncorrectionData.CorrectionCondition){
+    switch (positioncorrectionData.correctionCondition){
         //rgb値による補正の場合
         case JUDGE_RGB:
         //補正クラスのインスタンス取得
-            PositionCorrection &positionCorrection=
-            PositionCorrection::getinstance();
         //補正クラスに目標値と補正値をセット後タスク起動
-            retChk=positionCorrection.colorFixSetter(
+            retChk=positionCorrection.FixSetter(
                 positioncorrectionData);
         break;
 
         //座標値による補正の場合
         case JUDGE_POS:
         //補正クラスのインスタンス取得
-            PositionCorrection &positionCorrection=
-            PositionCorrection::getinstance();
         //補正クラスに目標値と補正値をセット後タスク起動
-            retChk=positionCorrection.lineFixSetter(
+            retChk=positionCorrection.FixSetter(
                 positioncorrectionData);
         break;
 
@@ -74,11 +73,10 @@ int8 TimeAttack::run(int16 scene_num) {
 
         //向きによる補正の場合
         case JUDGE_DIR:
-        //補正クラスのインスタンス取得
-            PositionCorrection &positionCorrection=
-            PositionCorrection::getinstance();
+
+            
         //補正クラスに目標値と補正値をセット後タスク起動
-            retChk=positionCorrection.directionFixSetter(
+            retChk=positionCorrection.FixSetter(
                 positioncorrectionData);
         break;
         //一応

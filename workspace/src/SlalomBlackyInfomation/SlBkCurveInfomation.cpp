@@ -5,7 +5,7 @@
 #include "../../include/SlalomBlackyInfomation/SlBkCurveInfomation.h"
 
 SlBkCurveInfomation::SlBkCurveInfomation(){
-    memset(curveData,0,sizeof(CurveData)*TIMEATTACK_NUM);
+    memset(curveData,0,sizeof(CurveData)*SLALOMBLACKY_NUM);
     int16 index = 0;
 
 //template
