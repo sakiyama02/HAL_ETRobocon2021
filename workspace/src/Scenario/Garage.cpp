@@ -42,12 +42,12 @@ int8 Garage::run(int16 scene_num) {
     //補正構造体のJudgeTypeを確認して補正を使用又はどの補正を使用するか取得
     //distanceは補正で使用しないので補正なしとしている
     //座標補正値が同一の場合タスク起動せず終了
+    //補正クラスのインスタンス取得
+    PositionCorrection &positionCorrection=
+    PositionCorrection::getInstance();
     switch (positioncorrectionData.correctionCondition){
         //rgb値による補正の場合
         case JUDGE_RGB:
-        //補正クラスのインスタンス取得
-            PositionCorrection &positionCorrection=
-            PositionCorrection::getInstance();
         //補正クラスに目標値と補正値をセット後タスク起動
             retChk=positionCorrection.fixSetter(
                 positioncorrectionData);
@@ -55,9 +55,6 @@ int8 Garage::run(int16 scene_num) {
 
         //座標値による補正の場合
         case JUDGE_POS:
-        //補正クラスのインスタンス取得
-            PositionCorrection &positionCorrection=
-            PositionCorrection::getInstance();
         //補正クラスに目標値と補正値をセット後タスク起動
             retChk=positionCorrection.fixSetter(
                 positioncorrectionData);
@@ -69,9 +66,6 @@ int8 Garage::run(int16 scene_num) {
 
         //向きによる補正の場合
         case JUDGE_DIR:
-        //補正クラスのインスタンス取得
-            PositionCorrection &positionCorrection=
-            PositionCorrection::getInstance();
         //補正クラスに目標値と補正値をセット後タスク起動
             retChk=positionCorrection.fixSetter(
                 positioncorrectionData);

@@ -3,10 +3,10 @@
 #include "../../include/CarData/CarPosition.h"
 #include "../../include/Sensor/SensorManager.h"
 #include "workspace/include/Logger/frLog.h"
-#define STATE＿ACT 0
-#define STATE＿ACTAFTER 1
-#define STATE＿NOTSEND 2
-#define STATE＿NOWSEND 3
+#define STATE_ACT 0
+#define STATE_ACTAFTER 1
+#define STATE_NOTSEND 2
+#define STATE_NOWSEND 3
 class PositionCorrection{
     public:
     PositionCorrection();
@@ -15,8 +15,8 @@ class PositionCorrection{
     int8 lineFix();
     int8 directionFix();
     int8 send_position();
-    int8 PositionCorrection::controltaskgetter(JudgeType*);
-    int8 PositionCorrection::movetaskgetter(Range*);
+    int8 controltaskgetter(JudgeType*);
+    int8 movetaskgetter(Range*);
     int8 fixSetter(PositionCorrectionData);
     static PositionCorrection &getInstance()
     {

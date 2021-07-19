@@ -133,11 +133,11 @@ void updata_task(intptr_t unused)
         break;
         case JUDGE_DIR:
             if(movetask==HIGH){
-                sta_cyc(DIRFIX_TASK);
+                sta_cyc(DIRECTIONFIX_TASK);
                 break;
             }
             if(movetask==LOW){
-                stp_cyc(DIRFIX_TASK);
+                stp_cyc(DIRECTIONFIX_TASK);
                 break;
             }
             if(movetask==NONE){
@@ -146,11 +146,11 @@ void updata_task(intptr_t unused)
         break;
         case JUDGE_SEND:
             if(movetask==HIGH){
-                sta_cyc(SENDFIX_TASK);
+                sta_cyc(SEND_TASK);
                 break;
             }
             if(movetask==LOW){
-                stp_cyc(SENDFIX_TASK);
+                stp_cyc(SEND_TASK);
                 break;
             }
             if(movetask==NONE){
@@ -253,4 +253,12 @@ void directionfix_task(intptr_t unused)
     int8 retChk = SYS_NG;
     PositionCorrection positioncorrection=PositionCorrection::getInstance();
     positioncorrection.directionFix();
+}
+
+/* 送信補正タスク */
+void send_task(intptr_t unused)
+{
+    int8 retChk = SYS_NG;
+    PositionCorrection positioncorrection=PositionCorrection::getInstance();
+    positioncorrection.send_position();
 }
