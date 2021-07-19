@@ -10,11 +10,13 @@ TiPositionCorrectionInfomation::TiPositionCorrectionInfomation(){
 
 //template
 /*
-    positionCorrectionData[index].correctionValue.xPosition=0;
-    positionCorrectionData[index].correctionValue.yPosition=0;
-
-    positionCorrectionData[index].correctionPosition.xPosition=0;
-    positionCorrectionData[index].correctionPosition.yPosition=0;
+    positionCorrectionData[index].correctionValue.potision.xPosition=0;
+    positionCorrectionData[index].correctionValue.potision.yPosition=0;
+   
+    positionCorrectionData[index].correctionPosition.potision.xPosition=0;
+    positionCorrectionData[index].correctionPosition.potision.yPosition=0;
+    positionCorrectionData[index].correctionPosition.xCondition=0;
+    positionCorrectionData[index].correctionPosition.yCondition=0;
 
     positionCorrectionData[index].correctionRGB.r=0;
     positionCorrectionData[index].correctionRGB.g=0;
@@ -27,7 +29,7 @@ TiPositionCorrectionInfomation::TiPositionCorrectionInfomation(){
     positionCorrectionData[index].correctionCondition=0;
 
     index++;
-*/    
+*/
 }
 
 TiPositionCorrectionInfomation::~TiPositionCorrectionInfomation(){

@@ -169,7 +169,7 @@ typedef struct ChangeInfo_Tag {
 }ChangeInfo;
 
 typedef struct PositionCorrection_TAG{	
-	PosInfoData correctionValue;
+	PositionData correctionValue;
 	PosInfoData correctionPosition;
 	RGBData correctionRGB;
 	DirectionData correctionDirection;
