@@ -36,4 +36,6 @@ public:
     int8 getDir(float* car_dir);
 
     int8 setDir(float angle);
+
+    int8 calcstate=0;    
 };

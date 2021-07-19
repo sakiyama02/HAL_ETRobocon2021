@@ -96,6 +96,74 @@ void updata_task(intptr_t unused)
     CarPosition &carposition = CarPosition::getInstance();
     ScenarioControl &scenariocontrol = ScenarioControl::getInstance();
 
+#ifdef CORRECTIONDATA_ON
+    //補正クラスのインスタンス取得
+    PositionCorrection &positionCorrection=
+    PositionCorrection::getInstance();
+    JudgeType controltask;
+    Range movetask;
+    positionCorrection.controltaskgetter(&controltask);
+    positionCorrection.movetaskgetter(&movetask);
+    switch(controltask){
+        case JUDGE_RGB:
+            if(movetask==HIGH){
+                sta_cyc(COLORFIX_TASK);
+                break;
+            }
+            if(movetask==LOW){
+                stp_cyc(COLORFIX_TASK);
+                break;
+            }
+            if(movetask==NONE){
+                break;
+            }
+        break;
+        case JUDGE_POS:
+            if(movetask==HIGH){
+                sta_cyc(LINEFIX_TASK);
+                break;
+            }
+            if(movetask==LOW){
+                stp_cyc(LINEFIX_TASK);
+                break;
+            }
+            if(movetask==NONE){
+                break;
+            }
+        break;
+        case JUDGE_DIR:
+            if(movetask==HIGH){
+                sta_cyc(DIRFIX_TASK);
+                break;
+            }
+            if(movetask==LOW){
+                stp_cyc(DIRFIX_TASK);
+                break;
+            }
+            if(movetask==NONE){
+                break;
+            }        
+        break;
+        case JUDGE_SEND:
+            if(movetask==HIGH){
+                sta_cyc(SENDFIX_TASK);
+                break;
+            }
+            if(movetask==LOW){
+                stp_cyc(SENDFIX_TASK);
+                break;
+            }
+            if(movetask==NONE){
+                break;
+            }        
+        break;
+        default:
+        break;
+    }
+    controltask=JUDGE_NONE;
+    movetask=NONE;
+#endif
+
     retChk = carposition.update();
     if( retChk != SYS_OK ){
         msg.LOG(LOG_ID_ERR, "updata_task carposition.update エラー");
@@ -163,26 +231,26 @@ void trapezoidal_task(intptr_t unused)
     }
 }
 //周期タスクスタート:sta_cyc(TRAPEZOIDAL_PERIOD)
-/* 補正タスク */
-void correction_task(intptr_t unused)
-{
-    int8 retChk = SYS_NG;
-}
-
 /* 色補正タスク */
 void colorfix_task(intptr_t unused)
 {
     int8 retChk = SYS_NG;
+    PositionCorrection positioncorrection=PositionCorrection::getInstance();
+    positioncorrection.colorFix();
 }
 
 /* 座標補正タスク */
 void linefix_task(intptr_t unused)
 {
     int8 retChk = SYS_NG;
+    PositionCorrection positioncorrection=PositionCorrection::getInstance();
+    positioncorrection.lineFix();
 }
 
 /* 角度補正タスク */
 void directionfix_task(intptr_t unused)
 {
     int8 retChk = SYS_NG;
+    PositionCorrection positioncorrection=PositionCorrection::getInstance();
+    positioncorrection.directionFix();
 }

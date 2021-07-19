@@ -52,7 +52,7 @@ int8 SlalomBlacky::run(int16 scene_num) {
             PositionCorrection &positionCorrection=
             PositionCorrection::getInstance();
         //補正クラスに目標値と補正値をセット後タスク起動
-            retChk=positionCorrection.FixSetter(
+            retChk=positionCorrection.fixSetter(
                 positioncorrectionData);
         break;
 
@@ -62,7 +62,7 @@ int8 SlalomBlacky::run(int16 scene_num) {
             PositionCorrection &positionCorrection=
             PositionCorrection::getInstance();
         //補正クラスに目標値と補正値をセット後タスク起動
-            retChk=positionCorrection.FixSetter(
+            retChk=positionCorrection.fixSetter(
                 positioncorrectionData);
         break;
 
@@ -76,7 +76,7 @@ int8 SlalomBlacky::run(int16 scene_num) {
             PositionCorrection &positionCorrection=
             PositionCorrection::getInstance();
         //補正クラスに目標値と補正値をセット後タスク起動
-            retChk=positionCorrection.FixSetter(
+            retChk=positionCorrection.fixSetter(
                 positioncorrectionData);
         break;
         //一応
@@ -133,7 +133,7 @@ int8 SlalomBlacky::run(int16 scene_num) {
     }
     retChk=action->run(changeInfo.speed,pidData,changeInfo.direction_data.direction,curveData);
     delete action;
-    return retChk;
+    return SYS_OK;
 }
 //
 //更新タスクでの処理

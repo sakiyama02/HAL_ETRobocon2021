@@ -13,6 +13,7 @@ CarPosition::~CarPosition(){}
 
 int8 CarPosition::update()
 {
+    calcstate=1;
     frLog &msg = frLog::GetInstance();
     int8 retChk=SYS_NG;
     Steering &steering = Steering::getInstance();
@@ -59,6 +60,7 @@ int8 CarPosition::update()
         return retChk;
     }
 
+    calcstate=0;
     return SYS_OK;
 }
 

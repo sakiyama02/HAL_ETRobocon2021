@@ -49,7 +49,7 @@ int8 Garage::run(int16 scene_num) {
             PositionCorrection &positionCorrection=
             PositionCorrection::getInstance();
         //補正クラスに目標値と補正値をセット後タスク起動
-            retChk=positionCorrection.FixSetter(
+            retChk=positionCorrection.fixSetter(
                 positioncorrectionData);
         break;
 
@@ -59,7 +59,7 @@ int8 Garage::run(int16 scene_num) {
             PositionCorrection &positionCorrection=
             PositionCorrection::getInstance();
         //補正クラスに目標値と補正値をセット後タスク起動
-            retChk=positionCorrection.FixSetter(
+            retChk=positionCorrection.fixSetter(
                 positioncorrectionData);
         break;
 
@@ -73,7 +73,7 @@ int8 Garage::run(int16 scene_num) {
             PositionCorrection &positionCorrection=
             PositionCorrection::getInstance();
         //補正クラスに目標値と補正値をセット後タスク起動
-            retChk=positionCorrection.FixSetter(
+            retChk=positionCorrection.fixSetter(
                 positioncorrectionData);
         break;
         //一応
@@ -250,7 +250,7 @@ int8 Garage::sceneChenge(int16* scene_num){
     if(*scene_num>GARAGE_NUM-1){
         *scene_num=-1;
     }
-    return retChk;
+    return SYS_OK;
 }
 
 //
