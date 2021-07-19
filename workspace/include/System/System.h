@@ -57,6 +57,7 @@ JUDGE_POS,
 JUDGE_DIS,
 JUDGE_DIR,
 JUDGE_NONE,
+JUDGE_SEND,//補正限定使用
 };
 
 //モーターポート番号

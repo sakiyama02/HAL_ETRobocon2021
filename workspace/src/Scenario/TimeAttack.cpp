@@ -55,7 +55,7 @@ int8 TimeAttack::run(int16 scene_num) {
         case JUDGE_RGB:
         //補正クラスのインスタンス取得
         //補正クラスに目標値と補正値をセット後タスク起動
-            retChk=positionCorrection.FixSetter(
+            retChk=positionCorrection.fixSetter(
                 positioncorrectionData);
         break;
 
@@ -63,7 +63,7 @@ int8 TimeAttack::run(int16 scene_num) {
         case JUDGE_POS:
         //補正クラスのインスタンス取得
         //補正クラスに目標値と補正値をセット後タスク起動
-            retChk=positionCorrection.FixSetter(
+            retChk=positionCorrection.fixSetter(
                 positioncorrectionData);
         break;
 
@@ -72,11 +72,9 @@ int8 TimeAttack::run(int16 scene_num) {
         break;
 
         //向きによる補正の場合
-        case JUDGE_DIR:
-
-            
+        case JUDGE_DIR:   
         //補正クラスに目標値と補正値をセット後タスク起動
-            retChk=positionCorrection.FixSetter(
+            retChk=positionCorrection.fixSetter(
                 positioncorrectionData);
         break;
         //一応
@@ -253,7 +251,7 @@ int8 TimeAttack::sceneChenge(int16* scene_num){
     if(*scene_num>TIMEATTACK_NUM-1){
         *scene_num=-1;
     }
-    return retChk;
+    return SYS_OK;
 }
 
 //
