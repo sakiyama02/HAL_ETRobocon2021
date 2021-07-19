@@ -1,26 +1,29 @@
 #include "../../include/PositionCorrection/PositionCorrection.h"
+PositionCorrection::PositionCorrection(){}
+PositionCorrection::~PositionCorrection(){}
+
 //メインタスクで呼び出す補正の振り分け及び値の受け渡し
 int8 PositionCorrection::fixSetter(PositionCorrectionData positionCorrection_Data){
     #ifdef CORRECTIONDATA_ON
     frLog &msg = frLog::GetInstance();
 
     //現在のタスクの状態
-    //状態：実行中      STATE＿ACT
-    //    ：実行済み　　STATE＿ACTAFTER
-    //    : 未送信     STATE＿NOTSEND
-    //    : 送信待ち   STATE＿NOWSEND
+    //状態：実行中      STATE_ACT
+    //    ：実行済み　　STATE_ACTAFTER
+    //    : 未送信     STATE_NOTSEND
+    //    : 送信待ち   STATE_NOWSEND
 
     //未送信の場合送信タスクを起動してタスク状態を送信待ちにする
-    if(taskState==STATE＿NOTSEND){
+    if(taskState==STATE_NOTSEND){
         controltask=JUDGE_SEND;
         movetask=HIGH;
-        taskState=STATE＿NOWSEND;
+        taskState=STATE_NOWSEND;
         msg.LOG(LOG_ID_ERR,"数値送信が行われていないのでタスク起動して終了");
         return SYS_OK;
     }
 
     //送信待ち状態なので新たに処理を行わなようにする
-    if(taskState==STATE＿NOWSEND){
+    if(taskState==STATE_NOWSEND){
         msg.LOG(LOG_ID_ERR,"数値送信中なので終了");
         return SYS_OK;
     }
@@ -39,7 +42,7 @@ int8 PositionCorrection::fixSetter(PositionCorrectionData positionCorrection_Dat
 
     //シーンの変化があるので現在稼働しているタスクを
     //次のタスクを稼働させるために停止
-    if(taskState==STATE＿ACT){
+    if(taskState==STATE_ACT){
         msg.LOG(LOG_ID_ERR,"シーン変化してタスクがONのため終了");
         switch(prePositionCorrectionData.correctionCondition){
             case JUDGE_RGB:
@@ -55,7 +58,7 @@ int8 PositionCorrection::fixSetter(PositionCorrectionData positionCorrection_Dat
             movetask=LOW;
             break;
         }
-        taskState=STATE＿ACTAFTER;
+        taskState=STATE_ACTAFTER;
         return SYS_OK;
     } 
 
@@ -88,7 +91,7 @@ int8 PositionCorrection::colorFix(){
     #ifdef CORRECTIONDATA_ON
     int8 retChk = SYS_NG;
     //タスク状態を実行中にする
-    taskState=STATE＿ACT;
+    taskState=STATE_ACT;
 
     //センサ管理をインスタンスポインタを取得
     SensorManager &sensorManager=SensorManager::getInstance();
@@ -122,7 +125,7 @@ int8 PositionCorrection::colorFix(){
     //せずに次の補正が呼び出されるタイミングで送信タスクを呼び出す
     //ためにタスク状態を未送信に設定
     if(carPosition.calcstate==1){
-        taskState=STATE＿NOTSEND;
+        taskState=STATE_NOTSEND;
         ext_tsk();
         return SYS_OK;
     }
@@ -136,7 +139,7 @@ int8 PositionCorrection::colorFix(){
     }
 
     //タスク状態を実行終了
-    taskState=STATE＿ACTAFTER;
+    taskState=STATE_ACTAFTER;
     ext_tsk();
     //自身でタスクをスリーブする
     return SYS_OK;
@@ -148,7 +151,7 @@ int8 PositionCorrection::colorFix(){
 int8 PositionCorrection::lineFix(){
     #ifdef CORRECTIONDATA_ON
     int8 retChk = SYS_NG;
-    taskState=STATE＿ACT;
+    taskState=STATE_ACT;
     //自己位置推定をインスタンスポインタを取得
     CarPosition &carPosition=CarPosition::getInstance();
     PositionData curPositionData;
@@ -203,7 +206,7 @@ int8 PositionCorrection::lineFix(){
     //せずに次の補正が呼び出されるタイミングで送信タスクを呼び出す
     //ためにタスク状態を未送信に設定
     if(carPosition.calcstate==1){
-        taskState=STATE＿NOTSEND;
+        taskState=STATE_NOTSEND;
         ext_tsk();
         return SYS_OK;
     }
@@ -217,7 +220,7 @@ int8 PositionCorrection::lineFix(){
         return SYS_NG;
     }
     //タスク実行終了
-    taskState=STATE＿ACTAFTER;
+    taskState=STATE_ACTAFTER;
     //自身でタスクをスリーブする
     ext_tsk();
     #endif
@@ -227,7 +230,7 @@ int8 PositionCorrection::lineFix(){
 int8 PositionCorrection::directionFix(){
     #ifdef CORRECTIONDATA_ON
     int8 retChk = SYS_NG;
-    taskState=STATE＿ACT;
+    taskState=STATE_ACT;
     //自己位置推定をインスタンスポインタを取得
     CarPosition &carPosition=CarPosition::getInstance();
     DirectionData curDirectionData;
@@ -253,7 +256,7 @@ int8 PositionCorrection::directionFix(){
     //せずに次の補正が呼び出されるタイミングで送信タスクを呼び出す
     //ためにタスク状態を未送信に設定
     if(carPosition.calcstate==1){
-        taskState=STATE＿NOTSEND;
+        taskState=STATE_NOTSEND;
         ext_tsk();
         return SYS_OK;
     }
@@ -268,7 +271,7 @@ int8 PositionCorrection::directionFix(){
     }
 
     //タスク実行終了
-    taskState=STATE＿ACTAFTER;
+    taskState=STATE_ACTAFTER;
     ext_tsk();
     //自身でタスクをスリーブする
     #endif
@@ -288,7 +291,7 @@ int8 PositionCorrection::send_position(){
     //せずに次の補正が呼び出されるタイミングで送信タスクを呼び出す
     //ためにタスク状態を未送信に設定
     if(carPosition.calcstate==1){
-        taskState=STATE＿NOTSEND;
+        taskState=STATE_NOTSEND;
         ext_tsk();
         return SYS_OK;
     }
@@ -303,7 +306,7 @@ int8 PositionCorrection::send_position(){
     }
 
     //タスク実行終了
-    taskState=STATE＿ACTAFTER;
+    taskState=STATE_ACTAFTER;
     ext_tsk();
     #endif
 }
