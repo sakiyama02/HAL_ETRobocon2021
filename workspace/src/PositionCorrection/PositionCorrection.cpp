@@ -33,17 +33,17 @@ int8 PositionCorrection::fixSetter(PositionCorrectionData positionCorrection_Dat
     sceneState=memcmp(&prePositionCorrectionData 
                     ,&positionCorrection_Data
                     ,sizeof(PositionCorrectionData));
-
+    
     //シーンに変化がない場合戻り値で終了した事を知らせる
     if(sceneState==0){
-        msg.LOG(LOG_ID_ERR,"シーン変化なしで終了");
+        //msg.LOG(LOG_ID_ERR,"シーン変化なしで終了");
         return SYS_NG;
     }
 
     //シーンの変化があるので現在稼働しているタスクを
     //次のタスクを稼働させるために停止
     if(taskState==STATE_ACT){
-        msg.LOG(LOG_ID_ERR,"シーン変化してタスクがONのため終了");
+        //msg.LOG(LOG_ID_ERR,"シーン変化してタスクがONのため現在起動中のタスク終了");
         switch(prePositionCorrectionData.correctionCondition){
             case JUDGE_RGB:
             controltask=JUDGE_RGB;
@@ -68,14 +68,17 @@ int8 PositionCorrection::fixSetter(PositionCorrectionData positionCorrection_Dat
     //補正を起動する
     switch(prePositionCorrectionData.correctionCondition){
         case JUDGE_RGB:
+            msg.LOG(LOG_ID_ERR,"色補正開始");
             controltask=JUDGE_RGB;
             movetask=HIGH;
         break;
         case JUDGE_POS:
+            msg.LOG(LOG_ID_ERR,"座標補正開始");
             controltask=JUDGE_POS;
             movetask=HIGH;
         break;
         case JUDGE_DIR:
+            msg.LOG(LOG_ID_ERR,"向き補正開始");
             controltask=JUDGE_DIR;
             movetask=HIGH;
         break;
@@ -89,6 +92,7 @@ int8 PositionCorrection::fixSetter(PositionCorrectionData positionCorrection_Dat
 //周期タスクで呼び出す色補正
 int8 PositionCorrection::colorFix(){
     #ifdef CORRECTIONDATA_ON
+    frLog &msg = frLog::GetInstance();
     int8 retChk = SYS_NG;
     //タスク状態を実行中にする
     taskState=STATE_ACT;
@@ -106,9 +110,9 @@ int8 PositionCorrection::colorFix(){
     retChk=sensorManager.rgbGetter(&curRGBData);
     //引数のエラーチェック
     if(retChk==SYS_NG){
-
         return SYS_PARAM;
     }
+   //msg.LOG(LOG_ID_ERR,"R:%d,G:%d,B:%d",curRGBData.r,curRGBData.g,curRGBData.b);
 
     //rgbの目標値と現在値を比較
     retChk=colorJudge(curRGBData
@@ -117,7 +121,8 @@ int8 PositionCorrection::colorFix(){
     if(retChk!=SYS_OK){
         //条件を満たしていない場合処理を行わずに終了
         //更新なしで送信
-        return SYS_NG;
+        msg.LOG(LOG_ID_ERR,"カラーが目標に達しなかったため終了");
+        return SYS_OK;
     }
 
     //自己位置推定に値をセットするタイミングを確認する必要がある
@@ -125,6 +130,7 @@ int8 PositionCorrection::colorFix(){
     //せずに次の補正が呼び出されるタイミングで送信タスクを呼び出す
     //ためにタスク状態を未送信に設定
     if(carPosition.calcstate==1){
+        msg.LOG(LOG_ID_ERR,"自己位置推定が計算中のため終了");
         taskState=STATE_NOTSEND;
         ext_tsk();
         return SYS_OK;
@@ -132,14 +138,16 @@ int8 PositionCorrection::colorFix(){
 
     //補正構造体に入った座標補正数値を自己位置推定にセットする
     retChk=carPosition.setPos(
-       prePositionCorrectionData.correctionValue.potision);
+       prePositionCorrectionData.correctionValue);
     if(retChk!=SYS_OK){
         //エラーチェック
-        return retChk;
+        return SYS_NG;
     }
 
     //タスク状態を実行終了
     taskState=STATE_ACTAFTER;
+    controltask=JUDGE_RGB;
+    movetask=LOW;
     ext_tsk();
     //自身でタスクをスリーブする
     return SYS_OK;
@@ -150,6 +158,7 @@ int8 PositionCorrection::colorFix(){
 //周期タスクで呼び出す座標補正
 int8 PositionCorrection::lineFix(){
     #ifdef CORRECTIONDATA_ON
+    frLog &msg = frLog::GetInstance();
     int8 retChk = SYS_NG;
     taskState=STATE_ACT;
     //自己位置推定をインスタンスポインタを取得
@@ -162,7 +171,6 @@ int8 PositionCorrection::lineFix(){
     if(retChk==SYS_NG){
         return retChk;
     }
-
     switch(1){
         default:
         //XYを判断する場合
@@ -198,6 +206,7 @@ int8 PositionCorrection::lineFix(){
     if(retChk!=SYS_OK){
         //条件を満たしていない場合処理を行わずに終了
         //更新なしで送信
+        //msg.LOG(LOG_ID_ERR,"座標が目標に達しなかったため終了");
         return SYS_NG;
     }
 
@@ -206,6 +215,7 @@ int8 PositionCorrection::lineFix(){
     //せずに次の補正が呼び出されるタイミングで送信タスクを呼び出す
     //ためにタスク状態を未送信に設定
     if(carPosition.calcstate==1){
+        msg.LOG(LOG_ID_ERR,"自己位置推定が計算中のため終了");
         taskState=STATE_NOTSEND;
         ext_tsk();
         return SYS_OK;
@@ -214,21 +224,26 @@ int8 PositionCorrection::lineFix(){
     //自己位置推定に値をセットするタイミングを確認する必要がある
     //補正構造体に入った座標補正数値を自己位置推定にセットする
     retChk=carPosition.setPos(
-                prePositionCorrectionData.correctionValue.potision);
-    if(retChk!=SYS_NG){
+                prePositionCorrectionData.correctionValue);
+    if(retChk!=SYS_OK){
         //エラーチェック
         return SYS_NG;
     }
     //タスク実行終了
     taskState=STATE_ACTAFTER;
+    //msg.LOG(LOG_ID_ERR,"セット終了");
+    controltask=JUDGE_POS;
+    movetask=LOW;
     //自身でタスクをスリーブする
     ext_tsk();
     #endif
+    return SYS_OK;
 }
 
 //周期タスクで呼び出す向き補正
 int8 PositionCorrection::directionFix(){
     #ifdef CORRECTIONDATA_ON
+    frLog &msg = frLog::GetInstance();
     int8 retChk = SYS_NG;
     taskState=STATE_ACT;
     //自己位置推定をインスタンスポインタを取得
@@ -248,6 +263,8 @@ int8 PositionCorrection::directionFix(){
     if(retChk!=SYS_OK){
         //条件を満たしていない場合処理を行わずに終了
         //更新なしで送信
+        //msg.LOG(LOG_ID_ERR,"向きが目標に達しなかったため終了");
+
         return SYS_NG;
     }
 
@@ -256,14 +273,17 @@ int8 PositionCorrection::directionFix(){
     //せずに次の補正が呼び出されるタイミングで送信タスクを呼び出す
     //ためにタスク状態を未送信に設定
     if(carPosition.calcstate==1){
+        msg.LOG(LOG_ID_ERR,"自己位置推定が計算中のため終了");
+
         taskState=STATE_NOTSEND;
+        
         ext_tsk();
         return SYS_OK;
     }
     //自己位置推定に値をセットするタイミングを確認する必要がある
     //補正構造体に入った座標補正数値を自己位置推定にセットする
     retChk=carPosition.setPos(
-       prePositionCorrectionData.correctionValue.potision);
+       prePositionCorrectionData.correctionValue);
     
     if(retChk!=SYS_OK){
         //エラーチェック
@@ -272,6 +292,8 @@ int8 PositionCorrection::directionFix(){
 
     //タスク実行終了
     taskState=STATE_ACTAFTER;
+    controltask=JUDGE_DIR;
+    movetask=LOW;
     ext_tsk();
     //自身でタスクをスリーブする
     #endif
@@ -283,6 +305,7 @@ int8 PositionCorrection::directionFix(){
 //基本的に値を自己位置推定に渡すだけのメソッド
 int8 PositionCorrection::send_position(){
     #ifdef CORRECTIONDATA_ON
+    frLog &msg = frLog::GetInstance();
     int8 retChk=SYS_NG;
     //自己位置推定をインスタンスポインタを取得
     CarPosition &carPosition=CarPosition::getInstance();
@@ -298,7 +321,7 @@ int8 PositionCorrection::send_position(){
     //自己位置推定に値をセットするタイミングを確認する必要がある
     //補正構造体に入った座標補正数値を自己位置推定にセットする
     retChk=carPosition.setPos(
-       prePositionCorrectionData.correctionValue.potision);
+       prePositionCorrectionData.correctionValue);
     
     if(retChk!=SYS_OK){
         //エラーチェック
@@ -307,6 +330,8 @@ int8 PositionCorrection::send_position(){
 
     //タスク実行終了
     taskState=STATE_ACTAFTER;
+    controltask=JUDGE_NONE;
+    movetask=NONE;
     ext_tsk();
     #endif
 }
@@ -325,6 +350,23 @@ int8 PositionCorrection::controltaskgetter(JudgeType *control_task){
 int8 PositionCorrection::movetaskgetter(Range *move_task){
     #ifdef CORRECTIONDATA_ON
     *move_task=movetask;
+    return SYS_OK;
+    #endif
+}
+
+//
+//appで使用するタスク状態変更setter
+//
+int8 PositionCorrection::controltasksetter(JudgeType control_task){
+    #ifdef CORRECTIONDATA_ON
+    controltask=control_task;
+    return SYS_OK;
+    #endif
+}
+
+int8 PositionCorrection::movetasksetter(Range move_task){
+    #ifdef CORRECTIONDATA_ON
+    movetask=move_task;
     return SYS_OK;
     #endif
 }

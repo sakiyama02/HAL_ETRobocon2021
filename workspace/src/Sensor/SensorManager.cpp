@@ -26,7 +26,7 @@ int8 SensorManager::getRgb()
         msg.LOG(LOG_ID_ERR, "getRgb colorSensor.getRGB エラー");
         return retChk;
     }
-
+    //msg.LOG(LOG_ID_ERR,"R:%d,G:%d,B:%d",rgbStorage.r,rgbStorage.g,rgbStorage.b);
     return SYS_OK;
 }
 
@@ -77,7 +77,7 @@ int8 SensorManager::rgbGetter(RGBData* rgb_data)
     }
 
     //引数にカラーセンサーの値を格納
-    rgb_data = &rgbStorage;
+    *rgb_data = rgbStorage;
 
     return SYS_OK;
 }

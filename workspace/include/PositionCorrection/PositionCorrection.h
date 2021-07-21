@@ -17,6 +17,8 @@ class PositionCorrection{
     int8 send_position();
     int8 controltaskgetter(JudgeType*);
     int8 movetaskgetter(Range*);
+    int8 controltasksetter(JudgeType);
+    int8 movetasksetter(Range);
     int8 fixSetter(PositionCorrectionData);
     static PositionCorrection &getInstance()
     {
