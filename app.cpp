@@ -17,6 +17,7 @@
 #include "workspace/include/Logger/frLog.h"
 #include "workspace/include/Steering/Steering.h"
 #include "workspace/include/Sensor/SensorManager.h"
+
 //#include "workspace/include/Calculation/BrightCalc.h"
 #if defined(BUILD_MODULE)
 #include "module_cfg.h"
@@ -82,7 +83,7 @@ void main_task(intptr_t unused)
     //実行
     retChk = scenariocontrol.run();
     if( retChk != SYS_OK ){
-        msg.LOG(LOG_ID_ERR, "main_task scenariocontrol.run エラー");
+        //msg.LOG(LOG_ID_ERR, "main_task scenariocontrol.run エラー");
     }
     act_tsk(UPDATA_TASK);
     ext_tsk();
@@ -95,7 +96,8 @@ void updata_task(intptr_t unused)
     int16 senarioState = 0;
     CarPosition &carposition = CarPosition::getInstance();
     ScenarioControl &scenariocontrol = ScenarioControl::getInstance();
-
+    //シングルトンのセンサ管理からインスタンスのポインタを取得
+    SensorManager &senserManage=SensorManager::getInstance();
 #ifdef CORRECTIONDATA_ON
     //補正クラスのインスタンス取得
     PositionCorrection &positionCorrection=
@@ -104,14 +106,15 @@ void updata_task(intptr_t unused)
     Range movetask;
     positionCorrection.controltaskgetter(&controltask);
     positionCorrection.movetaskgetter(&movetask);
+
     switch(controltask){
         case JUDGE_RGB:
             if(movetask==HIGH){
-                sta_cyc(COLORFIX_TASK);
+                sta_cyc(COLORFIX_PERIOD);
                 break;
             }
             if(movetask==LOW){
-                stp_cyc(COLORFIX_TASK);
+                stp_cyc(COLORFIX_PERIOD);
                 break;
             }
             if(movetask==NONE){
@@ -120,11 +123,13 @@ void updata_task(intptr_t unused)
         break;
         case JUDGE_POS:
             if(movetask==HIGH){
-                sta_cyc(LINEFIX_TASK);
+                printf("タスク開始");
+                sta_cyc(LINEFIX_PERIOD);
                 break;
             }
             if(movetask==LOW){
-                stp_cyc(LINEFIX_TASK);
+                printf("タスク終了");
+                stp_cyc(LINEFIX_PERIOD);
                 break;
             }
             if(movetask==NONE){
@@ -133,11 +138,11 @@ void updata_task(intptr_t unused)
         break;
         case JUDGE_DIR:
             if(movetask==HIGH){
-                sta_cyc(DIRECTIONFIX_TASK);
+                sta_cyc(DIRECTIONFIX_PERIOD);
                 break;
             }
             if(movetask==LOW){
-                stp_cyc(DIRECTIONFIX_TASK);
+                stp_cyc(DIRECTIONFIX_PERIOD);
                 break;
             }
             if(movetask==NONE){
@@ -146,11 +151,11 @@ void updata_task(intptr_t unused)
         break;
         case JUDGE_SEND:
             if(movetask==HIGH){
-                sta_cyc(SEND_TASK);
+                sta_cyc(SEND_PERIOD);
                 break;
             }
             if(movetask==LOW){
-                stp_cyc(SEND_TASK);
+                stp_cyc(SEND_PERIOD);
                 break;
             }
             if(movetask==NONE){
@@ -162,8 +167,10 @@ void updata_task(intptr_t unused)
     }
     controltask=JUDGE_NONE;
     movetask=NONE;
+    positionCorrection.controltasksetter(controltask);
+    positionCorrection.movetasksetter(movetask);
 #endif
-
+    retChk=senserManage.getRgb();
     retChk = carposition.update();
     if( retChk != SYS_OK ){
         msg.LOG(LOG_ID_ERR, "updata_task carposition.update エラー");
@@ -171,7 +178,7 @@ void updata_task(intptr_t unused)
     //シナリオ制御更新
     retChk = scenariocontrol.updateScenario();
     if( retChk != SYS_OK ){
-        msg.LOG(LOG_ID_ERR, "updata_task scenariocontrol.updateScenario エラー");
+        //msg.LOG(LOG_ID_ERR, "updata_task scenariocontrol.updateScenario エラー");
     }
     //シナリオ状態取得
     retChk = scenariocontrol.scenarioGetter(&senarioState);
@@ -235,7 +242,7 @@ void trapezoidal_task(intptr_t unused)
 void colorfix_task(intptr_t unused)
 {
     int8 retChk = SYS_NG;
-    PositionCorrection positioncorrection=PositionCorrection::getInstance();
+    PositionCorrection &positioncorrection=PositionCorrection::getInstance();
     positioncorrection.colorFix();
 }
 
@@ -243,7 +250,8 @@ void colorfix_task(intptr_t unused)
 void linefix_task(intptr_t unused)
 {
     int8 retChk = SYS_NG;
-    PositionCorrection positioncorrection=PositionCorrection::getInstance();
+    //printf("ラインタスク開始");
+    PositionCorrection &positioncorrection=PositionCorrection::getInstance();
     positioncorrection.lineFix();
 }
 
@@ -251,7 +259,7 @@ void linefix_task(intptr_t unused)
 void directionfix_task(intptr_t unused)
 {
     int8 retChk = SYS_NG;
-    PositionCorrection positioncorrection=PositionCorrection::getInstance();
+    PositionCorrection &positioncorrection=PositionCorrection::getInstance();
     positioncorrection.directionFix();
 }
 
@@ -259,6 +267,6 @@ void directionfix_task(intptr_t unused)
 void send_task(intptr_t unused)
 {
     int8 retChk = SYS_NG;
-    PositionCorrection positioncorrection=PositionCorrection::getInstance();
+    PositionCorrection &positioncorrection=PositionCorrection::getInstance();
     positioncorrection.send_position();
 }

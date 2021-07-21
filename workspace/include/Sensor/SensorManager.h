@@ -25,7 +25,7 @@ private:
     //
     // -setting      RGB値取得
 
-    int8 getRgb();
+    //int8 getRgb();
     // -return      SYS_OK 正常終了
 
     //
@@ -38,7 +38,7 @@ public:
 
     SensorManager();
     ~SensorManager();
-
+    int8 getRgb();
     //
     // -setting     RGB情報格納
     // -argu        RGBの値

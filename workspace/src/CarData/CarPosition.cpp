@@ -3,10 +3,10 @@
 
 CarPosition::CarPosition()
 {
-    carPos.xPosition = 0.0f;
-    carPos.yPosition = 0.0f;
+    carPos.xPosition = 1209.4083f*2;
+    carPos.yPosition = 97.6079f*2;
 
-    carDirection = 0.0f;
+    carDirection = 90.0f;
 }
 
 CarPosition::~CarPosition(){}
@@ -59,7 +59,8 @@ int8 CarPosition::update()
         msg.LOG(LOG_ID_ERR,"CarPos::update calcOdometry err\n");
         return retChk;
     }
-
+    msg.LOG(LOG_ID_ERR,"X:%f,Y:%f\n",carPos.xPosition,carPos.yPosition);
+    //msg.LOG(LOG_ID_ERR,"角度:%f\n",carDirection);
     calcstate=0;
     return SYS_OK;
 }
@@ -88,8 +89,8 @@ int8 CarPosition::calcOdometry(WheelDist* wheel_dist)
     rad     = (( double )( carDirection )) * ( PI / 180.0f );
 
     /* /2.0fいるかわかんない */
-    addPos.xPosition = (float) (dist * std::cos(rad + addRad / 2.0f ));
-    addPos.yPosition = (float)-(dist * std::sin(rad + addRad / 2.0f ));
+    addPos.xPosition = (float)-(dist * std::sin(rad + addRad / 2.0f ));
+    addPos.yPosition = (float)(dist * std::cos(rad + addRad / 2.0f ));
 
     /* 座標更新 */
     carPos.xPosition += addPos.xPosition;

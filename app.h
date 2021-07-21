@@ -91,7 +91,7 @@ extern void correction_task(intptr_t unused);
 extern void colorfix_task(intptr_t unused);
 extern void linefix_task(intptr_t unused);
 extern void directionfix_task(intptr_t unused);
-
+extern void send_task(intptr_t unused);
 static void user_system_create();
 static void user_system_destroy();
 
