@@ -63,7 +63,7 @@ SlEbActionInfomation::SlEbActionInfomation(){
     changeInfoData[index].rgb_data.condition=NONE;
 
     changeInfoData[index].pos_info_data.potision.xPosition=0;
-    changeInfoData[index].pos_info_data.potision.yPosition-0;
+    changeInfoData[index].pos_info_data.potision.yPosition=0;
     changeInfoData[index].pos_info_data.xCondition=NONE;
     changeInfoData[index].pos_info_data.yCondition=NONE;
 

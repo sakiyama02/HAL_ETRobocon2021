@@ -3,8 +3,12 @@
 //
 #include "../../include/Scenario/ScenarioControl.h"
 
-ScenarioControl::ScenarioControl(){}
-ScenarioControl::~ScenarioControl(){}
+ScenarioControl::ScenarioControl(){
+    SceneControl *sceneControl=NULL;
+}
+ScenarioControl::~ScenarioControl(){
+    delete sceneControl;
+}
 
 //run
 //実行
@@ -47,7 +51,6 @@ int8 ScenarioControl::run(){
 
     retChk = sceneControl -> run(sceneNum);
     //動的メモリの開放
-    delete sceneControl;
     return retChk;
 }
 
@@ -57,8 +60,6 @@ int8 ScenarioControl::run(){
 int8 ScenarioControl::updateScenario(){
     int8 retChk = SYS_NG; //戻り値格納変数
 
-    //インスタンス化
-    SceneControl *sceneControl=NULL;
     switch (scenarioState){
         case TIME_ATACK:
             //タイムアタック
@@ -92,7 +93,6 @@ int8 ScenarioControl::updateScenario(){
     //シーンの更新
     retChk = sceneControl->sceneChenge(&sceneNum);
     //動的メモリの開放
-    delete sceneControl;
     if(retChk != SYS_OK){
         return SYS_NG;
     }
