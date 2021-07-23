@@ -39,7 +39,7 @@ int8 TrapezoidControl::getMotorPower(int32* motor_power)
 
 int8 TrapezoidControl::accelerate()
 {
-    frLog &msg = frLog::GetInstance();
+    //frLog &msg = frLog::GetInstance();
     if ( CarSpeed == TargetSpeed ){
         return SYS_OK;
     }

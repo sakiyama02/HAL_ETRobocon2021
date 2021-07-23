@@ -66,7 +66,7 @@ int8 Motor::resetCounts()
 // Motor::setCountsは使わない
 int8 Motor::setCounts(int32 motorAngle, int32 motorPower)
 {
-    frLog &msg = frLog::GetInstance();
+    //frLog &msg = frLog::GetInstance();
  
     if (motorPower < -100 || motorPower > 100)
     {

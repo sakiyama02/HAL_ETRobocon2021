@@ -52,7 +52,7 @@ void start_task(intptr_t unused)
     frLog &msg = frLog::GetInstance();
     char command[] = {"logon -section -trace \n"};
     
-    int index = 0;
+    uint16 index = 0;
     for (index = 0; index < (sizeof(command) / sizeof(command[0])); index++)
     {
         msg.SetLog(command[index]);
@@ -83,7 +83,7 @@ void main_task(intptr_t unused)
     //実行
     retChk = scenariocontrol.run();
     if( retChk != SYS_OK ){
-        //msg.LOG(LOG_ID_ERR, "main_task scenariocontrol.run エラー");
+        msg.LOG(LOG_ID_ERR, "main_task scenariocontrol.run エラー");
     }
     act_tsk(UPDATA_TASK);
     ext_tsk();
@@ -102,11 +102,10 @@ void updata_task(intptr_t unused)
     //補正クラスのインスタンス取得
     PositionCorrection &positionCorrection=
     PositionCorrection::getInstance();
-    JudgeType controltask;
-    Range movetask;
+    JudgeType controltask=JUDGE_NONE;
+    Range movetask=NONE;
     positionCorrection.controltaskgetter(&controltask);
     positionCorrection.movetaskgetter(&movetask);
-
     switch(controltask){
         case JUDGE_RGB:
             if(movetask==HIGH){
@@ -123,12 +122,10 @@ void updata_task(intptr_t unused)
         break;
         case JUDGE_POS:
             if(movetask==HIGH){
-                printf("タスク開始");
                 sta_cyc(LINEFIX_PERIOD);
                 break;
             }
             if(movetask==LOW){
-                printf("タスク終了");
                 stp_cyc(LINEFIX_PERIOD);
                 break;
             }
@@ -243,7 +240,9 @@ void colorfix_task(intptr_t unused)
 {
     int8 retChk = SYS_NG;
     PositionCorrection &positioncorrection=PositionCorrection::getInstance();
-    positioncorrection.colorFix();
+    retChk=positioncorrection.colorFix();
+    if( retChk != SYS_OK ){
+    }
 }
 
 /* 座標補正タスク */
@@ -252,7 +251,9 @@ void linefix_task(intptr_t unused)
     int8 retChk = SYS_NG;
     //printf("ラインタスク開始");
     PositionCorrection &positioncorrection=PositionCorrection::getInstance();
-    positioncorrection.lineFix();
+    retChk=positioncorrection.lineFix();
+    if( retChk != SYS_OK ){
+    }
 }
 
 /* 角度補正タスク */
@@ -260,7 +261,9 @@ void directionfix_task(intptr_t unused)
 {
     int8 retChk = SYS_NG;
     PositionCorrection &positioncorrection=PositionCorrection::getInstance();
-    positioncorrection.directionFix();
+    retChk=positioncorrection.directionFix();
+    if( retChk != SYS_OK ){
+    }
 }
 
 /* 送信補正タスク */
@@ -268,5 +271,7 @@ void send_task(intptr_t unused)
 {
     int8 retChk = SYS_NG;
     PositionCorrection &positioncorrection=PositionCorrection::getInstance();
-    positioncorrection.send_position();
+    retChk=positioncorrection.send_position();
+    if( retChk != SYS_OK ){
+    }
 }

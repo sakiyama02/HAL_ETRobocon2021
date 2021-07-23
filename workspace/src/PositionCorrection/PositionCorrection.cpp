@@ -1,5 +1,7 @@
 #include "../../include/PositionCorrection/PositionCorrection.h"
-PositionCorrection::PositionCorrection(){}
+PositionCorrection::PositionCorrection(){
+    prePositionCorrectionData.correctionCondition=JUDGE_NONE;
+}
 PositionCorrection::~PositionCorrection(){}
 
 //メインタスクで呼び出す補正の振り分け及び値の受け渡し
@@ -42,6 +44,7 @@ int8 PositionCorrection::fixSetter(PositionCorrectionData positionCorrection_Dat
 
     //シーンの変化があるので現在稼働しているタスクを
     //次のタスクを稼働させるために停止
+    
     if(taskState==STATE_ACT){
         //msg.LOG(LOG_ID_ERR,"シーン変化してタスクがONのため現在起動中のタスク終了");
         switch(prePositionCorrectionData.correctionCondition){
@@ -56,6 +59,8 @@ int8 PositionCorrection::fixSetter(PositionCorrectionData positionCorrection_Dat
             case JUDGE_DIR:
             controltask=JUDGE_DIR;
             movetask=LOW;
+            break;
+            default:
             break;
         }
         taskState=STATE_ACTAFTER;
@@ -136,9 +141,7 @@ int8 PositionCorrection::colorFix(){
         return SYS_OK;
     }
 
-    //補正構造体に入った座標補正数値を自己位置推定にセットする
-    retChk=carPosition.setPos(
-       prePositionCorrectionData.correctionValue);
+    retChk=posSetter(prePositionCorrectionData.correctionValue);
     if(retChk!=SYS_OK){
         //エラーチェック
         return SYS_NG;
@@ -221,14 +224,8 @@ int8 PositionCorrection::lineFix(){
         return SYS_OK;
     }
 
-    //自己位置推定に値をセットするタイミングを確認する必要がある
-    //補正構造体に入った座標補正数値を自己位置推定にセットする
-    retChk=carPosition.setPos(
-                prePositionCorrectionData.correctionValue);
-    if(retChk!=SYS_OK){
-        //エラーチェック
-        return SYS_NG;
-    }
+    retChk=posSetter(prePositionCorrectionData.correctionValue);
+    
     //タスク実行終了
     taskState=STATE_ACTAFTER;
     //msg.LOG(LOG_ID_ERR,"セット終了");
@@ -264,8 +261,7 @@ int8 PositionCorrection::directionFix(){
         //条件を満たしていない場合処理を行わずに終了
         //更新なしで送信
         //msg.LOG(LOG_ID_ERR,"向きが目標に達しなかったため終了");
-
-        return SYS_NG;
+        return SYS_OK;
     }
 
     //自己位置推定に値をセットするタイミングを確認する必要がある
@@ -280,10 +276,8 @@ int8 PositionCorrection::directionFix(){
         ext_tsk();
         return SYS_OK;
     }
-    //自己位置推定に値をセットするタイミングを確認する必要がある
-    //補正構造体に入った座標補正数値を自己位置推定にセットする
-    retChk=carPosition.setPos(
-       prePositionCorrectionData.correctionValue);
+
+    retChk=posSetter(prePositionCorrectionData.correctionValue);
     
     if(retChk!=SYS_OK){
         //エラーチェック
@@ -305,7 +299,7 @@ int8 PositionCorrection::directionFix(){
 //基本的に値を自己位置推定に渡すだけのメソッド
 int8 PositionCorrection::send_position(){
     #ifdef CORRECTIONDATA_ON
-    frLog &msg = frLog::GetInstance();
+    //frLog &msg = frLog::GetInstance();
     int8 retChk=SYS_NG;
     //自己位置推定をインスタンスポインタを取得
     CarPosition &carPosition=CarPosition::getInstance();
@@ -318,10 +312,8 @@ int8 PositionCorrection::send_position(){
         ext_tsk();
         return SYS_OK;
     }
-    //自己位置推定に値をセットするタイミングを確認する必要がある
-    //補正構造体に入った座標補正数値を自己位置推定にセットする
-    retChk=carPosition.setPos(
-       prePositionCorrectionData.correctionValue);
+    
+    retChk=posSetter(prePositionCorrectionData.correctionValue);
     
     if(retChk!=SYS_OK){
         //エラーチェック
@@ -334,6 +326,7 @@ int8 PositionCorrection::send_position(){
     movetask=NONE;
     ext_tsk();
     #endif
+    return SYS_OK;
 }
 
 
@@ -343,15 +336,15 @@ int8 PositionCorrection::send_position(){
 int8 PositionCorrection::controltaskgetter(JudgeType *control_task){
     #ifdef CORRECTIONDATA_ON
     *control_task=controltask;
-    return SYS_OK;
     #endif
+    return SYS_OK;
 }
 
 int8 PositionCorrection::movetaskgetter(Range *move_task){
     #ifdef CORRECTIONDATA_ON
     *move_task=movetask;
-    return SYS_OK;
     #endif
+    return SYS_OK;
 }
 
 //
@@ -360,15 +353,15 @@ int8 PositionCorrection::movetaskgetter(Range *move_task){
 int8 PositionCorrection::controltasksetter(JudgeType control_task){
     #ifdef CORRECTIONDATA_ON
     controltask=control_task;
-    return SYS_OK;
     #endif
+    return SYS_OK;
 }
 
 int8 PositionCorrection::movetasksetter(Range move_task){
     #ifdef CORRECTIONDATA_ON
     movetask=move_task;
-    return SYS_OK;
     #endif
+    return SYS_OK;
 }
 
 
@@ -498,4 +491,44 @@ int8 PositionCorrection::directionJudge(float cur_directionData,float change_dir
         return SYS_NG;        
     }
     return SYS_NG;
+}
+
+//座標を自己位置推定にセット
+int8 PositionCorrection::posSetter(PosInfoData target_pos){
+     //自己位置推定をインスタンスポインタを取得
+    CarPosition &carPosition=CarPosition::getInstance();
+    int8 retChk = SYS_NG;
+    switch(1){
+        default:
+        //XYを判断する場合
+        if(target_pos.xCondition<2&&target_pos.yCondition<2){
+            retChk=carPosition.xsetPos(target_pos.potision.xPosition);
+            if(retChk!=SYS_OK){
+                break;
+            }
+            retChk=carPosition.ysetPos(target_pos.potision.yPosition);
+            break;
+        }
+        //Xだけを判断する場合
+        if(target_pos.xCondition<2){
+            retChk=carPosition.xsetPos(target_pos.potision.xPosition);
+            if(retChk!=SYS_OK){
+                break;
+            }
+            break;
+        }
+        //Yだけを判断する場合
+        if(target_pos.yCondition<2){
+            retChk=carPosition.ysetPos(target_pos.potision.yPosition);
+            if(retChk!=SYS_OK){
+                break;
+            }
+        }
+        break;
+    }
+    if(retChk!=SYS_OK){
+        //エラーチェック
+        return SYS_NG;
+    }
+    return SYS_OK;
 }

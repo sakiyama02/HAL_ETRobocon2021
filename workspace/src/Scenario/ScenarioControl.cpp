@@ -12,7 +12,7 @@ ScenarioControl::~ScenarioControl(){}
 int8 ScenarioControl::run(){
     int8 retChk = SYS_NG; //戻り値格納変数
 
-    SceneControl *sceneControl;
+    SceneControl *sceneControl=NULL;
 
     switch (scenarioState)
     {
@@ -58,7 +58,7 @@ int8 ScenarioControl::updateScenario(){
     int8 retChk = SYS_NG; //戻り値格納変数
 
     //インスタンス化
-    SceneControl *sceneControl;
+    SceneControl *sceneControl=NULL;
     switch (scenarioState){
         case TIME_ATACK:
             //タイムアタック

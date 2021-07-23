@@ -78,8 +78,8 @@ int8 Steering::rotateWheel(MotorPower motor_power)
     }
 
     /* 変数宣言 */
-    int32 lCount = 0;
-    int32 rCount = 0;
+    //int32 lCount = 0;
+    //int32 rCount = 0;
     int8 retChk = SYS_NG;
 
     /* 右モータ　PWMset */
