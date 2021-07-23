@@ -28,15 +28,12 @@ class PositionCorrection{
     private:
     int8 taskState=0;
     int8 sceneState=0;
-    //appに操作してもらうタスクを知らせる
     JudgeType controltask=JUDGE_NONE;
-    //appに起動と停止どちらを行うかを知らせる
-    //HIGHで起動
-    //LOWで停止
     Range movetask=NONE;
     PositionCorrectionData prePositionCorrectionData;
     int8 colorJudge(RGBData,RGBData,Range);
     int8 xPositionJudge(float,float,Range);
     int8 yPositionJudge(float,float,Range);
     int8 directionJudge(float,float,Range);
+    int8 posSetter(PosInfoData);
 };

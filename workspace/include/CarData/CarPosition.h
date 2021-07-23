@@ -33,6 +33,10 @@ public:
 
     int8 setPos(PositionData set_pos);
 
+    int8 xsetPos(float set_pos);
+
+    int8 ysetPos(float set_pos);
+
     int8 getDir(float* car_dir);
 
     int8 setDir(float angle);

@@ -3,8 +3,8 @@
 
 CarPosition::CarPosition()
 {
-    carPos.xPosition = 1209.4083f*2;
-    carPos.yPosition = 97.6079f*2;
+    carPos.xPosition = 1762.79;
+    carPos.yPosition = 3392.27;
 
     carDirection = 90.0f;
 }
@@ -123,15 +123,32 @@ int8 CarPosition::getPos(PositionData* car_pos)
 
 int8 CarPosition::setPos(PositionData set_pos)
 {
-    frLog &msg = frLog::GetInstance();
+    //frLog &msg = frLog::GetInstance();
     carPos = set_pos;
 
     return SYS_OK;
 }
 
+int8 CarPosition::xsetPos(float set_pos)
+{
+    //frLog &msg = frLog::GetInstance();
+    carPos.xPosition = set_pos;
+
+    return SYS_OK;
+}
+
+int8 CarPosition::ysetPos(float set_pos)
+{
+    //frLog &msg = frLog::GetInstance();
+    carPos.yPosition = set_pos;
+
+    return SYS_OK;
+}
+
+
 int8 CarPosition::getDir(float* car_dir)
 {
-    frLog &msg = frLog::GetInstance();
+    //frLog &msg = frLog::GetInstance();
     /* 引数チェック */
     if( car_dir == NULL ){
         msg.LOG(LOG_ID_ERR,"CarPosition::getDir 引数エラー\n");
@@ -145,7 +162,7 @@ int8 CarPosition::getDir(float* car_dir)
 
 int8 CarPosition::setDir(float angle)
 {
-    frLog &msg = frLog::GetInstance();
+    //frLog &msg = frLog::GetInstance();
     /* 引数チェック */
     /* 範囲で引数チェックが必要 
         return SYS_NG;
