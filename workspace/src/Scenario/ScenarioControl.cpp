@@ -3,12 +3,8 @@
 //
 #include "../../include/Scenario/ScenarioControl.h"
 
-ScenarioControl::ScenarioControl(){
-    SceneControl *sceneControl=NULL;
-}
-ScenarioControl::~ScenarioControl(){
-    delete sceneControl;
-}
+ScenarioControl::ScenarioControl(){}
+ScenarioControl::~ScenarioControl(){}
 
 //run
 //実行
@@ -60,6 +56,7 @@ int8 ScenarioControl::run(){
 int8 ScenarioControl::updateScenario(){
     int8 retChk = SYS_NG; //戻り値格納変数
 
+    SceneControl *sceneControl=NULL;
     switch (scenarioState){
         case TIME_ATACK:
             //タイムアタック
