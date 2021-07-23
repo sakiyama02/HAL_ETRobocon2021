@@ -6,7 +6,7 @@
 
 class SlEfPositionCorrectionInfomation{
     private:
-        PositionCorrectionData *positionCorrectionData = new PositionCorrectionData[TIMEATTACK_NUM];
+        PositionCorrectionData *positionCorrectionData = new PositionCorrectionData[SLALOMEIFIE_NUM];
     public:
         SlEfPositionCorrectionInfomation();
 

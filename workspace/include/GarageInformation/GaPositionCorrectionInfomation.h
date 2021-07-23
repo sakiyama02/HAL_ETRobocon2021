@@ -6,7 +6,7 @@
 
 class GaPositionCorrectionInfomation{
     private:
-        PositionCorrectionData *positionCorrectionData = new PositionCorrectionData[TIMEATTACK_NUM];
+        PositionCorrectionData *positionCorrectionData = new PositionCorrectionData[GARAGE_NUM];
     public:
         GaPositionCorrectionInfomation();
 

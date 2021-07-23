@@ -47,6 +47,7 @@ int8 ScenarioControl::run(){
 
     retChk = sceneControl -> run(sceneNum);
     //動的メモリの開放
+    delete sceneControl;
     return retChk;
 }
 
@@ -90,6 +91,7 @@ int8 ScenarioControl::updateScenario(){
     //シーンの更新
     retChk = sceneControl->sceneChenge(&sceneNum);
     //動的メモリの開放
+    delete sceneControl;
     if(retChk != SYS_OK){
         return SYS_NG;
     }

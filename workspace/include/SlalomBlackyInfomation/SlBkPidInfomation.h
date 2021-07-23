@@ -6,7 +6,7 @@
 
 class SlBkpidInfomation{
     private:
-        PIDData *pidData = new PIDData[TIMEATTACK_NUM];
+        PIDData *pidData = new PIDData[SLALOMBLACKY_NUM];
     public:
         SlBkpidInfomation();
 

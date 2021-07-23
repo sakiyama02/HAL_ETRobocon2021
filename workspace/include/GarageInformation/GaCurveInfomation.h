@@ -6,7 +6,7 @@
 
 class GaCurveInfomation{
     private:
-        CurveData *curveData = new CurveData[TIMEATTACK_NUM];
+        CurveData *curveData = new CurveData[GARAGE_NUM];
     public:
         GaCurveInfomation();
 

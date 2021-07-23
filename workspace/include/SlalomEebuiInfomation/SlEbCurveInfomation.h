@@ -6,7 +6,7 @@
 
 class SlEbCurveInfomation{
     private:
-        CurveData *curveData = new CurveData[TIMEATTACK_NUM];
+        CurveData *curveData = new CurveData[SLALOMEEBUI_NUM];
     public:
         SlEbCurveInfomation();
 

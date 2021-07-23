@@ -6,7 +6,7 @@
 
 class SlEbActionInfomation{
     private:
-        ChangeInfo *changeInfoData = new ChangeInfo[TIMEATTACK_NUM];
+        ChangeInfo *changeInfoData = new ChangeInfo[SLALOMEEBUI_NUM];
     public:
         SlEbActionInfomation();
 
