@@ -6,7 +6,7 @@
 
 class SlBkActionInfomation{
     private:
-        ChangeInfo *changeInfoData = new ChangeInfo[TIMEATTACK_NUM];
+        ChangeInfo *changeInfoData = new ChangeInfo[SLALOMBLACKY_NUM];
     public:
         SlBkActionInfomation();
 

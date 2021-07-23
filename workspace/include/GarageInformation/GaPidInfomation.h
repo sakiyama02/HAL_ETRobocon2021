@@ -6,7 +6,7 @@
 
 class GaPidInfomation{
     private:
-        PIDData *pidData = new PIDData[TIMEATTACK_NUM];
+        PIDData *pidData = new PIDData[GARAGE_NUM];
     public:
         GaPidInfomation();
 

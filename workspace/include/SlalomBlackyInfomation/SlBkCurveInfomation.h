@@ -6,7 +6,7 @@
 
 class SlBkCurveInfomation{
     private:
-        CurveData *curveData = new CurveData[TIMEATTACK_NUM];
+        CurveData *curveData = new CurveData[SLALOMBLACKY_NUM];
     public:
         SlBkCurveInfomation();
 

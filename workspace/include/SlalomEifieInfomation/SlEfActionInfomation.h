@@ -6,7 +6,7 @@
 
 class SlEfActionInfomation{
     private:
-        ChangeInfo *changeInfoData = new ChangeInfo[TIMEATTACK_NUM];
+        ChangeInfo *changeInfoData = new ChangeInfo[SLALOMEIFIE_NUM];
     public:
         SlEfActionInfomation();
 
