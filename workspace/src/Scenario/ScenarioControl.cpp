@@ -99,20 +99,24 @@ int8 ScenarioControl::updateScenario(){
     //シーン番号の確認
     if(sceneNum == NEXT_BLACKY){   //次のシーンはブラッキー
         scenarioState = SLALOM_BLACKY;
+        sceneNum=START;
         return SYS_OK;
     }
 
     if(sceneNum == NEXT_EIFIE){    //次のシーンはエーフィ
         scenarioState = SLALOM_EIFIE;
+        sceneNum=START;
         return SYS_OK;
     }
 
     if(sceneNum == FINISH){        //シナリオ内の全シーン終了
         if(scenarioState == SLALOM_EIFIE||scenarioState == SLALOM_BLACKY){
             scenarioState = GARAGE;
+            sceneNum=START;
         }
         else{
             scenarioState++;
+            sceneNum=START;
             return SYS_OK;
         }
     }
