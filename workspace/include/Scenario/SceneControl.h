@@ -10,7 +10,7 @@ class SceneControl{
     public:
         SceneControl();
 
-        ~SceneControl();
+        virtual ~SceneControl();
 
         //シーンの切り替え
         //引数   init16_t シーン番号[IN]

@@ -148,7 +148,7 @@ int8 CarPosition::ysetPos(float set_pos)
 
 int8 CarPosition::getDir(float* car_dir)
 {
-    //frLog &msg = frLog::GetInstance();
+    frLog &msg = frLog::GetInstance();
     /* 引数チェック */
     if( car_dir == NULL ){
         msg.LOG(LOG_ID_ERR,"CarPosition::getDir 引数エラー\n");
