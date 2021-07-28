@@ -39,6 +39,16 @@ public:
     // -return      SYS_NG 異常終了
 
     int8 getRevison(float*);
+
+
+    //
+    // -setting     積分地初期化
+    // -return      SYS_OK 正常終了
+    // -return      SYS_PARAM 引数エラー
+    // -return      SYS_NG 異常終了
+
+    int8 initIntegral();
+
     
     // インスタンスの生成 
     static PidControl &getInstance()

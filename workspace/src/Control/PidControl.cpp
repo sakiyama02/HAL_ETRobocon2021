@@ -78,3 +78,20 @@ int8 PidControl::getRevison(float *motor_Revison)
 
     return SYS_OK;
 }
+
+
+//
+//  -datail
+//  積分に必要な値を初期化
+//
+int8 PidControl::initIntegral()
+{
+    //偏差初期化
+    eDeviation = 0.0f;
+    //偏差の積み上げ初期化
+    stackIntegral = 0.0f;
+    //補正値の初期化
+    moterRevison = 0;
+    
+    return SYS_OK;
+}
