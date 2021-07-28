@@ -233,7 +233,7 @@ int8 SlalomEebui::sceneChenge(int16* scene_num){
             *scene_num=-3;
         }
     }
-    return SYS_OK;
+    return retChk;
 }
 
 //

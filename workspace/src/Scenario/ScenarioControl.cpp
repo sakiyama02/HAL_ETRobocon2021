@@ -56,6 +56,7 @@ int8 ScenarioControl::run(){
 //
 int8 ScenarioControl::updateScenario(){
     int8 retChk = SYS_NG; //戻り値格納変数
+    PidControl &pidControl      = PidControl::getInstance();
 
     SceneControl *sceneControl=NULL;
     switch (scenarioState){
@@ -95,6 +96,7 @@ int8 ScenarioControl::updateScenario(){
     if(retChk != SYS_OK){
         return SYS_NG;
     }
+    pidControl.initIntegral();
 
     //シーン番号の確認
     if(sceneNum == NEXT_BLACKY){   //次のシーンはブラッキー
