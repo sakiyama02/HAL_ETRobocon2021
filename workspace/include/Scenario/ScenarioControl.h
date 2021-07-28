@@ -10,6 +10,7 @@
 #include "../../include/Scenario/SlalomEebui.h"
 #include "../../include/Scenario/SlalomEifie.h"
 #include "../../include/Scenario/TimeAttack.h"
+#include "../../include/Control/PidControl.h"
 
 #define START           0
 #define TIME_ATACK      1

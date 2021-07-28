@@ -228,7 +228,7 @@ int8 TimeAttack::sceneChenge(int16* scene_num){
     if(*scene_num>TIMEATTACK_NUM-1){
         *scene_num=-1;
     }
-    return SYS_OK;
+    return retChk;
 }
 
 //
