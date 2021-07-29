@@ -294,6 +294,71 @@ int8 PositionCorrection::directionFix(){
     return SYS_OK;
 }
 
+//周期タスクで呼び出す色補正
+int8 PositionCorrection::vFix(){
+    #ifdef CORRECTIONDATA_ON
+    frLog &msg = frLog::GetInstance();
+    int8 retChk = SYS_NG;
+    //タスク状態を実行中にする
+    taskState=STATE_ACT;
+
+    //センサ管理をインスタンスポインタを取得
+    SensorManager &sensorManager=SensorManager::getInstance();
+    //自己位置推定をインスタンスポインタを取得
+    CarPosition &carPosition=CarPosition::getInstance();
+
+    //センサ管理から取得したv値を保持する構造体
+    VData curVData;
+    memset(&curVData,0,sizeof(VData));
+
+    //センサ管理からrgb値を取得
+    retChk=sensorManager.hsvGetter(&curVData.v);
+    //引数のエラーチェック
+    if(retChk==SYS_NG){
+        return SYS_PARAM;
+    }
+   //msg.LOG(LOG_ID_ERR,"R:%d,G:%d,B:%d",curRGBData.r,curRGBData.g,curRGBData.b);
+
+    //rgbの目標値と現在値を比較
+    retChk=vJudge(curVData.v
+                ,prePositionCorrectionData.correctionV.v
+                ,prePositionCorrectionData.correctionV.condition);
+    if(retChk!=SYS_OK){
+        //条件を満たしていない場合処理を行わずに終了
+        //更新なしで送信
+        msg.LOG(LOG_ID_ERR,"カラーが目標に達しなかったため終了");
+        return SYS_OK;
+    }
+
+    //自己位置推定に値をセットするタイミングを確認する必要がある
+    //calcstateが1の場合自己位置推定内で計算中になる為数値をセット
+    //せずに次の補正が呼び出されるタイミングで送信タスクを呼び出す
+    //ためにタスク状態を未送信に設定
+    if(carPosition.calcstate==1){
+        msg.LOG(LOG_ID_ERR,"自己位置推定が計算中のため終了");
+        taskState=STATE_NOTSEND;
+        ext_tsk();
+        return SYS_OK;
+    }
+
+    retChk=posSetter(prePositionCorrectionData.correctionValue);
+    if(retChk!=SYS_OK){
+        //エラーチェック
+        return SYS_NG;
+    }
+
+    //タスク状態を実行終了
+    taskState=STATE_ACTAFTER;
+    controltask=JUDGE_V;
+    movetask=LOW;
+    ext_tsk();
+    //自身でタスクをスリーブする
+    return SYS_OK;
+
+    #endif
+}
+
+
 //自己位置推定の計算中に値を変更されないように
 //変更中に値を変えようとした場合のみ使用する
 //基本的に値を自己位置推定に渡すだけのメソッド
@@ -531,4 +596,29 @@ int8 PositionCorrection::posSetter(PosInfoData target_pos){
         return SYS_NG;
     }
     return SYS_OK;
+}
+
+//v値の判定
+int8 SlalomBlacky::vJudge(uint16 cur_vData,uint16 change_vData,Range condition){
+    int16 resultv=0;
+    resultv=cur_vData-change_vData;
+    if(resultv>0){
+        if(condition==HIGH){
+            return SYS_OK;
+        }
+        return SYS_NG;
+    }
+    if(resultv<0){
+        if(condition==LOW){
+            return SYS_OK;
+        }
+        return SYS_NG;        
+    }
+    if(resultv==0){
+        if(condition==NONE){
+            return SYS_OK;
+        }
+        return SYS_NG;        
+    }
+    return SYS_NG;
 }

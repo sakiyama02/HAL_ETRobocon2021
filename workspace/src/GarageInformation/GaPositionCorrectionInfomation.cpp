@@ -46,6 +46,12 @@ GaPositionCorrectionInfomation::GaPositionCorrectionInfomation(){
     positionCorrectionData[index].correctionDirection.direction=0;
     positionCorrectionData[index].correctionDirection.condition=NONE;
 
+    //V値目標設定
+    //v        :v値の切り替え値
+    //condition:v値の切り替え地点の範囲指定(HIGH.LOW.NONE)
+    positionCorrectionData[index].correctionV.v;
+    positionCorrectionData[index].correctionV.condition;
+
     //目標値を判断する数値設定
     //correctionCondition:判断方法の指定
     //(JUDGE_RGB,JUDGE_POS,JUDGE_DIR,JUDGE_NONE)
@@ -68,6 +74,9 @@ GaPositionCorrectionInfomation::GaPositionCorrectionInfomation(){
     positionCorrectionData[index].correctionRGB.g=0;
     positionCorrectionData[index].correctionRGB.b=0;
     positionCorrectionData[index].correctionRGB.condition=NONE;
+
+    positionCorrectionData[index].correctionV.v=0;
+    positionCorrectionData[index].correctionV.condition=NONE;
 
     positionCorrectionData[index].correctionDirection.direction=0;
     positionCorrectionData[index].correctionDirection.condition=NONE;

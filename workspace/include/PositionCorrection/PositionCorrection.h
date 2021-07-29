@@ -14,6 +14,7 @@ class PositionCorrection{
     int8 colorFix();
     int8 lineFix();
     int8 directionFix();
+    int8 vFix();
     int8 send_position();
     int8 controltaskgetter(JudgeType*);
     int8 movetaskgetter(Range*);
@@ -35,5 +36,6 @@ class PositionCorrection{
     int8 xPositionJudge(float,float,Range);
     int8 yPositionJudge(float,float,Range);
     int8 directionJudge(float,float,Range);
+    int8 vJudge(uint16,uint16,Range);
     int8 posSetter(PosInfoData);
 };

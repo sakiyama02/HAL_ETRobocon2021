@@ -180,6 +180,7 @@ typedef struct PositionCorrection_TAG{
 	PosInfoData correctionValue;
 	PosInfoData correctionPosition;
 	RGBData correctionRGB;
+	VData correctionV;
 	DirectionData correctionDirection;
 	JudgeType correctionCondition;
 }PositionCorrectionData;
