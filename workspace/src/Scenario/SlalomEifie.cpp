@@ -128,6 +128,7 @@ int8 SlalomEifie::sceneChenge(int16 *scene_num)
     ChangeInfo changeInfo;
     PositionData curpositionData;
     DirectionData curdirectionData;
+    VData curvData;
     //シングルトンのセンサ管理からインスタンスのポインタを取得
     SensorManager &senserManage = SensorManager::getInstance();
     //シングルトンの自己位置推定からインスタンスのポインタを取得
@@ -230,7 +231,14 @@ int8 SlalomEifie::sceneChenge(int16 *scene_num)
             *scene_num += 1;
         }
         break;
-    
+    case JUDGE_V:
+        memset(&curvData,0,sizeof(VData)); 
+        senserManage.hsvGetter(&curvData.v);
+        retChk=vJudge(curvData.v,changeInfo.vData.v,changeInfo.vData.condition);
+        if(retChk==SYS_OK){
+            *scene_num+=1;
+        }      
+        break;
     case JUDGE_SEND:
     case JUDGE_NONE:
     break;
@@ -428,6 +436,32 @@ int8 SlalomEifie::directionJudge(float cur_directionData, float change_direction
             return SYS_OK;
         }
         return SYS_NG;
+    }
+    return SYS_NG;
+}
+
+//v値の判定
+int8 SlalomEifie::vJudge(uint16 cur_vData,uint16 change_vData,Range condition)
+{
+    uint16 resultv=0;
+    resultv=cur_vData-change_vData;
+    if(resultv>0){
+        if(condition==HIGH){
+            return SYS_OK;
+        }
+        return SYS_NG;
+    }
+    if(resultv<0){
+        if(condition==LOW){
+            return SYS_OK;
+        }
+        return SYS_NG;        
+    }
+    if(resultv==0){
+        if(condition==NONE){
+            return SYS_OK;
+        }
+        return SYS_NG;        
     }
     return SYS_NG;
 }

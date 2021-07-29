@@ -31,4 +31,5 @@ class Garage : public SceneControl{
     int8 yPositionJudge(float,float,Range);
     int8 distanceJudge(uint16,uint16);
     int8 directionJudge(float,float,Range);
+    int8 vJudge(uint16,uint16,Range);
 };
