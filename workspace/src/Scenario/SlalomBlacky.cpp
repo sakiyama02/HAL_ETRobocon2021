@@ -120,6 +120,7 @@ int8 SlalomBlacky::sceneChenge(int16* scene_num){
     PositionData curpositionData;
     uint16 curdistanceData=0;
     DirectionData curdirectionData;
+    VData curvData;    
     // 情報クラスのインスタンス化
     ChangeInfo changeInfo;
     //シングルトンのセンサ管理からインスタンスのポインタを取得
@@ -211,6 +212,14 @@ int8 SlalomBlacky::sceneChenge(int16* scene_num){
             if(retChk==SYS_OK){
                 *scene_num+=1;
             }
+        break;
+        case JUDGE_V:
+            memset(&curvData,0,sizeof(VData)); 
+            senserManage.hsvGetter(&curvData.v);
+            retChk=vJudge(curvData.v,changeInfo.vData.v,changeInfo.vData.condition);
+            if(retChk==SYS_OK){
+                *scene_num+=1;
+            }      
         break;
         case JUDGE_SEND:
         case JUDGE_NONE:
@@ -375,6 +384,30 @@ int8 SlalomBlacky::directionJudge(float cur_directionData,float change_direction
         return SYS_NG;        
     }
     if(resultdirection==0){
+        if(condition==NONE){
+            return SYS_OK;
+        }
+        return SYS_NG;        
+    }
+    return SYS_NG;
+}
+//v値の判定
+int8 SlalomBlacky::vJudge(uint16 cur_vData,uint16 change_vData,Range condition){
+    uint16 resultv=0;
+    resultv=cur_vData-change_vData;
+    if(resultv>0){
+        if(condition==HIGH){
+            return SYS_OK;
+        }
+        return SYS_NG;
+    }
+    if(resultv<0){
+        if(condition==LOW){
+            return SYS_OK;
+        }
+        return SYS_NG;        
+    }
+    if(resultv==0){
         if(condition==NONE){
             return SYS_OK;
         }

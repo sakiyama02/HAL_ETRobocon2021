@@ -40,6 +40,12 @@ SlEfActionInfomation::SlEfActionInfomation(){
     //distance:距離の切り替え値
     changeInfoData[index].distance=0;
 
+    //v値切り替え値設定
+    //v:v値の切り替え値
+    //condition:v値の切り替え地点の範囲指定(HIGH.LOW.NONE)
+    changeInfoData[index].vData.v=0;
+    changeInfoData[index].vData.condition=NONE;
+
     //切り替え方法
     //judge:切り替え方法の指定
     //(JUDGE_RGB,JUDGE_POS,JUDGE_DIS,
@@ -70,6 +76,9 @@ SlEfActionInfomation::SlEfActionInfomation(){
     changeInfoData[index].direction_data.direction=0;
     changeInfoData[index].direction_data.condition=NONE;
 
+    changeInfoData[index].vData.v=0;
+    changeInfoData[index].vData.condition=NONE;
+    
     changeInfoData[index].distance=0;
     changeInfoData[index].judge=JUDGE_NONE;
     changeInfoData[index].section_act=STRAIGHT;

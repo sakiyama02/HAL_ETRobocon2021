@@ -30,4 +30,5 @@ class SlalomBlacky : public SceneControl{
     int8 yPositionJudge(float,float,Range);
     int8 distanceJudge(uint16,uint16);
     int8 directionJudge(float,float,Range);
+    int8 vJudge(uint16 cur_vData,uint16 change_vData,Range condition);
 };
