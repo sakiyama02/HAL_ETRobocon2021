@@ -64,6 +64,9 @@ int8 PositionCorrection::fixSetter(PositionCorrectionData positionCorrection_Dat
             controltask=JUDGE_V;
             movetask=LOW;
             break;
+            case JUDGE_DIS:
+            controltask=JUDGE_DIS;
+            movetask=LOW;
             default:
             break;
         }
@@ -92,8 +95,13 @@ int8 PositionCorrection::fixSetter(PositionCorrectionData positionCorrection_Dat
             movetask=HIGH;
         break;
         case JUDGE_V:
-            msg.LOG(LOG_ID_ERR,"向き補正開始");
+            msg.LOG(LOG_ID_ERR,"v補正開始");
             controltask=JUDGE_V;
+            movetask=HIGH;
+        break;
+        case JUDGE_DIS:
+            msg.LOG(LOG_ID_ERR,"距離補正開始");
+            controltask=JUDGE_DIS;
             movetask=HIGH;
         break;
         default:
@@ -335,7 +343,7 @@ int8 PositionCorrection::vFix(){
     if(retChk!=SYS_OK){
         //条件を満たしていない場合処理を行わずに終了
         //更新なしで送信
-        msg.LOG(LOG_ID_ERR,"カラーが目標に達しなかったため終了");
+        msg.LOG(LOG_ID_ERR,"vが目標に達しなかったため終了");
         return SYS_OK;
     }
 
@@ -359,6 +367,69 @@ int8 PositionCorrection::vFix(){
     //タスク状態を実行終了
     taskState=STATE_ACTAFTER;
     controltask=JUDGE_V;
+    movetask=LOW;
+    ext_tsk();
+    //自身でタスクをスリーブする
+    return SYS_OK;
+
+    #endif
+}
+
+//周期タスクで呼び出す色補正
+int8 PositionCorrection::distanceFix(){
+    #ifdef CORRECTIONDATA_ON
+    frLog &msg = frLog::GetInstance();
+    int8 retChk = SYS_NG;
+    //タスク状態を実行中にする
+    taskState=STATE_ACT;
+
+    //センサ管理をインスタンスポインタを取得
+    SensorManager &sensorManager=SensorManager::getInstance();
+    //自己位置推定をインスタンスポインタを取得
+    CarPosition &carPosition=CarPosition::getInstance();
+
+    //センサ管理から取得したrgb値を保持する構造体
+    uint16 curdistance;
+    memset(&curdistance,0,sizeof(uint8));
+
+    //センサ管理からrgb値を取得
+    retChk=sensorManager.distanceGetter(&curdistance);
+    //引数のエラーチェック
+    if(retChk==SYS_NG){
+        return SYS_PARAM;
+    }
+   //msg.LOG(LOG_ID_ERR,"R:%d,G:%d,B:%d",curRGBData.r,curRGBData.g,curRGBData.b);
+
+    //rgbの目標値と現在値を比較
+    retChk=distanceJudge(curdistance
+                ,prePositionCorrectionData.distance);
+    if(retChk!=SYS_OK){
+        //条件を満たしていない場合処理を行わずに終了
+        //更新なしで送信
+        msg.LOG(LOG_ID_ERR,"距離が目標に達しなかったため終了");
+        return SYS_OK;
+    }
+
+    //自己位置推定に値をセットするタイミングを確認する必要がある
+    //calcstateが1の場合自己位置推定内で計算中になる為数値をセット
+    //せずに次の補正が呼び出されるタイミングで送信タスクを呼び出す
+    //ためにタスク状態を未送信に設定
+    if(carPosition.calcstate==1){
+        msg.LOG(LOG_ID_ERR,"自己位置推定が計算中のため終了");
+        taskState=STATE_NOTSEND;
+        ext_tsk();
+        return SYS_OK;
+    }
+
+    retChk=posSetter(prePositionCorrectionData.correctionValue);
+    if(retChk!=SYS_OK){
+        //エラーチェック
+        return SYS_NG;
+    }
+
+    //タスク状態を実行終了
+    taskState=STATE_ACTAFTER;
+    controltask=JUDGE_DIS;
     movetask=LOW;
     ext_tsk();
     //自身でタスクをスリーブする
@@ -567,6 +638,55 @@ int8 PositionCorrection::directionJudge(float cur_directionData,float change_dir
     return SYS_NG;
 }
 
+//距離の判定
+//引数：現在の距離値、目標の距離値
+//戻り値：切り替え条件を満たしていればSYS_OK
+//        切り替え条件を満たしていなければSYS_NG
+int8 PositionCorrection::distanceJudge(uint16 cur_distanceData,uint16 change_distanceData){
+    int16 resultdistance=0;
+    resultdistance=cur_distanceData-change_distanceData;
+    if(resultdistance<0){
+        return SYS_OK;        
+    }
+    /*距離を範囲指定する場合に使用（間違って作った）
+    if(resultdistance>0){
+        if(condition==HIGH){
+            return SYS_OK;
+        }
+        return SYS_NG;
+    }
+    */
+    if(resultdistance==0){
+        return SYS_OK;
+    }
+    return SYS_NG;
+}
+
+//v値の判定
+int8 PositionCorrection::vJudge(uint16 cur_vData,uint16 change_vData,Range condition){
+    int16 resultv=0;
+    resultv=cur_vData-change_vData;
+    if(resultv>0){
+        if(condition==HIGH){
+            return SYS_OK;
+        }
+        return SYS_NG;
+    }
+    if(resultv<0){
+        if(condition==LOW){
+            return SYS_OK;
+        }
+        return SYS_NG;        
+    }
+    if(resultv==0){
+        if(condition==NONE){
+            return SYS_OK;
+        }
+        return SYS_NG;        
+    }
+    return SYS_NG;
+}
+
 //座標を自己位置推定にセット
 int8 PositionCorrection::posSetter(PosInfoData target_pos){
      //自己位置推定をインスタンスポインタを取得
@@ -607,27 +727,3 @@ int8 PositionCorrection::posSetter(PosInfoData target_pos){
     return SYS_OK;
 }
 
-//v値の判定
-int8 SlalomBlacky::vJudge(uint16 cur_vData,uint16 change_vData,Range condition){
-    int16 resultv=0;
-    resultv=cur_vData-change_vData;
-    if(resultv>0){
-        if(condition==HIGH){
-            return SYS_OK;
-        }
-        return SYS_NG;
-    }
-    if(resultv<0){
-        if(condition==LOW){
-            return SYS_OK;
-        }
-        return SYS_NG;        
-    }
-    if(resultv==0){
-        if(condition==NONE){
-            return SYS_OK;
-        }
-        return SYS_NG;        
-    }
-    return SYS_NG;
-}

@@ -172,6 +172,19 @@ void updata_task(intptr_t unused)
                 break;
             }        
         break;
+        case JUDGE_DIS:
+            if(movetask==HIGH){
+                sta_cyc(DISTANCEFIX_PERIOD);
+                break;
+            }
+            if(movetask==LOW){
+                stp_cyc(DISTANCEFIX_PERIOD);
+                break;
+            }
+            if(movetask==NONE){
+                break;
+            }        
+        break;
         default:
         break;
     }
@@ -295,6 +308,16 @@ void vfix_task(intptr_t unused)
     int8 retChk = SYS_NG;
     PositionCorrection &positioncorrection=PositionCorrection::getInstance();
     retChk=positioncorrection.vFix();
+    if( retChk != SYS_OK ){
+    }
+}
+
+/* 距離補正タスク */
+void distancefix_task(intptr_t unused)
+{
+    int8 retChk = SYS_NG;
+    PositionCorrection &positioncorrection=PositionCorrection::getInstance();
+    retChk=positioncorrection.distanceFix();
     if( retChk != SYS_OK ){
     }
 }

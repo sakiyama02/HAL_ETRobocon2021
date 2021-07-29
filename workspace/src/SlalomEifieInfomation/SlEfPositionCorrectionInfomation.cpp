@@ -46,6 +46,10 @@ SlEfPositionCorrectionInfomation::SlEfPositionCorrectionInfomation(){
     positionCorrectionData[index].correctionDirection.direction=0;
     positionCorrectionData[index].correctionDirection.condition=NONE;
 
+    //距離目標設定
+    //距離     :距離の切り替え値
+    positionCorrectionData[index].distance=0;
+
     //目標値を判断する数値設定
     //correctionCondition:判断方法の指定
     //(JUDGE_RGB,JUDGE_POS,JUDGE_DIR,JUDGE_NONE)
@@ -71,6 +75,8 @@ SlEfPositionCorrectionInfomation::SlEfPositionCorrectionInfomation(){
 
     positionCorrectionData[index].correctionDirection.direction=0;
     positionCorrectionData[index].correctionDirection.condition=NONE;
+
+    positionCorrectionData[index].distance=0;
 
     positionCorrectionData[index].correctionCondition=JUDGE_NONE;
 
