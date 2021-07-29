@@ -159,6 +159,19 @@ void updata_task(intptr_t unused)
                 break;
             }        
         break;
+        case JUDGE_V:
+            if(movetask==HIGH){
+                sta_cyc(VFIX_PERIOD);
+                break;
+            }
+            if(movetask==LOW){
+                stp_cyc(VFIX_PERIOD);
+                break;
+            }
+            if(movetask==NONE){
+                break;
+            }        
+        break;
         default:
         break;
     }
@@ -272,6 +285,16 @@ void send_task(intptr_t unused)
     int8 retChk = SYS_NG;
     PositionCorrection &positioncorrection=PositionCorrection::getInstance();
     retChk=positioncorrection.send_position();
+    if( retChk != SYS_OK ){
+    }
+}
+
+/* v値補正タスク */
+void vfix_task(intptr_t unused)
+{
+    int8 retChk = SYS_NG;
+    PositionCorrection &positioncorrection=PositionCorrection::getInstance();
+    retChk=positioncorrection.vFix();
     if( retChk != SYS_OK ){
     }
 }
