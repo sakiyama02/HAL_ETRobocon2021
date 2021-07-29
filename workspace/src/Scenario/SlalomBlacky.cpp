@@ -393,7 +393,7 @@ int8 SlalomBlacky::directionJudge(float cur_directionData,float change_direction
 }
 //v値の判定
 int8 SlalomBlacky::vJudge(uint16 cur_vData,uint16 change_vData,Range condition){
-    uint16 resultv=0;
+    int16 resultv=0;
     resultv=cur_vData-change_vData;
     if(resultv>0){
         if(condition==HIGH){
