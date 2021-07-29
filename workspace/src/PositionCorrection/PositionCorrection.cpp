@@ -60,6 +60,10 @@ int8 PositionCorrection::fixSetter(PositionCorrectionData positionCorrection_Dat
             controltask=JUDGE_DIR;
             movetask=LOW;
             break;
+            case JUDGE_V:
+            controltask=JUDGE_V;
+            movetask=LOW;
+            break;
             default:
             break;
         }
@@ -85,6 +89,11 @@ int8 PositionCorrection::fixSetter(PositionCorrectionData positionCorrection_Dat
         case JUDGE_DIR:
             msg.LOG(LOG_ID_ERR,"向き補正開始");
             controltask=JUDGE_DIR;
+            movetask=HIGH;
+        break;
+        case JUDGE_V:
+            msg.LOG(LOG_ID_ERR,"向き補正開始");
+            controltask=JUDGE_V;
             movetask=HIGH;
         break;
         default:
