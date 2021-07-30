@@ -20,8 +20,11 @@ int8 ArmDownAction::run(int32 speed,PIDData pid_data = {0.0f,0.0f,0.0f,0.0f},
 
     memset(&motorPower,0,sizeof(MotorPower));
 
+
+
+
     // アームを下げる
-    retChk = steering.rotateArm(-30);
+    retChk = steering.rotateArm(-100);
     if(retChk != SYS_OK){
         msg.LOG(LOG_ID_ERR,"ArmAction::run rotateArm err\n");
         return SYS_NG;

@@ -59,8 +59,8 @@ int8 CarPosition::update()
         msg.LOG(LOG_ID_ERR,"CarPos::update calcOdometry err\n");
         return retChk;
     }
-    msg.LOG(LOG_ID_ERR,"X:%f,Y:%f\n",carPos.xPosition,carPos.yPosition);
-    //msg.LOG(LOG_ID_ERR,"角度:%f\n",carDirection);
+    msg.LOG(LOG_ID_COORDINATE,"X:%f,Y:%f\n",carPos.xPosition,carPos.yPosition);
+    msg.LOG(LOG_ID_COORDINATE,"角度:%f\n",carDirection);
     calcstate=0;
     return SYS_OK;
 }

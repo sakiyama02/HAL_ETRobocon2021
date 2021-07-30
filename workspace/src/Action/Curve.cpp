@@ -69,6 +69,17 @@ int8 Curve::run(int32 speed,PIDData pid_data,float angle,CurveData curve_data)
     // 出力値計算
     motorPower.leftPower  += revision;
     motorPower.rightPower -= revision;
+    if(motorPower.leftPower > 100){
+        motorPower.leftPower = 100;
+    } else if(motorPower.rightPower > 100){
+        motorPower.rightPower = 100;
+    }
+
+    if(motorPower.rightPower < -100){
+        motorPower.rightPower = -100;
+    } else if(motorPower.leftPower < -100){
+        motorPower.leftPower = -100;
+    }
 
    // 計算した値で出力
     retChk = steering.rotateWheel(motorPower);

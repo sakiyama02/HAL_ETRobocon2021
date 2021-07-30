@@ -107,15 +107,15 @@ int8 SensorManager::hsvGetter(uint16* v_data)
     }
 
     //hsvのv値を格納
-    if(rgbStorage.r > rgbStorage.g && rgbStorage.r > rgbStorage.b)
+    if(rgbStorage.r >= rgbStorage.g && rgbStorage.r >= rgbStorage.b)
     {
         *v_data = rgbStorage.r;
     }
-    else if(rgbStorage.g > rgbStorage.r && rgbStorage.g > rgbStorage.b)
+    else if(rgbStorage.g >= rgbStorage.r && rgbStorage.g >= rgbStorage.b)
     {
         *v_data = rgbStorage.g;
     }
-    else if(rgbStorage.b > rgbStorage.r && rgbStorage.b > rgbStorage.g)
+    else if(rgbStorage.b >= rgbStorage.r && rgbStorage.b >= rgbStorage.g)
     {
         *v_data = rgbStorage.b;
     }
@@ -153,29 +153,29 @@ int8 SensorManager::saturationGetter(uint16* s_data)
     }
 
     //RGBの最大値を取得
-    if(rgbStorage.r > rgbStorage.g && rgbStorage.r > rgbStorage.b)
+    if(rgbStorage.r >= rgbStorage.g && rgbStorage.r >= rgbStorage.b)
     {
         max_data = rgbStorage.r;
     }
-    else if(rgbStorage.g > rgbStorage.r && rgbStorage.g > rgbStorage.b)
+    else if(rgbStorage.g >= rgbStorage.r && rgbStorage.g >= rgbStorage.b)
     {
         max_data = rgbStorage.g;
     }
-    else if(rgbStorage.b > rgbStorage.r && rgbStorage.b > rgbStorage.g)
+    else if(rgbStorage.b >= rgbStorage.r && rgbStorage.b >= rgbStorage.g)
     {
         max_data = rgbStorage.b;
     }
 
     //RGBの最小値を取得
-    if(rgbStorage.r < rgbStorage.g && rgbStorage.r < rgbStorage.b)
+    if(rgbStorage.r <= rgbStorage.g && rgbStorage.r <= rgbStorage.b)
     {
         min_data = rgbStorage.r;
     }
-    else if(rgbStorage.g < rgbStorage.r && rgbStorage.g < rgbStorage.b)
+    else if(rgbStorage.g <= rgbStorage.r && rgbStorage.g <=rgbStorage.b)
     {
         min_data = rgbStorage.g;
     }
-    else if(rgbStorage.b < rgbStorage.r && rgbStorage.b < rgbStorage.g)
+    else if(rgbStorage.b <= rgbStorage.r && rgbStorage.b <= rgbStorage.g)
     {
         min_data = rgbStorage.b;
     }
