@@ -81,6 +81,9 @@ TiPositionCorrectionInfomation::TiPositionCorrectionInfomation(){
     positionCorrectionData[index].correctionCondition=JUDGE_NONE;
 
     index++;
+    positionCorrectionData[index].correctionCondition=JUDGE_NONE;
+
+    index++;
 }
 
 TiPositionCorrectionInfomation::~TiPositionCorrectionInfomation(){

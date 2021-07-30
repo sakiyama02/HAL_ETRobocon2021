@@ -95,6 +95,7 @@ CURVE,
 LINE_CURVE,
 TURN,
 ARM_ACTION,
+ARMDOWN_ACTION,
 };
 
 // カーブの進行方向

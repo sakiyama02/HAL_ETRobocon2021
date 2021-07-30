@@ -69,9 +69,32 @@ TiActionInfomation::TiActionInfomation(){
     changeInfoData[index].rgb_data.b=0;
     changeInfoData[index].rgb_data.condition=NONE;
 
-    changeInfoData[index].pos_info_data.potision.xPosition=0;
+    changeInfoData[index].pos_info_data.potision.xPosition=1750.0;
     changeInfoData[index].pos_info_data.potision.yPosition=0;
-    changeInfoData[index].pos_info_data.xCondition=NONE;
+    changeInfoData[index].pos_info_data.xCondition=LOW;
+    changeInfoData[index].pos_info_data.yCondition=NONE;
+
+    changeInfoData[index].direction_data.direction=0;
+    changeInfoData[index].direction_data.condition=NONE;
+
+    changeInfoData[index].vData.v=0;
+    changeInfoData[index].vData.condition=NONE;
+
+    changeInfoData[index].distance=0;
+    changeInfoData[index].judge=JUDGE_POS;
+    changeInfoData[index].section_act=ARM_ACTION;
+    changeInfoData[index].speed=30;
+
+    index++;
+
+    changeInfoData[index].rgb_data.r=0;
+    changeInfoData[index].rgb_data.g=0;
+    changeInfoData[index].rgb_data.b=0;
+    changeInfoData[index].rgb_data.condition=NONE;
+
+    changeInfoData[index].pos_info_data.potision.xPosition=1750.0;
+    changeInfoData[index].pos_info_data.potision.yPosition=0;
+    changeInfoData[index].pos_info_data.xCondition=LOW;
     changeInfoData[index].pos_info_data.yCondition=NONE;
 
     changeInfoData[index].direction_data.direction=0;
@@ -82,8 +105,8 @@ TiActionInfomation::TiActionInfomation(){
 
     changeInfoData[index].distance=0;
     changeInfoData[index].judge=JUDGE_NONE;
-    changeInfoData[index].section_act=STRAIGHT;
-    changeInfoData[index].speed=0;
+    changeInfoData[index].section_act=ARMDOWN_ACTION;
+    changeInfoData[index].speed=30;
 
     index++;
 }

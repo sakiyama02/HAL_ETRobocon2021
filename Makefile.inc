@@ -7,6 +7,7 @@ APPL_COBJS += \
 APPL_CXXOBJS += \
 				Action.o\
 				ArmAction.o\
+				ArmDownAction.o\
 				Curve.o\
 				LineTrace.o\
 				Straight.o\

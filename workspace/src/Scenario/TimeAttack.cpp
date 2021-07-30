@@ -96,7 +96,9 @@ int8 TimeAttack::run(int16 scene_num) {
         case ARM_ACTION:
             action=new ArmAction;
         break;
-
+        case ARMDOWN_ACTION:
+            action=new ArmDownAction;
+        break;
         //一応
         default:
         break;

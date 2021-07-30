@@ -7,6 +7,7 @@
 #include "../../include/GarageInformation/GaPositionCorrectionInfomation.h"
 #include "../../include/Action/Action.h"
 #include "../../include/Action/ArmAction.h"
+#include "../../include/Action/ArmDownAction.h"
 #include "../../include/Action/Curve.h"
 #include "../../include/Action/LineTrace.h"
 #include "../../include/Action/Straight.h"

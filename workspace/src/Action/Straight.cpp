@@ -21,6 +21,13 @@ int8 Straight::run(int32 speed,PIDData pid_data = {0.0f,0.0f,0.0f,0.0f},
 
     memset(&motorPower,0,sizeof(MotorPower));
 
+    // アームパワーを落とす
+    retChk = steering.rotateArm(0);
+    if(retChk != SYS_OK){
+        msg.LOG(LOG_ID_ERR,"Straight::run  rotateArm err\n");
+        return SYS_NG;
+    }
+
     // 台形制御のターゲット値を設定
     retChk = trapezoid.setTargetSpeed(speed);
     if(retChk != SYS_OK){

@@ -1,10 +1,10 @@
 
-#include "../../include/Action/ArmAction.h"
+#include "../../include/Action/ArmDownAction.h"
 
-ArmAction::ArmAction(){}
-ArmAction::~ArmAction(){}
+ArmDownAction::ArmDownAction(){}
+ArmDownAction::~ArmDownAction(){}
 
-int8 ArmAction::run(int32 speed,PIDData pid_data = {0.0f,0.0f,0.0f,0.0f},
+int8 ArmDownAction::run(int32 speed,PIDData pid_data = {0.0f,0.0f,0.0f,0.0f},
     float angle = 0.0f,CurveData curve_data = {0.0f,(CurveType)0})
 {
     frLog &msg = frLog::GetInstance();
@@ -20,8 +20,8 @@ int8 ArmAction::run(int32 speed,PIDData pid_data = {0.0f,0.0f,0.0f,0.0f},
 
     memset(&motorPower,0,sizeof(MotorPower));
 
-    // アームを上げる
-    retChk = steering.rotateArm(25);
+    // アームを下げる
+    retChk = steering.rotateArm(-30);
     if(retChk != SYS_OK){
         msg.LOG(LOG_ID_ERR,"ArmAction::run rotateArm err\n");
         return SYS_NG;
