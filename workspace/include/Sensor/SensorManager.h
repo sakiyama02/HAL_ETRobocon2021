@@ -56,6 +56,13 @@ public:
     int8 hsvGetter(uint16*);
 
     //
+    // -setting     s情報格納
+    // -argu        hsvのs値
+    // -return      SYS_OK 正常終了
+    // -return      SYS_PARAM 引数エラー
+    // -return      SYS_NG 異常終了
+    int8 saturationGetter(uint16*);
+    //
     // -setting     超音波の値情報格納
     // -argu        超音波の値
     // -return      SYS_OK 正常終了
