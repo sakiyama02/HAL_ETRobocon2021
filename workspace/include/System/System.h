@@ -57,6 +57,7 @@ JUDGE_POS,
 JUDGE_DIS,
 JUDGE_DIR,
 JUDGE_V,
+JUDGE_S,
 JUDGE_NONE,
 JUDGE_SEND,//補正限定使用
 };
@@ -132,6 +133,13 @@ typedef struct V_TAG{
 	Range condition;
 }VData;
 
+//s値情報の構造体
+typedef struct S_TAG{
+	uint16 s;
+	Range condition;
+}SData;
+
+
 // 座標の構造体
 typedef struct Position_TAG{
 	float xPosition;
@@ -172,6 +180,7 @@ typedef struct ChangeInfo_Tag {
 	DirectionData direction_data;	// 切り替え用の機体の向き
 	uint8 distance;		            // 切り替え用の超音波距離
 	VData vData;					//切り替え用のv値
+	SData sData;					//切り替え用のs値
 	JudgeType judge;		                // 切り替え値の判定		例：ポジションの切り替えを行いたいなら、JUDGE_POSを入れる			
 	ActionType section_act;	        	// シーンの動作を入れる		例：ライントレースのシーンなら、LINE_TRACEを入れる			
 	int32 speed;		            // このシーン時の目標速度					

@@ -127,6 +127,7 @@ int8 TimeAttack::sceneChenge(int16* scene_num){
     PositionData curpositionData;
     uint16 curdistanceData=0;
     VData curvData;
+    SData cursData;
     DirectionData curdirectionData;
     //シングルトンのセンサ管理からインスタンスのポインタを取得
     SensorManager &senserManage=SensorManager::getInstance();
@@ -225,6 +226,14 @@ int8 TimeAttack::sceneChenge(int16* scene_num){
             if(retChk==SYS_OK){
                 *scene_num+=1;
             }      
+        break;
+        case JUDGE_S:
+            memset(&cursData,0,sizeof(SData));
+            senserManage.saturationGetter(&cursData.s);
+            retChk=sJudge(cursData.s,changeInfo.sData.s,changeInfo.sData.condition);
+            if(retChk==SYS_OK){
+                *scene_num+=1;
+            }  
         break;
         case JUDGE_SEND:
         case JUDGE_NONE:
@@ -410,6 +419,31 @@ int8 TimeAttack::vJudge(uint16 cur_vData,uint16 change_vData,Range condition){
         return SYS_NG;        
     }
     if(resultv==0){
+        if(condition==NONE){
+            return SYS_OK;
+        }
+        return SYS_NG;        
+    }
+    return SYS_NG;
+}
+
+//s値の判定
+int8 TimeAttack::sJudge(uint16 cur_sData,uint16 change_sData,Range condition){
+    int16 results=0;
+    results=cur_sData-change_sData;
+    if(results>0){
+        if(condition==HIGH){
+            return SYS_OK;
+        }
+        return SYS_NG;
+    }
+    if(results<0){
+        if(condition==LOW){
+            return SYS_OK;
+        }
+        return SYS_NG;        
+    }
+    if(results==0){
         if(condition==NONE){
             return SYS_OK;
         }
