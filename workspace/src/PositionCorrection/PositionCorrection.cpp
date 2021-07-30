@@ -467,8 +467,8 @@ int8 PositionCorrection::send_position(){
 
     //タスク実行終了
     taskState=STATE_ACTAFTER;
-    controltask=JUDGE_NONE;
-    movetask=NONE;
+    controltask=JUDGE_SEND;
+    movetask=LOW;
     ext_tsk();
     #endif
     return SYS_OK;
