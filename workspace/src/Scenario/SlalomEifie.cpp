@@ -477,7 +477,7 @@ int8 SlalomEifie::vJudge(uint16 cur_vData,uint16 change_vData,Range condition)
 }
 
 //s値の判定
-int8 Garage::sJudge(uint16 cur_sData,uint16 change_sData,Range condition){
+int8 SlalomEifie::sJudge(uint16 cur_sData,uint16 change_sData,Range condition){
     int16 results=0;
     results=cur_sData-change_sData;
     if(results>0){
