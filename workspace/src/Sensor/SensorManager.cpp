@@ -134,8 +134,8 @@ int8 SensorManager::saturationGetter(uint16* s_data)
 {    
     frLog &msg = frLog::GetInstance();
     int8 retChk = SYS_NG;           //戻り値確認変数
-    uint16 max_data = 0;
-    uint16 min_data = 0;
+    float max_data = 0;
+    float min_data = 0;
 
     //argument check
     if (s_data == NULL)
