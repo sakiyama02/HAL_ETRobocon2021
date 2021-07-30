@@ -127,6 +127,65 @@ int8 SensorManager::hsvGetter(uint16* v_data)
 }
 
 //
+//  -datail
+//  引数で入ってきたhsvのs値をs値情報に格納する
+//
+int8 SensorManager::saturationGetter(uint16* s_data)
+{    
+    frLog &msg = frLog::GetInstance();
+    int8 retChk = SYS_NG;           //戻り値確認変数
+    uint16 max_data = 0;
+    uint16 min_data = 0;
+
+    //argument check
+    if (s_data == NULL)
+    {
+        msg.LOG(LOG_ID_ERR, "hsvGetter argument エラー");
+        return SYS_PARAM;
+    }
+    
+    retChk = getRgb();
+    //戻り値check
+    if (retChk != SYS_OK)
+    {
+        msg.LOG(LOG_ID_ERR, "hsvGetter getRgb エラー");
+        return retChk;
+    }
+
+    //RGBの最大値を取得
+    if(rgbStorage.r > rgbStorage.g && rgbStorage.r > rgbStorage.b)
+    {
+        max_data = rgbStorage.r;
+    }
+    else if(rgbStorage.g > rgbStorage.r && rgbStorage.g > rgbStorage.b)
+    {
+        max_data = rgbStorage.g;
+    }
+    else if(rgbStorage.b > rgbStorage.r && rgbStorage.b > rgbStorage.g)
+    {
+        max_data = rgbStorage.b;
+    }
+
+    //RGBの最小値を取得
+    if(rgbStorage.r < rgbStorage.g && rgbStorage.r < rgbStorage.b)
+    {
+        min_data = rgbStorage.r;
+    }
+    else if(rgbStorage.g < rgbStorage.r && rgbStorage.g < rgbStorage.b)
+    {
+        min_data = rgbStorage.g;
+    }
+    else if(rgbStorage.b < rgbStorage.r && rgbStorage.b < rgbStorage.g)
+    {
+        min_data = rgbStorage.b;
+    }
+
+    *s_data = ((max_data -min_data) / max_data) * 255 ;
+
+    return SYS_OK;
+}
+
+//
 //  -datail 
 //  引数で入ってきたポインタに超音波の値情報を
 //                  超音波変数に格納する
