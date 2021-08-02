@@ -164,6 +164,12 @@ int8 PositionCorrection::colorFix(){
         return SYS_NG;
     }
 
+    retChk=dirSetter(prePositionCorrectionData.correctionValueDirection);
+    if(retChk!=SYS_OK){
+        //エラーチェック
+        return SYS_NG;
+    }
+
     //タスク状態を実行終了
     taskState=STATE_ACTAFTER;
     controltask=JUDGE_RGB;
@@ -242,7 +248,16 @@ int8 PositionCorrection::lineFix(){
     }
 
     retChk=posSetter(prePositionCorrectionData.correctionValue);
-    
+    if(retChk!=SYS_OK){
+        //エラーチェック
+        return SYS_NG;
+    }
+    retChk=dirSetter(prePositionCorrectionData.correctionValueDirection);
+    if(retChk!=SYS_OK){
+        //エラーチェック
+        return SYS_NG;
+    }
+
     //タスク実行終了
     taskState=STATE_ACTAFTER;
     //msg.LOG(LOG_ID_ERR,"セット終了");
@@ -296,6 +311,12 @@ int8 PositionCorrection::directionFix(){
 
     retChk=posSetter(prePositionCorrectionData.correctionValue);
     
+    if(retChk!=SYS_OK){
+        //エラーチェック
+        return SYS_NG;
+    }
+
+    retChk=dirSetter(prePositionCorrectionData.correctionValueDirection);
     if(retChk!=SYS_OK){
         //エラーチェック
         return SYS_NG;
@@ -364,6 +385,12 @@ int8 PositionCorrection::vFix(){
         return SYS_NG;
     }
 
+    retChk=dirSetter(prePositionCorrectionData.correctionValueDirection);
+    if(retChk!=SYS_OK){
+        //エラーチェック
+        return SYS_NG;
+    }
+
     //タスク状態を実行終了
     taskState=STATE_ACTAFTER;
     controltask=JUDGE_V;
@@ -427,6 +454,12 @@ int8 PositionCorrection::distanceFix(){
         return SYS_NG;
     }
 
+    retChk=dirSetter(prePositionCorrectionData.correctionValueDirection);
+    if(retChk!=SYS_OK){
+        //エラーチェック
+        return SYS_NG;
+    }
+
     //タスク状態を実行終了
     taskState=STATE_ACTAFTER;
     controltask=JUDGE_DIS;
@@ -460,6 +493,12 @@ int8 PositionCorrection::send_position(){
     
     retChk=posSetter(prePositionCorrectionData.correctionValue);
     
+    if(retChk!=SYS_OK){
+        //エラーチェック
+        return SYS_NG;
+    }
+
+    retChk=dirSetter(prePositionCorrectionData.correctionValueDirection);
     if(retChk!=SYS_OK){
         //エラーチェック
         return SYS_NG;
@@ -691,7 +730,7 @@ int8 PositionCorrection::vJudge(uint16 cur_vData,uint16 change_vData,Range condi
 int8 PositionCorrection::posSetter(PosInfoData target_pos){
      //自己位置推定をインスタンスポインタを取得
     CarPosition &carPosition=CarPosition::getInstance();
-    int8 retChk = SYS_NG;
+    int8 retChk = SYS_OK;
     switch(1){
         default:
         //XYを判断する場合
@@ -727,3 +766,17 @@ int8 PositionCorrection::posSetter(PosInfoData target_pos){
     return SYS_OK;
 }
 
+//座標を自己位置推定にセット
+int8 PositionCorrection::dirSetter(DirectionData target_dir){
+     //自己位置推定をインスタンスポインタを取得
+    CarPosition &carPosition=CarPosition::getInstance();
+    int8 retChk = SYS_OK;
+    if(target_dir.condition<2){
+         retChk=carPosition.setDir(target_dir.direction);
+    }
+    if(retChk!=SYS_OK){
+        //エラーチェック
+        return SYS_NG;
+    }
+    return SYS_OK;
+}

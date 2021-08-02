@@ -40,4 +40,5 @@ class PositionCorrection{
     int8 distanceJudge(uint16,uint16);
     int8 vJudge(uint16,uint16,Range);
     int8 posSetter(PosInfoData);
+    int8 dirSetter(DirectionData);
 };
