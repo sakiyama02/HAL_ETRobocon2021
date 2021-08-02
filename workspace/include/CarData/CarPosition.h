@@ -4,7 +4,7 @@
 #include <math.h>
 #include <cmath>
 
-#define PI 3.14159265359
+#define PI 3.141592653589793
 #define DIST (((PI) * (double)CAR_WHEEL_WIDTH) / 360.0f)
 
 class CarPosition

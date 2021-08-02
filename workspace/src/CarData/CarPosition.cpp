@@ -3,6 +3,11 @@
 
 CarPosition::CarPosition()
 {
+    /*
+    タイムアタックの初期値
+    carPos.xPosition = 3457 * 0.3527 * 2;
+    carPos.yPosition = 277 * 0.3527 * 2;
+    */
     carPos.xPosition = 1762.79;
     carPos.yPosition = 3392.27;
 
@@ -61,6 +66,11 @@ int8 CarPosition::update()
     }
     msg.LOG(LOG_ID_COORDINATE,"X:%f,Y:%f\n",carPos.xPosition,carPos.yPosition);
     msg.LOG(LOG_ID_COORDINATE,"角度:%f\n",carDirection);
+    if(carDirection>=600||carDirection<=-600){
+        msg.LOG(LOG_ID_ERR,"車体角度が異常のため強制終了\n");
+        act_tsk(END_TASK);
+        return SYS_NG;
+    }
     calcstate=0;
     return SYS_OK;
 }

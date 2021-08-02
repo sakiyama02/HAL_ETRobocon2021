@@ -237,6 +237,8 @@ void updata_task(intptr_t unused)
 /* 終了タスク */
 void end_task(intptr_t unused)
 {
+    ter_tsk(MAIN_TASK);
+    ter_tsk(UPDATA_TASK);
     frLog &msg = frLog::GetInstance();
     msg.LOG(LOG_ID_ERR,"終了やで");
     user_system_destroy();
