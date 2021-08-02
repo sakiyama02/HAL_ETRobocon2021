@@ -19,6 +19,12 @@ GaPositionCorrectionInfomation::GaPositionCorrectionInfomation(){
     positionCorrectionData[index].correctionValue.potision.yPosition=0f;
     positionCorrectionData[index].correctionValue.xCondition=NONE;
     positionCorrectionData[index].correctionValue.yCondition=NONE;
+      
+    //目標値に達した時設定する角度補正値
+    //direction :角度補正値
+    //condition:角度補正値設定フラグ(HIGH,LOWで設定あり NONEで設定なし)
+    positionCorrectionData[index].correctionValueDirection.direction=0f;
+    positionCorrectionData[index].correctionValueDirection.condition=NONE;
    
     //座標目標値の設定
     //xPosition :x座標の切り替え値
@@ -68,7 +74,10 @@ GaPositionCorrectionInfomation::GaPositionCorrectionInfomation(){
     positionCorrectionData[index].correctionValue.potision.yPosition=0;
     positionCorrectionData[index].correctionValue.xCondition=NONE;
     positionCorrectionData[index].correctionValue.yCondition=NONE;
-   
+      
+    positionCorrectionData[index].correctionValueDirection.direction=0;
+    positionCorrectionData[index].correctionValueDirection.condition=NONE;
+
     positionCorrectionData[index].correctionPosition.potision.xPosition=0;
     positionCorrectionData[index].correctionPosition.potision.yPosition=0;
     positionCorrectionData[index].correctionPosition.xCondition=NONE;

@@ -45,6 +45,12 @@ TiActionInfomation::TiActionInfomation(){
     changeInfoData[index].vData.v=0;
     changeInfoData[index].vData.condition=NONE;
 
+    //s値切り替え値設定
+    //s:s値の切り替え値
+    //condition:s値の切り替え地点の範囲指定(HIGH.LOW.NONE)
+    changeInfoData[index].sData.s=0;
+    changeInfoData[index].sData.condition=NONE;
+
     //切り替え方法
     //judge:切り替え方法の指定
     //(JUDGE_RGB,JUDGE_POS,JUDGE_DIS,JUDGE_DIR,JUDGE_NONE)
@@ -79,7 +85,10 @@ TiActionInfomation::TiActionInfomation(){
 
     changeInfoData[index].vData.v=0;
     changeInfoData[index].vData.condition=NONE;
-
+    
+    changeInfoData[index].sData.s=0;
+    changeInfoData[index].sData.condition=NONE;
+    
     changeInfoData[index].distance=0;
     changeInfoData[index].judge=JUDGE_POS;
     changeInfoData[index].section_act=ARM_ACTION;

@@ -52,13 +52,13 @@ using uintptr = uintptr_t;
 // 切り替え判定種別
 enum JudgeType
 {
+JUDGE_NONE,
 JUDGE_RGB,
 JUDGE_POS,
 JUDGE_DIS,
 JUDGE_DIR,
 JUDGE_V,
 JUDGE_S,
-JUDGE_NONE,
 JUDGE_SEND,//補正限定使用
 };
 
@@ -188,6 +188,7 @@ typedef struct ChangeInfo_Tag {
 
 typedef struct PositionCorrection_TAG{	
 	PosInfoData correctionValue;
+	DirectionData correctionValueDirection;
 	PosInfoData correctionPosition;
 	RGBData correctionRGB;
 	VData correctionV;
