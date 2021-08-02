@@ -64,6 +64,10 @@ int8 PositionCorrection::fixSetter(PositionCorrectionData positionCorrection_Dat
             controltask=JUDGE_V;
             movetask=LOW;
             break;
+            case JUDGE_S:
+            controltask=JUDGE_S;
+            movetask=LOW;
+            break;
             case JUDGE_DIS:
             controltask=JUDGE_DIS;
             movetask=LOW;
@@ -97,6 +101,11 @@ int8 PositionCorrection::fixSetter(PositionCorrectionData positionCorrection_Dat
         case JUDGE_V:
             msg.LOG(LOG_ID_ERR,"v補正開始");
             controltask=JUDGE_V;
+            movetask=HIGH;
+        break;
+        case JUDGE_S:
+            msg.LOG(LOG_ID_ERR,"s補正開始");
+            controltask=JUDGE_S;
             movetask=HIGH;
         break;
         case JUDGE_DIS:
@@ -332,7 +341,7 @@ int8 PositionCorrection::directionFix(){
     return SYS_OK;
 }
 
-//周期タスクで呼び出す色補正
+//周期タスクで呼び出すV値補正
 int8 PositionCorrection::vFix(){
     #ifdef CORRECTIONDATA_ON
     frLog &msg = frLog::GetInstance();
@@ -401,6 +410,77 @@ int8 PositionCorrection::vFix(){
 
     #endif
 }
+
+//周期タスクで呼び出すs値補正
+int8 PositionCorrection::sFix(){
+    #ifdef CORRECTIONDATA_ON
+    frLog &msg = frLog::GetInstance();
+    int8 retChk = SYS_NG;
+    //タスク状態を実行中にする
+    taskState=STATE_ACT;
+
+    //センサ管理をインスタンスポインタを取得
+    SensorManager &sensorManager=SensorManager::getInstance();
+    //自己位置推定をインスタンスポインタを取得
+    CarPosition &carPosition=CarPosition::getInstance();
+
+    //センサ管理から取得したv値を保持する構造体
+    SData curSData;
+    memset(&curSData,0,sizeof(VData));
+
+    //センサ管理からrgb値を取得
+    retChk=sensorManager.saturationGetter(&curSData.s);
+    //引数のエラーチェック
+    if(retChk==SYS_NG){
+        return SYS_PARAM;
+    }
+   //msg.LOG(LOG_ID_ERR,"R:%d,G:%d,B:%d",curRGBData.r,curRGBData.g,curRGBData.b);
+
+    //rgbの目標値と現在値を比較
+    retChk=sJudge(curSData.s
+                ,prePositionCorrectionData.correctionS.s
+                ,prePositionCorrectionData.correctionS.condition);
+    if(retChk!=SYS_OK){
+        //条件を満たしていない場合処理を行わずに終了
+        //更新なしで送信
+        msg.LOG(LOG_ID_ERR,"sが目標に達しなかったため終了");
+        return SYS_OK;
+    }
+
+    //自己位置推定に値をセットするタイミングを確認する必要がある
+    //calcstateが1の場合自己位置推定内で計算中になる為数値をセット
+    //せずに次の補正が呼び出されるタイミングで送信タスクを呼び出す
+    //ためにタスク状態を未送信に設定
+    if(carPosition.calcstate==1){
+        msg.LOG(LOG_ID_ERR,"自己位置推定が計算中のため終了");
+        taskState=STATE_NOTSEND;
+        ext_tsk();
+        return SYS_OK;
+    }
+
+    retChk=posSetter(prePositionCorrectionData.correctionValue);
+    if(retChk!=SYS_OK){
+        //エラーチェック
+        return SYS_NG;
+    }
+
+    retChk=dirSetter(prePositionCorrectionData.correctionValueDirection);
+    if(retChk!=SYS_OK){
+        //エラーチェック
+        return SYS_NG;
+    }
+
+    //タスク状態を実行終了
+    taskState=STATE_ACTAFTER;
+    controltask=JUDGE_S;
+    movetask=LOW;
+    ext_tsk();
+    //自身でタスクをスリーブする
+    return SYS_OK;
+
+    #endif
+}
+
 
 //周期タスクで呼び出す色補正
 int8 PositionCorrection::distanceFix(){
@@ -718,6 +798,31 @@ int8 PositionCorrection::vJudge(uint16 cur_vData,uint16 change_vData,Range condi
         return SYS_NG;        
     }
     if(resultv==0){
+        if(condition==NONE){
+            return SYS_OK;
+        }
+        return SYS_NG;        
+    }
+    return SYS_NG;
+}
+
+//s値の判定
+int8 PositionCorrection::sJudge(uint16 cur_sData,uint16 change_sData,Range condition){
+    int16 results=0;
+    results=cur_sData-change_sData;
+    if(results>0){
+        if(condition==HIGH){
+            return SYS_OK;
+        }
+        return SYS_NG;
+    }
+    if(results<0){
+        if(condition==LOW){
+            return SYS_OK;
+        }
+        return SYS_NG;        
+    }
+    if(results==0){
         if(condition==NONE){
             return SYS_OK;
         }

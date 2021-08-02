@@ -192,6 +192,7 @@ typedef struct PositionCorrection_TAG{
 	PosInfoData correctionPosition;
 	RGBData correctionRGB;
 	VData correctionV;
+	SData correctionS;
 	DirectionData correctionDirection;
 	uint8 distance;
 	JudgeType correctionCondition;
