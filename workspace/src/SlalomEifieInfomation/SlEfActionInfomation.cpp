@@ -97,12 +97,10 @@ SlEfActionInfomation::SlEfActionInfomation(){
     changeInfoData[index].pos_info_data.potision.yPosition=3170;
     changeInfoData[index].pos_info_data.xCondition=NONE;
     changeInfoData[index].pos_info_data.yCondition=LOW;
-    
     //距離
     /*
     changeInfoData[index].distance=5;
     */
-
     changeInfoData[index].distance=0;
     changeInfoData[index].judge=JUDGE_POS;
     changeInfoData[index].section_act=STRAIGHT;
@@ -161,20 +159,30 @@ SlEfActionInfomation::SlEfActionInfomation(){
 
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
     //8
-    changeInfoData[index].direction_data.direction=175;
+    changeInfoData[index].direction_data.direction=180;
     changeInfoData[index].direction_data.condition=LOW;
 
     changeInfoData[index].distance=0;
     changeInfoData[index].judge=JUDGE_DIR;
     changeInfoData[index].section_act=TURN;
-    changeInfoData[index].speed=10;
+    changeInfoData[index].speed=20;
 
     index++;
 
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-
     //9
-    changeInfoData[index].pos_info_data.potision.yPosition=2850;
+    changeInfoData[index].pos_info_data.potision.yPosition=2940;
+    changeInfoData[index].pos_info_data.xCondition=NONE;
+    changeInfoData[index].pos_info_data.yCondition=LOW;
+
+    changeInfoData[index].distance=0;
+    changeInfoData[index].judge=JUDGE_POS;
+    changeInfoData[index].section_act=STRAIGHT;
+    changeInfoData[index].speed=25;
+
+
+    //10
+    changeInfoData[index].pos_info_data.potision.yPosition=2845;
     changeInfoData[index].pos_info_data.xCondition=NONE;
     changeInfoData[index].pos_info_data.yCondition=LOW;
 
@@ -185,20 +193,20 @@ SlEfActionInfomation::SlEfActionInfomation(){
 
     index++;
 
-    //10
-    changeInfoData[index].pos_info_data.potision.yPosition=2835;
+    //11
+    changeInfoData[index].pos_info_data.potision.yPosition=2818;
     changeInfoData[index].pos_info_data.xCondition=NONE;
     changeInfoData[index].pos_info_data.yCondition=LOW;
 
     changeInfoData[index].distance=0;
     changeInfoData[index].judge=JUDGE_POS;
     changeInfoData[index].section_act=ARMDOWN_ACTION;
-    changeInfoData[index].speed=15;
+    changeInfoData[index].speed=10;
 
     index++;
 
 
-    //11
+    //12
     changeInfoData[index].pos_info_data.potision.yPosition=2800;
     changeInfoData[index].pos_info_data.xCondition=NONE;
     changeInfoData[index].pos_info_data.yCondition=LOW;
@@ -206,12 +214,12 @@ SlEfActionInfomation::SlEfActionInfomation(){
     changeInfoData[index].distance=0;
     changeInfoData[index].judge=JUDGE_POS;
     changeInfoData[index].section_act=STRAIGHT;
-    changeInfoData[index].speed=10;
+    changeInfoData[index].speed=20;
 
     index++;
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-    //12
-    changeInfoData[index].pos_info_data.potision.yPosition=4000*2*0.3527;
+    //13
+    changeInfoData[index].pos_info_data.potision.yPosition=3900*2*0.3527;
     //changeInfoData[index].pos_info_data.potision.yPosition=3291;//3096
     changeInfoData[index].pos_info_data.xCondition=NONE;
     changeInfoData[index].pos_info_data.yCondition=LOW;
@@ -223,7 +231,7 @@ SlEfActionInfomation::SlEfActionInfomation(){
 
     index++;
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-    //13
+    //14
     changeInfoData[index].direction_data.direction=89;
     changeInfoData[index].direction_data.condition=LOW;
 
@@ -235,23 +243,22 @@ SlEfActionInfomation::SlEfActionInfomation(){
     index++; 
 
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-    //14
+    //15
     changeInfoData[index].rgb_data.r=20;
     changeInfoData[index].rgb_data.g=20;
     changeInfoData[index].rgb_data.b=20;
     changeInfoData[index].rgb_data.condition=LOW;  
     changeInfoData[index].judge=JUDGE_RGB;
     changeInfoData[index].section_act=STRAIGHT;
-    changeInfoData[index].speed=10;
+    changeInfoData[index].speed=30;
 
     index++;
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-    //15
-    changeInfoData[index].pos_info_data.potision.xPosition=400*2*0.3527;
+    //16
+    changeInfoData[index].pos_info_data.potision.xPosition=330*2*0.3527;
     //changeInfoData[index].pos_info_data.potision.yPosition=3291;//3096
     changeInfoData[index].pos_info_data.xCondition=LOW;
     changeInfoData[index].pos_info_data.yCondition=NONE;
-
     changeInfoData[index].distance=0;
     changeInfoData[index].judge=JUDGE_POS;
     changeInfoData[index].section_act=STRAIGHT;
@@ -259,22 +266,32 @@ SlEfActionInfomation::SlEfActionInfomation(){
 
     index++;
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-    //16
+    //17
     changeInfoData[index].direction_data.direction=180;
     changeInfoData[index].direction_data.condition=HIGH;
-
     changeInfoData[index].distance=0;
     changeInfoData[index].judge=JUDGE_DIR;
     changeInfoData[index].section_act=TURN;
-    changeInfoData[index].speed=10;
+    changeInfoData[index].speed=20;
 
     index++; 
 
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-    //17
+    //18
+    changeInfoData[index].pos_info_data.potision.yPosition=2600;//2876
+    changeInfoData[index].pos_info_data.xCondition=NONE;
+    changeInfoData[index].pos_info_data.yCondition=LOW;
+
+    changeInfoData[index].distance=0;
+    changeInfoData[index].judge=JUDGE_POS;
+    changeInfoData[index].section_act=LINE_TRACE;
+    changeInfoData[index].speed=10;
+
+    index++;
+
+    //19
     changeInfoData[index].sData.s=110;
     changeInfoData[index].sData.condition=HIGH;
-
     changeInfoData[index].distance=0;
     changeInfoData[index].judge=JUDGE_S;
     changeInfoData[index].section_act=LINE_TRACE;

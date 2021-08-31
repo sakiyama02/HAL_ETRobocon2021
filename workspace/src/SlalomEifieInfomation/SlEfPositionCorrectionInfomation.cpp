@@ -70,33 +70,60 @@ SlEfPositionCorrectionInfomation::SlEfPositionCorrectionInfomation(){
     //9
     positionCorrectionData[index].correctionCondition=JUDGE_NONE;
 
+    index=14;
+    /*
+    positionCorrectionData[index].correctionValue.potision.xPosition=550*2*0.3527;
+    positionCorrectionData[index].correctionValue.potision.yPosition=0;
+    positionCorrectionData[index].correctionValue.xCondition=LOW;
+    positionCorrectionData[index].correctionValue.yCondition=NONE;
+    positionCorrectionData[index].correctionValueDirection.direction=90;
+    positionCorrectionData[index].correctionValueDirection.condition=NONE;
+
+    positionCorrectionData[index].correctionPosition.potision.xPosition=0;
+    positionCorrectionData[index].correctionPosition.potision.yPosition=0;
+    positionCorrectionData[index].correctionPosition.xCondition=NONE;
+    positionCorrectionData[index].correctionPosition.yCondition=NONE;
+
+    positionCorrectionData[index].correctionRGB.r=15;
+    positionCorrectionData[index].correctionRGB.g=10;
+    positionCorrectionData[index].correctionRGB.b=10;
+    positionCorrectionData[index].correctionRGB.condition=LOW;
+
+    positionCorrectionData[index].correctionDirection.direction=0;
+    positionCorrectionData[index].correctionDirection.condition=NONE;
+
+    positionCorrectionData[index].distance=0;
+
+    positionCorrectionData[index].correctionCondition=JUDGE_RGB;
+
     index++;
-    positionCorrectionData[13].correctionValue.potision.xPosition=550*2*0.3527;
-    positionCorrectionData[13].correctionValue.potision.yPosition=0;
-    positionCorrectionData[13].correctionValue.xCondition=LOW;
-    positionCorrectionData[13].correctionValue.yCondition=NONE;
-    positionCorrectionData[13].correctionValueDirection.direction=90;
-    positionCorrectionData[13].correctionValueDirection.condition=NONE;
+    */
+    //14
+    positionCorrectionData[index].correctionRGB.r=20;
+    positionCorrectionData[index].correctionRGB.g=20;
+    positionCorrectionData[index].correctionRGB.b=20;
+    positionCorrectionData[index].correctionRGB.condition=LOW;
 
-    positionCorrectionData[13].correctionPosition.potision.xPosition=0;
-    positionCorrectionData[13].correctionPosition.potision.yPosition=0;
-    positionCorrectionData[13].correctionPosition.xCondition=NONE;
-    positionCorrectionData[13].correctionPosition.yCondition=NONE;
+    positionCorrectionData[index].correctionValue.potision.xPosition=417*2*0.3527;
+    positionCorrectionData[index].correctionValue.potision.yPosition=0;
+    positionCorrectionData[index].correctionValue.xCondition=LOW;
+    positionCorrectionData[index].correctionValue.yCondition=NONE;
 
-    positionCorrectionData[13].correctionRGB.r=15;
-    positionCorrectionData[13].correctionRGB.g=10;
-    positionCorrectionData[13].correctionRGB.b=10;
-    positionCorrectionData[13].correctionRGB.condition=LOW;
+    positionCorrectionData[index].correctionCondition=JUDGE_RGB;
+    //19
+    index = 18;
+    positionCorrectionData[index].correctionValueDirection.direction=180;
+    positionCorrectionData[index].correctionValueDirection.condition=HIGH;
 
-    positionCorrectionData[13].correctionDirection.direction=0;
-    positionCorrectionData[13].correctionDirection.condition=NONE;
+    positionCorrectionData[index].correctionS.s=110;
+    positionCorrectionData[index].correctionS.condition=HIGH;
 
-    positionCorrectionData[13].distance=0;
+    positionCorrectionData[index].correctionValue.xCondition=NONE;
+    positionCorrectionData[index].correctionValue.yCondition=NONE;
 
-    positionCorrectionData[13].correctionCondition=JUDGE_RGB;
+    positionCorrectionData[index].correctionCondition=JUDGE_S;
 
     index++;
-
 }
 
 SlEfPositionCorrectionInfomation::~SlEfPositionCorrectionInfomation(){
