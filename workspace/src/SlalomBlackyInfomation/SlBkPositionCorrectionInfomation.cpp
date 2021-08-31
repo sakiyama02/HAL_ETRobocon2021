@@ -70,33 +70,18 @@ SlBkPositionCorrectionInfomation::SlBkPositionCorrectionInfomation(){
 
     index++;
 */    
-    positionCorrectionData[index].correctionValue.potision.xPosition=0;
-    positionCorrectionData[index].correctionValue.potision.yPosition=0;
+    //16
+    index = 15;
+    positionCorrectionData[index].correctionValueDirection.direction=180;
+    positionCorrectionData[index].correctionValueDirection.condition=HIGH;
+
+    positionCorrectionData[index].correctionS.s=110;
+    positionCorrectionData[index].correctionS.condition=HIGH;
+
     positionCorrectionData[index].correctionValue.xCondition=NONE;
     positionCorrectionData[index].correctionValue.yCondition=NONE;
-      
-    positionCorrectionData[index].correctionValueDirection.direction=0;
-    positionCorrectionData[index].correctionValueDirection.condition=NONE;
 
-    positionCorrectionData[index].correctionPosition.potision.xPosition=0;
-    positionCorrectionData[index].correctionPosition.potision.yPosition=0;
-    positionCorrectionData[index].correctionPosition.xCondition=NONE;
-    positionCorrectionData[index].correctionPosition.yCondition=NONE;
-
-    positionCorrectionData[index].correctionRGB.r=0;
-    positionCorrectionData[index].correctionRGB.g=0;
-    positionCorrectionData[index].correctionRGB.b=0;
-    positionCorrectionData[index].correctionRGB.condition=NONE;
-
-    positionCorrectionData[index].correctionV.v=0;
-    positionCorrectionData[index].correctionV.condition=NONE;
-
-    positionCorrectionData[index].correctionDirection.direction=0;
-    positionCorrectionData[index].correctionDirection.condition=NONE;
-
-    positionCorrectionData[index].distance=0;
-
-    positionCorrectionData[index].correctionCondition=JUDGE_NONE;
+    positionCorrectionData[index].correctionCondition=JUDGE_S;
 
     index++;
 
@@ -112,3 +97,4 @@ int8 SlBkPositionCorrectionInfomation::getter(int16 scene_num,PositionCorrection
 
     return SYS_OK;
 }
+

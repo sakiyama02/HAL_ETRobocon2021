@@ -5,7 +5,7 @@
 #include "../../include/SlalomEebuiInfomation/SlEbPositionCorrectionInfomation.h"
 
 SlEbPositionCorrectionInfomation::SlEbPositionCorrectionInfomation(){
-    memset(positionCorrectionData,0,sizeof(PositionCorrectionData)*SLALOMEEBUI_NUM);
+    memset(positionCorrectionData,NONE,sizeof(PositionCorrectionData)*SLALOMEEBUI_NUM);
     int8 index = 0;
 
 //template
@@ -69,37 +69,48 @@ SlEbPositionCorrectionInfomation::SlEbPositionCorrectionInfomation(){
     positionCorrectionData[index].correctionCondition=JUDGE_NONE;
 
     index++;
-*/    
-    positionCorrectionData[index].correctionValue.potision.xPosition=0;
-    positionCorrectionData[index].correctionValue.potision.yPosition=0;
+*/  
+    index = 4;
+
+    //5
+    //v値切り替え
+
+    positionCorrectionData[index].correctionV.v = 13;
+    positionCorrectionData[index].correctionV.condition = LOW;
+
+    positionCorrectionData[index].correctionValue.potision.yPosition=3382;
+    positionCorrectionData[index].correctionValue.yCondition=LOW;
     positionCorrectionData[index].correctionValue.xCondition=NONE;
-    positionCorrectionData[index].correctionValue.yCondition=NONE;
-      
-    positionCorrectionData[index].correctionValueDirection.direction=0;
-    positionCorrectionData[index].correctionValueDirection.condition=NONE;
-
-    positionCorrectionData[index].correctionPosition.potision.xPosition=0;
-    positionCorrectionData[index].correctionPosition.potision.yPosition=0;
-    positionCorrectionData[index].correctionPosition.xCondition=NONE;
-    positionCorrectionData[index].correctionPosition.yCondition=NONE;
-
-    positionCorrectionData[index].correctionRGB.r=0;
-    positionCorrectionData[index].correctionRGB.g=0;
-    positionCorrectionData[index].correctionRGB.b=0;
-    positionCorrectionData[index].correctionRGB.condition=NONE;
-
-    positionCorrectionData[index].correctionV.v=0;
-    positionCorrectionData[index].correctionV.condition=NONE;
-
-    positionCorrectionData[index].correctionDirection.direction=0;
-    positionCorrectionData[index].correctionDirection.condition=NONE;
-
-    positionCorrectionData[index].distance=0;
-
-    positionCorrectionData[index].correctionCondition=JUDGE_NONE;
+    
+    positionCorrectionData[index].correctionCondition=JUDGE_V;
 
     index++;
 
+    //6
+    //角度
+    positionCorrectionData[index].correctionValueDirection.direction=90;
+    positionCorrectionData[index].correctionValueDirection.condition=LOW;
+
+    positionCorrectionData[index].correctionPosition.potision.xPosition=1199;
+    positionCorrectionData[index].correctionPosition.potision.yPosition=0;
+    positionCorrectionData[index].correctionPosition.xCondition=LOW;
+    positionCorrectionData[index].correctionPosition.yCondition=NONE;
+
+    positionCorrectionData[index].correctionCondition=JUDGE_POS;
+/*
+    //11
+    index = 10;
+    //角度
+    positionCorrectionData[index].correctionValueDirection.direction=90;
+    positionCorrectionData[index].correctionValueDirection.condition=LOW;
+
+    positionCorrectionData[index].correctionPosition.potision.xPosition=1080;
+    positionCorrectionData[index].correctionPosition.xCondition=LOW;
+
+    positionCorrectionData[index].correctionCondition=JUDGE_POS;
+    index++;
+*/
+    //**********************************************************************************
 }
 
 SlEbPositionCorrectionInfomation::~SlEbPositionCorrectionInfomation(){
@@ -112,3 +123,4 @@ int8 SlEbPositionCorrectionInfomation::getter(int16 scene_num,PositionCorrection
 
     return SYS_OK;
 }
+

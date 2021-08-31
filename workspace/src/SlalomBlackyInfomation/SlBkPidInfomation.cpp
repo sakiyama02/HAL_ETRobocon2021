@@ -23,12 +23,22 @@ SlBkpidInfomation::SlBkpidInfomation(){
 
     index++;
 */    
-    pidData[index].pGain=0;
-    pidData[index].iGain=0;
-    pidData[index].dGain=0;
-    pidData[index].targetVal=0;
+//15
+    index = 14;
+    pidData[index].pGain=0.3f;
+    pidData[index].iGain=0;//0.2f
+    pidData[index].dGain=0;//0.05
+    pidData[index].targetVal=80;
 
     index++;
+//16←ないほうがいいかも
+    pidData[index].pGain=0.3f;
+    pidData[index].iGain=0;//0.2f
+    pidData[index].dGain=0;//0.05
+    pidData[index].targetVal=80;
+
+    index++;
+
 
 }
 
@@ -42,3 +52,4 @@ int8 SlBkpidInfomation::getter(int16 scene_num,PIDData* pid_data){
 
     return SYS_OK;
 }
+

@@ -23,13 +23,27 @@ GaPidInfomation::GaPidInfomation(){
 
     index++;
 */
-    pidData[index].pGain=0;
-    pidData[index].iGain=0;
-    pidData[index].dGain=0;
-    pidData[index].targetVal=0;
+//10
+    pidData[9].pGain=0.01f;
+    pidData[9].iGain=0.0f;
+    pidData[9].dGain=0.0f;
+    pidData[9].targetVal=28;
 
-    index++;    
-
+//19
+    pidData[18].pGain=0.05f;
+    pidData[18].iGain=0.04f;
+    pidData[18].dGain=0.0f;
+    pidData[18].targetVal=19;
+//20
+    pidData[19].pGain=0.05f;
+    pidData[19].iGain=0.05f;
+    pidData[19].dGain=0.0f;
+    pidData[19].targetVal=110;
+//19
+    pidData[20].pGain=0.05f;
+    pidData[20].iGain=0.04f;
+    pidData[20].dGain=0.0f;
+    pidData[20].targetVal=19;
 }
 
 GaPidInfomation::~GaPidInfomation(){

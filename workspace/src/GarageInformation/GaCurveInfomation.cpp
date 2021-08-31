@@ -21,9 +21,42 @@ GaCurveInfomation::GaCurveInfomation(){
 
     index++;
 */
-    curveData[index].radius=0;
+//1
+index++;
+//2
+index++;
+//3
+index++;
+//4
+index++;
+//5
+index++;
+//6
+index++;
+//7
+index++;
+//8
+index++;
+//9
+index++;
+//10
+index++;
+//11
+index++;
+//12
+index++;
+
+//13
+    curveData[index].radius=230;
     curveData[index].dirction=CURVE_LEFT;
 
+    index++;
+    curveData[index].radius=210;
+    curveData[index].dirction=CURVE_RIGHT;
+
+    index++;
+    curveData[index].radius=380;
+    curveData[index].dirction=CURVE_RIGHT;
     index++;
 
 }
