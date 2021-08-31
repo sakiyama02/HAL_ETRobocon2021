@@ -74,21 +74,20 @@ TiActionInfomation::TiActionInfomation(){
     //----------------------------------------------------------
     //第一ストレート
     index = 0;
-    changeInfoData[index].pos_info_data.potision.xPosition=1800;
+    changeInfoData[index].pos_info_data.potision.xPosition=2100;
     changeInfoData[index].pos_info_data.potision.yPosition=0;
     changeInfoData[index].pos_info_data.xCondition=LOW;
     changeInfoData[index].pos_info_data.yCondition=NONE;
 
     changeInfoData[index].judge=JUDGE_POS;
-    changeInfoData[index].section_act=LINE_TRACE;
-    changeInfoData[index].speed=95;
+    changeInfoData[index].section_act=STRAIGHT;
+    changeInfoData[index].speed=100;
     index++;
 
     //----------------------------------------------------------
     
     index=1;
-    //changeInfoData[index].pos_info_data.potision.xPosition=672.2462;
-    changeInfoData[index].pos_info_data.potision.xPosition=678.2462;
+    changeInfoData[index].pos_info_data.potision.xPosition=690;//672.2462;
     changeInfoData[index].pos_info_data.potision.yPosition=0;
     changeInfoData[index].pos_info_data.xCondition=LOW;
     changeInfoData[index].pos_info_data.yCondition=NONE;
@@ -105,8 +104,10 @@ TiActionInfomation::TiActionInfomation(){
     changeInfoData[index].pos_info_data.potision.yPosition=570.5524;
     changeInfoData[index].pos_info_data.xCondition=NONE;
     changeInfoData[index].pos_info_data.yCondition=HIGH;
+    changeInfoData[index].direction_data.direction=1;
+    changeInfoData[index].direction_data.condition=LOW;
 
-    changeInfoData[index].judge=JUDGE_POS;
+    changeInfoData[index].judge=JUDGE_DIR;
     changeInfoData[index].section_act=CURVE;
     changeInfoData[index].speed=80;
     index++;
@@ -120,19 +121,19 @@ TiActionInfomation::TiActionInfomation(){
 
     changeInfoData[index].judge=JUDGE_POS;
     changeInfoData[index].section_act=LINE_TRACE;
-    changeInfoData[index].speed=85;
+    changeInfoData[index].speed=50;
     index++;
 
     // 第二カーブ
     index=4;
     changeInfoData[index].pos_info_data.potision.xPosition=0;
-    changeInfoData[index].pos_info_data.potision.yPosition=1251.3796;
+    changeInfoData[index].pos_info_data.potision.yPosition=1200;
     changeInfoData[index].pos_info_data.xCondition=NONE;
     changeInfoData[index].pos_info_data.yCondition=LOW;
 
     changeInfoData[index].judge=JUDGE_POS;
     changeInfoData[index].section_act=CURVE;
-    changeInfoData[index].speed=80;
+    changeInfoData[index].speed=30;
     index++;
 
     index=5;

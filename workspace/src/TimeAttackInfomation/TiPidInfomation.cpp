@@ -25,34 +25,36 @@ TiPidInfomation::TiPidInfomation(){
 */    
 #define target 85
 
+/*
     index=0;
-    pidData[index].pGain=0.3f;
-    pidData[index].iGain=0.35f;
-    pidData[index].dGain=0.05f;
+    pidData[index].pGain=0.2f;
+    pidData[index].iGain=0.3f;
+    pidData[index].dGain=0.0f;
     pidData[index].targetVal=target;
+    */
    // 2
     index=1;
-    pidData[index].pGain=0.3f;
-    pidData[index].iGain=0.35f;
+    pidData[index].pGain=0.2f;
+    pidData[index].iGain=0.2f;
     pidData[index].dGain=0.05f;
     pidData[index].targetVal=target;
 
-    // 3
+    // 第一カーブ
     index=2;
-    pidData[index].pGain=0.3f;
-    pidData[index].iGain=0.3f;
-    pidData[index].dGain=0.05f;
-    pidData[index].targetVal=target;
-
-    index=3;
     pidData[index].pGain=0.3f;
     pidData[index].iGain=0.4f;
     pidData[index].dGain=0.05f;
     pidData[index].targetVal=target;
 
+    index=3;
+    pidData[index].pGain=0.3f;
+    pidData[index].iGain=0.35f;
+    pidData[index].dGain=0.05f;
+    pidData[index].targetVal=target;
+    // 第二カーブ
     index=4;
     pidData[index].pGain=0.3f;
-    pidData[index].iGain=0.3f;
+    pidData[index].iGain=0.4f;
     pidData[index].dGain=0.05f;
     pidData[index].targetVal=target;
 
@@ -61,9 +63,9 @@ TiPidInfomation::TiPidInfomation(){
     pidData[index].iGain=0.4f;
     pidData[index].dGain=0.05f;
     pidData[index].targetVal=target;
-
+    // 第三カーブ
     index=6;
-    pidData[index].pGain=0.4f;
+    pidData[index].pGain=0.3f;
     pidData[index].iGain=0.4f;
     pidData[index].dGain=0.05f;
     pidData[index].targetVal=target;

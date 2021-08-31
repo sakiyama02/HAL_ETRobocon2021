@@ -72,8 +72,8 @@ TiPositionCorrectionInfomation::TiPositionCorrectionInfomation(){
 */
     //第一カーブ時の補正
     index=2;
-    positionCorrectionData[index].correctionValue.potision.xPosition=406.9705; //672.2462-(半径375.1566*√2)/2
-    positionCorrectionData[index].correctionValue.potision.yPosition=305.2767; //570.5524-(半径375.1566*√2)/2
+    positionCorrectionData[index].correctionValue.potision.xPosition=395;//406.9705; //672.2462-(半径375.1566*√2)/2
+    positionCorrectionData[index].correctionValue.potision.yPosition=294;//305.2767; //570.5524-(半径375.1566*√2)/2
     positionCorrectionData[index].correctionValue.xCondition=HIGH;
     positionCorrectionData[index].correctionValue.yCondition=HIGH;
     positionCorrectionData[index].correctionValueDirection.direction=45;
