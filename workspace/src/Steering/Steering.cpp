@@ -131,15 +131,15 @@ int8 Steering::updateAngle()
         return retChk;
     }
 
-    /* 小さな誤差は真っ直ぐに進んでいる判定にする */
-    if( motorAngle.rightAngle-motorAngle.leftAngle<5&&
+    /* 小さな誤差は真っ直ぐに進んでいる判定にする  */
+    if( motorAngle.rightAngle-motorAngle.leftAngle<3&&
         motorAngle.rightAngle-motorAngle.leftAngle>0){
 
-        motorAngle.rightAngle=motorAngle.leftAngle;
-    }else if( motorAngle.leftAngle-motorAngle.rightAngle<5&&
+        motorAngle.leftAngle=motorAngle.rightAngle;
+    }else if( motorAngle.leftAngle-motorAngle.rightAngle<3&&
         motorAngle.leftAngle-motorAngle.rightAngle>0){
 
-        motorAngle.leftAngle=motorAngle.rightAngle;
+        motorAngle.rightAngle=motorAngle.leftAngle;
     }
 
     return SYS_OK; 

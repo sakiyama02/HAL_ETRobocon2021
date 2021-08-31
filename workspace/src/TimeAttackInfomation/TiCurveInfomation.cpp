@@ -21,10 +21,34 @@ TiCurveInfomation::TiCurveInfomation(){
 
     index++;
 */
-    curveData[index].radius=0;
+    index=2;
+    curveData[index].radius=313.1976;
     curveData[index].dirction=CURVE_LEFT;
 
-    index++;
+    index=4;
+    curveData[index].radius=160.8312;
+    curveData[index].dirction=CURVE_LEFT;
+
+    index=6;
+    curveData[index].radius=210.9146f;
+    curveData[index].dirction=CURVE_RIGHT;
+
+    index=8;
+    curveData[index].radius=139.6692f;
+    curveData[index].dirction=CURVE_RIGHT;
+        
+    index=10;
+    curveData[index].radius=150;
+    curveData[index].dirction=CURVE_LEFT;
+        
+    index=12;
+    curveData[index].radius=130.499;
+    curveData[index].dirction=CURVE_LEFT;
+
+    index=14;
+    curveData[index].radius=225.0226f;
+    curveData[index].dirction=CURVE_RIGHT;
+
 }
 
 TiCurveInfomation::~TiCurveInfomation(){

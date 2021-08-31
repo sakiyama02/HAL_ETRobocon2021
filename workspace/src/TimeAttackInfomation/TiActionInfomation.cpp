@@ -70,54 +70,245 @@ TiActionInfomation::TiActionInfomation(){
 */
 
 //template
-    changeInfoData[index].rgb_data.r=0;
-    changeInfoData[index].rgb_data.g=0;
-    changeInfoData[index].rgb_data.b=0;
-    changeInfoData[index].rgb_data.condition=NONE;
-
-    changeInfoData[index].pos_info_data.potision.xPosition=1750.0;
+    
+    //----------------------------------------------------------
+    //第一ストレート
+    index = 0;
+    changeInfoData[index].pos_info_data.potision.xPosition=1800;
     changeInfoData[index].pos_info_data.potision.yPosition=0;
     changeInfoData[index].pos_info_data.xCondition=LOW;
     changeInfoData[index].pos_info_data.yCondition=NONE;
 
-    changeInfoData[index].direction_data.direction=0;
-    changeInfoData[index].direction_data.condition=NONE;
-
-    changeInfoData[index].vData.v=0;
-    changeInfoData[index].vData.condition=NONE;
-    
-    changeInfoData[index].sData.s=0;
-    changeInfoData[index].sData.condition=NONE;
-    
-    changeInfoData[index].distance=0;
     changeInfoData[index].judge=JUDGE_POS;
-    changeInfoData[index].section_act=ARM_ACTION;
-    changeInfoData[index].speed=30;
-
+    changeInfoData[index].section_act=LINE_TRACE;
+    changeInfoData[index].speed=95;
     index++;
 
-    changeInfoData[index].rgb_data.r=0;
-    changeInfoData[index].rgb_data.g=0;
-    changeInfoData[index].rgb_data.b=0;
-    changeInfoData[index].rgb_data.condition=NONE;
-
-    changeInfoData[index].pos_info_data.potision.xPosition=1750.0;
+    //----------------------------------------------------------
+    
+    index=1;
+    //changeInfoData[index].pos_info_data.potision.xPosition=672.2462;
+    changeInfoData[index].pos_info_data.potision.xPosition=678.2462;
     changeInfoData[index].pos_info_data.potision.yPosition=0;
     changeInfoData[index].pos_info_data.xCondition=LOW;
     changeInfoData[index].pos_info_data.yCondition=NONE;
 
+    changeInfoData[index].judge=JUDGE_POS;
+    changeInfoData[index].section_act=LINE_TRACE;
+    changeInfoData[index].speed=85;
+    index++;
+
+    //----------------------------------------------------------------
+    // 第一カーブ
+    index=2;
+    changeInfoData[index].pos_info_data.potision.xPosition=0;
+    changeInfoData[index].pos_info_data.potision.yPosition=570.5524;
+    changeInfoData[index].pos_info_data.xCondition=NONE;
+    changeInfoData[index].pos_info_data.yCondition=HIGH;
+
+    changeInfoData[index].judge=JUDGE_POS;
+    changeInfoData[index].section_act=CURVE;
+    changeInfoData[index].speed=80;
+    index++;
+
+    // ---------------------------------------------------------------------
+    index=3;
+    changeInfoData[index].pos_info_data.potision.xPosition=0;
+    changeInfoData[index].pos_info_data.potision.yPosition=1251.3796;
+    changeInfoData[index].pos_info_data.xCondition=NONE;
+    changeInfoData[index].pos_info_data.yCondition=HIGH;
+
+    changeInfoData[index].judge=JUDGE_POS;
+    changeInfoData[index].section_act=LINE_TRACE;
+    changeInfoData[index].speed=85;
+    index++;
+
+    // 第二カーブ
+    index=4;
+    changeInfoData[index].pos_info_data.potision.xPosition=0;
+    changeInfoData[index].pos_info_data.potision.yPosition=1251.3796;
+    changeInfoData[index].pos_info_data.xCondition=NONE;
+    changeInfoData[index].pos_info_data.yCondition=LOW;
+
+    changeInfoData[index].judge=JUDGE_POS;
+    changeInfoData[index].section_act=CURVE;
+    changeInfoData[index].speed=80;
+    index++;
+
+    index=5;
+    changeInfoData[index].pos_info_data.potision.xPosition=0;
+    changeInfoData[index].pos_info_data.potision.yPosition=799.9236;
+    changeInfoData[index].pos_info_data.xCondition=NONE;
+    changeInfoData[index].pos_info_data.yCondition=LOW;
+
+    changeInfoData[index].judge=JUDGE_POS;
+    changeInfoData[index].section_act=LINE_TRACE;
+    changeInfoData[index].speed=85;
+    index++;
+
+    index=6;
+    changeInfoData[index].pos_info_data.potision.xPosition=948.763;
+    changeInfoData[index].pos_info_data.potision.yPosition=0;
+    changeInfoData[index].pos_info_data.xCondition=HIGH;
+    changeInfoData[index].pos_info_data.yCondition=NONE;
+
+    changeInfoData[index].judge=JUDGE_POS;
+    changeInfoData[index].section_act=CURVE;
+    changeInfoData[index].speed=80;
+    index++;
+
+    index=7;
+    changeInfoData[index].pos_info_data.potision.xPosition=1500.3858f;
+    changeInfoData[index].pos_info_data.potision.yPosition=0;
+    changeInfoData[index].pos_info_data.xCondition=HIGH;
+    changeInfoData[index].pos_info_data.yCondition=NONE;
+
+    changeInfoData[index].judge=JUDGE_POS;
+    changeInfoData[index].section_act=LINE_TRACE;
+    changeInfoData[index].speed=85;
+    index++;
+
+    index=8;
+    changeInfoData[index].pos_info_data.potision.xPosition=1500.3858f;
+    changeInfoData[index].pos_info_data.potision.yPosition=0;
+    changeInfoData[index].pos_info_data.xCondition=LOW;
+    changeInfoData[index].pos_info_data.yCondition=NONE;
+    changeInfoData[index].direction_data.direction=-5;
+    changeInfoData[index].direction_data.condition=NONE;
+
+    changeInfoData[index].judge=JUDGE_POS;
+    changeInfoData[index].section_act=CURVE;
+    changeInfoData[index].speed=75;
+    index++;
+
+    index=9;
+    changeInfoData[index].pos_info_data.potision.xPosition=1289.4712f;
+    changeInfoData[index].pos_info_data.potision.yPosition=0;
+    changeInfoData[index].pos_info_data.xCondition=LOW;
+    changeInfoData[index].pos_info_data.yCondition=NONE;
     changeInfoData[index].direction_data.direction=0;
     changeInfoData[index].direction_data.condition=NONE;
 
-    changeInfoData[index].vData.v=0;
-    changeInfoData[index].vData.condition=NONE;
+    changeInfoData[index].judge=JUDGE_POS;
+    changeInfoData[index].section_act=LINE_TRACE;
+    changeInfoData[index].speed=80;
+    index++;
 
-    changeInfoData[index].distance=0;
-    changeInfoData[index].judge=JUDGE_NONE;
-    changeInfoData[index].section_act=ARMDOWN_ACTION;
+    index=10;
+    changeInfoData[index].pos_info_data.potision.xPosition=1289.4712f;
+    changeInfoData[index].pos_info_data.potision.yPosition=0;
+    changeInfoData[index].pos_info_data.xCondition=HIGH;
+    changeInfoData[index].pos_info_data.yCondition=NONE;
+    changeInfoData[index].direction_data.direction=0;
+    changeInfoData[index].direction_data.condition=NONE;
+
+    changeInfoData[index].judge=JUDGE_POS;
+    changeInfoData[index].section_act=CURVE;
+    changeInfoData[index].speed=75;
+    index++;
+
+    index=11;
+    changeInfoData[index].pos_info_data.potision.xPosition=1854.4966f;
+    changeInfoData[index].pos_info_data.potision.yPosition=0;
+    changeInfoData[index].pos_info_data.xCondition=HIGH;
+    changeInfoData[index].pos_info_data.yCondition=NONE;
+    changeInfoData[index].direction_data.direction=0;
+    changeInfoData[index].direction_data.condition=NONE;
+
+    changeInfoData[index].judge=JUDGE_POS;
+    changeInfoData[index].section_act=LINE_TRACE;
+    changeInfoData[index].speed=85;
+    index++;
+
+    index=12;
+    changeInfoData[index].pos_info_data.potision.xPosition=0;
+    changeInfoData[index].pos_info_data.potision.yPosition=1082.789f;
+    changeInfoData[index].pos_info_data.xCondition=NONE;
+    changeInfoData[index].pos_info_data.yCondition=LOW;
+    changeInfoData[index].direction_data.direction=0;
+    changeInfoData[index].direction_data.condition=NONE;
+
+    changeInfoData[index].judge=JUDGE_POS;
+    changeInfoData[index].section_act=CURVE;
+    changeInfoData[index].speed=80;
+    index++;
+
+    index=13;
+    changeInfoData[index].pos_info_data.potision.xPosition=0;
+    changeInfoData[index].pos_info_data.potision.yPosition=921.2524f;
+    changeInfoData[index].pos_info_data.xCondition=NONE;
+    changeInfoData[index].pos_info_data.yCondition=LOW;
+    changeInfoData[index].direction_data.direction=0;
+    changeInfoData[index].direction_data.condition=NONE;
+
+    changeInfoData[index].judge=JUDGE_POS;
+    changeInfoData[index].section_act=LINE_TRACE;
+    changeInfoData[index].speed=85;
+    index++;
+
+    index=14;
+    changeInfoData[index].pos_info_data.potision.xPosition=0;
+    changeInfoData[index].pos_info_data.potision.yPosition=921.2524f;
+    changeInfoData[index].pos_info_data.xCondition=NONE;
+    changeInfoData[index].pos_info_data.yCondition=HIGH;
+    changeInfoData[index].direction_data.direction=0;
+    changeInfoData[index].direction_data.condition=NONE;
+
+    changeInfoData[index].judge=JUDGE_POS;
+    changeInfoData[index].section_act=CURVE;
+    changeInfoData[index].speed=80;
+    index++;
+
+    index=15;
+    changeInfoData[index].sData.s=110;
+    changeInfoData[index].sData.condition=HIGH;
+
+    changeInfoData[index].judge=JUDGE_S;
+    changeInfoData[index].section_act=LINE_TRACE;
+    changeInfoData[index].speed=95;
+    index++;
+
+    index=16;
+    changeInfoData[index].sData.s=80;
+    changeInfoData[index].sData.condition=LOW;
+
+    changeInfoData[index].judge=JUDGE_S;
+    changeInfoData[index].section_act=LINE_TRACE;
+    changeInfoData[index].speed=80;
+    index++;
+
+    index=17;
+    changeInfoData[index].sData.s=110;
+    changeInfoData[index].sData.condition=HIGH;
+
+    changeInfoData[index].judge=JUDGE_S;
+    changeInfoData[index].section_act=LINE_TRACE;
+    changeInfoData[index].speed=50;
+    index++;
+
+    index=18;
+    changeInfoData[index].pos_info_data.potision.xPosition=1762.79+75.8328;
+    changeInfoData[index].pos_info_data.potision.yPosition=3392.27f;
+    changeInfoData[index].pos_info_data.xCondition=LOW;
+    changeInfoData[index].pos_info_data.yCondition=NONE;
+    changeInfoData[index].direction_data.direction=0;
+    changeInfoData[index].direction_data.condition=NONE;
+
+    changeInfoData[index].judge=JUDGE_POS;
+    changeInfoData[index].section_act=LINE_TRACE;
     changeInfoData[index].speed=30;
 
-    index++;
+    index=19;
+    changeInfoData[index].pos_info_data.potision.xPosition=1762.79;
+    changeInfoData[index].pos_info_data.potision.yPosition=3392.27f;
+    changeInfoData[index].pos_info_data.xCondition=LOW;
+    changeInfoData[index].pos_info_data.yCondition=NONE;
+    changeInfoData[index].direction_data.direction=0;
+    changeInfoData[index].direction_data.condition=NONE;
+
+    changeInfoData[index].judge=JUDGE_POS;
+    changeInfoData[index].section_act=STRAIGHT;
+    changeInfoData[index].speed=30;
 }
 
 TiActionInfomation::~TiActionInfomation(){

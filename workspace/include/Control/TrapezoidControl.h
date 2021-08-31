@@ -2,7 +2,7 @@
 #include "../System/System.h"
 
 // 加速度
-#define ACCELERATION 5
+#define ACCELERATION 2
 
 class TrapezoidControl{
 private:
