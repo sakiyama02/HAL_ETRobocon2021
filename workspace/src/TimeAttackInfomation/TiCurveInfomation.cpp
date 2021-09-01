@@ -38,7 +38,7 @@ TiCurveInfomation::TiCurveInfomation(){
     curveData[index].dirction=CURVE_RIGHT;
         
     index=10;
-    curveData[index].radius=129.4409f;
+    curveData[index].radius=123.445f;
     curveData[index].dirction=CURVE_LEFT;
         
     index=12;

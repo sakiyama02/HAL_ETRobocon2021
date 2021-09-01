@@ -184,7 +184,7 @@ TiActionInfomation::TiActionInfomation(){
     index++;
 
     index=9;
-    changeInfoData[index].pos_info_data.potision.xPosition=1453.8294f;
+    changeInfoData[index].pos_info_data.potision.xPosition=1340.26f;
     changeInfoData[index].pos_info_data.potision.yPosition=0;
     changeInfoData[index].pos_info_data.xCondition=LOW;
     changeInfoData[index].pos_info_data.yCondition=NONE;
@@ -197,7 +197,7 @@ TiActionInfomation::TiActionInfomation(){
     index++;
 
     index=10;
-    changeInfoData[index].pos_info_data.potision.xPosition=1453.8294f;
+    changeInfoData[index].pos_info_data.potision.xPosition=1340.26f;
     changeInfoData[index].pos_info_data.potision.yPosition=0;
     changeInfoData[index].pos_info_data.xCondition=HIGH;
     changeInfoData[index].pos_info_data.yCondition=NONE;
