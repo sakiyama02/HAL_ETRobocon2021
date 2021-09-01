@@ -71,13 +71,13 @@ TiPidInfomation::TiPidInfomation(){
     pidData[index].targetVal=target;
 
     index=7;
-    pidData[index].pGain=0.2f;
-    pidData[index].iGain=0.25f;
+    pidData[index].pGain=0.3f;
+    pidData[index].iGain=0.4f;
     pidData[index].dGain=0.1f;
     pidData[index].targetVal=target;
     //第四カーブ
     index=8;
-    pidData[index].pGain=0.4f;
+    pidData[index].pGain=0.3f;
     pidData[index].iGain=0.4f;
     pidData[index].dGain=0.1f;
     pidData[index].targetVal=target;

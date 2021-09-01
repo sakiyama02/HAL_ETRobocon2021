@@ -149,7 +149,7 @@ TiActionInfomation::TiActionInfomation(){
     index++;
 
     index=6;
-    changeInfoData[index].pos_info_data.potision.xPosition=948.763;
+    changeInfoData[index].pos_info_data.potision.xPosition=948.763-20;
     changeInfoData[index].pos_info_data.potision.yPosition=0;
     changeInfoData[index].pos_info_data.xCondition=HIGH;
     changeInfoData[index].pos_info_data.yCondition=NONE;
@@ -210,7 +210,7 @@ TiActionInfomation::TiActionInfomation(){
     index++;
 
     index=11;
-    changeInfoData[index].pos_info_data.potision.xPosition=1854.4966f;
+    changeInfoData[index].pos_info_data.potision.xPosition=1854.4966f-30;
     changeInfoData[index].pos_info_data.potision.yPosition=0;
     changeInfoData[index].pos_info_data.xCondition=HIGH;
     changeInfoData[index].pos_info_data.yCondition=NONE;
@@ -237,7 +237,7 @@ TiActionInfomation::TiActionInfomation(){
 
     index=13;
     changeInfoData[index].pos_info_data.potision.xPosition=0;
-    changeInfoData[index].pos_info_data.potision.yPosition=921.2524f-30;
+    changeInfoData[index].pos_info_data.potision.yPosition=921.2524f;
     changeInfoData[index].pos_info_data.xCondition=NONE;
     changeInfoData[index].pos_info_data.yCondition=LOW;
     changeInfoData[index].direction_data.direction=0;
