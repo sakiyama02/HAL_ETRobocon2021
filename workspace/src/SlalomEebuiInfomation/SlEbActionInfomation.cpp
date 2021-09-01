@@ -120,7 +120,7 @@ SlEbActionInfomation::SlEbActionInfomation(){
     changeInfoData[index].distance=0;
     changeInfoData[index].judge=JUDGE_POS;
     changeInfoData[index].section_act=STRAIGHT;
-    changeInfoData[index].speed=30;
+    changeInfoData[index].speed=40;
 
     index++;
 

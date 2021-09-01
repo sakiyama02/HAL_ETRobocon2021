@@ -230,7 +230,7 @@ GaActionInfomation::GaActionInfomation(){
 
     changeInfoData[index].judge=JUDGE_DIR;
     changeInfoData[index].section_act=CURVE;
-    changeInfoData[index].speed=70;
+    changeInfoData[index].speed=60;
     index++;
 //16
     changeInfoData[index].pos_info_data.potision.xPosition=600*2*0.3527;
@@ -278,6 +278,14 @@ GaActionInfomation::GaActionInfomation(){
     changeInfoData[index].judge=JUDGE_V;
     changeInfoData[index].section_act=LINE_TRACE;
     changeInfoData[index].speed=20;
+    index++;
+
+// 22 機体の向き修正
+    changeInfoData[index].direction_data.direction=180;
+    changeInfoData[index].direction_data.condition=LOW;
+    changeInfoData[index].judge=JUDGE_DIR;
+    changeInfoData[index].section_act=TURN;
+    changeInfoData[index].speed=15;
     index++;
 
 /*

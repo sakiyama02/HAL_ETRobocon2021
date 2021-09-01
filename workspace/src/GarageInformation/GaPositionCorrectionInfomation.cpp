@@ -350,6 +350,16 @@ GaPositionCorrectionInfomation::GaPositionCorrectionInfomation(){
 
     index++;
     */
+
+    index = 20;
+    positionCorrectionData[index].correctionV.v = 100;
+    positionCorrectionData[index].correctionV.condition = HIGH;
+
+     positionCorrectionData[index].correctionValueDirection.direction=180;
+    positionCorrectionData[index].correctionValueDirection.condition=LOW;
+
+    positionCorrectionData[index].correctionCondition=JUDGE_V;
+
 }
 
 GaPositionCorrectionInfomation::~GaPositionCorrectionInfomation(){
