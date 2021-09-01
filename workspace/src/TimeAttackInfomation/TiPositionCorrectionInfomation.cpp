@@ -152,7 +152,7 @@ TiPositionCorrectionInfomation::TiPositionCorrectionInfomation(){
     positionCorrectionData[index].correctionPosition.yCondition=NONE;
     positionCorrectionData[index].correctionCondition=JUDGE_POS;
 
-    // 第三カーブ時の補正
+    // 第四カーブ時の補正
     index=8;
     positionCorrectionData[index].correctionValue.potision.xPosition=1703.541; 
     positionCorrectionData[index].correctionValue.potision.yPosition=708.2216; 
@@ -162,6 +162,18 @@ TiPositionCorrectionInfomation::TiPositionCorrectionInfomation(){
 
     positionCorrectionData[index].correctionDirection.direction=0;
     positionCorrectionData[index].correctionDirection.condition=HIGH;
+    positionCorrectionData[index].correctionCondition=JUDGE_DIR;
+
+    // 第五カーブ時の補正
+    index=10;
+    positionCorrectionData[index].correctionValue.potision.xPosition=1192.8314; 
+    positionCorrectionData[index].correctionValue.potision.yPosition=1094.0754; 
+    positionCorrectionData[index].correctionValue.xCondition=HIGH;
+    positionCorrectionData[index].correctionValue.yCondition=HIGH;
+    positionCorrectionData[index].correctionValueDirection.condition=NONE;
+
+    positionCorrectionData[index].correctionDirection.direction=0;
+    positionCorrectionData[index].correctionDirection.condition=LOW;
     positionCorrectionData[index].correctionCondition=JUDGE_DIR;
 
     // Zカーブ後の機体のずれとy軸の補正
