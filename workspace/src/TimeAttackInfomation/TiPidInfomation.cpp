@@ -66,7 +66,7 @@ TiPidInfomation::TiPidInfomation(){
     // 第三カーブ
     index=6;
     pidData[index].pGain=0.3f;
-    pidData[index].iGain=0.3f;
+    pidData[index].iGain=0.4f;
     pidData[index].dGain=0.1f;
     pidData[index].targetVal=target;
 

@@ -115,7 +115,7 @@ TiActionInfomation::TiActionInfomation(){
     // ---------------------------------------------------------------------
     index=3;
     changeInfoData[index].pos_info_data.potision.xPosition=0;
-    changeInfoData[index].pos_info_data.potision.yPosition=1251.3796;
+    changeInfoData[index].pos_info_data.potision.yPosition=1251.3796+30;
     changeInfoData[index].pos_info_data.xCondition=NONE;
     changeInfoData[index].pos_info_data.yCondition=HIGH;
 
@@ -156,7 +156,7 @@ TiActionInfomation::TiActionInfomation(){
 
     changeInfoData[index].judge=JUDGE_POS;
     changeInfoData[index].section_act=CURVE;
-    changeInfoData[index].speed=80;
+    changeInfoData[index].speed=85;
     index++;
 
     index=7;
