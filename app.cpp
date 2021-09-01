@@ -244,7 +244,7 @@ void end_task(intptr_t unused)
     user_system_destroy();
     stp_cyc(TRAPEZOIDAL_PERIOD);
     msg.LOG(LOG_ID_ERR,"カウント開始");
-    tslp_tsk(3300 * 1000);
+    tslp_tsk(6000 * 1000);
     msg.LOG(LOG_ID_ERR,"カウント終了");
     ETRoboc_notifyCompletedToSimulator();
     ext_tsk();
