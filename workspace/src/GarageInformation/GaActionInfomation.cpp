@@ -70,14 +70,14 @@ GaActionInfomation::GaActionInfomation(){
     index++;
 */
 
+
 //1
-    changeInfoData[index].direction_data.direction=91;  //上方向の誤差が許されないため、＋１度
+    changeInfoData[index].direction_data.direction=90;  //上方向の誤差が許されないため、＋１度
     changeInfoData[index].direction_data.condition=LOW;
 
     changeInfoData[index].judge=JUDGE_DIR;
     changeInfoData[index].section_act=TURN;
     changeInfoData[index].speed=10;
-
     index++;
 //2
     changeInfoData[index].pos_info_data.potision.xPosition=1685*2*0.3527;
@@ -90,7 +90,7 @@ GaActionInfomation::GaActionInfomation(){
     changeInfoData[index].speed=-40;
     index++;
 
-//4
+//3
     changeInfoData[index].pos_info_data.potision.xPosition=1923*2*0.3527;
     changeInfoData[index].pos_info_data.potision.yPosition=3711*2*0.3527;
     changeInfoData[index].pos_info_data.xCondition=LOW;
@@ -109,16 +109,25 @@ GaActionInfomation::GaActionInfomation(){
     changeInfoData[index].section_act=STRAIGHT;
     changeInfoData[index].speed=-50;
     index++;
+
 //5
-    changeInfoData[index].rgb_data.r=10;
-    changeInfoData[index].rgb_data.g=10;
-    changeInfoData[index].rgb_data.b=10;
-    changeInfoData[index].rgb_data.condition=LOW;
-    changeInfoData[index].judge=JUDGE_RGB;
+    changeInfoData[index].pos_info_data.potision.xPosition=2360*2*0.3527;
+    changeInfoData[index].pos_info_data.potision.yPosition=3711*2*0.3527;
+    changeInfoData[index].pos_info_data.xCondition=HIGH;
+    changeInfoData[index].pos_info_data.yCondition=NONE;
+    changeInfoData[index].judge=JUDGE_POS;
+    changeInfoData[index].section_act=STRAIGHT;
+    changeInfoData[index].speed=-30;
+    index++;
+//6
+    changeInfoData[index].sData.s=100;
+    changeInfoData[index].sData.condition=HIGH;
+    changeInfoData[index].judge=JUDGE_S;
     changeInfoData[index].section_act=STRAIGHT;
     changeInfoData[index].speed=-10;
     index++;
-//6
+
+//7
     changeInfoData[index].pos_info_data.potision.xPosition=2298*2*0.3527;
     changeInfoData[index].pos_info_data.potision.yPosition=3711*2*0.3527;
     changeInfoData[index].pos_info_data.xCondition=LOW;
@@ -128,7 +137,7 @@ GaActionInfomation::GaActionInfomation(){
     changeInfoData[index].speed=20;
     index++;
 
-//7
+//8
     changeInfoData[index].direction_data.direction=179;
     changeInfoData[index].direction_data.condition=HIGH;
 
@@ -136,7 +145,18 @@ GaActionInfomation::GaActionInfomation(){
     changeInfoData[index].section_act=TURN;
     changeInfoData[index].speed=10;
     index++;
-//8
+
+//9
+    changeInfoData[index].pos_info_data.potision.xPosition=2298*2*0.3527;
+    changeInfoData[index].pos_info_data.potision.yPosition=3700*2*0.3527;
+    changeInfoData[index].pos_info_data.xCondition=NONE;
+    changeInfoData[index].pos_info_data.yCondition=LOW;
+    changeInfoData[index].judge=JUDGE_POS;
+    changeInfoData[index].section_act=STRAIGHT;
+    changeInfoData[index].speed=20;
+    index++;
+
+//10
     changeInfoData[index].rgb_data.r=20;
     changeInfoData[index].rgb_data.g=20;
     changeInfoData[index].rgb_data.b=20;
@@ -158,7 +178,7 @@ GaActionInfomation::GaActionInfomation(){
     index++;
     */
 
-//9
+//11
     changeInfoData[index].direction_data.direction=89;
     changeInfoData[index].direction_data.condition=LOW;
 
@@ -166,7 +186,7 @@ GaActionInfomation::GaActionInfomation(){
     changeInfoData[index].section_act=TURN;
     changeInfoData[index].speed=10;
     index++;
-//10
+//12
     changeInfoData[index].pos_info_data.potision.xPosition=2050*2*0.3527;
     changeInfoData[index].pos_info_data.potision.yPosition=3463*2*0.3527;
     changeInfoData[index].pos_info_data.xCondition=LOW;
@@ -175,11 +195,9 @@ GaActionInfomation::GaActionInfomation(){
     changeInfoData[index].section_act=LINE_TRACE;
     changeInfoData[index].speed=20;
     index++;
-//11
-    changeInfoData[index].rgb_data.r=82;
-    changeInfoData[index].rgb_data.g=15;
-    changeInfoData[index].rgb_data.b=15;
-    changeInfoData[index].rgb_data.condition=HIGH;
+//13
+    changeInfoData[index].vData.v=115;
+    changeInfoData[index].vData.condition=LOW;
     changeInfoData[index].judge=JUDGE_RGB;
     changeInfoData[index].section_act=STRAIGHT;
     changeInfoData[index].speed=20;
@@ -187,7 +205,7 @@ GaActionInfomation::GaActionInfomation(){
 
 
 
-    //12
+    //14
     changeInfoData[index].pos_info_data.potision.xPosition=1800*2*0.3527;
     changeInfoData[index].pos_info_data.potision.yPosition=3463*2*0.3527;
     changeInfoData[index].pos_info_data.xCondition=LOW;
@@ -208,7 +226,7 @@ GaActionInfomation::GaActionInfomation(){
     changeInfoData[index].speed=20;
     index++;
 */
-//13
+//15
     changeInfoData[index].direction_data.direction=0;
     changeInfoData[index].direction_data.condition=LOW;
 
@@ -216,7 +234,7 @@ GaActionInfomation::GaActionInfomation(){
     changeInfoData[index].section_act=CURVE;
     changeInfoData[index].speed=70;
     index++;
-//14
+//16
     changeInfoData[index].direction_data.direction=90;
     changeInfoData[index].direction_data.condition=HIGH;
 
@@ -224,7 +242,7 @@ GaActionInfomation::GaActionInfomation(){
     changeInfoData[index].section_act=CURVE;
     changeInfoData[index].speed=70;
     index++;
-//15
+//17
     changeInfoData[index].direction_data.direction=130;
     changeInfoData[index].direction_data.condition=HIGH;
 
@@ -232,7 +250,7 @@ GaActionInfomation::GaActionInfomation(){
     changeInfoData[index].section_act=CURVE;
     changeInfoData[index].speed=60;
     index++;
-//16
+//18
     changeInfoData[index].pos_info_data.potision.xPosition=600*2*0.3527;
     changeInfoData[index].pos_info_data.potision.yPosition=3463*2*0.3527;
     changeInfoData[index].pos_info_data.xCondition=LOW;
@@ -241,52 +259,47 @@ GaActionInfomation::GaActionInfomation(){
     changeInfoData[index].section_act=STRAIGHT;
     changeInfoData[index].speed=30;
     index++;
-//17
+//19
     changeInfoData[index].vData.v=115;
     changeInfoData[index].vData.condition=LOW;
     changeInfoData[index].judge=JUDGE_V;
     changeInfoData[index].section_act=STRAIGHT;
     changeInfoData[index].speed=30;
     index++;
-//18
-    changeInfoData[index].direction_data.direction=175;
+//20
+    changeInfoData[index].direction_data.direction=171;
     changeInfoData[index].direction_data.condition=HIGH;
     changeInfoData[index].judge=JUDGE_DIR;
     changeInfoData[index].section_act=TURN;
-    changeInfoData[index].speed=25;
+    changeInfoData[index].speed=10;
     index++;
-//19
+//21
     changeInfoData[index].pos_info_data.potision.xPosition=1900*2*0.3527;
     changeInfoData[index].pos_info_data.potision.yPosition=3613*2*0.3527;
     changeInfoData[index].pos_info_data.xCondition=NONE;
     changeInfoData[index].pos_info_data.yCondition=LOW;
     changeInfoData[index].judge=JUDGE_POS;
     changeInfoData[index].section_act=LINE_TRACE;
-    changeInfoData[index].speed=20;
+    changeInfoData[index].speed=15;
     index++;
-//20
+//22
     changeInfoData[index].sData.s=180;
     changeInfoData[index].sData.condition=LOW;
     changeInfoData[index].judge=JUDGE_S;
     changeInfoData[index].section_act=LINE_TRACE;
-    changeInfoData[index].speed=20;
-    index++;
-
-//21
-    changeInfoData[index].vData.v=100;
-    changeInfoData[index].vData.condition=HIGH;
-    changeInfoData[index].judge=JUDGE_V;
-    changeInfoData[index].section_act=LINE_TRACE;
-    changeInfoData[index].speed=20;
-    index++;
-
-// 22 機体の向き修正
-    changeInfoData[index].direction_data.direction=180;
-    changeInfoData[index].direction_data.condition=LOW;
-    changeInfoData[index].judge=JUDGE_DIR;
-    changeInfoData[index].section_act=TURN;
     changeInfoData[index].speed=15;
     index++;
+
+//23
+    changeInfoData[index].pos_info_data.potision.xPosition=1900*2*0.3527;
+    changeInfoData[index].pos_info_data.potision.yPosition=3200*2*0.3527;
+    changeInfoData[index].pos_info_data.xCondition=NONE;
+    changeInfoData[index].pos_info_data.yCondition=LOW;
+    changeInfoData[index].judge=JUDGE_POS;
+    changeInfoData[index].section_act=LINE_TRACE;
+    changeInfoData[index].speed=7;
+    index++;
+
 
 /*
 //17
@@ -319,7 +332,7 @@ GaActionInfomation::GaActionInfomation(){
     changeInfoData[index].speed=20;
     index++;
   */  
-//18
+//24
     changeInfoData[index].distance=5;
     changeInfoData[index].judge=JUDGE_DIS;
     changeInfoData[index].section_act=STRAIGHT;
