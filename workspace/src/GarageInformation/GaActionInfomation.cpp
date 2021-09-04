@@ -87,7 +87,7 @@ GaActionInfomation::GaActionInfomation(){
 
     changeInfoData[index].judge=JUDGE_POS;
     changeInfoData[index].section_act=STRAIGHT;
-    changeInfoData[index].speed=-40;
+    changeInfoData[index].speed=-60;
     index++;
 
 //3
@@ -97,7 +97,7 @@ GaActionInfomation::GaActionInfomation(){
     changeInfoData[index].pos_info_data.yCondition=NONE;
     changeInfoData[index].judge=JUDGE_POS;
     changeInfoData[index].section_act=STRAIGHT;
-    changeInfoData[index].speed=-70;
+    changeInfoData[index].speed=-90;
     index++;
 
 //4
@@ -107,7 +107,7 @@ GaActionInfomation::GaActionInfomation(){
     changeInfoData[index].pos_info_data.yCondition=NONE;
     changeInfoData[index].judge=JUDGE_POS;
     changeInfoData[index].section_act=STRAIGHT;
-    changeInfoData[index].speed=-50;
+    changeInfoData[index].speed=-60;
     index++;
 
 //5
@@ -193,10 +193,10 @@ GaActionInfomation::GaActionInfomation(){
     changeInfoData[index].pos_info_data.yCondition=NONE;
     changeInfoData[index].judge=JUDGE_POS;
     changeInfoData[index].section_act=LINE_TRACE;
-    changeInfoData[index].speed=20;
+    changeInfoData[index].speed=15;
     index++;
 //13
-    changeInfoData[index].vData.v=120;
+    changeInfoData[index].vData.v=115;
     changeInfoData[index].vData.condition=LOW;
     changeInfoData[index].judge=JUDGE_RGB;
     changeInfoData[index].section_act=STRAIGHT;
@@ -205,7 +205,7 @@ GaActionInfomation::GaActionInfomation(){
 
 
 
-    //14
+//14
     changeInfoData[index].pos_info_data.potision.xPosition=1800*2*0.3527;
     changeInfoData[index].pos_info_data.potision.yPosition=3463*2*0.3527;
     changeInfoData[index].pos_info_data.xCondition=LOW;
@@ -243,7 +243,7 @@ GaActionInfomation::GaActionInfomation(){
     changeInfoData[index].speed=70;
     index++;
 //17
-    changeInfoData[index].direction_data.direction=130;
+    changeInfoData[index].direction_data.direction=125; //130
     changeInfoData[index].direction_data.condition=HIGH;
 
     changeInfoData[index].judge=JUDGE_DIR;
@@ -260,45 +260,54 @@ GaActionInfomation::GaActionInfomation(){
     changeInfoData[index].speed=30;
     index++;
 //19
-    changeInfoData[index].vData.v=115;
+    changeInfoData[index].vData.v=117;
     changeInfoData[index].vData.condition=LOW;
     changeInfoData[index].judge=JUDGE_V;
     changeInfoData[index].section_act=STRAIGHT;
-    changeInfoData[index].speed=30;
-    index++;
+    changeInfoData[index].speed=20;
+    index++; 
+
 //20
-    changeInfoData[index].direction_data.direction=171;
+    changeInfoData[index].vData.v=120;
+    changeInfoData[index].vData.condition=HIGH;
+    changeInfoData[index].judge=JUDGE_V;
+    changeInfoData[index].section_act=STRAIGHT;
+    changeInfoData[index].speed=5;
+    index++; 
+
+//21
+    changeInfoData[index].direction_data.direction=178;
     changeInfoData[index].direction_data.condition=HIGH;
     changeInfoData[index].judge=JUDGE_DIR;
     changeInfoData[index].section_act=TURN;
     changeInfoData[index].speed=10;
     index++;
-//21
+//22
     changeInfoData[index].pos_info_data.potision.xPosition=1900*2*0.3527;
     changeInfoData[index].pos_info_data.potision.yPosition=3613*2*0.3527;
     changeInfoData[index].pos_info_data.xCondition=NONE;
     changeInfoData[index].pos_info_data.yCondition=LOW;
     changeInfoData[index].judge=JUDGE_POS;
     changeInfoData[index].section_act=LINE_TRACE;
-    changeInfoData[index].speed=15;
+    changeInfoData[index].speed=10;
     index++;
-//22
+//23
     changeInfoData[index].sData.s=180;
     changeInfoData[index].sData.condition=LOW;
     changeInfoData[index].judge=JUDGE_S;
     changeInfoData[index].section_act=LINE_TRACE;
-    changeInfoData[index].speed=15;
+    changeInfoData[index].speed=10;
     index++;
 
-//23
+//24
     changeInfoData[index].pos_info_data.potision.xPosition=1900*2*0.3527;
-    changeInfoData[index].pos_info_data.potision.yPosition=3200*2*0.3527;
-    changeInfoData[index].pos_info_data.xCondition=NONE;
+    changeInfoData[index].pos_info_data.potision.yPosition=3210*2*0.3527; // 3200
     changeInfoData[index].pos_info_data.yCondition=LOW;
     changeInfoData[index].judge=JUDGE_POS;
     changeInfoData[index].section_act=LINE_TRACE;
-    changeInfoData[index].speed=7;
+    changeInfoData[index].speed=10;
     index++;
+
 
 
 /*
@@ -332,12 +341,13 @@ GaActionInfomation::GaActionInfomation(){
     changeInfoData[index].speed=20;
     index++;
   */  
-//24
-    changeInfoData[index].distance=5;
+//25
+    changeInfoData[index].distance=6;
     changeInfoData[index].judge=JUDGE_DIS;
     changeInfoData[index].section_act=STRAIGHT;
     changeInfoData[index].speed=20;
     index++;
+    
 }
 
 GaActionInfomation::~GaActionInfomation(){
