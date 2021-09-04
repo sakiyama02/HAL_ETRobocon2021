@@ -70,11 +70,20 @@ SlEbPositionCorrectionInfomation::SlEbPositionCorrectionInfomation(){
 
     index++;
 */  
-    index = 4;
+    //2
+    index=1;
+    positionCorrectionData[index].correctionValue.potision.xPosition=1578;//1578;
+    positionCorrectionData[index].correctionValue.xCondition=HIGH;
+    positionCorrectionData[index].correctionValue.yCondition=NONE;
+    positionCorrectionData[index].correctionPosition.potision.xPosition=1590;
+    positionCorrectionData[index].correctionPosition.xCondition=LOW;
+    positionCorrectionData[index].correctionPosition.yCondition=NONE;
+    positionCorrectionData[index].correctionCondition=JUDGE_POS;
 
-    //5
+    //9
     //v値切り替え
-
+    //index = 6;
+    index = 8;
     positionCorrectionData[index].correctionV.v = 13;
     positionCorrectionData[index].correctionV.condition = LOW;
 
@@ -86,7 +95,7 @@ SlEbPositionCorrectionInfomation::SlEbPositionCorrectionInfomation(){
 
     index++;
 
-    //6
+    //10
     //角度
     positionCorrectionData[index].correctionValueDirection.direction=90;
     positionCorrectionData[index].correctionValueDirection.condition=LOW;
@@ -97,19 +106,7 @@ SlEbPositionCorrectionInfomation::SlEbPositionCorrectionInfomation(){
     positionCorrectionData[index].correctionPosition.yCondition=NONE;
 
     positionCorrectionData[index].correctionCondition=JUDGE_POS;
-/*
-    //11
-    index = 10;
-    //角度
-    positionCorrectionData[index].correctionValueDirection.direction=90;
-    positionCorrectionData[index].correctionValueDirection.condition=LOW;
 
-    positionCorrectionData[index].correctionPosition.potision.xPosition=1080;
-    positionCorrectionData[index].correctionPosition.xCondition=LOW;
-
-    positionCorrectionData[index].correctionCondition=JUDGE_POS;
-    index++;
-*/
     //**********************************************************************************
 }
 

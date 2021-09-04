@@ -29,19 +29,27 @@ SlEbpidInfomation::SlEbpidInfomation(){
     pidData[index].dGain=0;
     pidData[index].targetVal=50;
 
-    //5
-    index = 4;
+    //4
     /*
+    index = 3;
     pidData[index].pGain=0.2;
     pidData[index].iGain=0;
     pidData[index].dGain=0;
-    pidData[index].targetVal=13;
+    pidData[index].targetVal=50;
     */
-    pidData[index].pGain=1;
+    //8
+    index = 7;
+    pidData[index].pGain=0.2;
+    pidData[index].iGain=0;
+    pidData[index].dGain=0.04;
+    pidData[index].targetVal=13;
+    //9
+    index++;
+    pidData[index].pGain=0.2;//1;
     pidData[index].iGain=0;
     pidData[index].dGain=0;
     pidData[index].targetVal=13;
-    index++;
+
 
 }
 
