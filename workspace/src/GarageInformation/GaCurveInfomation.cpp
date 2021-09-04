@@ -58,7 +58,7 @@ index++;
     curveData[index].dirction=CURVE_RIGHT;
 
     index++;
-    curveData[index].radius=380;
+    curveData[index].radius=400;
     curveData[index].dirction=CURVE_RIGHT;
     index++;
 

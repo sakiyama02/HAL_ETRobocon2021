@@ -238,10 +238,8 @@ GaPositionCorrectionInfomation::GaPositionCorrectionInfomation(){
     positionCorrectionData[index].correctionCondition=JUDGE_NONE;
 
     index++;
-    //9
-    index++;
 
-    //10
+    //9
     positionCorrectionData[index].correctionValue.potision.xPosition=0;
     positionCorrectionData[index].correctionValue.potision.yPosition=3463*2*0.3527;
     positionCorrectionData[index].correctionValue.xCondition=NONE;
@@ -264,10 +262,10 @@ GaPositionCorrectionInfomation::GaPositionCorrectionInfomation(){
 
     index++;
 
-    //11
+    //10
     index++;
 
-    //12
+    //11
     positionCorrectionData[index].correctionValue.potision.xPosition=0;
     positionCorrectionData[index].correctionValue.potision.yPosition=3411*2*0.3527;
     positionCorrectionData[index].correctionValue.xCondition=NONE;
@@ -283,7 +281,7 @@ GaPositionCorrectionInfomation::GaPositionCorrectionInfomation(){
 
     index++;
 
-//13
+//12
     index++;
 /*
   //19

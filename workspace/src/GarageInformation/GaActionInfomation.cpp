@@ -196,7 +196,7 @@ GaActionInfomation::GaActionInfomation(){
     changeInfoData[index].speed=20;
     index++;
 //13
-    changeInfoData[index].vData.v=115;
+    changeInfoData[index].vData.v=120;
     changeInfoData[index].vData.condition=LOW;
     changeInfoData[index].judge=JUDGE_RGB;
     changeInfoData[index].section_act=STRAIGHT;
