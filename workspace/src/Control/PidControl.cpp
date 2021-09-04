@@ -52,7 +52,9 @@ int8 PidControl::calcPid(PIDData *pid_data)
     //積分ゲイン(kI)
     kI = pid_data -> iGain * stackIntegral;
     //微分ゲイン(kD)
-    kD = pid_data -> dGain * (eDeviation - prevDeviation) / DELTA_TIME;
+    if(prevDeviation!=0.0f){
+        kD = pid_data -> dGain * (eDeviation - prevDeviation) / DELTA_TIME;
+    }
     //モーター速度
     moterRevison = kP + kI + kD;
 
