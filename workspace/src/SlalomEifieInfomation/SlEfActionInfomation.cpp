@@ -179,7 +179,7 @@ SlEfActionInfomation::SlEfActionInfomation(){
     changeInfoData[index].judge=JUDGE_POS;
     changeInfoData[index].section_act=STRAIGHT;
     changeInfoData[index].speed=25;
-
+    index++;
 
     //10
     changeInfoData[index].pos_info_data.potision.yPosition=2845;
@@ -244,11 +244,9 @@ SlEfActionInfomation::SlEfActionInfomation(){
 
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
     //15
-    changeInfoData[index].rgb_data.r=20;
-    changeInfoData[index].rgb_data.g=20;
-    changeInfoData[index].rgb_data.b=20;
+    changeInfoData[index].vData.v=120;
     changeInfoData[index].rgb_data.condition=LOW;  
-    changeInfoData[index].judge=JUDGE_RGB;
+    changeInfoData[index].judge=JUDGE_V;
     changeInfoData[index].section_act=STRAIGHT;
     changeInfoData[index].speed=30;
 

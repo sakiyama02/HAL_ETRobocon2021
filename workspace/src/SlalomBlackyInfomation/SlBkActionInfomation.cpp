@@ -229,13 +229,9 @@ SlBkActionInfomation::SlBkActionInfomation(){
     index++;
 
     //13
-    changeInfoData[index].rgb_data.r=20;
-    changeInfoData[index].rgb_data.g=20;
-    changeInfoData[index].rgb_data.b=20;
-    changeInfoData[index].rgb_data.condition=LOW;
-
-    changeInfoData[index].distance=0;
-    changeInfoData[index].judge=JUDGE_RGB;
+    changeInfoData[index].vData.v=120;
+    changeInfoData[index].rgb_data.condition=LOW;  
+    changeInfoData[index].judge=JUDGE_V;
     changeInfoData[index].section_act=STRAIGHT;
     changeInfoData[index].speed=20;
 /*
