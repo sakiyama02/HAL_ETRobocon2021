@@ -72,7 +72,7 @@ SlEbPositionCorrectionInfomation::SlEbPositionCorrectionInfomation(){
 */  
     //2
     index=1;
-    positionCorrectionData[index].correctionValue.potision.xPosition=1578;//1578;
+    positionCorrectionData[index].correctionValue.potision.xPosition=1590;//1578;
     positionCorrectionData[index].correctionValue.xCondition=HIGH;
     positionCorrectionData[index].correctionValue.yCondition=NONE;
     positionCorrectionData[index].correctionPosition.potision.xPosition=1590;
