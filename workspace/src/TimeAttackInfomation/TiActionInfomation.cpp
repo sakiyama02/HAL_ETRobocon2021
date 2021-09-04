@@ -87,7 +87,7 @@ TiActionInfomation::TiActionInfomation(){
     //----------------------------------------------------------
     
     index=1;
-    changeInfoData[index].pos_info_data.potision.xPosition=690;//672.2462;
+    changeInfoData[index].pos_info_data.potision.xPosition=690+60;//672.2462;
     changeInfoData[index].pos_info_data.potision.yPosition=0;
     changeInfoData[index].pos_info_data.xCondition=LOW;
     changeInfoData[index].pos_info_data.yCondition=NONE;
@@ -101,7 +101,7 @@ TiActionInfomation::TiActionInfomation(){
     // 第一カーブ
     index=2;
     changeInfoData[index].pos_info_data.potision.xPosition=0;
-    changeInfoData[index].pos_info_data.potision.yPosition=570.5524;
+    changeInfoData[index].pos_info_data.potision.yPosition=570.5524+60;
     changeInfoData[index].pos_info_data.xCondition=NONE;
     changeInfoData[index].pos_info_data.yCondition=HIGH;
     changeInfoData[index].direction_data.direction=1;
@@ -115,7 +115,7 @@ TiActionInfomation::TiActionInfomation(){
     // ---------------------------------------------------------------------
     index=3;
     changeInfoData[index].pos_info_data.potision.xPosition=0;
-    changeInfoData[index].pos_info_data.potision.yPosition=1251.3796+30;
+    changeInfoData[index].pos_info_data.potision.yPosition=1251.3796;
     changeInfoData[index].pos_info_data.xCondition=NONE;
     changeInfoData[index].pos_info_data.yCondition=HIGH;
 
@@ -128,7 +128,7 @@ TiActionInfomation::TiActionInfomation(){
     index=4;
     changeInfoData[index].pos_info_data.potision.xPosition=0;
     //changeInfoData[index].pos_info_data.potision.yPosition=1251.3796;
-    changeInfoData[index].pos_info_data.potision.yPosition=1180;
+    changeInfoData[index].pos_info_data.potision.yPosition=1180-15;
     changeInfoData[index].pos_info_data.xCondition=NONE;
     changeInfoData[index].pos_info_data.yCondition=LOW;
 
@@ -139,7 +139,7 @@ TiActionInfomation::TiActionInfomation(){
 
     index=5;
     changeInfoData[index].pos_info_data.potision.xPosition=0;
-    changeInfoData[index].pos_info_data.potision.yPosition=799.9236;
+    changeInfoData[index].pos_info_data.potision.yPosition=799.9236+60;
     changeInfoData[index].pos_info_data.xCondition=NONE;
     changeInfoData[index].pos_info_data.yCondition=LOW;
 
@@ -149,7 +149,7 @@ TiActionInfomation::TiActionInfomation(){
     index++;
 
     index=6;
-    changeInfoData[index].pos_info_data.potision.xPosition=948.763-20;
+    changeInfoData[index].pos_info_data.potision.xPosition=948.763+35;
     changeInfoData[index].pos_info_data.potision.yPosition=0;
     changeInfoData[index].pos_info_data.xCondition=HIGH;
     changeInfoData[index].pos_info_data.yCondition=NONE;
@@ -180,7 +180,7 @@ TiActionInfomation::TiActionInfomation(){
 
     changeInfoData[index].judge=JUDGE_POS;
     changeInfoData[index].section_act=CURVE;
-    changeInfoData[index].speed=80;
+    changeInfoData[index].speed=70;
     index++;
 
     index=9;
@@ -206,11 +206,11 @@ TiActionInfomation::TiActionInfomation(){
 
     changeInfoData[index].judge=JUDGE_POS;
     changeInfoData[index].section_act=CURVE;
-    changeInfoData[index].speed=80;
+    changeInfoData[index].speed=60;
     index++;
 
     index=11;
-    changeInfoData[index].pos_info_data.potision.xPosition=1854.4966f-30;
+    changeInfoData[index].pos_info_data.potision.xPosition=1854.4966f-60;
     changeInfoData[index].pos_info_data.potision.yPosition=0;
     changeInfoData[index].pos_info_data.xCondition=HIGH;
     changeInfoData[index].pos_info_data.yCondition=NONE;
@@ -232,7 +232,7 @@ TiActionInfomation::TiActionInfomation(){
 
     changeInfoData[index].judge=JUDGE_POS;
     changeInfoData[index].section_act=CURVE;
-    changeInfoData[index].speed=85;
+    changeInfoData[index].speed=80;
     index++;
 
     index=13;

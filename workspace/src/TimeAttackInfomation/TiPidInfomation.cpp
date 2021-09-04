@@ -36,110 +36,110 @@ TiPidInfomation::TiPidInfomation(){
     index=1;
     pidData[index].pGain=0.2f;
     pidData[index].iGain=0.3f;
-    pidData[index].dGain=0.1f;
+    pidData[index].dGain=0.05f;
     pidData[index].targetVal=target;
 
     // 第一カーブ
     index=2;
     pidData[index].pGain=0.3f;
     pidData[index].iGain=0.4f;
-    pidData[index].dGain=0.1f;
+    pidData[index].dGain=0.05f;
     pidData[index].targetVal=target;
 
     index=3;
     pidData[index].pGain=0.3f;
     pidData[index].iGain=0.4f;
-    pidData[index].dGain=0.1f;
+    pidData[index].dGain=0.05f;
     pidData[index].targetVal=target;
     // 第二カーブ
     index=4;
     pidData[index].pGain=0.3f;
     pidData[index].iGain=0.4f;
-    pidData[index].dGain=0.1f;
+    pidData[index].dGain=0.05f;
     pidData[index].targetVal=target;
 
     index=5;
     pidData[index].pGain=0.3f;
     pidData[index].iGain=0.4f;
-    pidData[index].dGain=0.1f;
+    pidData[index].dGain=0.05f;
     pidData[index].targetVal=target;
     // 第三カーブ
     index=6;
     pidData[index].pGain=0.3f;
     pidData[index].iGain=0.4f;
-    pidData[index].dGain=0.1f;
+    pidData[index].dGain=0.05f;
     pidData[index].targetVal=target;
 
     index=7;
     pidData[index].pGain=0.3f;
     pidData[index].iGain=0.4f;
-    pidData[index].dGain=0.1f;
+    pidData[index].dGain=0.05f;
     pidData[index].targetVal=target;
     //第四カーブ
     index=8;
     pidData[index].pGain=0.3f;
     pidData[index].iGain=0.4f;
-    pidData[index].dGain=0.1f;
+    pidData[index].dGain=0.05f;
     pidData[index].targetVal=target;
 
     index=9;
     pidData[index].pGain=0.3f;
     pidData[index].iGain=0.4f;
-    pidData[index].dGain=0.1f;
+    pidData[index].dGain=0.05f;
     pidData[index].targetVal=target;
     //第五カーブ
     index=10;
     pidData[index].pGain=0.4f;
     pidData[index].iGain=0.4f;
-    pidData[index].dGain=0.1f;
+    pidData[index].dGain=0.05f;
     pidData[index].targetVal=target;
 
     index=11;
     pidData[index].pGain=0.3f;
     pidData[index].iGain=0.4f;
-    pidData[index].dGain=0.1f;
+    pidData[index].dGain=0.05f;
     pidData[index].targetVal=target;
     //第六カーブ
     index=12;
     pidData[index].pGain=0.4f;
     pidData[index].iGain=0.3f;
-    pidData[index].dGain=0.1f;
+    pidData[index].dGain=0.05f;
     pidData[index].targetVal=target;
     
     index=13;
     pidData[index].pGain=0.3f;
     pidData[index].iGain=0.25f;
-    pidData[index].dGain=0.1f;
+    pidData[index].dGain=0.05f;
     pidData[index].targetVal=target;
     //第七カーブ
     index=14;
     pidData[index].pGain=0.4f;
     pidData[index].iGain=0.4f;
-    pidData[index].dGain=0.1f;
+    pidData[index].dGain=0.05f;
     pidData[index].targetVal=target;
 
     index=15;
     pidData[index].pGain=0.3f;
     pidData[index].iGain=0.25f;
-    pidData[index].dGain=0.1f;
+    pidData[index].dGain=0.05f;
     pidData[index].targetVal=target;
 
     index=16;
     pidData[index].pGain=0.3f;
     pidData[index].iGain=0.25f;
-    pidData[index].dGain=0.1f;
+    pidData[index].dGain=0.05f;
     pidData[index].targetVal=125;
 
     index=17;
     pidData[index].pGain=0.4f;
     pidData[index].iGain=0.4f;
-    pidData[index].dGain=0.1f;
+    pidData[index].dGain=0.05f;
     pidData[index].targetVal=target;
 
     index=18;
     pidData[index].pGain=0.3f;
     pidData[index].iGain=0.25f;
-    pidData[index].dGain=0.1f;
+    pidData[index].dGain=0.05f;
     pidData[index].targetVal=122;
     
 }
