@@ -98,20 +98,34 @@ SlEfPositionCorrectionInfomation::SlEfPositionCorrectionInfomation(){
 
     index++;
     */
-    //14
-    positionCorrectionData[index].correctionRGB.r=20;
-    positionCorrectionData[index].correctionRGB.g=20;
-    positionCorrectionData[index].correctionRGB.b=20;
-    positionCorrectionData[index].correctionRGB.condition=LOW;
+
+    //15
+    index=14;
+    positionCorrectionData[index].correctionV.v = 50;
+    positionCorrectionData[index].correctionV.condition = LOW;
 
     positionCorrectionData[index].correctionValue.potision.xPosition=417*2*0.3527;
     positionCorrectionData[index].correctionValue.potision.yPosition=0;
     positionCorrectionData[index].correctionValue.xCondition=LOW;
     positionCorrectionData[index].correctionValue.yCondition=NONE;
 
-    positionCorrectionData[index].correctionCondition=JUDGE_RGB;
+    positionCorrectionData[index].correctionCondition=JUDGE_V;
+    
     //19
-    index = 18;
+    index=18;
+    positionCorrectionData[index].correctionPosition.potision.yPosition=2600;
+    positionCorrectionData[index].correctionPosition.xCondition=NONE;
+    positionCorrectionData[index].correctionPosition.yCondition=LOW;
+
+    positionCorrectionData[index].correctionValue.potision.xPosition=420*2*0.3527;
+    positionCorrectionData[index].correctionValue.potision.yPosition=0;
+    positionCorrectionData[index].correctionValue.xCondition=LOW;
+    positionCorrectionData[index].correctionValue.yCondition=NONE;
+
+    positionCorrectionData[index].correctionCondition=JUDGE_POS;
+
+    //20
+    index = 19;
     positionCorrectionData[index].correctionValueDirection.direction=180;
     positionCorrectionData[index].correctionValueDirection.condition=HIGH;
 
