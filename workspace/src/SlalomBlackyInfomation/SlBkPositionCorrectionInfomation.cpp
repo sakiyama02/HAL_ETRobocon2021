@@ -71,7 +71,19 @@ SlBkPositionCorrectionInfomation::SlBkPositionCorrectionInfomation(){
     index++;
 */    
     //16
-    index = 15;
+    index=15;
+    positionCorrectionData[index].correctionPosition.potision.yPosition=2600;
+    positionCorrectionData[index].correctionPosition.xCondition=NONE;
+    positionCorrectionData[index].correctionPosition.yCondition=LOW;
+
+    positionCorrectionData[index].correctionValue.potision.xPosition=420*2*0.3527;
+    positionCorrectionData[index].correctionValue.potision.yPosition=0;
+    positionCorrectionData[index].correctionValue.xCondition=LOW;
+    positionCorrectionData[index].correctionValue.yCondition=NONE;
+
+    positionCorrectionData[index].correctionCondition=JUDGE_POS;
+    //17
+    index = 16;
     positionCorrectionData[index].correctionValueDirection.direction=180;
     positionCorrectionData[index].correctionValueDirection.condition=HIGH;
 

@@ -229,7 +229,7 @@ SlBkActionInfomation::SlBkActionInfomation(){
     index++;
 
     //13
-    changeInfoData[index].vData.v=120;
+    changeInfoData[index].vData.v=65;
     changeInfoData[index].rgb_data.condition=LOW;  
     changeInfoData[index].judge=JUDGE_V;
     changeInfoData[index].section_act=STRAIGHT;
@@ -261,17 +261,29 @@ SlBkActionInfomation::SlBkActionInfomation(){
 
     //15
     changeInfoData[index].pos_info_data.potision.xPosition=200;
+    changeInfoData[index].pos_info_data.potision.yPosition=2580;//2876
+    changeInfoData[index].pos_info_data.xCondition=NONE;
+    changeInfoData[index].pos_info_data.yCondition=LOW;
+    changeInfoData[index].distance=0;
+    changeInfoData[index].judge=JUDGE_POS;
+    changeInfoData[index].section_act=LINE_TRACE;
+    changeInfoData[index].speed=10;
+
+    index++;
+
+    //16
+    changeInfoData[index].pos_info_data.potision.xPosition=200;
     changeInfoData[index].pos_info_data.potision.yPosition=2600;//2876
     changeInfoData[index].pos_info_data.xCondition=NONE;
     changeInfoData[index].pos_info_data.yCondition=LOW;
     changeInfoData[index].distance=0;
     changeInfoData[index].judge=JUDGE_POS;
     changeInfoData[index].section_act=LINE_TRACE;
-    changeInfoData[index].speed=30;
+    changeInfoData[index].speed=10;
 
     index++;
 
-    //16
+    //17
     changeInfoData[index].sData.s=110;
     changeInfoData[index].sData.condition=HIGH;
 
