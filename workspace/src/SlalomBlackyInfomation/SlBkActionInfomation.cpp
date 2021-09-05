@@ -76,8 +76,7 @@ SlBkActionInfomation::SlBkActionInfomation(){
     changeInfoData[index].distance=0;
     changeInfoData[index].judge=JUDGE_DIR;
     changeInfoData[index].section_act=TURN;
-    changeInfoData[index].speed=10;
-
+    changeInfoData[index].speed=5;
 
     index++;
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -90,7 +89,7 @@ SlBkActionInfomation::SlBkActionInfomation(){
     changeInfoData[index].distance=0;
     changeInfoData[index].judge=JUDGE_POS;
     changeInfoData[index].section_act=STRAIGHT;
-    changeInfoData[index].speed=0;//10;
+    changeInfoData[index].speed=10;
 
     index++;
 
@@ -258,7 +257,7 @@ SlBkActionInfomation::SlBkActionInfomation(){
     index++;
 
     //14
-    changeInfoData[index].direction_data.direction=180;
+    changeInfoData[index].direction_data.direction=176;
     changeInfoData[index].direction_data.condition=LOW;
 
     changeInfoData[index].distance=0;

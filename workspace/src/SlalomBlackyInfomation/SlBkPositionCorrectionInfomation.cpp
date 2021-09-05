@@ -80,7 +80,7 @@ SlBkPositionCorrectionInfomation::SlBkPositionCorrectionInfomation(){
     positionCorrectionData[index].correctionS.s=105;
     positionCorrectionData[index].correctionS.condition=HIGH;
     positionCorrectionData[index].correctionValue.potision.xPosition=420*2*0.3527;
-    positionCorrectionData[index].correctionValue.potision.yPosition=3600*2*0.3527;
+    positionCorrectionData[index].correctionValue.potision.yPosition=3700*2*0.3527;
 
     positionCorrectionData[index].correctionValue.xCondition=HIGH;
     positionCorrectionData[index].correctionValue.yCondition=HIGH;
