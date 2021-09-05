@@ -72,11 +72,12 @@ SlEbPositionCorrectionInfomation::SlEbPositionCorrectionInfomation(){
 */  
     //2
     index=1;
+    index++;
     positionCorrectionData[index].correctionValue.potision.xPosition=1578;//1578;
     positionCorrectionData[index].correctionValue.xCondition=HIGH;
     positionCorrectionData[index].correctionValue.yCondition=NONE;
-    positionCorrectionData[index].correctionPosition.potision.xPosition=1590;
-    positionCorrectionData[index].correctionPosition.xCondition=LOW;
+    positionCorrectionData[index].correctionPosition.potision.xPosition=1559;
+    positionCorrectionData[index].correctionPosition.xCondition=HIGH;//LOW;
     positionCorrectionData[index].correctionPosition.yCondition=NONE;
     positionCorrectionData[index].correctionCondition=JUDGE_POS;
 
@@ -100,7 +101,7 @@ SlEbPositionCorrectionInfomation::SlEbPositionCorrectionInfomation(){
     positionCorrectionData[index].correctionValueDirection.direction=90;
     positionCorrectionData[index].correctionValueDirection.condition=LOW;
 
-    positionCorrectionData[index].correctionPosition.potision.xPosition=1199;
+    positionCorrectionData[index].correctionPosition.potision.xPosition=1270;
     positionCorrectionData[index].correctionPosition.potision.yPosition=0;
     positionCorrectionData[index].correctionPosition.xCondition=LOW;
     positionCorrectionData[index].correctionPosition.yCondition=NONE;

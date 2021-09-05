@@ -84,7 +84,7 @@ SlEbActionInfomation::SlEbActionInfomation(){
     index++;
 
     //2
-    changeInfoData[index].pos_info_data.potision.xPosition=1590;//1503;1578
+    changeInfoData[index].pos_info_data.potision.xPosition=1560;//1503;1578
     changeInfoData[index].pos_info_data.potision.yPosition=3392;
     changeInfoData[index].pos_info_data.xCondition=LOW;
     changeInfoData[index].pos_info_data.yCondition=NONE;
@@ -97,7 +97,7 @@ SlEbActionInfomation::SlEbActionInfomation(){
     index++;
 
     //3
-    changeInfoData[index].pos_info_data.potision.xPosition=1618;//1762.79;
+    changeInfoData[index].pos_info_data.potision.xPosition=1650;//1618;//1762.79;
     changeInfoData[index].pos_info_data.potision.yPosition=3392;
     changeInfoData[index].pos_info_data.xCondition=HIGH;
     changeInfoData[index].pos_info_data.yCondition=NONE;
@@ -110,7 +110,7 @@ SlEbActionInfomation::SlEbActionInfomation(){
     index++;
 
     //4
-    changeInfoData[index].pos_info_data.potision.xPosition=1618;
+    changeInfoData[index].pos_info_data.potision.xPosition=1650;//1618;
     changeInfoData[index].pos_info_data.potision.yPosition=3392;
     changeInfoData[index].pos_info_data.xCondition=LOW;
     changeInfoData[index].pos_info_data.yCondition=NONE;
@@ -219,7 +219,7 @@ SlEbActionInfomation::SlEbActionInfomation(){
 
     changeInfoData[index].judge=JUDGE_DIR;
     changeInfoData[index].section_act=CURVE;
-    changeInfoData[index].speed=20;//5;
+    changeInfoData[index].speed=20;//20;//5;
 
     index++;
 
@@ -237,7 +237,7 @@ SlEbActionInfomation::SlEbActionInfomation(){
     index++;
 
     //14
-    changeInfoData[index].direction_data.direction=40;
+    changeInfoData[index].direction_data.direction=45;
     changeInfoData[index].direction_data.condition=LOW;
 
     changeInfoData[index].judge=JUDGE_DIR;
@@ -277,7 +277,7 @@ SlEbActionInfomation::SlEbActionInfomation(){
     index++;
 
     //18
-    changeInfoData[index].direction_data.direction=92;
+    changeInfoData[index].direction_data.direction=91;
     changeInfoData[index].direction_data.condition=LOW;
 
     changeInfoData[index].judge=JUDGE_DIR;
@@ -287,7 +287,7 @@ SlEbActionInfomation::SlEbActionInfomation(){
     index++;
 //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
     //19
-    changeInfoData[index].pos_info_data.potision.xPosition=380;
+    changeInfoData[index].pos_info_data.potision.xPosition=430;//380;
     changeInfoData[index].pos_info_data.xCondition=LOW;
     changeInfoData[index].pos_info_data.yCondition=NONE;
 

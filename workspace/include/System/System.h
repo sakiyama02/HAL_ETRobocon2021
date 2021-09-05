@@ -12,7 +12,7 @@
 #define TIMEATTACK_NUM 20 
 #define SLALOMEEBUI_NUM 19
 #define SLALOMEIFIE_NUM 26
-#define SLALOMBLACKY_NUM 18
+#define SLALOMBLACKY_NUM 16
 #define GARAGE_NUM 25
 
 #define CAR_WIDTH 134.22f      //車体の幅(mm)
