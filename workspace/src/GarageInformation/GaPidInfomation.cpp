@@ -23,29 +23,71 @@ GaPidInfomation::GaPidInfomation(){
 
     index++;
 */
+
+//1
+index++;
+//2
+index++;
+//3
+index++;
+//4
+index++;
+//5
+index++;
+//6
+index++;
+//7
+index++;
+//8
+index++;
+//9
+index++;
+//10
+index++;
+//11
+index++;
 //12
-    pidData[11].pGain=0.03f;
-    pidData[11].iGain=0.0005f;
-    pidData[11].dGain=0.01f;
-    pidData[11].targetVal=48;
-
+    pidData[index].pGain=0.03f;
+    pidData[index].iGain=0.0005f;
+    pidData[index].dGain=0.01f;
+    pidData[index].targetVal=48;
+    index++;
+//13
+index++;
+//14
+index++;
+//15
+index++;
+//16
+index++;
+//17
+index++;
+//18
+index++;
+//19
+index++;
+//20
+index++;
+//21
+index++;
 //22
-    pidData[22].pGain=0.03f;
-    pidData[22].iGain=0.0005f;
-    pidData[22].dGain=0.01f;
-    pidData[22].targetVal=28;
+    pidData[index].pGain=0.03f;
+    pidData[index].iGain=0.0005f;
+    pidData[index].dGain=0.01f;
+    pidData[index].targetVal=28;
+    index++;
 //23
-    pidData[23].pGain=0.03f;
-    pidData[23].iGain=0.0005f;
-    pidData[23].dGain=0.02f;
-    pidData[23].targetVal=90;
-
+    pidData[index].pGain=0.03f;
+    pidData[index].iGain=0.0005f;
+    pidData[index].dGain=0.02f;
+    pidData[index].targetVal=90;
+    index++;
 //24
-    pidData[24].pGain=0.03f;
-    pidData[24].iGain=0.0005f;
-    pidData[24].dGain=0.02f;
-    pidData[24].targetVal=28;
-    
+    pidData[index].pGain=0.03f;
+    pidData[index].iGain=0.0005f;
+    pidData[index].dGain=0.03f;
+    pidData[index].targetVal=28;
+    index++;
 }
 
 GaPidInfomation::~GaPidInfomation(){

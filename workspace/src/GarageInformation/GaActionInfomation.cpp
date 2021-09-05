@@ -72,7 +72,7 @@ GaActionInfomation::GaActionInfomation(){
 
 
 //1
-    changeInfoData[index].direction_data.direction=90;  //上方向の誤差が許されないため、＋１度
+    changeInfoData[index].direction_data.direction=92;  //上方向の誤差が許されないため、＋２度
     changeInfoData[index].direction_data.condition=LOW;
 
     changeInfoData[index].judge=JUDGE_DIR;
@@ -138,7 +138,7 @@ GaActionInfomation::GaActionInfomation(){
     index++;
 
 //8
-    changeInfoData[index].direction_data.direction=179;
+    changeInfoData[index].direction_data.direction=177;
     changeInfoData[index].direction_data.condition=HIGH;
 
     changeInfoData[index].judge=JUDGE_DIR;
@@ -301,7 +301,7 @@ GaActionInfomation::GaActionInfomation(){
 
 //24
     changeInfoData[index].pos_info_data.potision.xPosition=1900*2*0.3527;
-    changeInfoData[index].pos_info_data.potision.yPosition=3210*2*0.3527; // 3200
+    changeInfoData[index].pos_info_data.potision.yPosition=3300*2*0.3527; // 3200
     changeInfoData[index].pos_info_data.yCondition=LOW;
     changeInfoData[index].judge=JUDGE_POS;
     changeInfoData[index].section_act=LINE_TRACE;

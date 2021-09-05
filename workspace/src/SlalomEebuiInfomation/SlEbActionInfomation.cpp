@@ -210,7 +210,7 @@ SlEbActionInfomation::SlEbActionInfomation(){
 
     changeInfoData[index].judge=JUDGE_DIR;
     changeInfoData[index].section_act=CURVE;
-    changeInfoData[index].speed=20;//5;
+    changeInfoData[index].speed=30;//5;
 
     index++;
     //12
@@ -219,7 +219,7 @@ SlEbActionInfomation::SlEbActionInfomation(){
 
     changeInfoData[index].judge=JUDGE_DIR;
     changeInfoData[index].section_act=CURVE;
-    changeInfoData[index].speed=20;//20;//5;
+    changeInfoData[index].speed=30;//20;//5;
 
     index++;
 
@@ -232,7 +232,7 @@ SlEbActionInfomation::SlEbActionInfomation(){
 
     changeInfoData[index].judge=JUDGE_V;
     changeInfoData[index].section_act=CURVE;
-    changeInfoData[index].speed=20;//5;
+    changeInfoData[index].speed=30;//5;
 
     index++;
 
@@ -242,7 +242,7 @@ SlEbActionInfomation::SlEbActionInfomation(){
 
     changeInfoData[index].judge=JUDGE_DIR;
     changeInfoData[index].section_act=CURVE;
-    changeInfoData[index].speed=20;//5;
+    changeInfoData[index].speed=30;//5;
 
     index++;
 
@@ -253,7 +253,7 @@ SlEbActionInfomation::SlEbActionInfomation(){
 
     changeInfoData[index].judge=JUDGE_DIR;
     changeInfoData[index].section_act=CURVE;
-    changeInfoData[index].speed=20;//5;
+    changeInfoData[index].speed=30;//5;
 
     index++;
 
@@ -262,7 +262,7 @@ SlEbActionInfomation::SlEbActionInfomation(){
     changeInfoData[index].vData.condition=LOW;
     changeInfoData[index].judge=JUDGE_V;
     changeInfoData[index].section_act=CURVE;
-    changeInfoData[index].speed=20;//5;
+    changeInfoData[index].speed=30;//5;
 
     index++;
 
@@ -272,7 +272,7 @@ SlEbActionInfomation::SlEbActionInfomation(){
 
     changeInfoData[index].judge=JUDGE_DIR;
     changeInfoData[index].section_act=CURVE;
-    changeInfoData[index].speed=20;//5;
+    changeInfoData[index].speed=30;//5;
 
     index++;
 
@@ -282,7 +282,7 @@ SlEbActionInfomation::SlEbActionInfomation(){
 
     changeInfoData[index].judge=JUDGE_DIR;
     changeInfoData[index].section_act=CURVE;
-    changeInfoData[index].speed=20;//5;
+    changeInfoData[index].speed=30;//5;
 
     index++;
 //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
