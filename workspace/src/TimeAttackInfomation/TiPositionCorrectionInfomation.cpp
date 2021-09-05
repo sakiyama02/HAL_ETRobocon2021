@@ -186,7 +186,7 @@ TiPositionCorrectionInfomation::TiPositionCorrectionInfomation(){
     positionCorrectionData[index].correctionValueDirection.direction=-90;
     positionCorrectionData[index].correctionValueDirection.condition=HIGH;
 
-    positionCorrectionData[index].correctionPosition.potision.xPosition=1800.4966f;
+    positionCorrectionData[index].correctionPosition.potision.xPosition=1800.4966f-60;
     positionCorrectionData[index].correctionPosition.potision.yPosition=0;
     positionCorrectionData[index].correctionPosition.xCondition=HIGH;
     positionCorrectionData[index].correctionPosition.yCondition=NONE;
