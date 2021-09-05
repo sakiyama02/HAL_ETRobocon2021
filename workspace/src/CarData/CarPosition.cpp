@@ -3,14 +3,15 @@
 
 CarPosition::CarPosition()
 {
+    
+    //タイムアタックの初期値
+    carPos.xPosition = 3457 * 0.3527 * 2;
+    carPos.yPosition = 277 * 0.3527 * 2;
+    
     /*
-    タイムアタックの初期値
     carPos.xPosition = 3457 * 0.3527 * 2;
     carPos.yPosition = 277 * 0.3527 * 2;
     */
-    carPos.xPosition = 3457 * 0.3527 * 2;
-    carPos.yPosition = 277 * 0.3527 * 2;
-
     carDirection = 90.0f;
 }
 
