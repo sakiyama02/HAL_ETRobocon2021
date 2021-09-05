@@ -69,7 +69,7 @@ SlEfActionInfomation::SlEfActionInfomation(){
 
     index++;
 */
-    //1
+    //1 ちょっと進む
     changeInfoData[index].pos_info_data.potision.xPosition=315;
     changeInfoData[index].pos_info_data.xCondition=LOW;
     changeInfoData[index].pos_info_data.yCondition=NONE;//LOW
@@ -81,7 +81,7 @@ SlEfActionInfomation::SlEfActionInfomation(){
 
     index++;
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-    //2
+    //2旋回する
     changeInfoData[index].direction_data.direction=175;
     changeInfoData[index].direction_data.condition=HIGH;
 
@@ -92,9 +92,9 @@ SlEfActionInfomation::SlEfActionInfomation(){
 
     index++;
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-    //3
+    //3　6の障害物まで直進する
     
-    changeInfoData[index].pos_info_data.potision.yPosition=3170;
+    changeInfoData[index].pos_info_data.potision.yPosition=3200;//3170;
     changeInfoData[index].pos_info_data.xCondition=NONE;
     changeInfoData[index].pos_info_data.yCondition=LOW;
     //距離
@@ -109,7 +109,30 @@ SlEfActionInfomation::SlEfActionInfomation(){
     index++;
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
     //4
-    changeInfoData[index].direction_data.direction=205;
+    changeInfoData[index].direction_data.direction=190;
+    changeInfoData[index].direction_data.condition=HIGH;
+
+    changeInfoData[index].distance=0;
+    changeInfoData[index].judge=JUDGE_DIR;
+    changeInfoData[index].section_act=TURN;
+    changeInfoData[index].speed=10;
+
+    index++;
+//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+//5
+    changeInfoData[index].pos_info_data.potision.yPosition=3170;
+    changeInfoData[index].pos_info_data.xCondition=NONE;
+    changeInfoData[index].pos_info_data.yCondition=LOW;
+
+    changeInfoData[index].distance=0;
+    changeInfoData[index].judge=JUDGE_POS;
+    changeInfoData[index].section_act=STRAIGHT;
+    changeInfoData[index].speed=10;
+
+    index++;
+//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+    //6障害物間1回目の旋回する
+    changeInfoData[index].direction_data.direction=200;//205;
     changeInfoData[index].direction_data.condition=HIGH;
 
     changeInfoData[index].distance=0;
@@ -120,8 +143,8 @@ SlEfActionInfomation::SlEfActionInfomation(){
     index++;
 
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-    //5
-    changeInfoData[index].pos_info_data.potision.xPosition=320;
+    //7　障害物間1回目の直進する
+    changeInfoData[index].pos_info_data.potision.xPosition=330;
     changeInfoData[index].pos_info_data.xCondition=HIGH;
     changeInfoData[index].pos_info_data.yCondition=NONE;
 
@@ -134,8 +157,8 @@ SlEfActionInfomation::SlEfActionInfomation(){
 
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-    //6
-    changeInfoData[index].direction_data.direction=217;
+    //8　障害物間2回目の旋回する
+    changeInfoData[index].direction_data.direction=217;//214;//217;
     changeInfoData[index].direction_data.condition=HIGH;
 
     changeInfoData[index].distance=0;
@@ -145,7 +168,53 @@ SlEfActionInfomation::SlEfActionInfomation(){
 
     index++;
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-    //7
+    //9障害物間2回目の直進する
+    changeInfoData[index].pos_info_data.potision.xPosition=340;
+    changeInfoData[index].pos_info_data.xCondition=HIGH;
+    changeInfoData[index].pos_info_data.yCondition=NONE;
+
+    changeInfoData[index].distance=0;
+    changeInfoData[index].judge=JUDGE_POS;
+    changeInfoData[index].section_act=STRAIGHT;
+    changeInfoData[index].speed=10;
+
+    index++;
+
+//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+    //10障害物間3回目の旋回する
+    changeInfoData[index].direction_data.direction=220.5;
+    changeInfoData[index].direction_data.condition=HIGH;
+
+    changeInfoData[index].distance=0;
+    changeInfoData[index].judge=JUDGE_DIR;
+    changeInfoData[index].section_act=TURN;
+    changeInfoData[index].speed=10;
+
+    index++;
+
+//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+//11
+    changeInfoData[index].pos_info_data.potision.xPosition=420;
+    changeInfoData[index].pos_info_data.xCondition=HIGH;
+    changeInfoData[index].pos_info_data.yCondition=NONE;
+
+    changeInfoData[index].distance=0;
+    changeInfoData[index].judge=JUDGE_POS;
+    changeInfoData[index].section_act=STRAIGHT;
+    changeInfoData[index].speed=10;
+
+    index++;
+//12
+    changeInfoData[index].direction_data.direction=205;
+    changeInfoData[index].direction_data.condition=LOW;
+
+    changeInfoData[index].distance=0;
+    changeInfoData[index].judge=JUDGE_DIR;
+    changeInfoData[index].section_act=TURN;
+    changeInfoData[index].speed=10;
+
+    index++;
+//13
     changeInfoData[index].pos_info_data.potision.xPosition=430;
     changeInfoData[index].pos_info_data.xCondition=HIGH;
     changeInfoData[index].pos_info_data.yCondition=NONE;
@@ -156,21 +225,18 @@ SlEfActionInfomation::SlEfActionInfomation(){
     changeInfoData[index].speed=10;
 
     index++;
-
-//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-    //8
-    changeInfoData[index].direction_data.direction=180;
+//14
+    changeInfoData[index].direction_data.direction=180;//175;
     changeInfoData[index].direction_data.condition=LOW;
 
     changeInfoData[index].distance=0;
     changeInfoData[index].judge=JUDGE_DIR;
     changeInfoData[index].section_act=TURN;
-    changeInfoData[index].speed=20;
+    changeInfoData[index].speed=10;
 
     index++;
-
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-    //9
+    //15障害物間3回目の直進する
     changeInfoData[index].pos_info_data.potision.yPosition=2940;
     changeInfoData[index].pos_info_data.xCondition=NONE;
     changeInfoData[index].pos_info_data.yCondition=LOW;
@@ -181,7 +247,7 @@ SlEfActionInfomation::SlEfActionInfomation(){
     changeInfoData[index].speed=25;
     index++;
 
-    //10
+    //16板を下りる
     changeInfoData[index].pos_info_data.potision.yPosition=2845;
     changeInfoData[index].pos_info_data.xCondition=NONE;
     changeInfoData[index].pos_info_data.yCondition=LOW;
@@ -193,20 +259,20 @@ SlEfActionInfomation::SlEfActionInfomation(){
 
     index++;
 
-    //11
-    changeInfoData[index].pos_info_data.potision.yPosition=2818;
+    //17板下りる
+    changeInfoData[index].pos_info_data.potision.yPosition=2818;//2810;//2818;
     changeInfoData[index].pos_info_data.xCondition=NONE;
     changeInfoData[index].pos_info_data.yCondition=LOW;
 
     changeInfoData[index].distance=0;
     changeInfoData[index].judge=JUDGE_POS;
     changeInfoData[index].section_act=ARMDOWN_ACTION;
-    changeInfoData[index].speed=10;
+    changeInfoData[index].speed=20;
 
     index++;
 
 
-    //12
+    //18直進する
     changeInfoData[index].pos_info_data.potision.yPosition=2800;
     changeInfoData[index].pos_info_data.xCondition=NONE;
     changeInfoData[index].pos_info_data.yCondition=LOW;
@@ -218,7 +284,7 @@ SlEfActionInfomation::SlEfActionInfomation(){
 
     index++;
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-    //13
+    //19直進する
     changeInfoData[index].pos_info_data.potision.yPosition=3900*2*0.3527;
     //changeInfoData[index].pos_info_data.potision.yPosition=3291;//3096
     changeInfoData[index].pos_info_data.xCondition=NONE;
@@ -231,7 +297,7 @@ SlEfActionInfomation::SlEfActionInfomation(){
 
     index++;
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-    //14
+    //20旋回する
     changeInfoData[index].direction_data.direction=89;
     changeInfoData[index].direction_data.condition=LOW;
 
@@ -243,16 +309,18 @@ SlEfActionInfomation::SlEfActionInfomation(){
     index++; 
 
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-    //15
+    //21ラインに向かって直進する
     changeInfoData[index].vData.v=65;
-    changeInfoData[index].rgb_data.condition=LOW;  
+    //changeInfoData[index].rgb_data.condition=LOW;
+    changeInfoData[index].vData.condition=LOW; 
     changeInfoData[index].judge=JUDGE_V;
     changeInfoData[index].section_act=STRAIGHT;
     changeInfoData[index].speed=30;
 
     index++;
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-    //16
+    //22直進する
+    /*
     changeInfoData[index].pos_info_data.potision.xPosition=330*2*0.3527;
     //changeInfoData[index].pos_info_data.potision.yPosition=3291;//3096
     changeInfoData[index].pos_info_data.xCondition=LOW;
@@ -263,19 +331,28 @@ SlEfActionInfomation::SlEfActionInfomation(){
     changeInfoData[index].speed=10;
 
     index++;
+*/
+
+    changeInfoData[index].vData.v=65;
+    changeInfoData[index].vData.condition=HIGH; 
+    changeInfoData[index].judge=JUDGE_V;
+    changeInfoData[index].section_act=STRAIGHT;
+    changeInfoData[index].speed=5;
+
+    index++;
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-    //17
-    changeInfoData[index].direction_data.direction=180;
+    //23旋回する
+    
+    changeInfoData[index].direction_data.direction=165;
     changeInfoData[index].direction_data.condition=HIGH;
     changeInfoData[index].distance=0;
     changeInfoData[index].judge=JUDGE_DIR;
     changeInfoData[index].section_act=TURN;
-    changeInfoData[index].speed=20;
+    changeInfoData[index].speed=10;
 
-    index++; 
-
+    index++;
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-    //18
+    //24ライントレースする
     changeInfoData[index].pos_info_data.potision.yPosition=2610;//2876
     changeInfoData[index].pos_info_data.xCondition=NONE;
     changeInfoData[index].pos_info_data.yCondition=LOW;
@@ -286,7 +363,7 @@ SlEfActionInfomation::SlEfActionInfomation(){
     changeInfoData[index].speed=10;
 
     index++;
-    //19
+    //25ライントレースする
     changeInfoData[index].pos_info_data.potision.xPosition=200;
     changeInfoData[index].pos_info_data.potision.yPosition=2600;//2876
     changeInfoData[index].pos_info_data.xCondition=NONE;
@@ -299,7 +376,7 @@ SlEfActionInfomation::SlEfActionInfomation(){
     index++;
 
 
-    //20
+    //26ライントレースする
     changeInfoData[index].sData.s=110;
     changeInfoData[index].sData.condition=HIGH;
     changeInfoData[index].distance=0;

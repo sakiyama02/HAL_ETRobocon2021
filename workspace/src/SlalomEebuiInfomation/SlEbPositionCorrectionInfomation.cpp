@@ -72,7 +72,7 @@ SlEbPositionCorrectionInfomation::SlEbPositionCorrectionInfomation(){
 */  
     //2
     index=1;
-    positionCorrectionData[index].correctionValue.potision.xPosition=1590;//1578;
+    positionCorrectionData[index].correctionValue.potision.xPosition=1578;//1578;
     positionCorrectionData[index].correctionValue.xCondition=HIGH;
     positionCorrectionData[index].correctionValue.yCondition=NONE;
     positionCorrectionData[index].correctionPosition.potision.xPosition=1590;
@@ -106,6 +106,39 @@ SlEbPositionCorrectionInfomation::SlEbPositionCorrectionInfomation(){
     positionCorrectionData[index].correctionPosition.yCondition=NONE;
 
     positionCorrectionData[index].correctionCondition=JUDGE_POS;
+/*
+    //11
+    index = 10;
+    //角度
+positionCorrectionData[index].correctionValueDirection.direction=90;
+    positionCorrectionData[index].correctionValueDirection.condition=LOW;
+
+    positionCorrectionData[index].correctionPosition.potision.xPosition=1080;
+    positionCorrectionData[index].correctionPosition.xCondition=LOW;
+
+    positionCorrectionData[index].correctionCondition=JUDGE_POS;
+    index++;
+
+    
+    //15
+    index=14;
+    positionCorrectionData[index].correctionValue.potision.yPosition=3380;
+    positionCorrectionData[index].correctionValue.xCondition=NONE;
+    positionCorrectionData[index].correctionValue.yCondition=LOW;
+    positionCorrectionData[index].correctionV.v=13;
+    positionCorrectionData[index].correctionV.condition=LOW;
+    positionCorrectionData[index].correctionCondition=JUDGE_V;
+
+    
+    //21
+    index=20;
+    positionCorrectionData[index].correctionValue.potision.yPosition=3382;//3385;
+    positionCorrectionData[index].correctionValue.xCondition=NONE;
+    positionCorrectionData[index].correctionValue.yCondition=LOW;
+    positionCorrectionData[index].correctionV.v=13;
+    positionCorrectionData[index].correctionV.condition=LOW;
+    positionCorrectionData[index].correctionCondition=JUDGE_V;
+*/
 
     //**********************************************************************************
 }
@@ -120,4 +153,8 @@ int8 SlEbPositionCorrectionInfomation::getter(int16 scene_num,PositionCorrection
 
     return SYS_OK;
 }
+
+
+
+
 
