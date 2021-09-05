@@ -24,7 +24,7 @@ SlBkpidInfomation::SlBkpidInfomation(){
     index++;
 */    
 //15
-    index = 14;
+    index = 15;
     pidData[index].pGain=0.3f;
     pidData[index].iGain=0;//0.2f
     pidData[index].dGain=0;//0.05
