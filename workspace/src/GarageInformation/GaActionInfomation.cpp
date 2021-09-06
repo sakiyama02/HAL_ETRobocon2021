@@ -278,7 +278,7 @@ GaActionInfomation::GaActionInfomation(){
     index++; 
 
 //21 マップ上方向まで旋回
-    changeInfoData[index].direction_data.direction=178;
+    changeInfoData[index].direction_data.direction=175;
     changeInfoData[index].direction_data.condition=HIGH;
     changeInfoData[index].judge=JUDGE_DIR;
     changeInfoData[index].section_act=TURN;
