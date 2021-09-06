@@ -24,10 +24,12 @@ SlEfpidInfomation::SlEfpidInfomation(){
     index++;
 */    
 //16←ないほうがいいかも
-    pidData[16].pGain=0.3f;
-    pidData[16].iGain=0;//0.2f
-    pidData[16].dGain=0;//0.05
-    pidData[16].targetVal=80;
+    index=17;
+    //index=16;
+    pidData[index].pGain=0.3f;
+    pidData[index].iGain=0;//0.2f
+    pidData[index].dGain=0;//0.05
+    pidData[index].targetVal=80;
 
 
 }
@@ -42,3 +44,5 @@ int8 SlEfpidInfomation::getter(int16 scene_num,PIDData* pid_data){
 
     return SYS_OK;
 }
+
+

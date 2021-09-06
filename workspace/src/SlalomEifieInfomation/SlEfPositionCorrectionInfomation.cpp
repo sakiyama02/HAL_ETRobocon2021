@@ -32,6 +32,10 @@ SlEfPositionCorrectionInfomation::SlEfPositionCorrectionInfomation(){
 
     index++;
 
+    
+    positionCorrectionData[index].correctionCondition=JUDGE_NONE;
+    index++;
+
     //2
     positionCorrectionData[index].correctionCondition=JUDGE_NONE;
 
@@ -70,37 +74,31 @@ SlEfPositionCorrectionInfomation::SlEfPositionCorrectionInfomation(){
     //9
     positionCorrectionData[index].correctionCondition=JUDGE_NONE;
 
-    index=14;
-    /*
-    positionCorrectionData[index].correctionValue.potision.xPosition=550*2*0.3527;
-    positionCorrectionData[index].correctionValue.potision.yPosition=0;
-    positionCorrectionData[index].correctionValue.xCondition=LOW;
-    positionCorrectionData[index].correctionValue.yCondition=NONE;
-    positionCorrectionData[index].correctionValueDirection.direction=90;
-    positionCorrectionData[index].correctionValueDirection.condition=NONE;
-
-    positionCorrectionData[index].correctionPosition.potision.xPosition=0;
-    positionCorrectionData[index].correctionPosition.potision.yPosition=0;
-    positionCorrectionData[index].correctionPosition.xCondition=NONE;
-    positionCorrectionData[index].correctionPosition.yCondition=NONE;
-
-    positionCorrectionData[index].correctionRGB.r=15;
-    positionCorrectionData[index].correctionRGB.g=10;
-    positionCorrectionData[index].correctionRGB.b=10;
-    positionCorrectionData[index].correctionRGB.condition=LOW;
-
-    positionCorrectionData[index].correctionDirection.direction=0;
-    positionCorrectionData[index].correctionDirection.condition=NONE;
-
-    positionCorrectionData[index].distance=0;
-
-    positionCorrectionData[index].correctionCondition=JUDGE_RGB;
-
     index++;
-    */
 
-    //15
+    //10
+    positionCorrectionData[index].correctionCondition=JUDGE_NONE;
+
+    index++;    
+
+    //11
+    positionCorrectionData[index].correctionCondition=JUDGE_NONE;
+
+    index++; 
+
+    //12
+    positionCorrectionData[index].correctionCondition=JUDGE_NONE;
+
+    index++; 
+
+    //13
+    positionCorrectionData[index].correctionCondition=JUDGE_NONE;
+
+    index++; 
+
+    //14
     index=14;
+    //index=13;
     positionCorrectionData[index].correctionV.v = 50;
     positionCorrectionData[index].correctionV.condition = LOW;
 
@@ -110,9 +108,27 @@ SlEfPositionCorrectionInfomation::SlEfPositionCorrectionInfomation(){
     positionCorrectionData[index].correctionValue.yCondition=NONE;
 
     positionCorrectionData[index].correctionCondition=JUDGE_V;
+
+    index++;
+
+    //15
+    positionCorrectionData[index].correctionCondition=JUDGE_NONE;
+
+    index++;
+
+    //16
+    positionCorrectionData[index].correctionCondition=JUDGE_NONE;
+
+    index++;
+
+    //17
+    positionCorrectionData[index].correctionCondition=JUDGE_NONE;
+
+    index++;
     
-    //19
+    //18
     index=18;
+    //index=17;
     positionCorrectionData[index].correctionPosition.potision.yPosition=2600;
     positionCorrectionData[index].correctionPosition.xCondition=NONE;
     positionCorrectionData[index].correctionPosition.yCondition=LOW;
@@ -124,8 +140,11 @@ SlEfPositionCorrectionInfomation::SlEfPositionCorrectionInfomation(){
 
     positionCorrectionData[index].correctionCondition=JUDGE_POS;
 
-    //20
+    
+
+    //19
     index = 19;
+    //index = 18;
     positionCorrectionData[index].correctionValueDirection.direction=180;
     positionCorrectionData[index].correctionValueDirection.condition=HIGH;
 
@@ -150,3 +169,5 @@ int8 SlEfPositionCorrectionInfomation::getter(int16 scene_num,PositionCorrection
 
     return SYS_OK;
 }
+
+
