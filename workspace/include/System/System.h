@@ -10,9 +10,9 @@
 #define SYS_NG 1    //異常終了
 #define SYS_PARAM 2 //引数エラー
 #define TIMEATTACK_NUM 20 
-#define SLALOMEEBUI_NUM 41
+#define SLALOMEEBUI_NUM 19
 #define SLALOMEIFIE_NUM 20
-#define SLALOMBLACKY_NUM 17
+#define SLALOMBLACKY_NUM 16
 #define GARAGE_NUM 25
 
 #define CAR_WIDTH 134.22f      //車体の幅(mm)
