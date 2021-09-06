@@ -77,7 +77,7 @@ index++;
     pidData[index].targetVal=50;
     index++;
 //23
-    pidData[index].pGain=0.03f;
+    pidData[index].pGain=0.01f;
     pidData[index].iGain=0.001f;
     pidData[index].dGain=0.03f;
     pidData[index].targetVal=90;
