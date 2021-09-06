@@ -264,8 +264,9 @@ index++;
 
 //10
 index++;
-
 //11
+index++;
+//12
     positionCorrectionData[index].correctionValue.potision.xPosition=0;
     positionCorrectionData[index].correctionValue.potision.yPosition=3411*2*0.3527;
     positionCorrectionData[index].correctionValue.xCondition=NONE;
@@ -278,11 +279,8 @@ index++;
     positionCorrectionData[index].correctionPosition.yCondition=NONE;
 
     positionCorrectionData[index].correctionCondition=JUDGE_POS;
-
     index++;
-
-//12
-index++;
+    
 //13
 index++;
 //14
