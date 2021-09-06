@@ -268,7 +268,7 @@ index++;
 index++;
 //12
     positionCorrectionData[index].correctionValue.potision.xPosition=0;
-    positionCorrectionData[index].correctionValue.potision.yPosition=3411*2*0.3527;
+    positionCorrectionData[index].correctionValue.potision.yPosition=3411*2*0.3527; //3411
     positionCorrectionData[index].correctionValue.xCondition=NONE;
     positionCorrectionData[index].correctionValue.yCondition=HIGH;
     positionCorrectionData[index].correctionValueDirection.direction=90.0f;
@@ -300,6 +300,8 @@ index++;
 //21
 index++;
 //22
+index++;
+//23
 index++;
 /*
   //19
@@ -391,7 +393,7 @@ index++;
     positionCorrectionData[index].correctionCondition=JUDGE_V;
 */
 
-//23
+//24
     positionCorrectionData[index].correctionValue.potision.xPosition=1900*2*0.3527;
     positionCorrectionData[index].correctionValue.potision.yPosition=3385*2*0.3527;
     positionCorrectionData[index].correctionValue.xCondition=LOW;

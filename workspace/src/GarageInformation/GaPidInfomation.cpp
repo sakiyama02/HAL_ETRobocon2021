@@ -72,21 +72,21 @@ index++;
 index++;
 //22
     pidData[index].pGain=0.03f;
-    pidData[index].iGain=0.0005f;
+    pidData[index].iGain=0.001f;
     pidData[index].dGain=0.03f;
-    pidData[index].targetVal=28;
+    pidData[index].targetVal=50;
     index++;
 //23
     pidData[index].pGain=0.03f;
-    pidData[index].iGain=0.0005f;
-    pidData[index].dGain=0.02f;
+    pidData[index].iGain=0.001f;
+    pidData[index].dGain=0.03f;
     pidData[index].targetVal=90;
     index++;
 //24
     pidData[index].pGain=0.03f;
-    pidData[index].iGain=0.0005f;
+    pidData[index].iGain=0.001f;
     pidData[index].dGain=0.03f;
-    pidData[index].targetVal=28;
+    pidData[index].targetVal=50;
     index++;
 }
 
