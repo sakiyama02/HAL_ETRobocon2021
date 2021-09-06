@@ -198,7 +198,7 @@ SlBkActionInfomation::SlBkActionInfomation(){
     index++;
 //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
     //10
-    changeInfoData[index].direction_data.direction=265;
+    changeInfoData[index].direction_data.direction=215;//265;
     changeInfoData[index].direction_data.condition=HIGH;
 
     changeInfoData[index].distance=0;
@@ -272,7 +272,7 @@ SlBkActionInfomation::SlBkActionInfomation(){
     index++;
 
     //16
-    changeInfoData[index].sData.s=50;
+    changeInfoData[index].sData.s=80;
     changeInfoData[index].sData.condition=HIGH;
 
     changeInfoData[index].distance=0;
