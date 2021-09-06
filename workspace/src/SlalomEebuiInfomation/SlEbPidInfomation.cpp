@@ -39,8 +39,8 @@ SlEbpidInfomation::SlEbpidInfomation(){
     */
     //8
     index = 7;
-    pidData[index].pGain=0.2;
-    pidData[index].iGain=0;
+    pidData[index].pGain=0.8;
+    pidData[index].iGain=0.2;
     pidData[index].dGain=0.04;
     pidData[index].targetVal=13;
     //9
@@ -49,7 +49,6 @@ SlEbpidInfomation::SlEbpidInfomation(){
     pidData[index].iGain=0;
     pidData[index].dGain=0;
     pidData[index].targetVal=13;
-
 
 }
 
@@ -63,4 +62,8 @@ int8 SlEbpidInfomation::getter(int16 scene_num,PIDData* pid_data){
 
     return SYS_OK;
 }
+
+
+
+
 
