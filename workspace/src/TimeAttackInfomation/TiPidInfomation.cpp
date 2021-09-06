@@ -140,7 +140,7 @@ TiPidInfomation::TiPidInfomation(){
     pidData[index].pGain=0.3f;
     pidData[index].iGain=0.25f;
     pidData[index].dGain=0.1f;
-    pidData[index].targetVal=122;
+    pidData[index].targetVal=135;
     
 }
 
