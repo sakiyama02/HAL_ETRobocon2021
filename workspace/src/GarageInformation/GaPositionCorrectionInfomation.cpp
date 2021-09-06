@@ -160,8 +160,8 @@ GaPositionCorrectionInfomation::GaPositionCorrectionInfomation(){
 
     index++;
 
-    //5
-    index++;
+//5
+index++;
 
 //5
 /*
@@ -190,7 +190,7 @@ GaPositionCorrectionInfomation::GaPositionCorrectionInfomation(){
 */
 
 
-    //6
+//6
     positionCorrectionData[index].correctionValue.potision.xPosition=0;
     positionCorrectionData[index].correctionValue.potision.yPosition=0;
     positionCorrectionData[index].correctionValue.xCondition=NONE;
@@ -213,10 +213,10 @@ GaPositionCorrectionInfomation::GaPositionCorrectionInfomation(){
 
     index++;
 
-    //7
-    index++;
+//7
+index++;
 
-    //8
+//8
     positionCorrectionData[index].correctionValue.potision.xPosition=0;
     positionCorrectionData[index].correctionValue.potision.yPosition=0;
     positionCorrectionData[index].correctionValue.xCondition=NONE;
@@ -239,7 +239,7 @@ GaPositionCorrectionInfomation::GaPositionCorrectionInfomation(){
 
     index++;
 
-    //9
+//9
     positionCorrectionData[index].correctionValue.potision.xPosition=0;
     positionCorrectionData[index].correctionValue.potision.yPosition=3463*2*0.3527;
     positionCorrectionData[index].correctionValue.xCondition=NONE;
@@ -262,12 +262,13 @@ GaPositionCorrectionInfomation::GaPositionCorrectionInfomation(){
 
     index++;
 
-    //10
-    index++;
-
-    //11
+//10
+index++;
+//11
+index++;
+//12
     positionCorrectionData[index].correctionValue.potision.xPosition=0;
-    positionCorrectionData[index].correctionValue.potision.yPosition=3411*2*0.3527;
+    positionCorrectionData[index].correctionValue.potision.yPosition=3411*2*0.3527; //3411
     positionCorrectionData[index].correctionValue.xCondition=NONE;
     positionCorrectionData[index].correctionValue.yCondition=HIGH;
     positionCorrectionData[index].correctionValueDirection.direction=90.0f;
@@ -278,11 +279,30 @@ GaPositionCorrectionInfomation::GaPositionCorrectionInfomation(){
     positionCorrectionData[index].correctionPosition.yCondition=NONE;
 
     positionCorrectionData[index].correctionCondition=JUDGE_POS;
-
     index++;
-
-//12
-    index++;
+    
+//13
+index++;
+//14
+index++;
+//15
+index++;
+//16
+index++;
+//17
+index++;
+//18
+index++;
+//19
+index++;
+//20
+index++;
+//21
+index++;
+//22
+index++;
+//23
+index++;
 /*
   //19
     positionCorrectionData[18].correctionValue.potision.xPosition=1980*2*0.3527;
@@ -372,15 +392,18 @@ GaPositionCorrectionInfomation::GaPositionCorrectionInfomation(){
 
     positionCorrectionData[index].correctionCondition=JUDGE_V;
 */
-    positionCorrectionData[22].correctionValue.potision.xPosition=1980*2*0.3527;
-    positionCorrectionData[22].correctionValue.potision.yPosition=3385*2*0.3527;
-    positionCorrectionData[22].correctionValue.xCondition=LOW;
-    positionCorrectionData[22].correctionValue.yCondition=HIGH;
-    positionCorrectionData[22].correctionValueDirection.direction=180;
-    positionCorrectionData[22].correctionValueDirection.condition=NONE;
-    positionCorrectionData[22].correctionS.s = 190;
-    positionCorrectionData[22].correctionS.condition = LOW;
-    positionCorrectionData[22].correctionCondition=JUDGE_S;
+
+//24
+    positionCorrectionData[index].correctionValue.potision.xPosition=1900*2*0.3527;
+    positionCorrectionData[index].correctionValue.potision.yPosition=3385*2*0.3527;
+    positionCorrectionData[index].correctionValue.xCondition=LOW;
+    positionCorrectionData[index].correctionValue.yCondition=HIGH;
+    positionCorrectionData[index].correctionValueDirection.direction=180;
+    positionCorrectionData[index].correctionValueDirection.condition=NONE;
+    positionCorrectionData[index].correctionS.s = 190;
+    positionCorrectionData[index].correctionS.condition = LOW;
+    positionCorrectionData[index].correctionCondition=JUDGE_S;
+    index++;
 }
 
 GaPositionCorrectionInfomation::~GaPositionCorrectionInfomation(){
