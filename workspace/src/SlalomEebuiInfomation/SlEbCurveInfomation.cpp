@@ -28,12 +28,12 @@ SlEbCurveInfomation::SlEbCurveInfomation(){
 
     index++;
     //12
-    curveData[index].radius=250;//225;
+    curveData[index].radius=210;//250;
     curveData[index].dirction=CURVE_LEFT;
 
     index++;
     //13
-    curveData[index].radius=175;//100;//250;
+    curveData[index].radius=182;//175;
     curveData[index].dirction=CURVE_LEFT;
 
     index++;
@@ -45,25 +45,25 @@ SlEbCurveInfomation::SlEbCurveInfomation(){
     index++;
     
     //15
-    curveData[index].radius=205;//215;//235;
+    curveData[index].radius=200;//190;//223;//205;//215//235
     curveData[index].dirction=CURVE_RIGHT;
 
     index++;
 
     //16
-    curveData[index].radius=123;//100;//80;
+    curveData[index].radius=180;//220;//
     curveData[index].dirction=CURVE_RIGHT;
 
     index++;
 
     //17
-    curveData[index].radius=75;
+    curveData[index].radius=300;//75;
     curveData[index].dirction=CURVE_RIGHT;
 
     index++;
 
     //18
-    curveData[index].radius=130;//60;//250;
+    curveData[index].radius=380;//250;
     curveData[index].dirction=CURVE_LEFT;
 
     index++;
