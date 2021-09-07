@@ -200,7 +200,7 @@ TiActionInfomation::TiActionInfomation(){
     index++;
 
     index = 11;
-    changeInfoData[index].direction_data.direction=-180;
+    changeInfoData[index].direction_data.direction=-70;
     changeInfoData[index].direction_data.condition=LOW;
 
     changeInfoData[index].judge=JUDGE_DIR;
@@ -212,72 +212,61 @@ TiActionInfomation::TiActionInfomation(){
     changeInfoData[index].direction_data.direction=0-10;
     changeInfoData[index].direction_data.condition=HIGH;
 
+
     changeInfoData[index].judge=JUDGE_DIR;
     changeInfoData[index].section_act=CURVE;
     changeInfoData[index].speed=80;
     index++;
+
+    // ここから
 
     index = 13;
     changeInfoData[index].pos_info_data.potision.xPosition=0;
     changeInfoData[index].pos_info_data.potision.yPosition=2250;
     changeInfoData[index].pos_info_data.xCondition=NONE;
     changeInfoData[index].pos_info_data.yCondition=HIGH;
+    changeInfoData[index].vData.v=110;
+    changeInfoData[index].vData.condition=HIGH;
 
-    changeInfoData[index].judge=JUDGE_POS;
-    changeInfoData[index].section_act=LINE_TRACE;
-    changeInfoData[index].speed=95;
-    index++;
-
-    index=14;
-    changeInfoData[index].sData.s=110;
-    changeInfoData[index].sData.condition=HIGH;
-
-    changeInfoData[index].judge=JUDGE_S;
-    changeInfoData[index].section_act=LINE_TRACE;
-    changeInfoData[index].speed=95;
-    index++;
-
-    index=15;
-    changeInfoData[index].sData.s=80;
-    changeInfoData[index].sData.condition=LOW;
-
-    changeInfoData[index].judge=JUDGE_S;
-    changeInfoData[index].section_act=LINE_TRACE;
+    changeInfoData[index].judge=JUDGE_V;
+    changeInfoData[index].section_act=STRAIGHT;
     changeInfoData[index].speed=80;
     index++;
 
+    index=14;
+    changeInfoData[index].direction_data.direction=-90;
+    changeInfoData[index].direction_data.condition=LOW;
+
+    changeInfoData[index].judge=JUDGE_DIR;
+    changeInfoData[index].section_act=CURVE;
+    changeInfoData[index].speed=80;
+    index++;
+
+    index=15;
+    changeInfoData[index].vData.v=60;
+    changeInfoData[index].vData.condition=LOW;
+
+    changeInfoData[index].judge=JUDGE_V;
+    changeInfoData[index].section_act=STRAIGHT;
+    changeInfoData[index].speed=80;
+
     index=16;
+    changeInfoData[index].direction_data.direction=0;
+    changeInfoData[index].direction_data.condition=HIGH;
+
+    changeInfoData[index].judge=JUDGE_DIR;
+    changeInfoData[index].section_act=CURVE;
+    changeInfoData[index].speed=80;
+
+    index=17;
     changeInfoData[index].sData.s=110;
     changeInfoData[index].sData.condition=HIGH;
 
     changeInfoData[index].judge=JUDGE_S;
     changeInfoData[index].section_act=LINE_TRACE;
-    changeInfoData[index].speed=50;
+    changeInfoData[index].speed=90;
     index++;
 
-    index=17;
-    changeInfoData[index].pos_info_data.potision.xPosition=1762.79+75.8328;
-    changeInfoData[index].pos_info_data.potision.yPosition=3392.27f;
-    changeInfoData[index].pos_info_data.xCondition=LOW;
-    changeInfoData[index].pos_info_data.yCondition=NONE;
-    changeInfoData[index].direction_data.direction=0;
-    changeInfoData[index].direction_data.condition=NONE;
-
-    changeInfoData[index].judge=JUDGE_POS;
-    changeInfoData[index].section_act=LINE_TRACE;
-    changeInfoData[index].speed=30;
-
-    index=18;
-    changeInfoData[index].pos_info_data.potision.xPosition=1762.79;
-    changeInfoData[index].pos_info_data.potision.yPosition=3392.27f;
-    changeInfoData[index].pos_info_data.xCondition=LOW;
-    changeInfoData[index].pos_info_data.yCondition=NONE;
-    changeInfoData[index].direction_data.direction=0;
-    changeInfoData[index].direction_data.condition=NONE;
-
-    changeInfoData[index].judge=JUDGE_POS;
-    changeInfoData[index].section_act=STRAIGHT;
-    changeInfoData[index].speed=30;
 }
 
 TiActionInfomation::~TiActionInfomation(){

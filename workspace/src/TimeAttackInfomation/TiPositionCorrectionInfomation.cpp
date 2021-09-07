@@ -112,35 +112,19 @@ TiPositionCorrectionInfomation::TiPositionCorrectionInfomation(){
     positionCorrectionData[index].correctionPosition.yCondition=NONE;
     positionCorrectionData[index].correctionCondition=JUDGE_POS;
 
-    index=16;
+
+    index=15;
     positionCorrectionData[index].correctionValue.potision.xPosition=1914.4556; 
     positionCorrectionData[index].correctionValue.potision.yPosition=3392.974;
-    positionCorrectionData[index].correctionValue.xCondition=HIGH;
-    positionCorrectionData[index].correctionValue.yCondition=HIGH;
-    positionCorrectionData[index].correctionValueDirection.direction=0;
-    positionCorrectionData[index].correctionValueDirection.condition=NONE;
-
-    positionCorrectionData[index].correctionS.s=100;
-    positionCorrectionData[index].correctionS.condition=HIGH;
-
-    positionCorrectionData[index].correctionCondition=JUDGE_S;
-
-     //タイムアタック終了時の補正
-    index=18;
-    positionCorrectionData[index].correctionValue.potision.xPosition=1762.79;
-    positionCorrectionData[index].correctionValue.potision.yPosition=3392.27;
-    positionCorrectionData[index].correctionValue.xCondition=HIGH;
-    positionCorrectionData[index].correctionValue.yCondition=HIGH;
-    positionCorrectionData[index].correctionValueDirection.direction=90;
+    positionCorrectionData[index].correctionValue.xCondition=NONE;
+    positionCorrectionData[index].correctionValue.yCondition=NONE;
+    positionCorrectionData[index].correctionValueDirection.direction=-90;
     positionCorrectionData[index].correctionValueDirection.condition=HIGH;
 
-    positionCorrectionData[index].correctionPosition.potision.xPosition=1762.79;
-    positionCorrectionData[index].correctionPosition.potision.yPosition=0;
-    positionCorrectionData[index].correctionPosition.xCondition=LOW;
-    positionCorrectionData[index].correctionPosition.yCondition=NONE;   
-    positionCorrectionData[index].correctionCondition=JUDGE_POS;
+    positionCorrectionData[index].correctionV.v=60;
+    positionCorrectionData[index].correctionV.condition=LOW;
 
- 
+    positionCorrectionData[index].correctionCondition=JUDGE_V;
 }
 
 TiPositionCorrectionInfomation::~TiPositionCorrectionInfomation(){
