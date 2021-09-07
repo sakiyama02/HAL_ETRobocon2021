@@ -298,6 +298,22 @@ SlEbActionInfomation::SlEbActionInfomation(){
 
     index++;
 //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+    //20
+    changeInfoData[index].direction_data.direction=130;//147;
+    changeInfoData[index].direction_data.condition=HIGH;
+
+    changeInfoData[index].judge=JUDGE_DIR;
+    changeInfoData[index].section_act=CURVE;
+    changeInfoData[index].speed=8;
+    index++;
+    //21
+    changeInfoData[index].direction_data.direction=133;//147;
+    changeInfoData[index].direction_data.condition=HIGH;
+
+    changeInfoData[index].judge=JUDGE_DIR;
+    changeInfoData[index].section_act=CURVE;
+    changeInfoData[index].speed=8;
+    index++;
 }
 
 SlEbActionInfomation::~SlEbActionInfomation(){
