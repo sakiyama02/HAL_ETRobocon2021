@@ -39,12 +39,12 @@ int8 Curve::run(int32 speed,PIDData pid_data,float angle,CurveData curve_data)
     }
 
     // 左カーブの比率
-    if( curve_data.dirction == CURVE_LEFT ) {
+    if( curve_data.dirction == CURVE_RIGHT ) {
         ratioLeft  = (curve_data.radius - CAR_WIDTH / 2)/(curve_data.radius + CAR_WIDTH / 2);
         ratioRight = 1;
     } 
     // 左カーブの比率
-    else if( curve_data.dirction == CURVE_RIGHT ) {
+    else if( curve_data.dirction == CURVE_LEFT ) {
         ratioLeft  = 1;
         ratioRight = (curve_data.radius - CAR_WIDTH / 2)/(curve_data.radius + CAR_WIDTH / 2);
     }
@@ -67,8 +67,8 @@ int8 Curve::run(int32 speed,PIDData pid_data,float angle,CurveData curve_data)
     }
 
     // 出力値計算
-    motorPower.leftPower  += revision;
-    motorPower.rightPower -= revision;
+    motorPower.leftPower  -= revision;
+    motorPower.rightPower += revision;
     if(motorPower.leftPower > 100){
         motorPower.leftPower = 100;
     } else if(motorPower.rightPower > 100){

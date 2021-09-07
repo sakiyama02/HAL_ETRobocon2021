@@ -44,11 +44,11 @@ int8 Turn::run(int32 speed,PIDData pid_data,float angle,CurveData curve_data = {
 
     // 方向を決める
     if( nowAngle > angle ) {
-        motorPower.leftPower  = -speed;
-        motorPower.rightPower =  speed;
-    } else if ( nowAngle < angle ) {
-        motorPower.leftPower  =  speed;
+        motorPower.leftPower  = speed;
         motorPower.rightPower =  -speed;
+    } else if ( nowAngle < angle ) {
+        motorPower.leftPower  =  -speed;
+        motorPower.rightPower =  speed;
     }
 
     // 計算した値で出力
