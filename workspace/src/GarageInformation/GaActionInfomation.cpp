@@ -244,7 +244,7 @@ GaActionInfomation::GaActionInfomation(){
     index++;
 
 //17 右90度カーブ
-    changeInfoData[index].direction_data.direction=125; //130
+    changeInfoData[index].direction_data.direction=127; //130
     changeInfoData[index].direction_data.condition=HIGH;
     changeInfoData[index].judge=JUDGE_DIR;
     changeInfoData[index].section_act=CURVE;
