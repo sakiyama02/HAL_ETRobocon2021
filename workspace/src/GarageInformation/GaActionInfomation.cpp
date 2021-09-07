@@ -72,7 +72,7 @@ GaActionInfomation::GaActionInfomation(){
 
 
 //1 90度右旋回
-    changeInfoData[index].direction_data.direction=92;  //上方向の誤差が許されないため、＋２度
+    changeInfoData[index].direction_data.direction=95;  //上方向の誤差が許されないため、＋２度
     changeInfoData[index].direction_data.condition=LOW;
     changeInfoData[index].judge=JUDGE_DIR;
     changeInfoData[index].section_act=TURN;
@@ -128,7 +128,7 @@ GaActionInfomation::GaActionInfomation(){
     index++;
 
 //7 線分FJ3分の1程度の前進
-    changeInfoData[index].pos_info_data.potision.xPosition=2298*2*0.3527;
+    changeInfoData[index].pos_info_data.potision.xPosition=2298*2*0.3527;//2098*2*0.3527;
     changeInfoData[index].pos_info_data.potision.yPosition=3711*2*0.3527;
     changeInfoData[index].pos_info_data.xCondition=LOW;
     changeInfoData[index].pos_info_data.yCondition=NONE;
@@ -146,7 +146,7 @@ GaActionInfomation::GaActionInfomation(){
     index++;
 
 //9 線分FJ手前まで前進
-    changeInfoData[index].pos_info_data.potision.xPosition=2298*2*0.3527;
+    changeInfoData[index].pos_info_data.potision.xPosition=2098*2*0.3527;
     changeInfoData[index].pos_info_data.potision.yPosition=3700*2*0.3527;
     changeInfoData[index].pos_info_data.xCondition=NONE;
     changeInfoData[index].pos_info_data.yCondition=LOW;
@@ -271,7 +271,7 @@ GaActionInfomation::GaActionInfomation(){
 
 //20 上の青ラインver
     changeInfoData[index].sData.s=80;
-    changeInfoData[index].sData.condition=HIGH;
+    changeInfoData[index].sData.condition=LOW;
     changeInfoData[index].judge=JUDGE_S;
     changeInfoData[index].section_act=STRAIGHT;
     changeInfoData[index].speed=5;
@@ -286,7 +286,7 @@ GaActionInfomation::GaActionInfomation(){
     index++; 
 
 //22 マップ上方向まで旋回
-    changeInfoData[index].direction_data.direction=177;
+    changeInfoData[index].direction_data.direction=175;
     changeInfoData[index].direction_data.condition=HIGH;
     changeInfoData[index].judge=JUDGE_DIR;
     changeInfoData[index].section_act=TURN;
