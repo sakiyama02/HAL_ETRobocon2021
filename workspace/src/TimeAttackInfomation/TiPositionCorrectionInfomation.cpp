@@ -70,156 +70,49 @@ TiPositionCorrectionInfomation::TiPositionCorrectionInfomation(){
 
     index++;
 */
-    //第一カーブ時の補正
-    
-    index=2;
-    positionCorrectionData[index].correctionValue.potision.xPosition=423.24;//406.9705; //672.2462-(半径375.1566*√2)/2
-    positionCorrectionData[index].correctionValue.potision.yPosition=305.4382;//305.2767; //570.5524-(半径375.1566*√2)/2
-    positionCorrectionData[index].correctionValue.xCondition=HIGH;
+    index=1;
+    positionCorrectionData[index].correctionValue.potision.xPosition=0;
+    positionCorrectionData[index].correctionValue.potision.yPosition=277 * 0.3527 * 2;
+    positionCorrectionData[index].correctionValue.xCondition=NONE;
     positionCorrectionData[index].correctionValue.yCondition=HIGH;
     positionCorrectionData[index].correctionValueDirection.direction=45;
     positionCorrectionData[index].correctionValueDirection.condition=NONE;
 
-    positionCorrectionData[index].correctionDirection.direction=45;
-    positionCorrectionData[index].correctionDirection.condition=LOW;
-    positionCorrectionData[index].correctionCondition=JUDGE_DIR;
+    positionCorrectionData[index].correctionPosition.potision.xPosition=670+30;
+    positionCorrectionData[index].correctionPosition.potision.yPosition=0;
+    positionCorrectionData[index].correctionPosition.xCondition=LOW;
+    positionCorrectionData[index].correctionPosition.yCondition=NONE;
+    positionCorrectionData[index].correctionCondition=JUDGE_POS;
 
-    // 第一カーブ後の機体のずれの補正
-    index=3;
-    positionCorrectionData[index].correctionValue.potision.xPosition=0; 
+    index=4;
+    positionCorrectionData[index].correctionValue.potision.xPosition=305.4382;
     positionCorrectionData[index].correctionValue.potision.yPosition=0;
-    positionCorrectionData[index].correctionValue.xCondition=NONE;
+    positionCorrectionData[index].correctionValue.xCondition=HIGH;
     positionCorrectionData[index].correctionValue.yCondition=NONE;
     positionCorrectionData[index].correctionValueDirection.direction=0;
     positionCorrectionData[index].correctionValueDirection.condition=HIGH;
 
-    positionCorrectionData[index].correctionPosition.potision.xPosition=0.0f;
-    positionCorrectionData[index].correctionPosition.potision.yPosition=1100.0f;
+    positionCorrectionData[index].correctionPosition.potision.xPosition=0;
+    positionCorrectionData[index].correctionPosition.potision.yPosition=1045;
     positionCorrectionData[index].correctionPosition.xCondition=NONE;
     positionCorrectionData[index].correctionPosition.yCondition=HIGH;
     positionCorrectionData[index].correctionCondition=JUDGE_POS;
 
-    // 第二カーブ時の補正
-    index=4;
-    positionCorrectionData[index].correctionValue.potision.xPosition=487.4314; 
-    positionCorrectionData[index].correctionValue.potision.yPosition=1402.3352; 
-    positionCorrectionData[index].correctionValue.xCondition=HIGH;
-    positionCorrectionData[index].correctionValue.yCondition=HIGH;
-    positionCorrectionData[index].correctionValueDirection.condition=NONE;
-
-    positionCorrectionData[index].correctionDirection.direction=-90;
-    positionCorrectionData[index].correctionDirection.condition=LOW;
-    positionCorrectionData[index].correctionCondition=JUDGE_DIR;
-
-    // 第二カーブ後の機体のずれの補正
-    index=5;
-    positionCorrectionData[index].correctionValue.potision.xPosition=0; 
-    positionCorrectionData[index].correctionValue.potision.yPosition=0;
-    positionCorrectionData[index].correctionValue.xCondition=NONE;
-    positionCorrectionData[index].correctionValue.yCondition=NONE;
-    positionCorrectionData[index].correctionValueDirection.direction=-180;
-    positionCorrectionData[index].correctionValueDirection.condition=HIGH;
-
-    positionCorrectionData[index].correctionPosition.potision.xPosition=0.0f;
-    positionCorrectionData[index].correctionPosition.potision.yPosition=1000.0f;
-    positionCorrectionData[index].correctionPosition.xCondition=NONE;
-    positionCorrectionData[index].correctionPosition.yCondition=LOW;
-    positionCorrectionData[index].correctionCondition=JUDGE_POS;
-  
-    // 第三カーブ時の補正
-    index=6;
-    positionCorrectionData[index].correctionValue.potision.xPosition=732.2052; 
-    positionCorrectionData[index].correctionValue.potision.yPosition=640.5032; 
-    positionCorrectionData[index].correctionValue.xCondition=HIGH;
-    positionCorrectionData[index].correctionValue.yCondition=HIGH;
-    positionCorrectionData[index].correctionValueDirection.condition=NONE;
-
-    positionCorrectionData[index].correctionDirection.direction=-135;
-    positionCorrectionData[index].correctionDirection.condition=LOW;
-    positionCorrectionData[index].correctionCondition=JUDGE_DIR;
-
-    // 第三カーブ後の機体のずれとy軸の補正
-    index=7;
-    positionCorrectionData[index].correctionValue.potision.xPosition=0; 
-    positionCorrectionData[index].correctionValue.potision.yPosition=567.847f;
-    positionCorrectionData[index].correctionValue.xCondition=NONE;
-    positionCorrectionData[index].correctionValue.yCondition=HIGH;
-    positionCorrectionData[index].correctionValueDirection.direction=-90;
-    positionCorrectionData[index].correctionValueDirection.condition=HIGH;
-
-    positionCorrectionData[index].correctionPosition.potision.xPosition=1100.0f;
-    positionCorrectionData[index].correctionPosition.potision.yPosition=0;
-    positionCorrectionData[index].correctionPosition.xCondition=HIGH;
-    positionCorrectionData[index].correctionPosition.yCondition=NONE;
-    positionCorrectionData[index].correctionCondition=JUDGE_POS;
-
-    // 第四カーブ時の補正
     index=8;
-    positionCorrectionData[index].correctionValue.potision.xPosition=1703.541; 
-    positionCorrectionData[index].correctionValue.potision.yPosition=708.2216; 
-    positionCorrectionData[index].correctionValue.xCondition=HIGH;
-    positionCorrectionData[index].correctionValue.yCondition=HIGH;
-    positionCorrectionData[index].correctionValueDirection.condition=NONE;
-
-    positionCorrectionData[index].correctionDirection.direction=0;
-    positionCorrectionData[index].correctionDirection.condition=HIGH;
-    positionCorrectionData[index].correctionCondition=JUDGE_DIR;
-
-    // 第五カーブ時の補正
-    index=10;
-    positionCorrectionData[index].correctionValue.potision.xPosition=1192.8314; 
-    positionCorrectionData[index].correctionValue.potision.yPosition=1094.0754; 
-    positionCorrectionData[index].correctionValue.xCondition=HIGH;
-    positionCorrectionData[index].correctionValue.yCondition=HIGH;
-    positionCorrectionData[index].correctionValueDirection.condition=NONE;
-
-    positionCorrectionData[index].correctionDirection.direction=0;
-    positionCorrectionData[index].correctionDirection.condition=LOW;
-    positionCorrectionData[index].correctionCondition=JUDGE_DIR;
-
-    // Zカーブ後の機体のずれとy軸の補正
-    index=11;
-    positionCorrectionData[index].correctionValue.potision.xPosition=0; 
-    positionCorrectionData[index].correctionValue.potision.yPosition=1213.9934f;
+    positionCorrectionData[index].correctionValue.potision.xPosition=0;
+    positionCorrectionData[index].correctionValue.potision.yPosition=567.847;
     positionCorrectionData[index].correctionValue.xCondition=NONE;
     positionCorrectionData[index].correctionValue.yCondition=HIGH;
     positionCorrectionData[index].correctionValueDirection.direction=-90;
     positionCorrectionData[index].correctionValueDirection.condition=HIGH;
 
-    positionCorrectionData[index].correctionPosition.potision.xPosition=1800.4966f-60;
-    positionCorrectionData[index].correctionPosition.potision.yPosition=0;
+    positionCorrectionData[index].correctionPosition.potision.xPosition=1550;
+    positionCorrectionData[index].correctionPosition.potision.yPosition=1045;
     positionCorrectionData[index].correctionPosition.xCondition=HIGH;
     positionCorrectionData[index].correctionPosition.yCondition=NONE;
     positionCorrectionData[index].correctionCondition=JUDGE_POS;
 
-    // 第六カーブ時の補正
-    index=12;
-    positionCorrectionData[index].correctionValue.potision.xPosition=2030.1412; 
-    positionCorrectionData[index].correctionValue.potision.yPosition=1166.0262; 
-    positionCorrectionData[index].correctionValue.xCondition=HIGH;
-    positionCorrectionData[index].correctionValue.yCondition=HIGH;
-    positionCorrectionData[index].correctionValueDirection.condition=NONE;
-
-    positionCorrectionData[index].correctionDirection.direction=-135;
-    positionCorrectionData[index].correctionDirection.condition=LOW;
-    positionCorrectionData[index].correctionCondition=JUDGE_DIR;
-
-    // 第六カーブ後の機体のずれとy軸の補正
-    index=13;
-    positionCorrectionData[index].correctionValue.potision.xPosition=0; 
-    positionCorrectionData[index].correctionValue.potision.yPosition=0;
-    positionCorrectionData[index].correctionValue.xCondition=NONE;
-    positionCorrectionData[index].correctionValue.yCondition=NONE;
-    positionCorrectionData[index].correctionValueDirection.direction=-180;
-    positionCorrectionData[index].correctionValueDirection.condition=HIGH;
-
-    positionCorrectionData[index].correctionPosition.potision.xPosition=0;
-    positionCorrectionData[index].correctionPosition.potision.yPosition=900;
-    positionCorrectionData[index].correctionPosition.xCondition=NONE;
-    positionCorrectionData[index].correctionPosition.yCondition=LOW;   
-    positionCorrectionData[index].correctionCondition=JUDGE_POS;
-
-    index=17;
+    index=16;
     positionCorrectionData[index].correctionValue.potision.xPosition=1914.4556; 
     positionCorrectionData[index].correctionValue.potision.yPosition=3392.974;
     positionCorrectionData[index].correctionValue.xCondition=HIGH;
@@ -232,8 +125,8 @@ TiPositionCorrectionInfomation::TiPositionCorrectionInfomation(){
 
     positionCorrectionData[index].correctionCondition=JUDGE_S;
 
-    //タイムアタック終了時の補正
-    index=19;
+     //タイムアタック終了時の補正
+    index=18;
     positionCorrectionData[index].correctionValue.potision.xPosition=1762.79;
     positionCorrectionData[index].correctionValue.potision.yPosition=3392.27;
     positionCorrectionData[index].correctionValue.xCondition=HIGH;
@@ -246,6 +139,8 @@ TiPositionCorrectionInfomation::TiPositionCorrectionInfomation(){
     positionCorrectionData[index].correctionPosition.xCondition=LOW;
     positionCorrectionData[index].correctionPosition.yCondition=NONE;   
     positionCorrectionData[index].correctionCondition=JUDGE_POS;
+
+ 
 }
 
 TiPositionCorrectionInfomation::~TiPositionCorrectionInfomation(){
