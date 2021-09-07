@@ -13,7 +13,7 @@
 #define SLALOMEEBUI_NUM 21
 #define SLALOMEIFIE_NUM 15
 #define SLALOMBLACKY_NUM 16
-#define GARAGE_NUM 25
+#define GARAGE_NUM 26
 
 #define CAR_WIDTH 134.22f      //車体の幅(mm)
 #define CAR_WHEEL_WIDTH 90.33f //車輪の直径(mm)
