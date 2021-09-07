@@ -71,18 +71,20 @@ index++;
 //21
 index++;
 //22
+index++;
+//23
     pidData[index].pGain=0.03f;
     pidData[index].iGain=0.001f;
     pidData[index].dGain=0.03f;
     pidData[index].targetVal=50;
     index++;
-//23
+//24
     pidData[index].pGain=0.01f;
     pidData[index].iGain=0.001f;
     pidData[index].dGain=0.03f;
-    pidData[index].targetVal=90;
+    pidData[index].targetVal=100;
     index++;
-//24
+//25
     pidData[index].pGain=0.03f;
     pidData[index].iGain=0.001f;
     pidData[index].dGain=0.03f;

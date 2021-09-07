@@ -269,7 +269,15 @@ GaActionInfomation::GaActionInfomation(){
     changeInfoData[index].speed=20;
     index++; 
 
-//20 ガレージ前のライン左側まで前進
+//20 上の青ラインver
+    changeInfoData[index].sData.s=80;
+    changeInfoData[index].sData.condition=HIGH;
+    changeInfoData[index].judge=JUDGE_S;
+    changeInfoData[index].section_act=STRAIGHT;
+    changeInfoData[index].speed=5;
+    index++;
+
+//21 ガレージ前のライン左側まで前進
     changeInfoData[index].vData.v=120;
     changeInfoData[index].vData.condition=HIGH;
     changeInfoData[index].judge=JUDGE_V;
@@ -277,15 +285,15 @@ GaActionInfomation::GaActionInfomation(){
     changeInfoData[index].speed=5;
     index++; 
 
-//21 マップ上方向まで旋回
-    changeInfoData[index].direction_data.direction=178;
+//22 マップ上方向まで旋回
+    changeInfoData[index].direction_data.direction=177;
     changeInfoData[index].direction_data.condition=HIGH;
     changeInfoData[index].judge=JUDGE_DIR;
     changeInfoData[index].section_act=TURN;
     changeInfoData[index].speed=10;
     index++;
 
-//22 青ラインまでライントレース
+//23 青ラインまでライントレース
     changeInfoData[index].pos_info_data.potision.xPosition=1900*2*0.3527;
     changeInfoData[index].pos_info_data.potision.yPosition=3613*2*0.3527;
     changeInfoData[index].pos_info_data.xCondition=NONE;
@@ -295,7 +303,7 @@ GaActionInfomation::GaActionInfomation(){
     changeInfoData[index].speed=10;
     index++;
 
-//23 黒ラインまでライントレース
+//24 黒ラインまでライントレース
     changeInfoData[index].sData.s=80;
     changeInfoData[index].sData.condition=LOW;
     changeInfoData[index].judge=JUDGE_S;
@@ -303,7 +311,7 @@ GaActionInfomation::GaActionInfomation(){
     changeInfoData[index].speed=10;
     index++;
 
-//24 黒ライン外に出るまでライントレース
+//25 黒ライン外に出るまでライントレース
     changeInfoData[index].distance=25;
     changeInfoData[index].judge=JUDGE_DIS;
     changeInfoData[index].section_act=LINE_TRACE;
@@ -352,7 +360,7 @@ GaActionInfomation::GaActionInfomation(){
 
 */ 
 
-//25 ガレージの前壁手前まで前進
+//26 ガレージの前壁手前まで前進
     changeInfoData[index].distance=6;
     changeInfoData[index].judge=JUDGE_DIS;
     changeInfoData[index].section_act=STRAIGHT;
