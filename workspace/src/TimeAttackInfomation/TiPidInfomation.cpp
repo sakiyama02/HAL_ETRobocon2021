@@ -70,6 +70,12 @@ TiPidInfomation::TiPidInfomation(){
     pidData[index].dGain=0.05f;
     pidData[index].targetVal=target;
 
+    index=13;
+    pidData[index].pGain=0.2f;
+    pidData[index].iGain=0.3f;
+    pidData[index].dGain=0.1f;
+    pidData[index].targetVal=target;
+
 }
 
 TiPidInfomation::~TiPidInfomation(){
