@@ -303,6 +303,8 @@ index++;
 index++;
 //23
 index++;
+//24
+index++;
 /*
   //19
     positionCorrectionData[18].correctionValue.potision.xPosition=1980*2*0.3527;
@@ -393,7 +395,7 @@ index++;
     positionCorrectionData[index].correctionCondition=JUDGE_V;
 */
 
-//24
+//25
     positionCorrectionData[index].correctionValue.potision.xPosition=1900*2*0.3527;
     positionCorrectionData[index].correctionValue.potision.yPosition=3385*2*0.3527;
     positionCorrectionData[index].correctionValue.xCondition=LOW;

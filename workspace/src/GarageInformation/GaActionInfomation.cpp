@@ -19,6 +19,7 @@ GaActionInfomation::GaActionInfomation(){
     changeInfoData[index].rgb_data.g=0;
     changeInfoData[index].rgb_data.b=0;
     changeInfoData[index].rgb_data.condition=NONE;
+
     //座標切り替え設定
     //xPosition :x座標の切り替え値
     //yPosition :y座標の切り替え値
@@ -28,42 +29,50 @@ GaActionInfomation::GaActionInfomation(){
     changeInfoData[index].pos_info_data.potision.yPosition=0f;
     changeInfoData[index].pos_info_data.xCondition=NONE;
     changeInfoData[index].pos_info_data.yCondition=NONE;
+
     //向き切り替え設定
     //direction:向きの切り替え値
     //condition:向きの切り替え地点の範囲指定(HIGH.LOW.NONE)
     changeInfoData[index].direction_data.direction=0;
     changeInfoData[index].direction_data.condition=NONE;
+
     //距離の切り替え設定
     //distance:距離の切り替え値
     changeInfoData[index].distance=0;
+
     //v値切り替え値設定
     //v:v値の切り替え値
     //condition:v値の切り替え地点の範囲指定(HIGH.LOW.NONE)
     changeInfoData[index].vData.v=0;
     changeInfoData[index].vData.condition=NONE;
+
     //s値切り替え値設定
     //s:s値の切り替え値
     //condition:s値の切り替え地点の範囲指定(HIGH.LOW.NONE)
     changeInfoData[index].sData.s=0;
     changeInfoData[index].sData.condition=NONE;
+
     //切り替え方法
     //judge:切り替え方法の指定
     //(JUDGE_RGB,JUDGE_POS,JUDGE_DIS,
     //JUDGE_DIR,JUDGE_NONE,JUDGE_SEND)
     changeInfoData[index].judge=JUDGE_NONE;
+
     //機体の動作設定
     //section_act:機体の動作設定
     //(LINE_TRACE,STRAIGHT,CURVE,LINE_CURVE,TURN,ARM_ACTION)
     changeInfoData[index].section_act=STRAIGHT;
+
     //機体の速度設定
     //speed:速度の設定
     changeInfoData[index].speed=0;
+
     index++;
 */
 
 
 //1 90度右旋回
-    changeInfoData[index].direction_data.direction=92;  //上方向の誤差が許されないため、＋２度
+    changeInfoData[index].direction_data.direction=95;  //上方向の誤差が許されないため、＋２度
     changeInfoData[index].direction_data.condition=LOW;
     changeInfoData[index].judge=JUDGE_DIR;
     changeInfoData[index].section_act=TURN;
@@ -183,7 +192,7 @@ GaActionInfomation::GaActionInfomation(){
     changeInfoData[index].pos_info_data.yCondition=NONE;
     changeInfoData[index].judge=JUDGE_POS;
     changeInfoData[index].section_act=LINE_TRACE;
-    changeInfoData[index].speed=15;
+    changeInfoData[index].speed=7;
     index++;
 
 //13 点F（ブロックある場所）まで前進
@@ -207,6 +216,7 @@ GaActionInfomation::GaActionInfomation(){
     index++;
     /*
 //13
+
     changeInfoData[index].rgb_data.r=120;
     changeInfoData[index].rgb_data.g=29;
     changeInfoData[index].rgb_data.b=36;
@@ -260,6 +270,14 @@ GaActionInfomation::GaActionInfomation(){
     index++; 
 
 //20 ガレージ前のライン左側まで前進
+    changeInfoData[index].sData.s=100;
+    changeInfoData[index].sData.condition=LOW;
+    changeInfoData[index].judge=JUDGE_S;
+    changeInfoData[index].section_act=STRAIGHT;
+    changeInfoData[index].speed=5;
+    index++; 
+
+//20 ガレージ前のライン左側まで前進
     changeInfoData[index].vData.v=120;
     changeInfoData[index].vData.condition=HIGH;
     changeInfoData[index].judge=JUDGE_V;
@@ -268,7 +286,7 @@ GaActionInfomation::GaActionInfomation(){
     index++; 
 
 //21 マップ上方向まで旋回
-    changeInfoData[index].direction_data.direction=178;
+    changeInfoData[index].direction_data.direction=175;
     changeInfoData[index].direction_data.condition=HIGH;
     changeInfoData[index].judge=JUDGE_DIR;
     changeInfoData[index].section_act=TURN;
@@ -297,7 +315,7 @@ GaActionInfomation::GaActionInfomation(){
     changeInfoData[index].distance=25;
     changeInfoData[index].judge=JUDGE_DIS;
     changeInfoData[index].section_act=LINE_TRACE;
-    changeInfoData[index].speed=7;
+    changeInfoData[index].speed=10;
     index++;
 
 /*
@@ -307,9 +325,11 @@ GaActionInfomation::GaActionInfomation(){
     changeInfoData[index].pos_info_data.xCondition=LOW;
     changeInfoData[index].pos_info_data.yCondition=NONE;
     changeInfoData[index].judge=JUDGE_POS;
+
     changeInfoData[index].section_act=STRAIGHT;
     changeInfoData[index].speed=20;
     index++;
+
 //16
     changeInfoData[index].vData.v=120;
     changeInfoData[index].vData.condition=LOW;
@@ -317,15 +337,18 @@ GaActionInfomation::GaActionInfomation(){
     changeInfoData[index].section_act=STRAIGHT;
     changeInfoData[index].speed=20;
     index++;
+
 //17
     changeInfoData[index].pos_info_data.potision.xPosition=2004*2*0.3527;
     changeInfoData[index].pos_info_data.potision.yPosition=3177*2*0.3527;
     changeInfoData[index].pos_info_data.xCondition=NONE;
     changeInfoData[index].pos_info_data.yCondition=LOW;
     changeInfoData[index].judge=JUDGE_POS;
+
     changeInfoData[index].section_act=LINE_TRACE;
     changeInfoData[index].speed=20;
     index++;
+
 //24 黒ライン外に出るまでライントレース
     changeInfoData[index].pos_info_data.potision.xPosition=1900*2*0.3527;
     changeInfoData[index].pos_info_data.potision.yPosition=3330*2*0.3527; // 3200
@@ -334,6 +357,7 @@ GaActionInfomation::GaActionInfomation(){
     changeInfoData[index].section_act=LINE_TRACE;
     changeInfoData[index].speed=8;
     index++;
+
 */ 
 
 //25 ガレージの前壁手前まで前進
