@@ -249,7 +249,7 @@ SlBkActionInfomation::SlBkActionInfomation(){
 
     //14
     changeInfoData[index].pos_info_data.potision.xPosition=200;
-    changeInfoData[index].pos_info_data.potision.yPosition=2580;//2876
+    changeInfoData[index].pos_info_data.potision.yPosition=2690;//2876
     changeInfoData[index].pos_info_data.xCondition=NONE;
     changeInfoData[index].pos_info_data.yCondition=LOW;
     changeInfoData[index].distance=0;

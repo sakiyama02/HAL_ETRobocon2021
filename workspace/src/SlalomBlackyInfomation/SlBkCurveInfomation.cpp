@@ -22,7 +22,7 @@ SlBkCurveInfomation::SlBkCurveInfomation(){
     index++;
 */
     //1
-    curveData[index].radius=100;//125;//209;//215;
+    curveData[index].radius=85;//125;//209;//215;
     curveData[index].dirction=CURVE_RIGHT;
 
     //5

@@ -63,7 +63,7 @@ SlEbCurveInfomation::SlEbCurveInfomation(){
     index++;
 
     //18
-    curveData[index].radius=380;//250;
+    curveData[index].radius=270;//380;//250;
     curveData[index].dirction=CURVE_LEFT;
 
     index++;
