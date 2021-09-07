@@ -93,7 +93,7 @@ int8 CarPosition::calcOdometry(WheelDist* wheel_dist)
 
     /* 座標計算 */
     dist  = (double)(wheel_dist->rightMove + wheel_dist->leftMove ) / 2.0f;
-    angle = (float)(360.0f / ( 2.0f * PI * CAR_WIDTH)) * (wheel_dist->leftMove - wheel_dist->rightMove);
+    angle = (float)(360.0f / ( 2.0f * PI * CAR_WIDTH)) * (wheel_dist->rightMove - wheel_dist->leftMove);
 
     /* 角度をラジアン変換 */
     addRad  = (( double )( angle )) * ( PI / 180.0f );

@@ -49,8 +49,8 @@ int8 LineTrace::run(int32 speed,PIDData pid_data,float angle = 0.0f,CurveData cu
     }
 
     // 計算
-    motorPower.leftPower  = speed + revision;
-    motorPower.rightPower = speed - revision;
+    motorPower.leftPower  = speed - revision;
+    motorPower.rightPower = speed + revision;
    if(motorPower.leftPower > 100){
         motorPower.leftPower = 100;
     } else if(motorPower.rightPower > 100){
