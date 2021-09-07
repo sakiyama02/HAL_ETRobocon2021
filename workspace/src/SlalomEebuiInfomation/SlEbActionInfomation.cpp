@@ -287,7 +287,7 @@ SlEbActionInfomation::SlEbActionInfomation(){
     index++;
 //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
     //19
-    changeInfoData[index].pos_info_data.potision.xPosition=430;//380;
+    changeInfoData[index].pos_info_data.potision.xPosition=440;//380;
     changeInfoData[index].pos_info_data.xCondition=LOW;
     changeInfoData[index].pos_info_data.yCondition=NONE;
 
