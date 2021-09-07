@@ -112,14 +112,13 @@ TiPositionCorrectionInfomation::TiPositionCorrectionInfomation(){
     positionCorrectionData[index].correctionPosition.yCondition=NONE;
     positionCorrectionData[index].correctionCondition=JUDGE_POS;
 
-
-    index=15;
-    positionCorrectionData[index].correctionValue.potision.xPosition=1914.4556; 
-    positionCorrectionData[index].correctionValue.potision.yPosition=3392.974;
+    index=11;
+    positionCorrectionData[index].correctionValue.potision.xPosition=0; 
+    positionCorrectionData[index].correctionValue.potision.yPosition=1213.288;
     positionCorrectionData[index].correctionValue.xCondition=NONE;
-    positionCorrectionData[index].correctionValue.yCondition=NONE;
-    positionCorrectionData[index].correctionValueDirection.direction=-90;
-    positionCorrectionData[index].correctionValueDirection.condition=HIGH;
+    positionCorrectionData[index].correctionValue.yCondition=HIGH;
+    positionCorrectionData[index].correctionValueDirection.direction=0;
+    positionCorrectionData[index].correctionValueDirection.condition=NONE;
 
     positionCorrectionData[index].correctionV.v=60;
     positionCorrectionData[index].correctionV.condition=LOW;
