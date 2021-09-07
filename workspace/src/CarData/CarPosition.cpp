@@ -3,7 +3,10 @@
 
 CarPosition::CarPosition()
 {
+<<<<<<< HEAD
     
+=======
+>>>>>>> bfaa6f30a537a7f7ad1e51de3bdc6da4a004f669
     //タイムアタックの初期値
     carPos.xPosition = 3457 * 0.3527 * 2;
     carPos.yPosition = 277 * 0.3527 * 2;

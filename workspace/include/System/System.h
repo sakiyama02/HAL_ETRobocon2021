@@ -11,7 +11,11 @@
 #define SYS_PARAM 2 //引数エラー
 #define TIMEATTACK_NUM 20 
 #define SLALOMEEBUI_NUM 19
+<<<<<<< HEAD
 #define SLALOMEIFIE_NUM 20
+=======
+#define SLALOMEIFIE_NUM 14
+>>>>>>> bfaa6f30a537a7f7ad1e51de3bdc6da4a004f669
 #define SLALOMBLACKY_NUM 16
 #define GARAGE_NUM 25
 

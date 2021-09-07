@@ -17,19 +17,24 @@ SlEfpidInfomation::SlEfpidInfomation(){
     pidData[index].pGain=0f;
     pidData[index].iGain=0f;
     pidData[index].dGain=0f;
-
     //v値の設定
     pidData[index].targetVal=0f;
-
     index++;
 */    
-//16←ないほうがいいかも
-    index=17;
-    //index=16;
+//15←ないほうがいいかも
+    index=11;//14;//15;
     pidData[index].pGain=0.3f;
-    pidData[index].iGain=0;//0.2f
-    pidData[index].dGain=0;//0.05
+    pidData[index].iGain=0.001;//0.2f
+    pidData[index].dGain=0.03;//0.05
     pidData[index].targetVal=80;
+
+    index++;
+    pidData[index].pGain=0.03f;
+    pidData[index].iGain=0.001;//0.2f
+    pidData[index].dGain=0.03;//0.05
+    pidData[index].targetVal=80;
+
+    index++;
 
 
 }
