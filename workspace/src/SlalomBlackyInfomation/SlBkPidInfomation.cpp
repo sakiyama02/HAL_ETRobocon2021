@@ -25,16 +25,16 @@ SlBkpidInfomation::SlBkpidInfomation(){
 */    
 //14
     index = 13;
-    pidData[index].pGain=0.3f;
-    pidData[index].iGain=0;//0.2f
-    pidData[index].dGain=0;//0.05
+    pidData[index].pGain=0.1f;
+    pidData[index].iGain=0.001;//0.2f
+    pidData[index].dGain=0.03;//0.05
     pidData[index].targetVal=80;
 
     index++;
 //15←ないほうがいいかも
-    pidData[index].pGain=0.3f;
-    pidData[index].iGain=0;//0.2f
-    pidData[index].dGain=0;//0.05
+    pidData[index].pGain=0.03f;
+    pidData[index].iGain=0.001;//0.2f
+    pidData[index].dGain=0.03;//0.05
     pidData[index].targetVal=80;
 
     index++;

@@ -198,7 +198,7 @@ SlBkActionInfomation::SlBkActionInfomation(){
     index++;
 //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
     //10
-    changeInfoData[index].direction_data.direction=265;
+    changeInfoData[index].direction_data.direction=215;//265;
     changeInfoData[index].direction_data.condition=HIGH;
 
     changeInfoData[index].distance=0;
@@ -249,7 +249,7 @@ SlBkActionInfomation::SlBkActionInfomation(){
 
     //14
     changeInfoData[index].pos_info_data.potision.xPosition=200;
-    changeInfoData[index].pos_info_data.potision.yPosition=2580;//2876
+    changeInfoData[index].pos_info_data.potision.yPosition=2690;//2876
     changeInfoData[index].pos_info_data.xCondition=NONE;
     changeInfoData[index].pos_info_data.yCondition=LOW;
     changeInfoData[index].distance=0;
@@ -272,7 +272,7 @@ SlBkActionInfomation::SlBkActionInfomation(){
     index++;
 
     //16
-    changeInfoData[index].sData.s=50;
+    changeInfoData[index].sData.s=80;
     changeInfoData[index].sData.condition=HIGH;
 
     changeInfoData[index].distance=0;

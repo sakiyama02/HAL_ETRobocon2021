@@ -120,7 +120,7 @@ GaActionInfomation::GaActionInfomation(){
     index++;
 
 //6 バック走行　～線分JK
-    changeInfoData[index].sData.s=100;
+    changeInfoData[index].sData.s=100;  // 線分JK、点Kのどちらに向かっても感知できるようHSVのS値使用
     changeInfoData[index].sData.condition=HIGH;
     changeInfoData[index].judge=JUDGE_S;
     changeInfoData[index].section_act=STRAIGHT;
@@ -178,7 +178,7 @@ GaActionInfomation::GaActionInfomation(){
     */
 
 //11 90度左旋回
-    changeInfoData[index].direction_data.direction=89;
+    changeInfoData[index].direction_data.direction=89;  //左側ライントレースのため、＋１度
     changeInfoData[index].direction_data.condition=LOW;
     changeInfoData[index].judge=JUDGE_DIR;
     changeInfoData[index].section_act=TURN;
@@ -296,7 +296,7 @@ GaActionInfomation::GaActionInfomation(){
     index++;
 
 //23 黒ラインまでライントレース
-    changeInfoData[index].sData.s=180;
+    changeInfoData[index].sData.s=80;
     changeInfoData[index].sData.condition=LOW;
     changeInfoData[index].judge=JUDGE_S;
     changeInfoData[index].section_act=LINE_TRACE;
@@ -304,12 +304,10 @@ GaActionInfomation::GaActionInfomation(){
     index++;
 
 //24 黒ライン外に出るまでライントレース
-    changeInfoData[index].pos_info_data.potision.xPosition=1900*2*0.3527;
-    changeInfoData[index].pos_info_data.potision.yPosition=3350*2*0.3527; // 3200
-    changeInfoData[index].pos_info_data.yCondition=LOW;
-    changeInfoData[index].judge=JUDGE_POS;
+    changeInfoData[index].distance=25;
+    changeInfoData[index].judge=JUDGE_DIS;
     changeInfoData[index].section_act=LINE_TRACE;
-    changeInfoData[index].speed=10;
+    changeInfoData[index].speed=7;
     index++;
 
 /*
@@ -342,7 +340,17 @@ GaActionInfomation::GaActionInfomation(){
     changeInfoData[index].section_act=LINE_TRACE;
     changeInfoData[index].speed=20;
     index++;
-  */ 
+
+//24 黒ライン外に出るまでライントレース
+    changeInfoData[index].pos_info_data.potision.xPosition=1900*2*0.3527;
+    changeInfoData[index].pos_info_data.potision.yPosition=3330*2*0.3527; // 3200
+    changeInfoData[index].pos_info_data.yCondition=LOW;
+    changeInfoData[index].judge=JUDGE_POS;
+    changeInfoData[index].section_act=LINE_TRACE;
+    changeInfoData[index].speed=8;
+    index++;
+
+*/ 
 
 //25 ガレージの前壁手前まで前進
     changeInfoData[index].distance=6;

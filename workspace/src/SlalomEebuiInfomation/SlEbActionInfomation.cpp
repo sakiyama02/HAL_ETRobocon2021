@@ -79,7 +79,7 @@ SlEbActionInfomation::SlEbActionInfomation(){
     changeInfoData[index].distance=0;
     changeInfoData[index].judge=JUDGE_POS;
     changeInfoData[index].section_act=LINE_TRACE;
-    changeInfoData[index].speed=30;
+    changeInfoData[index].speed=15;
 
     index++;
 
@@ -92,7 +92,7 @@ SlEbActionInfomation::SlEbActionInfomation(){
     changeInfoData[index].distance=0;
     changeInfoData[index].judge=JUDGE_POS;
     changeInfoData[index].section_act=STRAIGHT;//ARM_ACTION;
-    changeInfoData[index].speed=20;
+    changeInfoData[index].speed=10;
 
     index++;
 
@@ -104,7 +104,7 @@ SlEbActionInfomation::SlEbActionInfomation(){
 
     changeInfoData[index].distance=0;
     changeInfoData[index].judge=JUDGE_POS;
-    changeInfoData[index].section_act=LINE_TRACE;
+    changeInfoData[index].section_act=STRAIGHT;
     changeInfoData[index].speed=-30;
 
     index++;
@@ -267,7 +267,7 @@ SlEbActionInfomation::SlEbActionInfomation(){
     index++;
 
     //17
-    changeInfoData[index].direction_data.direction=140;
+    changeInfoData[index].direction_data.direction=120;
     changeInfoData[index].direction_data.condition=HIGH;
 
     changeInfoData[index].judge=JUDGE_DIR;
