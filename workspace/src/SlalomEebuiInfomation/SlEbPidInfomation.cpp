@@ -27,7 +27,7 @@ SlEbpidInfomation::SlEbpidInfomation(){
     pidData[index].pGain=0.2;
     pidData[index].iGain=0;
     pidData[index].dGain=0;
-    pidData[index].targetVal=50;
+    pidData[index].targetVal=60;
 
     //4
     /*
