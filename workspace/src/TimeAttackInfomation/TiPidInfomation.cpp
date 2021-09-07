@@ -67,7 +67,7 @@ TiPidInfomation::TiPidInfomation(){
     index=8;
     pidData[index].pGain=0.3f;
     pidData[index].iGain=0.3f;
-    pidData[index].dGain=0.05f;
+    pidData[index].dGain=0.07f;
     pidData[index].targetVal=target;
 
     index=18;
@@ -75,6 +75,30 @@ TiPidInfomation::TiPidInfomation(){
     pidData[index].iGain=0.3f;
     pidData[index].dGain=0.1f;
     pidData[index].targetVal=target;
+
+    index=19;
+    pidData[index].pGain=0.3f;
+    pidData[index].iGain=0.25f;
+    pidData[index].dGain=0.1f;
+    pidData[index].targetVal=target;
+
+    index=20;
+    pidData[index].pGain=0.3f;
+    pidData[index].iGain=0.25f;
+    pidData[index].dGain=0.1f;
+    pidData[index].targetVal=125;
+
+    index=21;
+    pidData[index].pGain=0.4f;
+    pidData[index].iGain=0.4f;
+    pidData[index].dGain=0.1f;
+    pidData[index].targetVal=target;
+
+    index=22;
+    pidData[index].pGain=0.3f;
+    pidData[index].iGain=0.25f;
+    pidData[index].dGain=0.1f;
+    pidData[index].targetVal=135;
 
 }
 
