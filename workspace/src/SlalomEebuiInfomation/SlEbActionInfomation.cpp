@@ -304,7 +304,7 @@ SlEbActionInfomation::SlEbActionInfomation(){
 
     changeInfoData[index].judge=JUDGE_DIR;
     changeInfoData[index].section_act=CURVE;
-    changeInfoData[index].speed=8;
+    changeInfoData[index].speed=5;
     index++;
     //21
     changeInfoData[index].direction_data.direction=133;//147;
@@ -312,7 +312,7 @@ SlEbActionInfomation::SlEbActionInfomation(){
 
     changeInfoData[index].judge=JUDGE_DIR;
     changeInfoData[index].section_act=CURVE;
-    changeInfoData[index].speed=8;
+    changeInfoData[index].speed=5;
     index++;
 }
 
