@@ -47,9 +47,9 @@ index++;
 //11
 index++;
 //12
-    pidData[index].pGain=0.03f;
-    pidData[index].iGain=0.0005f;
-    pidData[index].dGain=0.01f;
+    pidData[index].pGain=0.15f;
+    pidData[index].iGain=0.01f;
+    pidData[index].dGain=0.03f;
     pidData[index].targetVal=48;
     index++;
 //13
@@ -71,22 +71,24 @@ index++;
 //21
 index++;
 //22
+index++;
+//23
     pidData[index].pGain=0.03f;
     pidData[index].iGain=0.001f;
     pidData[index].dGain=0.03f;
     pidData[index].targetVal=50;
-    index++;
-//23
-    pidData[index].pGain=0.01f;
-    pidData[index].iGain=0.001f;
-    pidData[index].dGain=0.03f;
-    pidData[index].targetVal=90;
     index++;
 //24
-    pidData[index].pGain=0.03f;
-    pidData[index].iGain=0.001f;
-    pidData[index].dGain=0.03f;
-    pidData[index].targetVal=50;
+    pidData[index].pGain=0.05f;
+    pidData[index].iGain=0.005f;
+    pidData[index].dGain=0.05f;
+    pidData[index].targetVal=100;
+    index++;
+//25
+    pidData[index].pGain=0.05f;
+    pidData[index].iGain=0.005f;
+    pidData[index].dGain=0.08f;
+    pidData[index].targetVal=100;
     index++;
 }
 
