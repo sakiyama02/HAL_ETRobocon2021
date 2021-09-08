@@ -246,7 +246,7 @@ int8 SlalomEebui::sceneChenge(int16* scene_num){
         uint16 changedistance;
         SensorManager &sonicSenser=SensorManager::getInstance();
         sonicSenser.distanceGetter(&changedistance);
-        if(changedistance<5){
+        if(changedistance<9){
             *scene_num=-3;//-2;
         }
         else{
