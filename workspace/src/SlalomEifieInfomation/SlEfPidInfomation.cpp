@@ -23,21 +23,21 @@ SlEfpidInfomation::SlEfpidInfomation(){
 
     index++;
 */    
-//15←ないほうがいいかも
-    index=11;//14;//15;
+//14←ないほうがいいかも
+    index=13;//14;//15;
     pidData[index].pGain=0.3f;
-    pidData[index].iGain=0.001;//0.2f
+    pidData[index].iGain=0.01;//0.2f
     pidData[index].dGain=0.03;//0.05
     pidData[index].targetVal=80;
 
-    index++;
+//15
+    index=14;
     pidData[index].pGain=0.03f;
     pidData[index].iGain=0.001;//0.2f
     pidData[index].dGain=0.03;//0.05
     pidData[index].targetVal=80;
 
     index++;
-
 
 }
 

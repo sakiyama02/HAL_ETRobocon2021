@@ -88,6 +88,7 @@ SlBkActionInfomation::SlBkActionInfomation(){
 
 
     index++;
+
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
     //2
     changeInfoData[index].pos_info_data.potision.xPosition=340;
