@@ -289,7 +289,7 @@ SlEfActionInfomation::SlEfActionInfomation(){
     changeInfoData[index].vData.condition=LOW; 
     changeInfoData[index].judge=JUDGE_V;
     changeInfoData[index].section_act=STRAIGHT;
-    changeInfoData[index].speed=30;
+    changeInfoData[index].speed=15;
 
     index++;
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
