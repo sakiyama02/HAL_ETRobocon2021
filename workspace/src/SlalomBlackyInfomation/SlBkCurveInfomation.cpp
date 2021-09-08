@@ -31,9 +31,12 @@ SlBkCurveInfomation::SlBkCurveInfomation(){
     curveData[index].radius=350;//365;
     curveData[index].dirction=CURVE_RIGHT;
 
-
     index++;
 
+    //10
+    index=9;
+    curveData[index].radius=50;//365;
+    curveData[index].dirction=CURVE_RIGHT;
 }
 
 SlBkCurveInfomation::~SlBkCurveInfomation(){
