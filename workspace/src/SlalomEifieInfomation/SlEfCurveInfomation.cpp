@@ -67,7 +67,7 @@ SlEfCurveInfomation::SlEfCurveInfomation(){
 
     //12
     index=11;
-    curveData[index].radius=50;
+    curveData[index].radius=40;
     curveData[index].dirction=CURVE_LEFT;
 }
 

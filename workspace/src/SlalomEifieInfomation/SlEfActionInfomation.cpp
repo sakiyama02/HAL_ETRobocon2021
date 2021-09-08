@@ -225,7 +225,7 @@ SlEfActionInfomation::SlEfActionInfomation(){
     index++;
 
     //6板下りる
-    changeInfoData[index].pos_info_data.potision.yPosition=2815;//2810;//2818;
+    changeInfoData[index].pos_info_data.potision.yPosition=2820;//2810;//2818;
     changeInfoData[index].pos_info_data.xCondition=NONE;
     changeInfoData[index].pos_info_data.yCondition=LOW;
 
@@ -339,7 +339,7 @@ SlEfActionInfomation::SlEfActionInfomation(){
     index++; 
 */
     //カーブ
-    changeInfoData[index].direction_data.direction=-150;//190;
+    changeInfoData[index].direction_data.direction=-145;//190;
     changeInfoData[index].direction_data.condition=LOW;
 
     changeInfoData[index].judge=JUDGE_DIR;
