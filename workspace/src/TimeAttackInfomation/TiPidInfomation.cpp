@@ -70,31 +70,31 @@ TiPidInfomation::TiPidInfomation(){
     pidData[index].dGain=0.05f;
     pidData[index].targetVal=target;
 
-    index=13;
-    pidData[index].pGain=0.2f;
-    pidData[index].iGain=0.3f;
-    pidData[index].dGain=0.1f;
-    pidData[index].targetVal=target;
-
     index=14;
-    pidData[index].pGain=0.2f;
+    pidData[index].pGain=0.5f;
     pidData[index].iGain=0.3f;
     pidData[index].dGain=0.1f;
     pidData[index].targetVal=target;
 
     index=15;
+    pidData[index].pGain=0.2f;
+    pidData[index].iGain=0.3f;
+    pidData[index].dGain=0.1f;
+    pidData[index].targetVal=target;
+
+    index=16;
     pidData[index].pGain=0.3f;
     pidData[index].iGain=0.25f;
     pidData[index].dGain=0.1f;
     pidData[index].targetVal=125;
 
-    index=16;
+    index=17;
     pidData[index].pGain=0.4f;
     pidData[index].iGain=0.4f;
     pidData[index].dGain=0.1f;
     pidData[index].targetVal=target;
 
-    index=17;
+    index=18;
     pidData[index].pGain=0.3f;
     pidData[index].iGain=0.25f;
     pidData[index].dGain=0.1f;
