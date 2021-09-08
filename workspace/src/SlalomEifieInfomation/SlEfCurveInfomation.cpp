@@ -40,18 +40,35 @@ SlEfCurveInfomation::SlEfCurveInfomation(){
 */
     //4
     index=0;//3;
-    curveData[index].radius=100;//117;//48.723;//350*0.3527;
+    curveData[index].radius=100;
     curveData[index].dirction=CURVE_RIGHT;
     //5
     index++;
-    curveData[index].radius=220;//158.25;//180;//256;
+    curveData[index].radius=220;
     curveData[index].dirction=CURVE_RIGHT;
-
+    //6
     index++;
-    curveData[index].radius=140;//;//110;//230;
+    curveData[index].radius=140;
+    curveData[index].dirction=CURVE_LEFT;
+    //8
+    index=7;
+    curveData[index].radius=120;//140;
     curveData[index].dirction=CURVE_LEFT;
 
+    //10
+    index=9;
+    curveData[index].radius=225;
+    curveData[index].dirction=CURVE_LEFT;
 
+    //11
+    index=10;
+    curveData[index].radius=50;
+    curveData[index].dirction=CURVE_LEFT;
+
+    //12
+    index=11;
+    curveData[index].radius=50;
+    curveData[index].dirction=CURVE_LEFT;
 }
 
 SlEfCurveInfomation::~SlEfCurveInfomation(){

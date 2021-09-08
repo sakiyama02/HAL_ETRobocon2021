@@ -143,7 +143,7 @@ SlEfPositionCorrectionInfomation::SlEfPositionCorrectionInfomation(){
 
     index++; 
 */
-    //13
+    //9
     index=8;//11;
     //index=13;
     positionCorrectionData[index].correctionV.v = 65;
@@ -173,8 +173,8 @@ SlEfPositionCorrectionInfomation::SlEfPositionCorrectionInfomation(){
 
     index++;
     */
-    //16
-    index=12;//15;
+    //15
+    index=14;//15;
     //index=17;
     positionCorrectionData[index].correctionPosition.potision.yPosition=2600;
     positionCorrectionData[index].correctionPosition.xCondition=NONE;
@@ -189,8 +189,8 @@ SlEfPositionCorrectionInfomation::SlEfPositionCorrectionInfomation(){
 
     
 
-    //17
-    index++;
+    //16
+    index=15;
     //index = 18;
     positionCorrectionData[index].correctionValueDirection.direction=180;
     positionCorrectionData[index].correctionValueDirection.condition=HIGH;
