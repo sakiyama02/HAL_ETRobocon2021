@@ -71,8 +71,8 @@ SlBkPositionCorrectionInfomation::SlBkPositionCorrectionInfomation(){
     index++;
 */    
     //16
-    //16
-    index = 15;
+    //14
+    index = 13;
 
     positionCorrectionData[index].correctionValueDirection.direction=180;
     positionCorrectionData[index].correctionValueDirection.condition=HIGH;
