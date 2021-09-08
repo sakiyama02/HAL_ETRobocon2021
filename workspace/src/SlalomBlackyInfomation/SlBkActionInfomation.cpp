@@ -126,9 +126,30 @@ SlBkActionInfomation::SlBkActionInfomation(){
     changeInfoData[index].distance=0;
     changeInfoData[index].judge=JUDGE_POS;
     changeInfoData[index].section_act=STRAIGHT;
-    changeInfoData[index].speed=25;
+    changeInfoData[index].speed=15;
 
     index++;
+/*
+    changeInfoData[index].direction_data.direction=90;
+    changeInfoData[index].direction_data.condition=LOW;
+
+    changeInfoData[index].judge=JUDGE_DIR;
+    changeInfoData[index].section_act=CURVE;
+    changeInfoData[index].speed=20;//5;
+
+
+    index++;
+
+    changeInfoData[index].direction_data.direction=270;
+    changeInfoData[index].direction_data.condition=HIGH;
+
+    changeInfoData[index].judge=JUDGE_DIR;
+    changeInfoData[index].section_act=CURVE;
+    changeInfoData[index].speed=5;
+
+
+    index++;
+*/
 
     //5
     changeInfoData[index].direction_data.direction=180;
@@ -136,7 +157,7 @@ SlBkActionInfomation::SlBkActionInfomation(){
 
     changeInfoData[index].judge=JUDGE_DIR;
     changeInfoData[index].section_act=CURVE;
-    changeInfoData[index].speed=20;//5;
+    changeInfoData[index].speed=10;//5;
 
 
     index++;
@@ -187,7 +208,7 @@ SlBkActionInfomation::SlBkActionInfomation(){
 
     //9
     changeInfoData[index].pos_info_data.potision.xPosition=225;
-    changeInfoData[index].pos_info_data.potision.yPosition=2835;//2876+//2780
+    changeInfoData[index].pos_info_data.potision.yPosition=2800;//2876+//2780
     changeInfoData[index].pos_info_data.xCondition=NONE;
     changeInfoData[index].pos_info_data.yCondition=LOW;
 
@@ -199,7 +220,7 @@ SlBkActionInfomation::SlBkActionInfomation(){
     index++;
 //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
     //10
-    /*changeInfoData[index].direction_data.direction=215;//265;
+    changeInfoData[index].direction_data.direction=215;//265;
     changeInfoData[index].direction_data.condition=HIGH;
 
     changeInfoData[index].distance=0;
@@ -207,21 +228,10 @@ SlBkActionInfomation::SlBkActionInfomation(){
     changeInfoData[index].section_act=TURN;
     changeInfoData[index].speed=20;
 
-    index++;*/
-
-    //changeInfoData[index].direction_data.direction=205;
-    //changeInfoData[index].direction_data.condition=HIGH;
-    changeInfoData[index].vData.v=90;
-    changeInfoData[index].vData.condition=LOW;  
-
-    changeInfoData[index].judge=JUDGE_DIR;
-    changeInfoData[index].section_act=CURVE;
-    changeInfoData[index].speed=30;//5;
     index++;
-//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
     //11
-    /*
-    changeInfoData[index].vData.v=90;
+    changeInfoData[index].vData.v=85;
     changeInfoData[index].vData.condition=LOW;  
     changeInfoData[index].judge=JUDGE_V;
     changeInfoData[index].section_act=STRAIGHT;
@@ -229,11 +239,11 @@ SlBkActionInfomation::SlBkActionInfomation(){
     
     index++;
     //12
-    /*changeInfoData[index].vData.v=90;
-    changeInfoData[index].vData.condition=LOW;//HIGH;  
+    changeInfoData[index].vData.v=90;
+    changeInfoData[index].vData.condition=HIGH;  
     changeInfoData[index].judge=JUDGE_V;
     changeInfoData[index].section_act=STRAIGHT;
-    changeInfoData[index].speed=10;
+    changeInfoData[index].speed=20;
 /*
     changeInfoData[index].pos_info_data.potision.xPosition=200;
     changeInfoData[index].pos_info_data.potision.yPosition=2800;//2876
@@ -246,10 +256,9 @@ SlBkActionInfomation::SlBkActionInfomation(){
     changeInfoData[index].speed=10;
 */
 
-    //index++;
+    index++;
 
     //13
-    /*
     changeInfoData[index].direction_data.direction=180;
     changeInfoData[index].direction_data.condition=LOW;
 
@@ -260,19 +269,7 @@ SlBkActionInfomation::SlBkActionInfomation(){
 
     index++;
 
-    //11
-    changeInfoData[index].pos_info_data.potision.xPosition=200;
-    changeInfoData[index].pos_info_data.potision.yPosition=2690;//2876
-    changeInfoData[index].pos_info_data.xCondition=NONE;
-    changeInfoData[index].pos_info_data.yCondition=LOW;
-    changeInfoData[index].distance=0;
-    changeInfoData[index].judge=JUDGE_POS;
-    changeInfoData[index].section_act=LINE_TRACE;
-    changeInfoData[index].speed=10;
-
-    index++;*/
-//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-    //11
+    //14
     changeInfoData[index].pos_info_data.potision.xPosition=200;
     changeInfoData[index].pos_info_data.potision.yPosition=2690;//2876
     changeInfoData[index].pos_info_data.xCondition=NONE;
@@ -284,7 +281,7 @@ SlBkActionInfomation::SlBkActionInfomation(){
 
     index++;
 
-    //12
+    //15
     changeInfoData[index].pos_info_data.potision.xPosition=200;
     changeInfoData[index].pos_info_data.potision.yPosition=2600;//2876
     changeInfoData[index].pos_info_data.xCondition=NONE;
@@ -296,7 +293,7 @@ SlBkActionInfomation::SlBkActionInfomation(){
 
     index++;
 
-    //13
+    //16
     changeInfoData[index].sData.s=80;
     changeInfoData[index].sData.condition=HIGH;
 
@@ -304,7 +301,7 @@ SlBkActionInfomation::SlBkActionInfomation(){
     changeInfoData[index].judge=JUDGE_S;
     changeInfoData[index].section_act=LINE_TRACE;
     changeInfoData[index].speed=10;
-    index++;
+
 
 
 }
