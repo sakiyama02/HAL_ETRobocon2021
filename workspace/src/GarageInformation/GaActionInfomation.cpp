@@ -228,7 +228,7 @@ GaActionInfomation::GaActionInfomation(){
 */
 
 //15 左90度カーブ
-    changeInfoData[index].direction_data.direction=0;
+    changeInfoData[index].direction_data.direction=10;
     changeInfoData[index].direction_data.condition=LOW;
     changeInfoData[index].judge=JUDGE_DIR;
     changeInfoData[index].section_act=CURVE;
@@ -244,7 +244,7 @@ GaActionInfomation::GaActionInfomation(){
     index++;
 
 //17 右90度カーブ
-    changeInfoData[index].direction_data.direction=125; //130
+    changeInfoData[index].direction_data.direction=135; //130
     changeInfoData[index].direction_data.condition=HIGH;
     changeInfoData[index].judge=JUDGE_DIR;
     changeInfoData[index].section_act=CURVE;
@@ -286,7 +286,7 @@ GaActionInfomation::GaActionInfomation(){
     index++; 
 
 //22 マップ上方向まで旋回
-    changeInfoData[index].direction_data.direction=178;
+    changeInfoData[index].direction_data.direction=205;
     changeInfoData[index].direction_data.condition=HIGH;
     changeInfoData[index].judge=JUDGE_DIR;
     changeInfoData[index].section_act=TURN;
@@ -304,9 +304,9 @@ GaActionInfomation::GaActionInfomation(){
     index++;
 
 //24 黒ラインまで青ライントレース
-    changeInfoData[index].sData.s=80;
-    changeInfoData[index].sData.condition=LOW;
-    changeInfoData[index].judge=JUDGE_S;
+    changeInfoData[index].vData.v=100;
+    changeInfoData[index].vData.condition=LOW;
+    changeInfoData[index].judge=JUDGE_V;
     changeInfoData[index].section_act=LINE_TRACE;
     changeInfoData[index].speed=10;
     index++;

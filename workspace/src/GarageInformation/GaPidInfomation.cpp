@@ -81,8 +81,8 @@ index++;
 //24
     pidData[index].pGain=0.05f;
     pidData[index].iGain=0.005f;
-    pidData[index].dGain=0.05f;
-    pidData[index].targetVal=100;
+    pidData[index].dGain=0.08f;
+    pidData[index].targetVal=95;
     index++;
 //25
     pidData[index].pGain=0.05f;

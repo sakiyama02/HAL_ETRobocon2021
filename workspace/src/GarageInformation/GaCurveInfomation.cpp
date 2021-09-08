@@ -56,13 +56,13 @@ index++;
     index++;
 
 //16
-    curveData[index].radius=210;
+    curveData[index].radius=180;
     curveData[index].dirction=CURVE_RIGHT;
 
     index++;
 
 //17
-    curveData[index].radius=400;
+    curveData[index].radius=300;
     curveData[index].dirction=CURVE_RIGHT;
     index++;
 
