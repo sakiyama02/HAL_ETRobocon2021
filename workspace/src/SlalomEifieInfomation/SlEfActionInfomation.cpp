@@ -238,7 +238,7 @@ SlEfActionInfomation::SlEfActionInfomation(){
 
 
     //7直進する
-    changeInfoData[index].pos_info_data.potision.yPosition=2800;
+    changeInfoData[index].pos_info_data.potision.yPosition=3900*2*0.3527;//2800;
     changeInfoData[index].pos_info_data.xCondition=NONE;
     changeInfoData[index].pos_info_data.yCondition=LOW;
 
