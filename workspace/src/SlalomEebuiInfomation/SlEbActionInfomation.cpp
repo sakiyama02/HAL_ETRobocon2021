@@ -287,7 +287,7 @@ SlEbActionInfomation::SlEbActionInfomation(){
     index++;
 //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
     //19
-    changeInfoData[index].pos_info_data.potision.xPosition=430;//380;
+    changeInfoData[index].pos_info_data.potision.xPosition=440;//380;
     changeInfoData[index].pos_info_data.xCondition=LOW;
     changeInfoData[index].pos_info_data.yCondition=NONE;
 
@@ -298,6 +298,22 @@ SlEbActionInfomation::SlEbActionInfomation(){
 
     index++;
 //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+    //20
+    changeInfoData[index].direction_data.direction=130;//147;
+    changeInfoData[index].direction_data.condition=HIGH;
+
+    changeInfoData[index].judge=JUDGE_DIR;
+    changeInfoData[index].section_act=CURVE;
+    changeInfoData[index].speed=5;
+    index++;
+    //21
+    changeInfoData[index].direction_data.direction=133;//147;
+    changeInfoData[index].direction_data.condition=HIGH;
+
+    changeInfoData[index].judge=JUDGE_DIR;
+    changeInfoData[index].section_act=CURVE;
+    changeInfoData[index].speed=5;
+    index++;
 }
 
 SlEbActionInfomation::~SlEbActionInfomation(){

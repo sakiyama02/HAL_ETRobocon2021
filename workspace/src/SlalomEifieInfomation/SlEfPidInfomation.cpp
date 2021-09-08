@@ -23,14 +23,21 @@ SlEfpidInfomation::SlEfpidInfomation(){
 
     index++;
 */    
-//16←ないほうがいいかも
-    index=17;
-    //index=16;
+//14←ないほうがいいかも
+    index=13;//14;//15;
     pidData[index].pGain=0.3f;
-    pidData[index].iGain=0;//0.2f
-    pidData[index].dGain=0;//0.05
+    pidData[index].iGain=0.01;//0.2f
+    pidData[index].dGain=0.03;//0.05
     pidData[index].targetVal=80;
 
+//15
+    index=14;
+    pidData[index].pGain=0.03f;
+    pidData[index].iGain=0.001;//0.2f
+    pidData[index].dGain=0.03;//0.05
+    pidData[index].targetVal=80;
+
+    index++;
 
 }
 
@@ -44,5 +51,6 @@ int8 SlEfpidInfomation::getter(int16 scene_num,PIDData* pid_data){
 
     return SYS_OK;
 }
+
 
 

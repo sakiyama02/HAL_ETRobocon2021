@@ -9,8 +9,8 @@ CarPosition::CarPosition()
     carPos.yPosition = 277 * 0.3527 * 2;
     
     /*
-    carPos.xPosition = 3457 * 0.3527 * 2;
-    carPos.yPosition = 277 * 0.3527 * 2;
+    carPos.xPosition = 1762.79;
+    carPos.yPosition = 3392.27;
     */
     carDirection = 90.0f;
 }
