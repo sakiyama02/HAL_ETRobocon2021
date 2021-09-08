@@ -72,7 +72,7 @@ GaActionInfomation::GaActionInfomation(){
 
 
 //1 90度右旋回
-    changeInfoData[index].direction_data.direction=95;  //上方向の誤差が許されないため、＋２度
+    changeInfoData[index].direction_data.direction=95;  //上方向の誤差が許されないため、＋５度
     changeInfoData[index].direction_data.condition=LOW;
     changeInfoData[index].judge=JUDGE_DIR;
     changeInfoData[index].section_act=TURN;
@@ -146,7 +146,7 @@ GaActionInfomation::GaActionInfomation(){
     index++;
 
 //9 線分FJ手前まで前進
-    changeInfoData[index].pos_info_data.potision.xPosition=2098*2*0.3527;
+    changeInfoData[index].pos_info_data.potision.xPosition=2298*2*0.3527;
     changeInfoData[index].pos_info_data.potision.yPosition=3700*2*0.3527;
     changeInfoData[index].pos_info_data.xCondition=NONE;
     changeInfoData[index].pos_info_data.yCondition=LOW;
@@ -186,7 +186,7 @@ GaActionInfomation::GaActionInfomation(){
     index++;
 
 //12 点F（ブロックある場所）手前までライントレース
-    changeInfoData[index].pos_info_data.potision.xPosition=2050*2*0.3527;
+    changeInfoData[index].pos_info_data.potision.xPosition=2150*2*0.3527;
     changeInfoData[index].pos_info_data.potision.yPosition=3463*2*0.3527;
     changeInfoData[index].pos_info_data.xCondition=LOW;
     changeInfoData[index].pos_info_data.yCondition=NONE;
@@ -286,14 +286,14 @@ GaActionInfomation::GaActionInfomation(){
     index++; 
 
 //22 マップ上方向まで旋回
-    changeInfoData[index].direction_data.direction=175;
+    changeInfoData[index].direction_data.direction=178;
     changeInfoData[index].direction_data.condition=HIGH;
     changeInfoData[index].judge=JUDGE_DIR;
     changeInfoData[index].section_act=TURN;
     changeInfoData[index].speed=10;
     index++;
 
-//23 青ラインまでライントレース
+//23 青ラインまで黒ライントレース
     changeInfoData[index].pos_info_data.potision.xPosition=1900*2*0.3527;
     changeInfoData[index].pos_info_data.potision.yPosition=3613*2*0.3527;
     changeInfoData[index].pos_info_data.xCondition=NONE;
@@ -303,7 +303,7 @@ GaActionInfomation::GaActionInfomation(){
     changeInfoData[index].speed=10;
     index++;
 
-//24 黒ラインまでライントレース
+//24 黒ラインまで青ライントレース
     changeInfoData[index].sData.s=80;
     changeInfoData[index].sData.condition=LOW;
     changeInfoData[index].judge=JUDGE_S;
@@ -311,7 +311,7 @@ GaActionInfomation::GaActionInfomation(){
     changeInfoData[index].speed=10;
     index++;
 
-//25 黒ライン外に出るまでライントレース
+//25 黒ライン外に出るまで黒ライントレース
     changeInfoData[index].distance=25;
     changeInfoData[index].judge=JUDGE_DIS;
     changeInfoData[index].section_act=LINE_TRACE;
