@@ -70,41 +70,41 @@ TiPidInfomation::TiPidInfomation(){
     pidData[index].dGain=0.07f;
     pidData[index].targetVal=target;
 
-    index=18;
+    index=19;
     pidData[index].pGain=0.01f;
     pidData[index].iGain=0.01f;
     pidData[index].dGain=0.01f;
     pidData[index].targetVal=target;
 
-    index=19;
-    pidData[index].pGain=0.3f;
-    pidData[index].iGain=0.3f;
-    pidData[index].dGain=0.15f;
-    pidData[index].targetVal=target;
-
     index=20;
-    pidData[index].pGain=0.3f;
+    pidData[index].pGain=0.4f;
     pidData[index].iGain=0.3f;
     pidData[index].dGain=0.15f;
     pidData[index].targetVal=target;
 
     index=21;
+    pidData[index].pGain=0.4f;
+    pidData[index].iGain=0.3f;
+    pidData[index].dGain=0.15f;
+    pidData[index].targetVal=target;
+
+    index=22;
     pidData[index].pGain=0.3f;
     pidData[index].iGain=0.25f;
     pidData[index].dGain=0.1f;
     pidData[index].targetVal=125;
 
-    index=22;
+    index=23;
     pidData[index].pGain=0.4f;
     pidData[index].iGain=0.4f;
     pidData[index].dGain=0.1f;
     pidData[index].targetVal=target;
 
-    index=23;
+    index=24;
     pidData[index].pGain=0.3f;
     pidData[index].iGain=0.25f;
     pidData[index].dGain=0.1f;
-    pidData[index].targetVal=125;
+    pidData[index].targetVal=133;
 
 }
 
