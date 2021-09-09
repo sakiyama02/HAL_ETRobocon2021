@@ -69,8 +69,9 @@ GaActionInfomation::GaActionInfomation(){
 
     index++;
 */
-//1 90度右旋回
 
+
+//1 90度右旋回
     changeInfoData[index].direction_data.direction=95;  //上方向の誤差が許されないため、＋５度
     changeInfoData[index].direction_data.condition=LOW;
     changeInfoData[index].judge=JUDGE_DIR;
@@ -85,7 +86,7 @@ GaActionInfomation::GaActionInfomation(){
     changeInfoData[index].pos_info_data.yCondition=NONE;
     changeInfoData[index].judge=JUDGE_POS;
     changeInfoData[index].section_act=STRAIGHT;
-    changeInfoData[index].speed=-90;
+    changeInfoData[index].speed=-60;
     index++;
 
 //3 バック走行　ボーナスエリア～線分BC
@@ -243,7 +244,7 @@ GaActionInfomation::GaActionInfomation(){
     index++;
 
 //17 右90度カーブ
-    changeInfoData[index].direction_data.direction=135; //130
+    changeInfoData[index].direction_data.direction=130; //130
     changeInfoData[index].direction_data.condition=HIGH;
     changeInfoData[index].judge=JUDGE_DIR;
     changeInfoData[index].section_act=CURVE;
@@ -293,10 +294,6 @@ GaActionInfomation::GaActionInfomation(){
     index++;
 
 //23 青ラインまで黒ライントレース
-    //changeInfoData[index].pos_info_data.potision.xPosition=1900*2*0.3527;
-    //changeInfoData[index].pos_info_data.potision.yPosition=3613*2*0.3527;
-    //changeInfoData[index].pos_info_data.xCondition=NONE;
-    //changeInfoData[index].pos_info_data.yCondition=LOW;
     changeInfoData[index].distance=50;
     changeInfoData[index].judge=JUDGE_DIS;
     changeInfoData[index].section_act=LINE_TRACE;
@@ -304,9 +301,6 @@ GaActionInfomation::GaActionInfomation(){
     index++;
 
 //24 黒ラインまで青ライントレース
-    //changeInfoData[index].vData.v=100;
-    //changeInfoData[index].vData.condition=LOW;
-    //changeInfoData[index].judge=JUDGE_V;
     changeInfoData[index].distance=35;
     changeInfoData[index].judge=JUDGE_DIS;
     changeInfoData[index].section_act=LINE_TRACE;

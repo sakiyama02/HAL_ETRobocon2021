@@ -73,22 +73,22 @@ index++;
 //22
 index++;
 //23
-    pidData[index].pGain=0.03f;
-    pidData[index].iGain=0.001f;
-    pidData[index].dGain=0.03f;
+    pidData[index].pGain=0.05f;
+    pidData[index].iGain=0.005f;
+    pidData[index].dGain=0.05f;
     pidData[index].targetVal=50;
     index++;
 //24
     pidData[index].pGain=0.05f;
     pidData[index].iGain=0.005f;
-    pidData[index].dGain=0.08f;
-    pidData[index].targetVal=95;
+    pidData[index].dGain=0.05f;
+    pidData[index].targetVal=125;
     index++;
 //25
     pidData[index].pGain=0.05f;
     pidData[index].iGain=0.005f;
     pidData[index].dGain=0.08f;
-    pidData[index].targetVal=100;
+    pidData[index].targetVal=96;
     index++;
 }
 

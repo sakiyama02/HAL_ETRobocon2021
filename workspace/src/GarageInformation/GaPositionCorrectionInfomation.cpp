@@ -396,6 +396,7 @@ index++;
 */
 
 //25
+/*
     positionCorrectionData[index].correctionValue.potision.xPosition=1900*2*0.3527;
     positionCorrectionData[index].correctionValue.potision.yPosition=3385*2*0.3527;
     positionCorrectionData[index].correctionValue.xCondition=LOW;
@@ -406,6 +407,7 @@ index++;
     positionCorrectionData[index].correctionS.condition = LOW;
     positionCorrectionData[index].correctionCondition=JUDGE_S;
     index++;
+    */
 }
 
 GaPositionCorrectionInfomation::~GaPositionCorrectionInfomation(){
