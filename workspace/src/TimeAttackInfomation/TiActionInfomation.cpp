@@ -306,7 +306,7 @@ TiActionInfomation::TiActionInfomation(){
     index++;
 
     index = 19;
-    changeInfoData[index].vData.v=100;
+    changeInfoData[index].vData.v=85;
     changeInfoData[index].vData.condition=LOW;
 
     changeInfoData[index].judge=JUDGE_V;
