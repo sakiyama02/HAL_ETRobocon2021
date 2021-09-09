@@ -69,9 +69,8 @@ GaActionInfomation::GaActionInfomation(){
 
     index++;
 */
-
-
 //1 90度右旋回
+
     changeInfoData[index].direction_data.direction=95;  //上方向の誤差が許されないため、＋５度
     changeInfoData[index].direction_data.condition=LOW;
     changeInfoData[index].judge=JUDGE_DIR;
@@ -228,7 +227,7 @@ GaActionInfomation::GaActionInfomation(){
 */
 
 //15 左90度カーブ
-    changeInfoData[index].direction_data.direction=0;
+    changeInfoData[index].direction_data.direction=10;
     changeInfoData[index].direction_data.condition=LOW;
     changeInfoData[index].judge=JUDGE_DIR;
     changeInfoData[index].section_act=CURVE;
@@ -244,7 +243,7 @@ GaActionInfomation::GaActionInfomation(){
     index++;
 
 //17 右90度カーブ
-    changeInfoData[index].direction_data.direction=125; //130
+    changeInfoData[index].direction_data.direction=135; //130
     changeInfoData[index].direction_data.condition=HIGH;
     changeInfoData[index].judge=JUDGE_DIR;
     changeInfoData[index].section_act=CURVE;
@@ -286,7 +285,7 @@ GaActionInfomation::GaActionInfomation(){
     index++; 
 
 //22 マップ上方向まで旋回
-    changeInfoData[index].direction_data.direction=178;
+    changeInfoData[index].direction_data.direction=215;
     changeInfoData[index].direction_data.condition=HIGH;
     changeInfoData[index].judge=JUDGE_DIR;
     changeInfoData[index].section_act=TURN;
@@ -294,19 +293,22 @@ GaActionInfomation::GaActionInfomation(){
     index++;
 
 //23 青ラインまで黒ライントレース
-    changeInfoData[index].pos_info_data.potision.xPosition=1900*2*0.3527;
-    changeInfoData[index].pos_info_data.potision.yPosition=3613*2*0.3527;
-    changeInfoData[index].pos_info_data.xCondition=NONE;
-    changeInfoData[index].pos_info_data.yCondition=LOW;
-    changeInfoData[index].judge=JUDGE_POS;
+    //changeInfoData[index].pos_info_data.potision.xPosition=1900*2*0.3527;
+    //changeInfoData[index].pos_info_data.potision.yPosition=3613*2*0.3527;
+    //changeInfoData[index].pos_info_data.xCondition=NONE;
+    //changeInfoData[index].pos_info_data.yCondition=LOW;
+    changeInfoData[index].distance=50;
+    changeInfoData[index].judge=JUDGE_DIS;
     changeInfoData[index].section_act=LINE_TRACE;
     changeInfoData[index].speed=10;
     index++;
 
 //24 黒ラインまで青ライントレース
-    changeInfoData[index].sData.s=80;
-    changeInfoData[index].sData.condition=LOW;
-    changeInfoData[index].judge=JUDGE_S;
+    //changeInfoData[index].vData.v=100;
+    //changeInfoData[index].vData.condition=LOW;
+    //changeInfoData[index].judge=JUDGE_V;
+    changeInfoData[index].distance=35;
+    changeInfoData[index].judge=JUDGE_DIS;
     changeInfoData[index].section_act=LINE_TRACE;
     changeInfoData[index].speed=10;
     index++;
