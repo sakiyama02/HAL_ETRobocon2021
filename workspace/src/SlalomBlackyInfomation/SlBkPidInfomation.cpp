@@ -17,21 +17,19 @@ SlBkpidInfomation::SlBkpidInfomation(){
     pidData[index].pGain=0f;
     pidData[index].iGain=0f;
     pidData[index].dGain=0f;
-
     //v値の設定
     pidData[index].targetVal=0f;
-
     index++;
 */    
-//14
-    index = 13;
+//10
+    index = 9;
     pidData[index].pGain=0.1f;
     pidData[index].iGain=0.001;//0.2f
     pidData[index].dGain=0.03;//0.05
     pidData[index].targetVal=80;
 
     index++;
-//15←ないほうがいいかも
+//11←ないほうがいいかも
     pidData[index].pGain=0.03f;
     pidData[index].iGain=0.001;//0.2f
     pidData[index].dGain=0.03;//0.05
@@ -52,4 +50,3 @@ int8 SlBkpidInfomation::getter(int16 scene_num,PIDData* pid_data){
 
     return SYS_OK;
 }
-
