@@ -46,12 +46,12 @@ TiCurveInfomation::TiCurveInfomation(){
     curveData[index].radius=180;
     curveData[index].dirction=CURVE_RIGHT;
 
-    index=14;
-    curveData[index].radius=75.1251+145;
+    index=15;
+    curveData[index].radius=75.1251+73;
     curveData[index].dirction=CURVE_LEFT;
 
-    index=16;
-    curveData[index].radius=270;
+    index=17;
+    curveData[index].radius=150;
     curveData[index].dirction=CURVE_RIGHT;
 }
 

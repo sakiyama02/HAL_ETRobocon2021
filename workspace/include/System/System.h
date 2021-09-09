@@ -9,7 +9,7 @@
 #define SYS_OK 0    //正常終了
 #define SYS_NG 1    //異常終了
 #define SYS_PARAM 2 //引数エラー
-#define TIMEATTACK_NUM 24 
+#define TIMEATTACK_NUM 25 
 #define SLALOMEEBUI_NUM 21
 #define SLALOMEIFIE_NUM 16
 #define SLALOMBLACKY_NUM 12

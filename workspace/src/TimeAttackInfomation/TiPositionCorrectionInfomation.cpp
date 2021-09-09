@@ -112,20 +112,20 @@ TiPositionCorrectionInfomation::TiPositionCorrectionInfomation(){
     positionCorrectionData[index].correctionPosition.yCondition=NONE;
     positionCorrectionData[index].correctionCondition=JUDGE_POS;
 
-    index=11;
+    index=14;
     positionCorrectionData[index].correctionValue.potision.xPosition=0; 
-    positionCorrectionData[index].correctionValue.potision.yPosition=1213.288;
+    positionCorrectionData[index].correctionValue.potision.yPosition=1467.9374;
     positionCorrectionData[index].correctionValue.xCondition=NONE;
     positionCorrectionData[index].correctionValue.yCondition=HIGH;
     positionCorrectionData[index].correctionValueDirection.direction=0;
     positionCorrectionData[index].correctionValueDirection.condition=NONE;
 
-    positionCorrectionData[index].correctionV.v=60;
-    positionCorrectionData[index].correctionV.condition=LOW;
+    positionCorrectionData[index].correctionS.s=100;
+    positionCorrectionData[index].correctionS.condition=LOW;
 
-    positionCorrectionData[index].correctionCondition=JUDGE_V;
+    positionCorrectionData[index].correctionCondition=JUDGE_S;
 
-    index=21;
+    index=22;
     positionCorrectionData[index].correctionValue.potision.xPosition=1914.4556; 
     positionCorrectionData[index].correctionValue.potision.yPosition=3392.974;
     positionCorrectionData[index].correctionValue.xCondition=HIGH;
@@ -139,7 +139,7 @@ TiPositionCorrectionInfomation::TiPositionCorrectionInfomation(){
     positionCorrectionData[index].correctionCondition=JUDGE_S;
 
     //タイムアタック終了時の補正
-    index=23;
+    index=24;
     positionCorrectionData[index].correctionValue.potision.xPosition=1762.79;
     positionCorrectionData[index].correctionValue.potision.yPosition=3392.27;
     positionCorrectionData[index].correctionValue.xCondition=HIGH;
