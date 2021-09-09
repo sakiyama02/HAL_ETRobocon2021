@@ -85,7 +85,7 @@ GaActionInfomation::GaActionInfomation(){
     changeInfoData[index].pos_info_data.yCondition=NONE;
     changeInfoData[index].judge=JUDGE_POS;
     changeInfoData[index].section_act=STRAIGHT;
-    changeInfoData[index].speed=-60;
+    changeInfoData[index].speed=-90;
     index++;
 
 //3 バック走行　ボーナスエリア～線分BC
