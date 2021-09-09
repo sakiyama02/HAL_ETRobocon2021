@@ -69,8 +69,9 @@ GaActionInfomation::GaActionInfomation(){
 
     index++;
 */
-//1 90度右旋回
 
+
+//1 90度右旋回
     changeInfoData[index].direction_data.direction=95;  //上方向の誤差が許されないため、＋５度
     changeInfoData[index].direction_data.condition=LOW;
     changeInfoData[index].judge=JUDGE_DIR;
@@ -85,7 +86,7 @@ GaActionInfomation::GaActionInfomation(){
     changeInfoData[index].pos_info_data.yCondition=NONE;
     changeInfoData[index].judge=JUDGE_POS;
     changeInfoData[index].section_act=STRAIGHT;
-    changeInfoData[index].speed=-90;
+    changeInfoData[index].speed=-60;
     index++;
 
 //3 バック走行　ボーナスエリア～線分BC
@@ -227,7 +228,7 @@ GaActionInfomation::GaActionInfomation(){
 */
 
 //15 左90度カーブ
-    changeInfoData[index].direction_data.direction=10;
+    changeInfoData[index].direction_data.direction=0;
     changeInfoData[index].direction_data.condition=LOW;
     changeInfoData[index].judge=JUDGE_DIR;
     changeInfoData[index].section_act=CURVE;
@@ -243,7 +244,7 @@ GaActionInfomation::GaActionInfomation(){
     index++;
 
 //17 右90度カーブ
-    changeInfoData[index].direction_data.direction=135; //130
+    changeInfoData[index].direction_data.direction=125; //130
     changeInfoData[index].direction_data.condition=HIGH;
     changeInfoData[index].judge=JUDGE_DIR;
     changeInfoData[index].section_act=CURVE;
@@ -285,7 +286,7 @@ GaActionInfomation::GaActionInfomation(){
     index++; 
 
 //22 マップ上方向まで旋回
-    changeInfoData[index].direction_data.direction=215;
+    changeInfoData[index].direction_data.direction=178;
     changeInfoData[index].direction_data.condition=HIGH;
     changeInfoData[index].judge=JUDGE_DIR;
     changeInfoData[index].section_act=TURN;
@@ -319,6 +320,7 @@ GaActionInfomation::GaActionInfomation(){
     changeInfoData[index].section_act=LINE_TRACE;
     changeInfoData[index].speed=7;
     index++;
+
 
 /*
 //17

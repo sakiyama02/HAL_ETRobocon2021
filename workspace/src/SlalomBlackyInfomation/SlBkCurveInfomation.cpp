@@ -28,7 +28,7 @@ SlBkCurveInfomation::SlBkCurveInfomation(){
     //4
     index=3;
  
-    curveData[index].radius=330;//365;
+    curveData[index].radius=250;//365;
     curveData[index].dirction=CURVE_RIGHT;
  
     //9
@@ -47,4 +47,3 @@ int8 SlBkCurveInfomation::getter(int16 scene_num,CurveData* curve_data){
  
     return SYS_OK;
 }
-
