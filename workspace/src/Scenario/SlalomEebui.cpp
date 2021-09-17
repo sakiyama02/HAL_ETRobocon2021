@@ -1,6 +1,15 @@
 #include "../../include/Scenario/SlalomEebui.h"
 SlalomEebui::SlalomEebui(){}
 SlalomEebui::~SlalomEebui(){}
+/* -------------------------------------------------------------------------- */
+/* 関数名       ：run                                                          */
+/* 機能名       ：実行                                                         */
+/* 機能概要     ：イーブイシーンインフォから取得した情報を使って、                */
+/*               動作と補正に値を受け渡す                                       */
+/* 引数         ：int16、scene_num、シナリオ制御から受け渡されたシーン番号       */
+/* 戻り値       ：int8、エラー通知                                             */
+/* 作成日       ：7月23日、渡部湧也                                            */
+/* -------------------------------------------------------------------------- */
 int8 SlalomEebui::run(int16 scene_num) {
 
     //スラロームイーブイにシーンが一つもない場合正常終了
@@ -104,9 +113,16 @@ int8 SlalomEebui::run(int16 scene_num) {
     return retChk;
 }
 
-//
-//更新タスクでの処理
-//
+/* -------------------------------------------------------------------------- */
+/* 関数名       ：sceneChenge                                                  */
+/* 機能名       ：更新                                                         */
+/* 機能概要     ：シーン更新確認                                                */
+/* 引数         ：int16*、scene_num、                   　                     */
+/*               シナリオ制御から受け渡されたシーン番号ポインタ                  */
+/*               シーン番号を変更で、シナリオ制御に受け渡す                     */
+/* 戻り値       ：int8、エラー通知                                             */
+/* 作成日       ：7月23日、渡部湧也                                            */
+/* -------------------------------------------------------------------------- */
 int8 SlalomEebui::sceneChenge(int16* scene_num){
     //引数のエラーチェック
     if(scene_num==NULL){
@@ -256,14 +272,18 @@ int8 SlalomEebui::sceneChenge(int16* scene_num){
     return retChk;
 }
 
-//
-//コードがネストで逝ってしまいそうなので臨時で作成（検討する必要がある）
-//
-
-//rgbの判定
-//引数：現在のrgb値、目標のrgb値、(現在と目標の差分範囲の指定値)
-//戻り値：切り替え条件を満たしていればSYS_OK
-//        切り替え条件を満たしていなければSYS_NG
+/* -------------------------------------------------------------------------- */
+/* 関数名       ：colorJudge                                                  */
+/* 機能名       ：rgbの判定                                                    */
+/* 機能概要     ：rgb情報をみてアクションのシーン更新確認                        */
+/*                rgbの場合すべての値が差分範囲に収まる場合切り替え              */
+/* 引数         ：RGBData、cur_rgbdata、現在のrgb値                            */
+/*               RGBData、change_rgbdata、目標のrgb値                          */
+/*               Range、condition、現在と目標の差分範囲の指定                   */
+/* 戻り値       ：int8、切り替え条件を満たしていればSYS_OK                      */
+//                     切り替え条件を満たしていなければSYS_NG                   */
+/* 作成日       ：7月23日、渡部湧也                                            */
+/* -------------------------------------------------------------------------- */
 int8 SlalomEebui::colorJudge(RGBData cur_rgbdata,RGBData change_rgbdata,Range condition){
     int8 resultr=0;
     int8 resultg=0;
@@ -297,10 +317,17 @@ int8 SlalomEebui::colorJudge(RGBData cur_rgbdata,RGBData change_rgbdata,Range co
     return SYS_NG;
 }
 
-//X座標の判定
-//引数：現在のX座標値、目標のX座標値、現在と目標の差分範囲の指定値
-//戻り値：切り替え条件を満たしていればSYS_OK
-//        切り替え条件を満たしていなければSYS_NG
+/* -------------------------------------------------------------------------- */
+/* 関数名       ：xPositionJudge                                              */
+/* 機能名       ：x座標の判定                                                  */
+/* 機能概要     ：x座標情報をみてアクションのシーン更新確認                      */
+/* 引数         ：float、cur_xpositiondata、現在のx座標                        */
+/*               float、change_xpositiondata、目標のx座標                      */
+/*               Range、condition、現在と目標の差分範囲の指定                   */
+/* 戻り値       ：int8、切り替え条件を満たしていればSYS_OK                      */
+//                     切り替え条件を満たしていなければSYS_NG                   */
+/* 作成日       ：7月23日、渡部湧也                                            */
+/* -------------------------------------------------------------------------- */
 int8 SlalomEebui::xPositionJudge(float cur_xpositionData,float change_xpositionData,Range condition){
     float resultx=0;
     resultx=cur_xpositionData-change_xpositionData;
@@ -325,10 +352,17 @@ int8 SlalomEebui::xPositionJudge(float cur_xpositionData,float change_xpositionD
     return SYS_NG;
 }
 
-//Y座標の判定
-//引数：現在のY座標値、目標のY座標値、現在と目標の差分範囲の指定値
-//戻り値：切り替え条件を満たしていればSYS_OK
-//        切り替え条件を満たしていなければSYS_NG
+/* -------------------------------------------------------------------------- */
+/* 関数名       ：yPositionJudge                                              */
+/* 機能名       ：y座標の判定                                                  */
+/* 機能概要     ：y座標情報をみてアクションのシーン更新確認                      */
+/* 引数         ：float、cur_ypositiondata、現在のy座標                        */
+/*               float、change_ypositiondata、目標のy座標                      */
+/*               Range、condition、現在と目標の差分範囲の指定                   */
+/* 戻り値       ：int8、切り替え条件を満たしていればSYS_OK                      */
+//                     切り替え条件を満たしていなければSYS_NG                   */
+/* 作成日       ：7月23日、渡部湧也                                            */
+/* -------------------------------------------------------------------------- */
 int8 SlalomEebui::yPositionJudge(float cur_ypositionData,float change_ypositionData,Range condition){
     float resulty=0;
     resulty=cur_ypositionData-change_ypositionData;
@@ -354,10 +388,16 @@ int8 SlalomEebui::yPositionJudge(float cur_ypositionData,float change_ypositionD
 }
 
 
-//距離の判定
-//引数：現在の距離値、目標の距離値
-//戻り値：切り替え条件を満たしていればSYS_OK
-//        切り替え条件を満たしていなければSYS_NG
+/* -------------------------------------------------------------------------- */
+/* 関数名       ：distanceJudge                                               */
+/* 機能名       ：距離の判定                                                   */
+/* 機能概要     ：距離情報をみてアクションのシーン更新確認                       */
+/* 引数         ：uint16、cur_distanceData、現在の距離                         */
+/*               uint16、change_distanceData、目標の距離                       */
+/* 戻り値       ：int8、切り替え条件を満たしていればSYS_OK                      */
+/*                     切り替え条件を満たしていなければSYS_NG                   */
+/* 作成日       ：7月23日、渡部湧也                                            */
+/* -------------------------------------------------------------------------- */
 int8 SlalomEebui::distanceJudge(uint16 cur_distanceData,uint16 change_distanceData){
     int16 resultdistance=0;
     resultdistance=cur_distanceData-change_distanceData;
@@ -379,11 +419,17 @@ int8 SlalomEebui::distanceJudge(uint16 cur_distanceData,uint16 change_distanceDa
     return SYS_NG;
 }
 
-//向きの判定
-//引数：現在の向き値、目標の向き値、現在と目標の差分範囲の指定値 
-//マイナスの値を入れるとバグるので注意
-//戻り値：切り替え条件を満たしていればSYS_OK
-//        切り替え条件を満たしていなければSYS_NG
+/* -------------------------------------------------------------------------- */
+/* 関数名       ：directionJudge                                              */
+/* 機能名       ：向きの判定                                                   */
+/* 機能概要     ：向き情報をみてアクションのシーン更新確認                       */
+/* 引数         ：float、cur_directionData、現在の向き                         */
+/*               float、change_directionData、目標の向き                       */
+/*               Range、condition、現在と目標の差分範囲の指定                   */
+/* 戻り値       ：int8、切り替え条件を満たしていればSYS_OK                      */
+//                     切り替え条件を満たしていなければSYS_NG                   */
+/* 作成日       ：7月23日、渡部湧也                                            */
+/* -------------------------------------------------------------------------- */
 int8 SlalomEebui::directionJudge(float cur_directionData,float change_directionData,Range condition){
     float resultdirection=0;
     resultdirection=cur_directionData-change_directionData;
@@ -408,7 +454,17 @@ int8 SlalomEebui::directionJudge(float cur_directionData,float change_directionD
     return SYS_NG;
 }
 
-//v値の判定
+/* -------------------------------------------------------------------------- */
+/* 関数名       ：vJudge　　　　                                               */
+/* 機能名       ：V値の判定                                                    */
+/* 機能概要     ：V値情報をみてアクションのシーン更新確認                        */
+/* 引数         ：uint16、cur_vData、現在のV値　　　                           */
+/*               uint16、change_vData、目標のV値                              */
+/*               Range、condition、現在と目標の差分範囲の指定                   */
+/* 戻り値       ：int8、切り替え条件を満たしていればSYS_OK                      */
+/*                     切り替え条件を満たしていなければSYS_NG                   */
+/* 作成日       ：7月23日、渡部湧也                                            */
+/* -------------------------------------------------------------------------- */
 int8 SlalomEebui::vJudge(uint16 cur_vData,uint16 change_vData,Range condition){
     int16 resultv=0;
     resultv=cur_vData-change_vData;
@@ -433,7 +489,17 @@ int8 SlalomEebui::vJudge(uint16 cur_vData,uint16 change_vData,Range condition){
     return SYS_NG;
 }
 
-//s値の判定
+/* -------------------------------------------------------------------------- */
+/* 関数名       ：sJudge　　　　                                               */
+/* 機能名       ：S値の判定                                                    */
+/* 機能概要     ：S値情報をみてアクションのシーン更新確認                        */
+/* 引数         ：uint16、cur_sData、現在のS値　　　                           */
+/*               uint16、change_sData、目標のS値                              */
+/*               Range、condition、現在と目標の差分範囲の指定                   */
+/* 戻り値       ：int8、切り替え条件を満たしていればSYS_OK                      */
+/*                     切り替え条件を満たしていなければSYS_NG                   */
+/* 作成日       ：7月23日、渡部湧也                                            */
+/* -------------------------------------------------------------------------- */
 int8 SlalomEebui::sJudge(uint16 cur_sData,uint16 change_sData,Range condition){
     int16 results=0;
     results=cur_sData-change_sData;
