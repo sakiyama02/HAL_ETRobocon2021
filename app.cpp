@@ -47,6 +47,7 @@ static void user_system_destroy()
     steering.deletePort();
 }
 /*  スタート処理タスク */
+//  :ログ、フライング、タスク等の初期化に必要な処理
 void start_task(intptr_t unused)
 {
     frLog &msg = frLog::GetInstance();
@@ -75,6 +76,7 @@ void start_task(intptr_t unused)
     ext_tsk();
 }
 /* メインタスク */
+//  :scenariocontrol.runを実行し走行処理を行った後、更新タスクを呼び出して自タスクを終了している
 void main_task(intptr_t unused)
 {
     frLog &msg = frLog::GetInstance();
@@ -89,6 +91,8 @@ void main_task(intptr_t unused)
     ext_tsk();
 }
 /* 更新タスク */
+//  :補正がONの場合は、使用する補正のタスクを起動する
+//  :機体情報の更新、シナリオの更新処理を行った後、メインタスクを呼び出して自タスクを終了している
 void updata_task(intptr_t unused)
 {
     frLog &msg = frLog::GetInstance();
@@ -107,6 +111,7 @@ void updata_task(intptr_t unused)
     positionCorrection.controltaskgetter(&controltask);
     positionCorrection.movetaskgetter(&movetask);
     switch(controltask){
+        //色補正
         case JUDGE_RGB:
             if(movetask==HIGH){
                 sta_cyc(COLORFIX_PERIOD);
@@ -120,6 +125,7 @@ void updata_task(intptr_t unused)
                 break;
             }
         break;
+        //座標補正
         case JUDGE_POS:
             if(movetask==HIGH){
                 sta_cyc(LINEFIX_PERIOD);
@@ -133,6 +139,7 @@ void updata_task(intptr_t unused)
                 break;
             }
         break;
+        //向き補正
         case JUDGE_DIR:
             if(movetask==HIGH){
                 sta_cyc(DIRECTIONFIX_PERIOD);
@@ -146,6 +153,7 @@ void updata_task(intptr_t unused)
                 break;
             }        
         break;
+        //送信補正
         case JUDGE_SEND:
             if(movetask==HIGH){
                 sta_cyc(SEND_PERIOD);
@@ -159,6 +167,7 @@ void updata_task(intptr_t unused)
                 break;
             }        
         break;
+        //V値補正
         case JUDGE_V:
             if(movetask==HIGH){
                 sta_cyc(VFIX_PERIOD);
@@ -172,6 +181,7 @@ void updata_task(intptr_t unused)
                 break;
             }        
         break;
+        //S値補正
         case JUDGE_S:
             if(movetask==HIGH){
                 sta_cyc(SFIX_PERIOD);
@@ -185,6 +195,7 @@ void updata_task(intptr_t unused)
                 break;
             }        
         break;
+        //距離補正
         case JUDGE_DIS:
             if(movetask==HIGH){
                 sta_cyc(DISTANCEFIX_PERIOD);
@@ -235,6 +246,7 @@ void updata_task(intptr_t unused)
     ext_tsk();
 }
 /* 終了タスク */
+//  :最終シナリオ終了後起動し、EV3システムの終了処理・台形制御の周期タスクの終了処理・ガレージ搬入後のカウントダウンを行い、終了する
 void end_task(intptr_t unused)
 {
     ter_tsk(MAIN_TASK);
@@ -250,6 +262,7 @@ void end_task(intptr_t unused)
     ext_tsk();
 }
 /* Bluetoothタスク */ 
+//  :実機のみシミュレータ環境では使用していない
 void bt_task(intptr_t unused)
 {
     //frLog &msg = frLog::GetInstance();
@@ -261,7 +274,10 @@ void bt_task(intptr_t unused)
     //msg.LOG(LOG_ID_TRACE, "Bluetoothエンド");
     ext_tsk();
 }
-/* 周期タスク処理 */
+
+/* 周期タスク処理 -------------------------------------- */
+//  :app.cfgでCRE_CYC内で宣言したタスクを周期タスクとして扱うことができ、周期時間もCRE_CYC内で宣言可能
+
 /* 台形制御タスク */
 void trapezoidal_task(intptr_t unused)
 {
@@ -276,6 +292,11 @@ void trapezoidal_task(intptr_t unused)
     }
 }
 //周期タスクスタート:sta_cyc(TRAPEZOIDAL_PERIOD)
+
+
+/* 補正周期タスク */
+//  :更新タスクで読みだされた際のみ起動する周期タスク
+
 /* 色補正タスク */
 void colorfix_task(intptr_t unused)
 {
