@@ -1,14 +1,28 @@
 
 #include "../../include/Steering/Steering.h"
-
+/* ------------------------------------------------------------------------- */
+/* 関数名		： steering												      */
+/* 機能名		： コンストラクタ										       */
+/* 機能概要		： メンバー変数の初期化									        */
+/* 引数			： なし													      */
+/* 戻り値		： なし                                     			      */
+/* 作成日		： 2021/07/23		 崎山　勇人		 新規作成			       */
+/* ------------------------------------------------------------------------- */
 Steering::Steering()
 {
-    motorAngle.leftAngle = 0;
+    motorAngle.leftAngle  = 0;
     motorAngle.rightAngle = 0;
 }
 
 Steering::~Steering(){}
-
+/* ------------------------------------------------------------------------- */
+/* 関数名		： init											    	      */
+/* 機能名		： 初期化       										      */
+/* 機能概要		： 各モータにポート番号を設定する						         */
+/* 引数			： なし													      */
+/* 戻り値		： int8				:0				:正常終了				  */
+/* 作成日		： 2021/07/23		 崎山　勇人		 新規作成			       */
+/* ------------------------------------------------------------------------- */
 int8 Steering::init()
 {
     frLog &msg = frLog::GetInstance();
@@ -45,7 +59,14 @@ int8 Steering::init()
 
     return SYS_OK;
 }
-
+/* ------------------------------------------------------------------------- */
+/* 関数名		： rotateArm									    	      */
+/* 機能名		： アーム制御       									      */
+/* 機能概要		： アームを制御する             						       */
+/* 引数			： int32            :keepPower      :キープパワーという名のただの出力値 */
+/* 戻り値		： int8				:0				:正常終了				  */
+/* 作成日		： 2021/07/23		 崎山　勇人		 新規作成			       */
+/* ------------------------------------------------------------------------- */
 int8 Steering::rotateArm(int32 keepPower)
 {
     frLog &msg = frLog::GetInstance();
@@ -56,7 +77,6 @@ int8 Steering::rotateArm(int32 keepPower)
 
     int8 retChk = SYS_NG;
 
-    /* 指定角度でアームを固定する */
     retChk = armMotor->setPWM(keepPower);
      if(retChk != SYS_OK){
         msg.LOG(LOG_ID_ERR,"Steering::rotateArm setPWM err\n");
@@ -65,7 +85,14 @@ int8 Steering::rotateArm(int32 keepPower)
 
     return SYS_OK;
 }
-
+/* ------------------------------------------------------------------------- */
+/* 関数名		： rotateWheel									    	      */
+/* 機能名		： モータ制御       									      */
+/* 機能概要		： モータを制御する             						       */
+/* 引数			： int32            :motor_power    :モータへの出力値          */
+/* 戻り値		： int8				:0				:正常終了				  */
+/* 作成日		： 2021/07/23		 崎山　勇人		 新規作成			       */
+/* ------------------------------------------------------------------------- */
 int8 Steering::rotateWheel(MotorPower motor_power)
 {
     frLog &msg = frLog::GetInstance();
@@ -78,8 +105,6 @@ int8 Steering::rotateWheel(MotorPower motor_power)
     }
 
     /* 変数宣言 */
-    //int32 lCount = 0;
-    //int32 rCount = 0;
     int8 retChk = SYS_NG;
 
     /* 右モータ　PWMset */
@@ -97,7 +122,14 @@ int8 Steering::rotateWheel(MotorPower motor_power)
 
     return SYS_OK;
 }
-
+/* ------------------------------------------------------------------------- */
+/* 関数名		： getMotorAngle								    	      */
+/* 機能名		： モータ角度取得       								      */
+/* 機能概要		： モータ角度を取得する           						       */
+/* 引数			： MotorAngle       :*iAngle        :角度格納用               */
+/* 戻り値		： int8				:0				:正常終了				  */
+/* 作成日		： 2021/07/23		 崎山　勇人		 新規作成			       */
+/* ------------------------------------------------------------------------- */
 int8 Steering::getMotorAngle(MotorAngle *iAngle)
 {
     frLog &msg = frLog::GetInstance();
@@ -106,12 +138,19 @@ int8 Steering::getMotorAngle(MotorAngle *iAngle)
         msg.LOG(LOG_ID_ERR,"Steering::getMotorAngle 引数エラー\n");
         return SYS_PARAM;
     }
-
+    
     *iAngle=motorAngle;
 
     return SYS_OK;
 }
-
+/* ------------------------------------------------------------------------- */
+/* 関数名		： updateAngle  								    	      */
+/* 機能名		： モータ角度更新       								      */
+/* 機能概要		： モータ角度を更新する           						       */
+/* 引数			： なし                                                       */
+/* 戻り値		： int8				:0				:正常終了				  */
+/* 作成日		： 2021/07/23		 崎山　勇人		 新規作成			       */
+/* ------------------------------------------------------------------------- */
 int8 Steering::updateAngle()
 {
     frLog &msg = frLog::GetInstance();
@@ -144,7 +183,14 @@ int8 Steering::updateAngle()
 
     return SYS_OK; 
 }
-
+/* ------------------------------------------------------------------------- */
+/* 関数名		： deletePort     								    	      */
+/* 機能名		：        			                					      */
+/* 機能概要		： メンバー変数の解放           						       */
+/* 引数			： なし                                                       */
+/* 戻り値		： なし                                     				  */
+/* 作成日		： 2021/07/23		 崎山　勇人		 新規作成			       */
+/* ------------------------------------------------------------------------- */
 int8 Steering::deletePort(){
     delete (leftMotor);
     delete (rightMotor);

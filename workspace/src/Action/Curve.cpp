@@ -6,7 +6,17 @@
 
 Curve::Curve(){}
 Curve::~Curve(){}
-
+/* ------------------------------------------------------------------------- */
+/* 関数名		： run  							    	    	          */
+/* 機能名		： 実行             		                    	          */
+/* 機能概要		： 両モータの比率計算を行い、モータに出力する                    */
+/* 引数			： int32            :speed          :速度                    */
+/* 			    ： PIDData          :pid_data      :ゲイン値とターゲット値    */
+/* 			    ： float            :angle         :角度                     */
+/* 			    ： CurveData        :curve_data    :半径とカーブ方向          */
+/* 戻り値		： int8				:0				:正常終了				  */
+/* 作成日		： 2021/07/23		 崎山　勇人		 新規作成			       */
+/* ------------------------------------------------------------------------- */
 int8 Curve::run(int32 speed,PIDData pid_data,float angle,CurveData curve_data)
 {
     frLog &msg = frLog::GetInstance();
@@ -38,12 +48,12 @@ int8 Curve::run(int32 speed,PIDData pid_data,float angle,CurveData curve_data)
         return SYS_NG;
     }
 
-    // 左カーブの比率
+    // 左カーブ時のモータ比率
     if( curve_data.dirction == CURVE_LEFT ) {
         ratioLeft  = (curve_data.radius - CAR_WIDTH / 2)/(curve_data.radius + CAR_WIDTH / 2);
         ratioRight = 1;
     } 
-    // 左カーブの比率
+    // 左カーブの時のモータ比率
     else if( curve_data.dirction == CURVE_RIGHT ) {
         ratioLeft  = 1;
         ratioRight = (curve_data.radius - CAR_WIDTH / 2)/(curve_data.radius + CAR_WIDTH / 2);
@@ -53,6 +63,7 @@ int8 Curve::run(int32 speed,PIDData pid_data,float angle,CurveData curve_data)
     motorPower.rightPower = speed * ratioRight;
 
     // pid値を渡して補正値を計算する
+    // ラインなしカーブの時はゲイン値を0にする
     retChk = pidControl.calcPid(&pid_data);
     if(retChk != SYS_OK){
         msg.LOG(LOG_ID_ERR,"Curve::run getMotorPower err\n");
@@ -69,12 +80,13 @@ int8 Curve::run(int32 speed,PIDData pid_data,float angle,CurveData curve_data)
     // 出力値計算
     motorPower.leftPower  += revision;
     motorPower.rightPower -= revision;
+
+    // モータ値の限界は100なので100を超えないようにしている
     if(motorPower.leftPower > 100){
         motorPower.leftPower = 100;
     } else if(motorPower.rightPower > 100){
         motorPower.rightPower = 100;
     }
-
     if(motorPower.rightPower < -100){
         motorPower.rightPower = -100;
     } else if(motorPower.leftPower < -100){

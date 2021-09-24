@@ -3,7 +3,17 @@
 
 ArmAction::ArmAction(){}
 ArmAction::~ArmAction(){}
-
+/* ------------------------------------------------------------------------- */
+/* 関数名		： run  							    	    	          */
+/* 機能名		： 実行             		                    	          */
+/* 機能概要		： アームを上げながら直進する                                   */
+/* 引数			： int32            :speed          :速度                    */
+/* 			    ： PIDData          :pid_data      :ゲイン値とターゲット値    */
+/* 			    ： float            :angle         :角度                     */
+/* 			    ： CurveData        :curve_data    :半径とカーブ方向          */
+/* 戻り値		： int8				:0				:正常終了				  */
+/* 作成日		： 2021/07/23		 崎山　勇人		 新規作成			       */
+/* ------------------------------------------------------------------------- */
 int8 ArmAction::run(int32 speed,PIDData pid_data = {0.0f,0.0f,0.0f,0.0f},
     float angle = 0.0f,CurveData curve_data = {0.0f,(CurveType)0})
 {

@@ -3,7 +3,17 @@
 
 LineTrace::LineTrace(){}
 LineTrace::~LineTrace(){}
-
+/* ------------------------------------------------------------------------- */
+/* 関数名		： run  							    	    	          */
+/* 機能名		： 実行             		                    	          */
+/* 機能概要		： ライントレース                                               */
+/* 引数			： int32            :speed          :速度                    */
+/* 			    ： PIDData          :pid_data      :ゲイン値とターゲット値    */
+/* 			    ： float            :angle         :角度                     */
+/* 			    ： CurveData        :curve_data    :半径とカーブ方向          */
+/* 戻り値		： int8				:0				:正常終了				  */
+/* 作成日		： 2021/07/23		 崎山　勇人		 新規作成			       */
+/* ------------------------------------------------------------------------- */
 int8 LineTrace::run(int32 speed,PIDData pid_data,float angle = 0.0f,CurveData curve_data = {0.0f,(CurveType)0})
 {
     frLog &msg = frLog::GetInstance();
@@ -49,14 +59,16 @@ int8 LineTrace::run(int32 speed,PIDData pid_data,float angle = 0.0f,CurveData cu
     }
 
     // 計算
+    // 2021年は左ラインでトレース行ったので左モータに補正値を加算し、右モータに減算している
     motorPower.leftPower  = speed + revision;
     motorPower.rightPower = speed - revision;
+
+    // モータ値の限界は100なので100を超えないようにしている
    if(motorPower.leftPower > 100){
         motorPower.leftPower = 100;
     } else if(motorPower.rightPower > 100){
         motorPower.rightPower = 100;
     }
-
     if(motorPower.rightPower < -100){
         motorPower.rightPower = -100;
     } else if(motorPower.leftPower < -100){
