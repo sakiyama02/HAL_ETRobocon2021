@@ -6,9 +6,14 @@
 ScenarioControl::ScenarioControl(){}
 ScenarioControl::~ScenarioControl(){}
 
-//run
-//実行
-//
+/* -------------------------------------------------------------------------- */
+/* 関数名       ：run                                                          */
+/* 機能名       ：実行                                                         */
+/* 機能概要     ：現在のシナリオ情報を使ってシナリオ実行                         */
+/* 引数         ：void                                                        */
+/* 戻り値       ：int8、エラー通知                                             */
+/* 作成日       ：7月23日、鶴野祥大                                            */
+/* -------------------------------------------------------------------------- */
 int8 ScenarioControl::run(){
     int8 retChk = SYS_NG; //戻り値格納変数
 
@@ -51,9 +56,14 @@ int8 ScenarioControl::run(){
     return retChk;
 }
 
-//updateScenario
-//シナリオの更新
-//
+/* -------------------------------------------------------------------------- */
+/* 関数名       ：updateScenario                                               */
+/* 機能名       ：更新                                                         */
+/* 機能概要     ：シナリオ情報更新の確認して更新                                 */
+/* 引数         ：void                                                        */
+/* 戻り値       ：int8、エラー通知                                             */
+/* 作成日       ：7月23日、鶴野祥大                                            */
+/* -------------------------------------------------------------------------- */
 int8 ScenarioControl::updateScenario(){
     int8 retChk = SYS_NG; //戻り値格納変数
     PidControl &pidControl      = PidControl::getInstance();
@@ -125,7 +135,14 @@ int8 ScenarioControl::updateScenario(){
     return SYS_NG;
 }
 
-//シナリオ番号のゲッタ
+/* -------------------------------------------------------------------------- */
+/* 関数名       ：scenarioGetter                                               */
+/* 機能名       ：シナリオ情報の取得                                            */
+/* 機能概要     ：シナリオ情報をシーン制御に受け渡す                            */
+/* 引数         ：int16*、scenario_state、シナリオ状態                         */
+/* 戻り値       ：int8、エラー通知                                             */
+/* 作成日       ：7月23日、鶴野祥大                                            */
+/* -------------------------------------------------------------------------- */
 int8 ScenarioControl::scenarioGetter(int16* scenario_state){
     /* 引数チェック */
     if( scenario_state == NULL ){
@@ -135,4 +152,3 @@ int8 ScenarioControl::scenarioGetter(int16* scenario_state){
     return SYS_OK;
 }
 
-//

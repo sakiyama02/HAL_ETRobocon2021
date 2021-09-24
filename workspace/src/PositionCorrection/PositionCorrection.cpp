@@ -3,17 +3,22 @@ PositionCorrection::PositionCorrection(){
     prePositionCorrectionData.correctionCondition=JUDGE_NONE;
 }
 PositionCorrection::~PositionCorrection(){}
-
-//メインタスクで呼び出す補正の振り分け及び値の受け渡し
+/* -------------------------------------------------------------------------- */
+/* 関数名       ：fixSetter                                                   */
+/* 機能名       ：補正実行                                                     */
+/* 機能概要     ：シーン制御から受け取った補正値を使って、補正タスク動作を行う     */
+/*                現在のタスクの状態                                           */
+/*                状態：実行中      STATE_ACT                                  */
+/*                実行済み　　STATE_ACTAFTER                                   */
+/*                未送信     STATE_NOTSEND                                    */
+/*                送信待ち   STATE_NOWSEND                                    */
+/* 引数         ：PositionCorrectionData、positionCorrection_Data、補正情報    */
+/* 戻り値       ：int8、エラー通知                                             */
+/* 作成日       ：7月23日、渡部湧也                                            */
+/* -------------------------------------------------------------------------- */
 int8 PositionCorrection::fixSetter(PositionCorrectionData positionCorrection_Data){
     #ifdef CORRECTIONDATA_ON
     frLog &msg = frLog::GetInstance();
-
-    //現在のタスクの状態
-    //状態：実行中      STATE_ACT
-    //    ：実行済み　　STATE_ACTAFTER
-    //    : 未送信     STATE_NOTSEND
-    //    : 送信待ち   STATE_NOWSEND
 
     //未送信の場合送信タスクを起動してタスク状態を送信待ちにする
     if(taskState==STATE_NOTSEND){
@@ -49,26 +54,32 @@ int8 PositionCorrection::fixSetter(PositionCorrectionData positionCorrection_Dat
         //msg.LOG(LOG_ID_ERR,"シーン変化してタスクがONのため現在起動中のタスク終了");
         switch(prePositionCorrectionData.correctionCondition){
             case JUDGE_RGB:
+            //app側でタスクを停止してもらうために動作タスクと、停止フラグを格納
             controltask=JUDGE_RGB;
             movetask=LOW;
             break;
             case JUDGE_POS:
+            //app側でタスクを停止してもらうために動作タスクと、停止フラグを格納
             controltask=JUDGE_POS;
             movetask=LOW;
             break;
             case JUDGE_DIR:
+            //app側でタスクを停止してもらうために動作タスクと、停止フラグを格納   
             controltask=JUDGE_DIR;
             movetask=LOW;
             break;
             case JUDGE_V:
+            //app側でタスクを停止してもらうために動作タスクと、停止フラグを格納
             controltask=JUDGE_V;
             movetask=LOW;
             break;
             case JUDGE_S:
+            //app側でタスクを停止してもらうために動作タスクと、停止フラグを格納            
             controltask=JUDGE_S;
             movetask=LOW;
             break;
             case JUDGE_DIS:
+            //app側でタスクを停止してもらうために動作タスクと、停止フラグを格納
             controltask=JUDGE_DIS;
             movetask=LOW;
             default:
@@ -85,31 +96,37 @@ int8 PositionCorrection::fixSetter(PositionCorrectionData positionCorrection_Dat
     switch(prePositionCorrectionData.correctionCondition){
         case JUDGE_RGB:
             msg.LOG(LOG_ID_ERR,"色補正開始");
+            //app側でタスクを起動してもらうために動作タスクと、起動フラグを格納
             controltask=JUDGE_RGB;
             movetask=HIGH;
         break;
         case JUDGE_POS:
             msg.LOG(LOG_ID_ERR,"座標補正開始");
+            //app側でタスクを起動してもらうために動作タスクと、起動フラグを格納
             controltask=JUDGE_POS;
             movetask=HIGH;
         break;
         case JUDGE_DIR:
             msg.LOG(LOG_ID_ERR,"向き補正開始");
+            //app側でタスクを起動してもらうために動作タスクと、起動フラグを格納
             controltask=JUDGE_DIR;
             movetask=HIGH;
         break;
         case JUDGE_V:
             msg.LOG(LOG_ID_ERR,"v補正開始");
+            //app側でタスクを起動してもらうために動作タスクと、起動フラグを格納
             controltask=JUDGE_V;
             movetask=HIGH;
         break;
         case JUDGE_S:
             msg.LOG(LOG_ID_ERR,"s補正開始");
+            //app側でタスクを起動してもらうために動作タスクと、起動フラグを格納
             controltask=JUDGE_S;
             movetask=HIGH;
         break;
         case JUDGE_DIS:
             msg.LOG(LOG_ID_ERR,"距離補正開始");
+            //app側でタスクを起動してもらうために動作タスクと、起動フラグを格納
             controltask=JUDGE_DIS;
             movetask=HIGH;
         break;
@@ -120,7 +137,16 @@ int8 PositionCorrection::fixSetter(PositionCorrectionData positionCorrection_Dat
     #endif
 }
 
-//周期タスクで呼び出す色補正
+/* -------------------------------------------------------------------------- */
+/* 関数名       ：colorFix                                                     */
+/* 機能名       ：色補正                                                       */
+/* 機能概要     ：補正値を使って補正値を自己位置推定に更新を行う                  */
+/*                周期タスクで動作させるメソッドのため周期タスクを使用できる場所  */
+/*                で動作させる                                                */
+/* 引数         ：void                                                        */
+/* 戻り値       ：int8、エラー通知                                             */
+/* 作成日       ：7月23日、渡部湧也                                            */
+/* -------------------------------------------------------------------------- */
 int8 PositionCorrection::colorFix(){
     #ifdef CORRECTIONDATA_ON
     frLog &msg = frLog::GetInstance();
@@ -166,13 +192,13 @@ int8 PositionCorrection::colorFix(){
         ext_tsk();
         return SYS_OK;
     }
-
+    //座標情報を更新
     retChk=posSetter(prePositionCorrectionData.correctionValue);
     if(retChk!=SYS_OK){
         //エラーチェック
         return SYS_NG;
     }
-
+    //向き情報を更新
     retChk=dirSetter(prePositionCorrectionData.correctionValueDirection);
     if(retChk!=SYS_OK){
         //エラーチェック
@@ -190,7 +216,16 @@ int8 PositionCorrection::colorFix(){
     #endif
 }
 
-//周期タスクで呼び出す座標補正
+/* -------------------------------------------------------------------------- */
+/* 関数名       ：lineFix                                                     */
+/* 機能名       ：座標補正                                                     */
+/* 機能概要     ：補正値を使って補正値を自己位置推定に更新を行う                  */
+/*                周期タスクで動作させるメソッドのため周期タスクを使用できる場所  */
+/*                で動作させる                                                */
+/* 引数         ：void                                                        */
+/* 戻り値       ：int8、エラー通知                                             */
+/* 作成日       ：7月23日、渡部湧也                                            */
+/* -------------------------------------------------------------------------- */
 int8 PositionCorrection::lineFix(){
     #ifdef CORRECTIONDATA_ON
     frLog &msg = frLog::GetInstance();
@@ -214,6 +249,7 @@ int8 PositionCorrection::lineFix(){
             retChk=xPositionJudge(curPositionData.xPosition,
                                 prePositionCorrectionData.correctionPosition.potision.xPosition,
                                 prePositionCorrectionData.correctionPosition.xCondition);
+            //戻り値がSYS_OK以外の場合yを確認せずに終了
             if(retChk!=SYS_OK){
                 break;
             }
@@ -255,12 +291,14 @@ int8 PositionCorrection::lineFix(){
         ext_tsk();
         return SYS_OK;
     }
-
+    
+    //自己位置推定に座標更新
     retChk=posSetter(prePositionCorrectionData.correctionValue);
     if(retChk!=SYS_OK){
         //エラーチェック
         return SYS_NG;
     }
+    //自己位置推定に角度更新
     retChk=dirSetter(prePositionCorrectionData.correctionValueDirection);
     if(retChk!=SYS_OK){
         //エラーチェック
@@ -278,7 +316,16 @@ int8 PositionCorrection::lineFix(){
     return SYS_OK;
 }
 
-//周期タスクで呼び出す向き補正
+/* -------------------------------------------------------------------------- */
+/* 関数名       ：directionFix                                                 */
+/* 機能名       ：向き補正                                                     */
+/* 機能概要     ：補正値を使って補正値を自己位置推定に更新を行う                  */
+/*                周期タスクで動作させるメソッドのため周期タスクを使用できる場所  */
+/*                で動作させる                                                */
+/* 引数         ：void                                                        */
+/* 戻り値       ：int8、エラー通知                                             */
+/* 作成日       ：7月23日、渡部湧也                                            */
+/* -------------------------------------------------------------------------- */
 int8 PositionCorrection::directionFix(){
     #ifdef CORRECTIONDATA_ON
     frLog &msg = frLog::GetInstance();
@@ -311,25 +358,26 @@ int8 PositionCorrection::directionFix(){
     //ためにタスク状態を未送信に設定
     if(carPosition.calcstate==1){
         msg.LOG(LOG_ID_ERR,"自己位置推定が計算中のため終了");
-
+        //タスク状態
         taskState=STATE_NOTSEND;
         
         ext_tsk();
         return SYS_OK;
     }
-
+    //自己位置推定に座標更新
     retChk=posSetter(prePositionCorrectionData.correctionValue);
     
     if(retChk!=SYS_OK){
         //エラーチェック
         return SYS_NG;
     }
-
+    //自己位置推定に角度更新
     retChk=dirSetter(prePositionCorrectionData.correctionValueDirection);
     if(retChk!=SYS_OK){
         //エラーチェック
         return SYS_NG;
     }
+    
 
     //タスク実行終了
     taskState=STATE_ACTAFTER;
@@ -341,7 +389,16 @@ int8 PositionCorrection::directionFix(){
     return SYS_OK;
 }
 
-//周期タスクで呼び出すV値補正
+/* -------------------------------------------------------------------------- */
+/* 関数名       ：vFix                                                         */
+/* 機能名       ：V補正                                                        */
+/* 機能概要     ：補正値を使って補正値を自己位置推定に更新を行う                   */
+/*                周期タスクで動作させるメソッドのため周期タスクを使用できる場所  */
+/*                で動作させる                                                */
+/* 引数         ：void                                                         */
+/* 戻り値       ：int8、エラー通知                                              */
+/* 作成日       ：7月23日、渡部湧也                                             */
+/* -------------------------------------------------------------------------- */
 int8 PositionCorrection::vFix(){
     #ifdef CORRECTIONDATA_ON
     frLog &msg = frLog::GetInstance();
@@ -387,13 +444,13 @@ int8 PositionCorrection::vFix(){
         ext_tsk();
         return SYS_OK;
     }
-
+    //自己位置推定に座標更新
     retChk=posSetter(prePositionCorrectionData.correctionValue);
     if(retChk!=SYS_OK){
         //エラーチェック
         return SYS_NG;
     }
-
+    //自己位置推定に角度更新
     retChk=dirSetter(prePositionCorrectionData.correctionValueDirection);
     if(retChk!=SYS_OK){
         //エラーチェック
@@ -411,14 +468,22 @@ int8 PositionCorrection::vFix(){
     #endif
 }
 
-//周期タスクで呼び出すs値補正
+/* -------------------------------------------------------------------------- */
+/* 関数名       ：sFix                                                         */
+/* 機能名       ：S補正                                                        */
+/* 機能概要     ：補正値を使って補正値を自己位置推定に更新を行う                   */
+/*                周期タスクで動作させるメソッドのため周期タスクを使用できる場所  */
+/*                で動作させる                                                */
+/* 引数         ：void                                                         */
+/* 戻り値       ：int8、エラー通知                                              */
+/* 作成日       ：7月23日、渡部湧也                                             */
+/* -------------------------------------------------------------------------- */
 int8 PositionCorrection::sFix(){
     #ifdef CORRECTIONDATA_ON
     frLog &msg = frLog::GetInstance();
     int8 retChk = SYS_NG;
     //タスク状態を実行中にする
     taskState=STATE_ACT;
-
     //センサ管理をインスタンスポインタを取得
     SensorManager &sensorManager=SensorManager::getInstance();
     //自己位置推定をインスタンスポインタを取得
@@ -457,13 +522,13 @@ int8 PositionCorrection::sFix(){
         ext_tsk();
         return SYS_OK;
     }
-
+    //自己位置推定に座標更新
     retChk=posSetter(prePositionCorrectionData.correctionValue);
     if(retChk!=SYS_OK){
         //エラーチェック
         return SYS_NG;
     }
-
+    //自己位置推定に角度更新
     retChk=dirSetter(prePositionCorrectionData.correctionValueDirection);
     if(retChk!=SYS_OK){
         //エラーチェック
@@ -481,8 +546,16 @@ int8 PositionCorrection::sFix(){
     #endif
 }
 
-
-//周期タスクで呼び出す色補正
+/* -------------------------------------------------------------------------- */
+/* 関数名       ：distanceFix                                                  */
+/* 機能名       ：距離補正                                                      */
+/* 機能概要     ：補正値を使って補正値を自己位置推定に更新を行う                   */
+/*               周期タスクで動作させるメソッドのため周期タスクを使用できる場所     */
+/*               で動作させる                                                  */
+/* 引数         ：void                                                         */
+/* 戻り値       ：int8、エラー通知                                              */
+/* 作成日       ：7月23日、渡部湧也                                             */
+/* -------------------------------------------------------------------------- */
 int8 PositionCorrection::distanceFix(){
     #ifdef CORRECTIONDATA_ON
     frLog &msg = frLog::GetInstance();
@@ -527,13 +600,13 @@ int8 PositionCorrection::distanceFix(){
         ext_tsk();
         return SYS_OK;
     }
-
+    //自己位置推定に座標更新
     retChk=posSetter(prePositionCorrectionData.correctionValue);
     if(retChk!=SYS_OK){
         //エラーチェック
         return SYS_NG;
     }
-
+    //自己位置推定に角度更新
     retChk=dirSetter(prePositionCorrectionData.correctionValueDirection);
     if(retChk!=SYS_OK){
         //エラーチェック
@@ -551,10 +624,18 @@ int8 PositionCorrection::distanceFix(){
     #endif
 }
 
-
-//自己位置推定の計算中に値を変更されないように
-//変更中に値を変えようとした場合のみ使用する
-//基本的に値を自己位置推定に渡すだけのメソッド
+/* -------------------------------------------------------------------------- */
+/* 関数名       ：send_position                                                */
+/* 機能名       ：臨時自己位置推定更新                                          */
+/* 機能概要     ：自己位置推定の計算中に値を変更されないように                    */
+/*               変更中に値を変えようとした場合のみ使用する                      */
+/*               基本的に値を自己位置推定に渡すだけのメソッド                    */
+/*               周期タスクで動作させるメソッドのため周期タスクを使用できる場所   */
+/*               で動作させる                                                  */
+/* 引数         ：void                                                         */
+/* 戻り値       ：int8、エラー通知                                              */
+/* 作成日       ：7月23日、渡部湧也                                             */
+/* -------------------------------------------------------------------------- */
 int8 PositionCorrection::send_position(){
     #ifdef CORRECTIONDATA_ON
     //frLog &msg = frLog::GetInstance();
@@ -594,9 +675,15 @@ int8 PositionCorrection::send_position(){
 }
 
 
-//
-//appで使用するタスク状態変更getter
-//
+/* -------------------------------------------------------------------------- */
+/* 関数名       ：controltaskgetter                                           */
+/* 機能名       ：実行中タスク取得         　　　　　　　　　　                 */
+/* 機能概要     ：現在実行中補正タスクを取得　　　　　　　　　　　　 　　　　　　 */
+/*               現在どのタスクが動いているかはsystem.hのJudgeTypeで指定している*/
+/* 引数         ：JudgeType*、取得用変数ポインタ                               */
+/* 戻り値       ：int8、エラー通知                                             */
+/* 作成日       ：7月23日、渡部湧也                                            */
+/* -------------------------------------------------------------------------- */
 int8 PositionCorrection::controltaskgetter(JudgeType *control_task){
     #ifdef CORRECTIONDATA_ON
     *control_task=controltask;
@@ -604,6 +691,17 @@ int8 PositionCorrection::controltaskgetter(JudgeType *control_task){
     return SYS_OK;
 }
 
+/* -------------------------------------------------------------------------- */
+/* 関数名       ：movetaskgetter                                   　         */
+/* 機能名       ：タスク状態変更フラグ取得                                      */
+/* 機能概要     ：タスク状態変更フラグを取得　　　      　　　　　　 　　　　　　 */
+/*              　タスクの状態変更を指示するフラグであり、                      */
+/*              　system.hのRangeで指定する                                   */
+/*              　(HIGHで起動、LOWで停止、NONEで変更なし)                      */
+/* 引数         ：Range*、取得用変数ポインタ                                   */
+/* 戻り値       ：int8、エラー通知                                             */
+/* 作成日       ：7月23日、渡部湧也                                            */
+/* -------------------------------------------------------------------------- */
 int8 PositionCorrection::movetaskgetter(Range *move_task){
     #ifdef CORRECTIONDATA_ON
     *move_task=movetask;
@@ -611,16 +709,30 @@ int8 PositionCorrection::movetaskgetter(Range *move_task){
     return SYS_OK;
 }
 
-//
-//appで使用するタスク状態変更setter
-//
+/* -------------------------------------------------------------------------- */
+/* 関数名       ：controltasksetter                                            */
+/* 機能名       ：実行中タスク更新         　　　　　　　　　　　                 */
+/* 機能概要     ：現在実行中補正タスクを更新　　　　　　　  　　 　　　 　　　　　　 */
+/*               基本的に初期化状態に戻すために使う                              */
+/* 引数         ：JudgeType、取得用変数                                         */
+/* 戻り値       ：int8、エラー通知                                              */
+/* 作成日       ：7月23日、渡部湧也                                             */
+/* -------------------------------------------------------------------------- */
 int8 PositionCorrection::controltasksetter(JudgeType control_task){
     #ifdef CORRECTIONDATA_ON
     controltask=control_task;
     #endif
     return SYS_OK;
 }
-
+/* -------------------------------------------------------------------------- */
+/* 関数名       ：movetasksetter                                    　         */
+/* 機能名       ：タスク状態変更フラグ更新                                       */
+/* 機能概要     ：タスク状態変更フラグを更新　　　      　　　  　　　 　　　　　　 */
+/*               基本的に初期化状態に戻すために使う                              */
+/* 引数         ：Range*、取得用変数ポインタ                                    */
+/* 戻り値       ：int8、エラー通知                                              */
+/* 作成日       ：7月23日、渡部湧也                                             */
+/* -------------------------------------------------------------------------- */
 int8 PositionCorrection::movetasksetter(Range move_task){
     #ifdef CORRECTIONDATA_ON
     movetask=move_task;
@@ -633,10 +745,18 @@ int8 PositionCorrection::movetasksetter(Range move_task){
 //ここから下は切り替え処理と同一
 //
 
-//rgbの判定
-//引数：現在のrgb値、目標のrgb値、(現在と目標の差分範囲の指定値)
-//戻り値：切り替え条件を満たしていればSYS_OK
-//        切り替え条件を満たしていなければSYS_NG
+/* -------------------------------------------------------------------------- */
+/* 関数名       ：colorJudge                                                   */
+/* 機能名       ：rgbの判定                                                    */
+/* 機能概要     ：rgb情報をみてアクションのシーン更新確認                         */
+/*                rgbの場合すべての値が差分範囲に収まる場合切り替え               */
+/* 引数         ：RGBData、cur_rgbdata、現在のrgb値                            */
+/*               RGBData、change_rgbdata、目標のrgb値                          */
+/*               Range、condition、現在と目標の差分範囲の指定                   */
+/* 戻り値       ：int8、切り替え条件を満たしていればSYS_OK                       */
+/*                     切り替え条件を満たしていなければSYS_NG                   */
+/* 作成日       ：7月23日、渡部湧也                                            */
+/* -------------------------------------------------------------------------- */
 int8 PositionCorrection::colorJudge(RGBData cur_rgbdata,RGBData change_rgbdata,Range condition){
 
     int8 resultr=0;
@@ -672,10 +792,17 @@ int8 PositionCorrection::colorJudge(RGBData cur_rgbdata,RGBData change_rgbdata,R
     return SYS_NG;
 }
 
-//X座標の判定
-//引数：現在のX座標値、目標のX座標値、現在と目標の差分範囲の指定値
-//戻り値：切り替え条件を満たしていればSYS_OK
-//        切り替え条件を満たしていなければSYS_NG
+/* -------------------------------------------------------------------------- */
+/* 関数名       ：xPositionJudge                                               */
+/* 機能名       ：x座標の判定                                                   */
+/* 機能概要     ：x座標情報をみてアクションのシーン更新確認                        */
+/* 引数         ：float、cur_xpositiondata、現在のx座標                         */
+/*               float、change_xpositiondata、目標のx座標                      */
+/*               Range、condition、現在と目標の差分範囲の指定                    */
+/* 戻り値       ：int8、切り替え条件を満たしていればSYS_OK                       */
+//                     切り替え条件を満たしていなければSYS_NG                    */
+/* 作成日       ：7月23日、渡部湧也                                             */
+/* -------------------------------------------------------------------------- */
 int8 PositionCorrection::xPositionJudge(float cur_xpositionData,float change_xpositionData,Range condition){
     float resultx=0;
     resultx=cur_xpositionData-change_xpositionData;
@@ -700,10 +827,17 @@ int8 PositionCorrection::xPositionJudge(float cur_xpositionData,float change_xpo
     return SYS_NG;
 }
 
-//Y座標の判定
-//引数：現在のY座標値、目標のY座標値、現在と目標の差分範囲の指定値
-//戻り値：切り替え条件を満たしていればSYS_OK
-//        切り替え条件を満たしていなければSYS_NG
+/* -------------------------------------------------------------------------- */
+/* 関数名       ：yPositionJudge                                               */
+/* 機能名       ：y座標の判定                                                   */
+/* 機能概要     ：y座標情報をみてアクションのシーン更新確認                        */
+/* 引数         ：float、cur_ypositiondata、現在のy座標                         */
+/*               float、change_ypositiondata、目標のy座標                      */
+/*               Range、condition、現在と目標の差分範囲の指定                    */
+/* 戻り値       ：int8、切り替え条件を満たしていればSYS_OK                       */
+/*                     切り替え条件を満たしていなければSYS_NG                    */
+/* 作成日       ：7月23日、渡部湧也                                             */
+/* -------------------------------------------------------------------------- */
 int8 PositionCorrection::yPositionJudge(float cur_ypositionData,float change_ypositionData,Range condition){
     float resulty=0;
     resulty=cur_ypositionData-change_ypositionData;
@@ -728,11 +862,17 @@ int8 PositionCorrection::yPositionJudge(float cur_ypositionData,float change_ypo
     return SYS_NG;
 }
 
-//向きの判定
-//引数：現在の向き値、目標の向き値、現在と目標の差分範囲の指定値 
-//マイナスの値を入れるとバグるので注意
-//戻り値：切り替え条件を満たしていればSYS_OK
-//        切り替え条件を満たしていなければSYS_NG
+/* -------------------------------------------------------------------------- */
+/* 関数名       ：directionJudge                                              */
+/* 機能名       ：向きの判定                                                   */
+/* 機能概要     ：向き情報をみてアクションのシーン更新確認                       */
+/* 引数         ：float、cur_directionData、現在の向き                         */
+/*               float、change_directionData、目標の向き                       */
+/*               Range、condition、現在と目標の差分範囲の指定                   */
+/* 戻り値       ：int8、切り替え条件を満たしていればSYS_OK                      */
+/*                     切り替え条件を満たしていなければSYS_NG                   */
+/* 作成日       ：7月23日、渡部湧也                                            */
+/* -------------------------------------------------------------------------- */
 int8 PositionCorrection::directionJudge(float cur_directionData,float change_directionData,Range condition){
     float resultdirection=0;
     resultdirection=cur_directionData-change_directionData;
@@ -757,10 +897,16 @@ int8 PositionCorrection::directionJudge(float cur_directionData,float change_dir
     return SYS_NG;
 }
 
-//距離の判定
-//引数：現在の距離値、目標の距離値
-//戻り値：切り替え条件を満たしていればSYS_OK
-//        切り替え条件を満たしていなければSYS_NG
+/* -------------------------------------------------------------------------- */
+/* 関数名       ：distanceJudge                                               */
+/* 機能名       ：距離の判定                                                   */
+/* 機能概要     ：距離情報をみてアクションのシーン更新確認                       */
+/* 引数         ：uint16、cur_distanceData、現在の距離                         */
+/*               uint16、change_distanceData、目標の距離                       */
+/* 戻り値       ：int8、切り替え条件を満たしていればSYS_OK                      */
+/*                     切り替え条件を満たしていなければSYS_NG                   */
+/* 作成日       ：7月23日、渡部湧也                                            */
+/* -------------------------------------------------------------------------- */
 int8 PositionCorrection::distanceJudge(uint16 cur_distanceData,uint16 change_distanceData){
     int16 resultdistance=0;
     resultdistance=cur_distanceData-change_distanceData;
@@ -781,7 +927,17 @@ int8 PositionCorrection::distanceJudge(uint16 cur_distanceData,uint16 change_dis
     return SYS_NG;
 }
 
-//v値の判定
+/* -------------------------------------------------------------------------- */
+/* 関数名       ：vJudge　　　　                                               */
+/* 機能名       ：V値の判定                                                    */
+/* 機能概要     ：V値情報をみてアクションのシーン更新確認                        */
+/* 引数         ：uint16、cur_vData、現在のV値　　　                           */
+/*               uint16、change_vData、目標のV値                              */
+/*               Range、condition、現在と目標の差分範囲の指定                   */
+/* 戻り値       ：int8、切り替え条件を満たしていればSYS_OK                      */
+/*                     切り替え条件を満たしていなければSYS_NG                   */
+/* 作成日       ：7月23日、渡部湧也                                            */
+/* -------------------------------------------------------------------------- */
 int8 PositionCorrection::vJudge(uint16 cur_vData,uint16 change_vData,Range condition){
     int16 resultv=0;
     resultv=cur_vData-change_vData;
@@ -806,7 +962,17 @@ int8 PositionCorrection::vJudge(uint16 cur_vData,uint16 change_vData,Range condi
     return SYS_NG;
 }
 
-//s値の判定
+/* -------------------------------------------------------------------------- */
+/* 関数名       ：sJudge　　　　                                               */
+/* 機能名       ：S値の判定                                                    */
+/* 機能概要     ：S値情報をみてアクションのシーン更新確認                        */
+/* 引数         ：uint16、cur_sData、現在のS値　　　                           */
+/*               uint16、change_sData、目標のS値                              */
+/*               Range、condition、現在と目標の差分範囲の指定                   */
+/* 戻り値       ：int8、切り替え条件を満たしていればSYS_OK                      */
+/*                     切り替え条件を満たしていなければSYS_NG                   */
+/* 作成日       ：7月23日、渡部湧也                                            */
+/* -------------------------------------------------------------------------- */
 int8 PositionCorrection::sJudge(uint16 cur_sData,uint16 change_sData,Range condition){
     int16 results=0;
     results=cur_sData-change_sData;
@@ -831,7 +997,15 @@ int8 PositionCorrection::sJudge(uint16 cur_sData,uint16 change_sData,Range condi
     return SYS_NG;
 }
 
-//座標を自己位置推定にセット
+/* -------------------------------------------------------------------------- */
+/* 関数名       ：posSetter                                                   */
+/* 機能名       ：座標更新                                                     */
+/* 機能概要     ：引数の座標値を自己位置推定に更新する                           */
+/*               PosInfoData内にあるx,yconditionを見て更新する要素を確認する　　*/
+/* 引数         ：PosInfoData、target_pos、更新する座標情報                     */
+/* 戻り値       ：int8、エラー通知                                              */
+/* 作成日       ：7月23日、渡部湧也                                             */
+/* -------------------------------------------------------------------------- */
 int8 PositionCorrection::posSetter(PosInfoData target_pos){
      //自己位置推定をインスタンスポインタを取得
     CarPosition &carPosition=CarPosition::getInstance();
@@ -871,7 +1045,14 @@ int8 PositionCorrection::posSetter(PosInfoData target_pos){
     return SYS_OK;
 }
 
-//座標を自己位置推定にセット
+/* -------------------------------------------------------------------------- */
+/* 関数名       ：dirSetter                                                   */
+/* 機能名       ：向き更新                                                     */
+/* 機能概要     ：引数の角度値を自己位置推定に更新する                           */
+/* 引数         ：DirectionData、target_dir、更新する向き情報                   */
+/* 戻り値       ：int8、エラー通知                                              */
+/* 作成日       ：7月23日、渡部湧也                                             */
+/* -------------------------------------------------------------------------- */
 int8 PositionCorrection::dirSetter(DirectionData target_dir){
      //自己位置推定をインスタンスポインタを取得
     CarPosition &carPosition=CarPosition::getInstance();
