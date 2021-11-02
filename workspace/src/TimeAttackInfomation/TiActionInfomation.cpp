@@ -209,7 +209,18 @@ TiActionInfomation::TiActionInfomation(){
     index++;
 
     index = 12;
-    changeInfoData[index].direction_data.direction=3;
+    changeInfoData[index].pos_info_data.potision.xPosition=0;
+    changeInfoData[index].pos_info_data.potision.yPosition=1000;
+    changeInfoData[index].pos_info_data.xCondition=NONE;
+    changeInfoData[index].pos_info_data.yCondition=LOW;
+
+    changeInfoData[index].judge=JUDGE_POS;
+    changeInfoData[index].section_act=STRAIGHT;
+    changeInfoData[index].speed=80;
+    index++;
+
+    index = 13;
+    changeInfoData[index].direction_data.direction=5;
     changeInfoData[index].direction_data.condition=HIGH;
 
     changeInfoData[index].judge=JUDGE_DIR;
@@ -217,7 +228,7 @@ TiActionInfomation::TiActionInfomation(){
     changeInfoData[index].speed=80;
     index++;
 
-    index = 13;
+    index = 14;
     changeInfoData[index].vData.v=85;
     changeInfoData[index].vData.condition=LOW;
 
@@ -226,7 +237,7 @@ TiActionInfomation::TiActionInfomation(){
     changeInfoData[index].speed=80;
     index++;
 
-    index = 14;
+    index = 15;
     changeInfoData[index].pos_info_data.potision.xPosition=0;
     changeInfoData[index].pos_info_data.potision.yPosition=2629.7312;
     changeInfoData[index].pos_info_data.xCondition=NONE;
@@ -237,7 +248,7 @@ TiActionInfomation::TiActionInfomation(){
     changeInfoData[index].speed=95;
     index++;
 
-    index=15;
+    index=16;
     changeInfoData[index].sData.s=110;
     changeInfoData[index].sData.condition=HIGH;
 
@@ -246,7 +257,7 @@ TiActionInfomation::TiActionInfomation(){
     changeInfoData[index].speed=95;
     index++;
 
-    index=16;
+    index=17;
     changeInfoData[index].sData.s=80;
     changeInfoData[index].sData.condition=LOW;
 
@@ -255,7 +266,7 @@ TiActionInfomation::TiActionInfomation(){
     changeInfoData[index].speed=80;
     index++;
 
-    index=17;
+    index=18;
     changeInfoData[index].sData.s=110;
     changeInfoData[index].sData.condition=HIGH;
 
@@ -264,7 +275,7 @@ TiActionInfomation::TiActionInfomation(){
     changeInfoData[index].speed=50;
     index++;
 
-    index=18;
+    index=19;
     changeInfoData[index].pos_info_data.potision.xPosition=1762.79+75.8328;
     changeInfoData[index].pos_info_data.potision.yPosition=3392.27f;
     changeInfoData[index].pos_info_data.xCondition=LOW;
@@ -276,7 +287,7 @@ TiActionInfomation::TiActionInfomation(){
     changeInfoData[index].section_act=LINE_TRACE;
     changeInfoData[index].speed=30;
 
-    index=19;
+    index=20;
     changeInfoData[index].pos_info_data.potision.xPosition=1762.79;
     changeInfoData[index].pos_info_data.potision.yPosition=3392.27f;
     changeInfoData[index].pos_info_data.xCondition=LOW;

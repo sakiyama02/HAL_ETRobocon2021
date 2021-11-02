@@ -112,7 +112,7 @@ TiPositionCorrectionInfomation::TiPositionCorrectionInfomation(){
     positionCorrectionData[index].correctionPosition.yCondition=NONE;
     positionCorrectionData[index].correctionCondition=JUDGE_POS;
 
-    index=17;
+    index=18;
     positionCorrectionData[index].correctionValue.potision.xPosition=1914.4556; 
     positionCorrectionData[index].correctionValue.potision.yPosition=3392.974;
     positionCorrectionData[index].correctionValue.xCondition=HIGH;
@@ -126,7 +126,7 @@ TiPositionCorrectionInfomation::TiPositionCorrectionInfomation(){
     positionCorrectionData[index].correctionCondition=JUDGE_S;
 
      //タイムアタック終了時の補正
-    index=19;
+    index=20;
     positionCorrectionData[index].correctionValue.potision.xPosition=1762.79;
     positionCorrectionData[index].correctionValue.potision.yPosition=3392.27;
     positionCorrectionData[index].correctionValue.xCondition=HIGH;
