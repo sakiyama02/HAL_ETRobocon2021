@@ -169,7 +169,7 @@ TiActionInfomation::TiActionInfomation(){
     index++;
 
     index = 8;
-    changeInfoData[index].pos_info_data.potision.xPosition=1683.0844;
+    changeInfoData[index].pos_info_data.potision.xPosition=1630.0844;
     changeInfoData[index].pos_info_data.potision.yPosition=0;
     changeInfoData[index].pos_info_data.xCondition=HIGH;
     changeInfoData[index].pos_info_data.yCondition=NONE;
